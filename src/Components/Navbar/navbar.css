@@ -1,0 +1,17 @@
+nav a.active{
+    background: none !important;
+    color: orange !important;
+    text-decoration: underline !important;
+    font-weight:  bold !important;
+    
+}
+nav a{
+    font-size: 17px;
+    font-weight: 500;
+}
+nav a:hover{
+    background: none !important;
+}
+.logout{
+    background: none !important;
+}
