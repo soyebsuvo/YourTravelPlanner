@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Damion&family=Sofia&display=swap');
+
+.inpt::placeholder{
+    color: black;
+    font-weight: 600;
+}
+.damion-regular {
+    font-family: "Damion", cursive;
+    font-weight: 600;
+    font-style: normal;
+  }
+  

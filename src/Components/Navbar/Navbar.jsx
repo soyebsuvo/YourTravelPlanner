@@ -1,32 +1,47 @@
-
+import { NavLink } from "react-router-dom";
+import { BsThreeDots } from "react-icons/bs";
+import { TbWorld } from "react-icons/tb";
+import logo from "../../assets/pickyourtrail-logo-white.svg"
+import "./navbar.css";
 const Navbar = () => {
     const links = <>
-        <li><a>Home</a></li>
+        <NavLink to="/season"><a>Best of Seasion</a></NavLink>
+        <NavLink to="/international"><a>International Holidays</a></NavLink>
+        <NavLink to="/Honeymoon"><a>Honeymoon Gateways</a></NavLink>
+        <NavLink to="/exclusive"><a>Exclusive Packages</a></NavLink>
+        <li><a><BsThreeDots /></a></li>
+        <li><a><TbWorld /></a></li>
     </>
     return (
-        <nav>
-            <div className="navbar bg-base-100">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+        <div className="absolute top-0 right-0 left-0 bottom-0">
+            <nav className="max-w-7xl mx-auto px-2 md:px-16 py-3">
+                <div className="flex justify-between items-center">
+                    <div className="flex items-center justify-center">
+                        <div className="dropdown">
+                            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                {links}
+                            </ul>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                            {links}
-                        </ul>
+                        <div className="flex justify-start items-center">
+                            <img className="w-48" src={logo} alt="Logo" />
+                        </div>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <div className="flex justify-end items-center gap-4 flex-1">
+                        <div className=" hidden md:flex">
+                            <ul className="menu menu-horizontal px-1 text-white flex justify-center items-center gap-5">
+                                {links}
+                            </ul>
+                        </div>
+                        <div className="">
+                            <a className="px-4 py-1 rounded border border-white font-semibold cursor-pointer text-white">Login</a>
+                        </div>
+                    </div>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        {links}
-                    </ul>
-                </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     );
 };
 
