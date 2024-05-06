@@ -1,24 +1,28 @@
 import PropTypes from 'prop-types';
+// const OpenAI = require('openai-api');
+import OpenAI from 'openai-api'
+const openai = new OpenAI('');
 const Submit = ({ days, members, budget }) => {
     const handleSubmit = async () => {
 
-       
-            const userInput = `what is chatGPT ?`;
-            // const chatHistory = document.getElementById('chat-history');
-
-            const response = await fetch('http://localhost:3000/ask', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ prompt: userInput })
+        (async () => {
+            const gptResponse = await openai.complete({
+                engine: 'gpt-3.5-turbo-0613',
+                prompt: 'What is Google?',
+                maxTokens: 5,
+                temperature: 0.9,
+                topP: 1,
+                presencePenalty: 0,
+                frequencyPenalty: 0,
+                bestOf: 1,
+                n: 1,
+                stream: false,
+                stop: ['\n', "testing"]
             });
-
-            const responseData = await response.text();
-            console.log(responseData)
-            // const messageElement = document.createElement('div');
-            // messageElement.textContent = `User: ${userInput}\nChatGPT: ${responseData}`;
-            // chatHistory.appendChild(messageElement);
+        
+            console.log(gptResponse.data);
+        })();
+            
         }
 
     return (

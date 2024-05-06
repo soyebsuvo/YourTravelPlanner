@@ -5,9 +5,9 @@ import { FcGoogle } from "react-icons/fc";
 import { FaStar } from "react-icons/fa6";
 import { TiTick } from "react-icons/ti";
 import { useState } from "react";
-// AIzaSyBnlYMEDAs8R17r9Baj6QJHrrXf6JXq5Ws
+// 
 function initPlacesAPI() {
-    const apiKey = 'AIzaSyClU-VbDvxCBszOBycBtYCY1cE29mBsWbc';
+    const apiKey = '';
     const placesAPI = `https://maps.googleapis.com/maps/api/place`;
 
     // Function to fetch autocomplete predictions
