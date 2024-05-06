@@ -10,7 +10,7 @@ const Budget = ({value , setValue}) => {
                 <h2 className='text-2xl font-bold text-center'>What is your budget ?</h2>
             </div>
             <div className="flex justify-center items-center gap-6 py-4">
-                <div onClick={() => setValue("$100")} className={value === "$100" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => setValue("$100")} className={value === "$100" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -18,7 +18,7 @@ const Budget = ({value , setValue}) => {
                         <h2 className="card-title">$100</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("$200")} className={value === "$200" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => setValue("$200")} className={value === "$200" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -26,7 +26,7 @@ const Budget = ({value , setValue}) => {
                         <h2 className="card-title">$200</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("$300")} className={value === "$300" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => setValue("$300")} className={value === "$300" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -34,7 +34,7 @@ const Budget = ({value , setValue}) => {
                         <h2 className="card-title">$300</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("$400")} className={value === "$400" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => setValue("$400")} className={value === "$400" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>

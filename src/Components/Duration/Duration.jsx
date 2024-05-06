@@ -10,7 +10,7 @@ const Duration = ({ value, setValue }) => {
                 <h2 className='text-2xl font-bold text-center'>What&apos;s the duration of your holiday?</h2>
             </div>
             <div className="flex justify-center items-center gap-6 py-4">
-                <div onClick={() => setValue("6-9 days")} className={value === "6-9 days" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => setValue("6-9 days")} className={value === "6-9 days" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -18,7 +18,7 @@ const Duration = ({ value, setValue }) => {
                         <h2 className="card-title">6-9 days</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("10-12 days")} className={value === "10-12 days" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => setValue("10-12 days")} className={value === "10-12 days" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -26,7 +26,7 @@ const Duration = ({ value, setValue }) => {
                         <h2 className="card-title">10-12 days</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("13-15 days")} className={value === "13-15 days" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => setValue("13-15 days")} className={value === "13-15 days" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -34,7 +34,7 @@ const Duration = ({ value, setValue }) => {
                         <h2 className="card-title">13-15 days</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("15-20 days")} className={value === "15-20 days" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => setValue("15-20 days")} className={value === "15-20 days" ? `card bg-base-100 shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card bg-base-100 shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>
