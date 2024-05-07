@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
 import { TbWorld } from "react-icons/tb";
-import logo from "../../assets/pickyourtrail-logo-white.svg"
+import logo from "../../assets/pickyourtrail-logo-white.png"
 import "./navbar.css";
 const Navbar = () => {
     const links = <>

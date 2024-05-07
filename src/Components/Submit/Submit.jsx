@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-const Submit = ({ days, members, budget }) => {
+const Submit = () => {
     const handleSubmit = async () => {
-
        
             const userInput = `what is chatGPT ?`;
             // const chatHistory = document.getElementById('chat-history');
