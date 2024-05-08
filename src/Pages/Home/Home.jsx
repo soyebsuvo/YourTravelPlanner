@@ -7,25 +7,28 @@ import { useRef, useState } from 'react';
 import Selections from "../../Components/Selections/Selections";
 import Submit from "../../Components/Submit/Submit";
 import Accommodation from "../../Components/Accommodation/Accommodation";
+import Dietary from "../../Components/Dietary/Dietary";
 
 const Home = () => {
     const [days, setDays] = useState("");
     const [members, setMembers] = useState("")
     const [budget, setBudget] = useState("")
     const [accommodation, setAccommodation] = useState("")
-        window.addEventListener('load', () => {
-            // Scroll to the top of the page with smooth behavior
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+    const [dietary, setDietary] = useState("")
+    window.addEventListener('load', () => {
+        // Scroll to the top of the page with smooth behavior
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
+    });
     // const durationScroll = useRef();
     const membersScroll = useRef();
     const budgetScroll = useRef();
     const accommodationScroll = useRef();
+    const dietaryScroll = useRef();
 
-    
+
 
     const scrollHandler = (element) => {
         window.scrollTo({
@@ -38,11 +41,12 @@ const Home = () => {
             <Navbar />
             <Banner />
             <div className="bg-[#F7F8FB]">
-                <Selections days={days} members={members} budget={budget} setDays={setDays} setMembers={setMembers} setBudget={setBudget} accommodation={accommodation} setAccommodation={setAccommodation} />
+                <Selections days={days} members={members} budget={budget} setDays={setDays} setMembers={setMembers} setBudget={setBudget} accommodation={accommodation} setAccommodation={setAccommodation} dietary={dietary} setDietary={setDietary}/>
                 <Duration value={days} setValue={setDays} scrollHandler={scrollHandler} membersScroll={membersScroll} />
-                <Members value={members} setValue={setMembers} membersScroll={membersScroll} scrollHandler={scrollHandler} budgetScroll={budgetScroll}/>
-                <Budget value={budget} setValue={setBudget} budgetScroll={budgetScroll} accommodationScroll={accommodationScroll} scrollHandler={scrollHandler}/>
-                <Accommodation value={accommodation} setValue={setAccommodation} accommodationScroll={accommodationScroll} />
+                <Members value={members} setValue={setMembers} membersScroll={membersScroll} scrollHandler={scrollHandler} budgetScroll={budgetScroll} />
+                <Budget value={budget} setValue={setBudget} budgetScroll={budgetScroll} accommodationScroll={accommodationScroll} scrollHandler={scrollHandler} />
+                <Accommodation value={accommodation} setValue={setAccommodation} accommodationScroll={accommodationScroll} dietaryScroll={dietaryScroll} scrollHandler={scrollHandler}/>
+                <Dietary value={dietary} setValue={setDietary} dietaryScroll={dietaryScroll} scrollHandler={scrollHandler} />
                 <Submit days={days} members={members} budget={budget} />
             </div>
         </div>
