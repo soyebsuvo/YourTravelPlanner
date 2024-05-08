@@ -1,7 +1,7 @@
-import img from '../../assets/travel_with_partner_de931cd6b9.png'
-import img2 from '../../assets/travel_with_family_730ac41743.png'
-import img3 from '../../assets/travel_with_friends_23d8a637c4.png'
-import img4 from '../../assets/travel_with_myself_8f0e425b27.png'
+import img from '../../assets/vector-beautiful-love-hearts-bubbles-floating-in-air-on-red-bokeh-backg.jpg'
+import img2 from '../../assets/familie-001.jpg'
+import img3 from '../../assets/3dac3edc8faea23f056035fe9455ec3d.jpg'
+import img4 from '../../assets/acccd570d748a9cacd708e699ff7d4ab.jpg'
 import PropTypes from 'prop-types';
 const Members = ({value , setValue , membersScroll , scrollHandler, budgetScroll}) => {
     return (

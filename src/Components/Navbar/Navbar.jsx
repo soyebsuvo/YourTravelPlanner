@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
 import { TbWorld } from "react-icons/tb";
 import logo from "../../assets/pickyourtrail-logo-white.png"
@@ -26,7 +26,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="flex justify-start items-center">
-                            <img className="w-48" src={logo} alt="Logo" />
+                            <Link to="/"><img className="w-48" src={logo} alt="Logo" /></Link>
                         </div>
                     </div>
                     <div className="flex justify-end items-center gap-4 flex-1">
