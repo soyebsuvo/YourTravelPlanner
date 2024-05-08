@@ -7,7 +7,7 @@ const Duration = ({ value, setValue , scrollHandler , membersScroll}) => {
     return (
         <div className="max-w-7xl mx-auto px-2 md:px-16 py-8">
             <div>
-                <h2 className='text-2xl font-bold text-center my-3'>What is the length of your holiday?</h2>
+                <h2 className='text-2xl font-bold text-center my-3'>What is the length of your holiday? <span className='text-red-500'>*</span> </h2>
             </div>
             <div className="flex justify-center items-center gap-6 py-4">
                 <div onClick={() => {setValue("6-9 days"); scrollHandler(membersScroll)}} className={value === "6-9 days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
