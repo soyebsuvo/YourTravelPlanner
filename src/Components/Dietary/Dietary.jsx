@@ -3,14 +3,14 @@ import img2 from '../../assets/wp3104916.jpg';
 import img3 from '../../assets/wp8746186.jpg';
 import img4 from '../../assets/what-is-a-gluten-free-diet-alt-1440x810.jpg';
 import PropTypes from 'prop-types';
-const Dietary = ({ value, setValue, dietaryScroll }) => {
+const Dietary = ({ value, setValue, dietaryScroll, scrollHandler ,travelPurposeScroll}) => {
     return (
         <div ref={dietaryScroll} className="max-w-7xl mx-auto px-2 md:px-16 py-8">
             <div>
-                <h2 className='text-2xl font-bold text-center'>What is your daily budget per person ?</h2>
+                <h2 className='text-2xl font-bold text-center'> Any specific food requirements?</h2>
             </div>
             <div className="flex justify-center items-center gap-6 py-4">
-                <div onClick={() => { setValue("No restrictions"); }} className={value === "No restrictions" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => { setValue("No restrictions"); scrollHandler(travelPurposeScroll) }} className={value === "No restrictions" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img} alt="Shoes" className="rounded-full w-64" />
                     </figure>
