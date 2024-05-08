@@ -4,6 +4,8 @@ import background from "../../assets/Pyramid-at-Louvre-Museum-Paris-France.jpg"
 import { IoSearch } from "react-icons/io5";
 import { TiTick } from "react-icons/ti";
 import { useState } from "react";
+import { FaFacebookF, FaStar } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
 // 
 function initPlacesAPI() {
     const apiKey = '';
@@ -70,11 +72,15 @@ const Banner = () => {
             </div>
             <div className="bg-[#000] py-3 flex justify-evenly items-center">
                 <div className="flex justify-center items-center">
-                    
+                    <FaFacebookF className="text-blue-500 bg-white p-1 rounded-full" />
+                    <FcGoogle className=" bg-white p-[2px] rounded-full -ml-[7px]"/>
+                    <span className="text-white mx-1">4.6</span>
+                    <FaStar className="text-[#00C684]" />
+                    <span className="text-white mx-1">rated</span>
                 </div>
-                <h3 className="flex justify-center items-center gap-1"><span className="text-white"></span></h3>
-                <h3 className="flex justify-center items-center gap-1"><span className="text-white">Remove</span></h3>
-                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">24/7 Guidance</span></h3>
+                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full"/><span className="text-white">100% Customised Trips</span></h3>
+                {/* <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full"/><span className="text-white">95% Visa Success Rate</span></h3> */}
+                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full"/><span className="text-white">24/7 Assistance</span></h3>
             </div>
         </div>
     );

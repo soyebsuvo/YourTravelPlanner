@@ -11,6 +11,7 @@ import Dietary from "../../Components/Dietary/Dietary";
 import TravelPurpose from "../../Components/TravelPurpose/TravelPurpose";
 import Transportation from "../../Components/Transportation/Transportation";
 import Landmarks from "../../Components/Landmarks/Landmarks";
+import Special from "../../Components/Special/Special";
 
 const Home = () => {
     const [days, setDays] = useState("");
@@ -21,6 +22,7 @@ const Home = () => {
     const [travelPurpose, setTravelPurpose] = useState("")
     const [transportation, setTransportation] = useState("")
     const [landmarks, setLandmarks] = useState("")
+    const [special, setSpecial] = useState("")
     window.addEventListener('load', () => {
         // Scroll to the top of the page with smooth behavior
         window.scrollTo({
@@ -36,6 +38,7 @@ const Home = () => {
     const travelPurposeScroll = useRef();
     const transportationScroll = useRef();
     const landmarksScroll = useRef();
+    const specialScroll = useRef();
 
 
 
@@ -50,15 +53,16 @@ const Home = () => {
             <Navbar />
             <Banner />
             <div className="bg-[#F7F8FB]">
-                <Selections days={days} members={members} budget={budget} setDays={setDays} setMembers={setMembers} setBudget={setBudget} accommodation={accommodation} setAccommodation={setAccommodation} dietary={dietary} setDietary={setDietary}/>
+                <Selections days={days} setDays={setDays} members={members} setMembers={setMembers} budget={budget} setBudget={setBudget} accommodation={accommodation} setAccommodation={setAccommodation} dietary={dietary} setDietary={setDietary} travelPurpose={travelPurpose} setTravelPurpose={setTravelPurpose} transportation={transportation} setTransportation={setTransportation} landmarks={landmarks} setLandmarks={setLandmarks} special={special} setSpecial={setSpecial} />
                 <Duration value={days} setValue={setDays} scrollHandler={scrollHandler} membersScroll={membersScroll} />
                 <Members value={members} setValue={setMembers} membersScroll={membersScroll} scrollHandler={scrollHandler} budgetScroll={budgetScroll} />
                 <Budget value={budget} setValue={setBudget} budgetScroll={budgetScroll} accommodationScroll={accommodationScroll} scrollHandler={scrollHandler} />
                 <Accommodation value={accommodation} setValue={setAccommodation} accommodationScroll={accommodationScroll} dietaryScroll={dietaryScroll} scrollHandler={scrollHandler}/>
                 <Dietary value={dietary} setValue={setDietary} dietaryScroll={dietaryScroll} scrollHandler={scrollHandler} travelPurposeScroll={travelPurposeScroll}/>
-                <TravelPurpose value={travelPurpose} setValue={setTravelPurpose} dietaryScroll={dietaryScroll} scrollHandler={scrollHandler} travelPurposeScroll={travelPurposeScroll}/>
-                <Transportation value={transportation} setValue={setTransportation} dietaryScroll={dietaryScroll} scrollHandler={scrollHandler} transportationScroll={transportationScroll}/>
-                <Landmarks value={landmarks} setValue={setLandmarks} dietaryScroll={dietaryScroll} scrollHandler={scrollHandler} landmarksScroll={landmarksScroll}/>
+                <TravelPurpose value={travelPurpose} setValue={setTravelPurpose} travelPurposeScroll={travelPurposeScroll} scrollHandler={scrollHandler} transportationScroll={transportationScroll}/>
+                <Transportation value={transportation} setValue={setTransportation} landmarksScroll={landmarksScroll} scrollHandler={scrollHandler} transportationScroll={transportationScroll}/>
+                <Landmarks value={landmarks} setValue={setLandmarks} landmarksScroll={landmarksScroll} scrollHandler={scrollHandler} specialScroll={specialScroll}/>
+                <Special value={special} setValue={setSpecial} dietaryScroll={dietaryScroll} specialScroll={specialScroll}/>
                 <Submit days={days} members={members} budget={budget} />
             </div>
         </div>
