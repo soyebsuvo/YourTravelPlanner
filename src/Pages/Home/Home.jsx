@@ -63,7 +63,7 @@ const Home = () => {
                 <Transportation value={transportation} setValue={setTransportation} landmarksScroll={landmarksScroll} scrollHandler={scrollHandler} transportationScroll={transportationScroll}/>
                 <Landmarks value={landmarks} setValue={setLandmarks} landmarksScroll={landmarksScroll} scrollHandler={scrollHandler} specialScroll={specialScroll}/>
                 <Special value={special} setValue={setSpecial} dietaryScroll={dietaryScroll} specialScroll={specialScroll}/>
-                <Submit days={days} members={members} budget={budget} />
+                <Submit days={days} members={members} budget={budget} accommodation={accommodation} dietary={dietary} travelPurpose={travelPurpose} transportation={transportation} landmarks={landmarks} special={special} />
             </div>
         </div>
     );

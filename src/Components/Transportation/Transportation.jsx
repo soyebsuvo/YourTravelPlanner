@@ -18,7 +18,7 @@ const Transportation = ({value , setValue , scrollHandler , landmarksScroll , tr
                         <h2 className="card-title">Public Transportation</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Rental Car")} className={value === "Rental Car" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Rental Car"); scrollHandler(landmarksScroll)}} className={value === "Rental Car" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -26,7 +26,7 @@ const Transportation = ({value , setValue , scrollHandler , landmarksScroll , tr
                         <h2 className="card-title">Rental Car</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Walking/Biking")} className={value === "Walking/Biking" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Walking/Biking"); scrollHandler(landmarksScroll)}} className={value === "Walking/Biking" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -34,7 +34,7 @@ const Transportation = ({value , setValue , scrollHandler , landmarksScroll , tr
                         <h2 className="card-title">Walking/Biking</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Private/Prearranged")} className={value === "Private/Prearranged" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Private/Prearranged"); scrollHandler(landmarksScroll)}} className={value === "Private/Prearranged" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>

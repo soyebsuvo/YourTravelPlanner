@@ -18,7 +18,7 @@ const Dietary = ({ value, setValue, dietaryScroll, scrollHandler ,travelPurposeS
                         <h2 className="card-title">No restrictions</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Vegetarian")} className={value === "Vegetarian" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Vegetarian"); scrollHandler(travelPurposeScroll)}} className={value === "Vegetarian" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -26,7 +26,7 @@ const Dietary = ({ value, setValue, dietaryScroll, scrollHandler ,travelPurposeS
                         <h2 className="card-title">Vegetarian</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Vegan")} className={value === "Vegan" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Vegan"); scrollHandler(travelPurposeScroll)}} className={value === "Vegan" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -34,7 +34,7 @@ const Dietary = ({ value, setValue, dietaryScroll, scrollHandler ,travelPurposeS
                         <h2 className="card-title">Vegan</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Gluten-Free")} className={value === "Gluten-Free" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Gluten-Free"); scrollHandler(travelPurposeScroll)}} className={value === "Gluten-Free" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -53,6 +53,6 @@ Dietary.propTypes = {
     value: PropTypes.string.isRequired,
     setValue: PropTypes.func.isRequired,
     dietaryScroll: PropTypes.object.isRequired,
-    accommodationScroll: PropTypes.object.isRequired,
+    travelPurposeScroll: PropTypes.object.isRequired,
     scrollHandler: PropTypes.func.isRequired,
 }

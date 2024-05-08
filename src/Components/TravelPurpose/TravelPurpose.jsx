@@ -18,7 +18,7 @@ const TravelPurpose = ({value , setValue , travelPurposeScroll , scrollHandler ,
                         <h2 className="card-title">Leisure/Vacation</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Business")} className={value === "Business" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Business"); scrollHandler(transportationScroll)}} className={value === "Business" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -26,7 +26,7 @@ const TravelPurpose = ({value , setValue , travelPurposeScroll , scrollHandler ,
                         <h2 className="card-title">Business</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Adventure/Outdoor Activities")} className={value === "Adventure/Outdoor Activities" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Adventure/Outdoor Activities"); scrollHandler(transportationScroll)}} className={value === "Adventure/Outdoor Activities" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -34,7 +34,7 @@ const TravelPurpose = ({value , setValue , travelPurposeScroll , scrollHandler ,
                         <h2 className="card-title h-[30px]">Adventure/Outdoor Activities</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Cultural Exploration")} className={value === "$400" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Cultural Exploration"); scrollHandler(transportationScroll)}} className={value === "$400" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>

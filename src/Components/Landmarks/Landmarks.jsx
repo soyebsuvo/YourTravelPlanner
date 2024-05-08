@@ -18,7 +18,7 @@ const Landmarks = ({value , setValue , scrollHandler , specialScroll, landmarksS
                         <h2 className="card-title">Historical Sites / Cultural Landmarks</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Natural Attractions/Scenic Spots")} className={value === "Natural Attractions/Scenic Spots" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] h-[360px]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f] h-[360px]`}>
+                <div onClick={() => {setValue("Natural Attractions/Scenic Spots"); scrollHandler(specialScroll)}} className={value === "Natural Attractions/Scenic Spots" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] h-[360px]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f] h-[360px]`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -26,7 +26,7 @@ const Landmarks = ({value , setValue , scrollHandler , specialScroll, landmarksS
                         <h2 className="card-title">Natural Attractions / Scenic Spots</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("City Highlights/Urban Landmarks")} className={value === "City Highlights/Urban Landmarks" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] h-[360px]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f] h-[360px]`}>
+                <div onClick={() => {setValue("City Highlights/Urban Landmarks"); scrollHandler(specialScroll)}} className={value === "City Highlights/Urban Landmarks" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] h-[360px]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f] h-[360px]`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -34,7 +34,7 @@ const Landmarks = ({value , setValue , scrollHandler , specialScroll, landmarksS
                         <h2 className="card-title">City Highlights / Urban Landmarks</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Specific Landmarks or Attractions")} className={value === "Specific Landmarks or Attractions" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] h-[360px]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f] h-[360px]`}>
+                <div onClick={() => {setValue("Specific Landmarks or Attractions"); scrollHandler(specialScroll)}} className={value === "Specific Landmarks or Attractions" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] h-[360px]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f] h-[360px]`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>

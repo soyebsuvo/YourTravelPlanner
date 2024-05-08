@@ -18,7 +18,7 @@ const Members = ({value , setValue , membersScroll , scrollHandler, budgetScroll
                         <h2 id='couples' className="card-title">Couple</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Family")} className={value === "Family" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Family"); scrollHandler(budgetScroll)}} className={value === "Family" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -26,7 +26,7 @@ const Members = ({value , setValue , membersScroll , scrollHandler, budgetScroll
                         <h2 className="card-title">Family</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Friends")} className={value === "Friends" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Friends"); scrollHandler(budgetScroll)}} className={value === "Friends" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -34,7 +34,7 @@ const Members = ({value , setValue , membersScroll , scrollHandler, budgetScroll
                         <h2 className="card-title">Friends</h2>
                     </div>
                 </div>
-                <div onClick={() => setValue("Solo")} className={value === "Solo" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Solo"); scrollHandler(budgetScroll)}} className={value === "Solo" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>
