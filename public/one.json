@@ -1,0 +1,100 @@
+{
+    "itinerary": {
+      "destination": "France",
+      "travelDates": { "start": "Day 1", "end": "Day 6-9" },
+      "groupSize": "Family",
+      "budgetPerDay": "$300 per person",
+      "accommodation": { "type": "Vacation Rentals", "preferences": [] },
+      "dietaryNeeds": "Vegetarian",
+      "travelPurpose": "Leisure/Vacation",
+      "transportation": "Public Transportation",
+      "mustSeeLandmarks": ["Natural Attractions", "Scenic Spots"],
+      "languagePreferences": [],
+      "dailyActivities": [
+        {
+          "day": "Day 1",
+          "activities": [
+            {
+              "time": "Morning",
+              "activity": "Arrival in Paris, check into vacation rental"
+            },
+            { "time": "Afternoon", "activity": "Visit Jardin du Luxembourg" },
+            {
+              "time": "Evening",
+              "activity": "Dinner at vegetarian-friendly restaurant"
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "activities": [
+            {
+              "time": "Morning",
+              "activity": "Visit Montmartre and Sacré-Cœur"
+            },
+            {
+              "time": "Afternoon",
+              "activity": "Lunch and stroll along the Seine"
+            },
+            {
+              "time": "Evening",
+              "activity": "Visit to Eiffel Tower & surrounding parks"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "activities": [
+            {
+              "time": "Full Day",
+              "activity": "Day trip to Fontainebleau Forest for hiking and scenery"
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "activities": [
+            { "time": "Morning", "activity": "Travel to Nice via train" },
+            {
+              "time": "Afternoon",
+              "activity": "Check into new vacation rental and explore Promenade des Anglais"
+            },
+            {
+              "time": "Evening",
+              "activity": "Dinner at local vegetarian restaurant"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "activities": [
+            {
+              "time": "Morning",
+              "activity": "Visit the Marc Chagall National Museum"
+            },
+            { "time": "Afternoon", "activity": "Explore old town of Nice" },
+            { "time": "Evening", "activity": "Sunset at Castle Hill" }
+          ]
+        },
+        {
+          "day": "Day 6-9",
+          "activities": [
+            { "time": "Day 6", "activity": "Travel to the French Alps" },
+            {
+              "time": "Day 7",
+              "activity": "Hiking and exploring natural parks in the Alps"
+            },
+            {
+              "time": "Day 8",
+              "activity": "Visit scenic lakes and relax in natural surroundings"
+            },
+            {
+              "time": "Day 9",
+              "activity": "Return to Paris, prepare for departure"
+            }
+          ]
+        }
+      ]
+    }
+  }
+

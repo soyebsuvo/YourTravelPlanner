@@ -52,7 +52,6 @@ export default Accommodation;
 Accommodation.propTypes = {
     value: PropTypes.string.isRequired,
     setValue: PropTypes.func.isRequired,
-    budgetScroll : PropTypes.object.isRequired,
     accommodationScroll : PropTypes.object.isRequired,
     transportationScroll : PropTypes.object.isRequired,
     scrollHandler : PropTypes.func.isRequired,

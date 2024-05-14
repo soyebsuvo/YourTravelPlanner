@@ -15,4 +15,33 @@ html{
     font-weight: 600;
     font-style: normal;
   }
+
+  #itinerary-content {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+}
+  
+.forChild:nth-child(even){
+    flex-direction: row-reverse;
+}
+.h-calc-100vh-140px{
+    height: calc(100vh - 140px);
+}
+.h-calc-100vh-278px{
+    height: calc(100vh - 278px);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }
   
