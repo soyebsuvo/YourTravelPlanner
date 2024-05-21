@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import PropTypes from 'prop-types';
 
 const Loader = () => {
     const [currentFact, setCurrentFact] = useState(null);
@@ -31,7 +30,3 @@ const Loader = () => {
 };
 
 export default Loader;
-
-Loader.propTypes = {
-    data: PropTypes.object.isRequired
-}

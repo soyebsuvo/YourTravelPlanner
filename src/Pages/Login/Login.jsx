@@ -1,72 +1,52 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import LoginHeader from '../../assets/header-logo2.svg'
-import loginImage from '../../assets/LoginImage.jpg'
-import { useForm } from 'react-hook-form';
-import { Divider } from '@mui/material';
 import { FcGoogle } from 'react-icons/fc';
+// import LoginHeader from '../../assets/Your_travel__3_-removebg-preview (1).png'
+import PropTypes from 'prop-types';
 import { useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider/AuthProvider';
-import useAxiosPublic from '../../Hooks/useAxiosPublic';
-import { Helmet } from 'react-helmet-async';
-
-export default function Login() {
-    const axiosPublic = useAxiosPublic();
-    const navigate = useNavigate();
-    const location = useLocation();
-    const { login, googleLogin } = useContext(AuthContext);
-    const {
-        register,
-        handleSubmit,
-    } = useForm();
-    const onSubmit = (data) => {
-        login(data.email, data.password)
-            .then(() => {
-                navigate(location.state ? location.state : "/")
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
-
-    const handleOtherLogin = () => {
-        googleLogin()
-            .then(result => {
-                console.log(result.user)
-                navigate(location.state ? location.state : "/");
-                const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
-                axiosPublic.post('/users', userInfo)
+import { MyContext } from '../../Components/Context/Context';
+import axios from 'axios';
+export default function Login({ setIsLogin }) {
+    const { googleLogin, login } = useContext(MyContext);
+    const socialLogin = (media) => {
+        media().then((result) => {
+            console.log("Logged in by google")
+            document.getElementById('my_modal_3').close()
+            const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
+                axios.post('http://localhost:3000/users', userInfo)
                     .then(res => {
                         console.log(res.data)
                     })
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        login(email, password).then(() => {
+            document.getElementById('my_modal_3').close()
+        }).catch(err => console.log(err))
+    }
     return (
-        <div className='md:px-20 py-8 flex gap-16 justify-center items-center min-h-[99vh]'>
-            <Helmet>
-                <title>Homez | Login</title>
-            </Helmet>
-            <div className='w-1/2 md:px-8'>
-                <div className="p-8 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className='py-2'>
+            <div className='md:px-8'>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-4 dark:bg-gray-800 dark:border-gray-700">
                     <div className='pb-8'>
                         <div className='flex justify-center items-center pb-5'>
-                            <Link to="/"><img className='w-32' src={LoginHeader} alt="" /></Link>
+                            {/* <Link to="/"><img className='w-32' src={LoginHeader} alt="" /></Link> */}
                         </div>
                         <h5 className="text-3xl text-center font-medium text-gray-900 dark:text-white">Sign in</h5>
                         <p className='text-sm text-center'>Sign in with this account across the following sites.</p>
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mb-3" action="#">
-
+                    <form onSubmit={handleLogin} className="space-y-6 mb-3" action="#">
                         <div>
                             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                            <input {...register("email", { required: true })} type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#EB675368] focus:border-[#EB675368] block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" />
+                            <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#EB675368] focus:border-[#EB675368] block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
                         </div>
                         <div>
                             <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                            <input {...register("password", { required: true })} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#EB675368] focus:border-[#EB675368] block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                            <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#EB675368] focus:border-[#EB675368] block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                         </div>
                         <div className="flex items-start">
                             <div className="flex items-start">
@@ -77,24 +57,25 @@ export default function Login() {
                             </div>
                             <a href="#" className="ms-auto text-sm text-blue-700 hover:underline dark:text-[#EB675368]">Password Forgotten?</a>
                         </div>
-                        <button type="submit" className="w-full text-white bg-[#EB6753] hover:bg-[#EB6753] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:[#EB6753] dark:hover:bg-[#EB6753] dark:focus:ring-[#EB6753]">Login to your account</button>
+                        <button type="submit" className="w-full text-white bg-blue-500 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:blue-500 dark:hover:bg-blue-500 dark:focus:ring-blue-500">Login to your account</button>
                     </form>
-                    <Divider>Or</Divider>
-                    <div className='relative'>
-                        <button onClick={handleOtherLogin} className="w-full my-3 text-black font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:[#EB6753] border border-black">Login With Google</button>
+                    <div className='divider'></div>
+                    <div onClick={() => socialLogin(googleLogin)} className='relative'>
+                        <button className="w-full my-3 text-black font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:blue-500 border border-black">Login With Google</button>
                         <FcGoogle className='absolute left-2 top-5 text-2xl'></FcGoogle>
                     </div>
                     <div className="text-sm text-center font-medium text-gray-500 dark:text-gray-300">
-                        Not registered? <Link to='/register' className="text-blue-700 hover:underline dark:text-[#EB675368]">Create account</Link>
+                        Not registered? <button onClick={() => setIsLogin(false)} className="text-blue-700 hover:underline dark:text-[#EB675368]">Create account</button>
                     </div>
                 </div>
             </div>
 
             {/* svg  */}
-            <div className='w-1/2 p-4'>
-                <img className='w-full' src={loginImage} alt="" />
-            </div>
 
         </div>
     )
+}
+
+Login.propTypes = {
+    setIsLogin: PropTypes.func
 }

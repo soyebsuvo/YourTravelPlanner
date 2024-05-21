@@ -3,53 +3,112 @@
 import background from "../../assets/Pyramid-at-Louvre-Museum-Paris-France.jpg"
 import { IoSearch } from "react-icons/io5";
 import { TiTick } from "react-icons/ti";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaFacebookF, FaStar } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
 // 
-function initPlacesAPI() {
-    const apiKey = '';
-    const placesAPI = `https://maps.googleapis.com/maps/api/place`;
+// function initPlacesAPI() {
+//     const apiKey = '';
+//     const placesAPI = `https://maps.googleapis.com/maps/api/place`;
 
-    // Function to fetch autocomplete predictions
-    async function getPlacePredictions(input) {
-        try {
-            const url = `${placesAPI}/autocomplete/json?input=${input}&key=${apiKey}`;
-            const response = await fetch(url);
-            const data = await response.json();
-            if (response.ok) {
-                return data.predictions;
-            } else {
-                throw new Error(data.error_message || 'Failed to fetch predictions');
+//     // Function to fetch autocomplete predictions
+//     async function getPlacePredictions(input) {
+//         try {
+//             const url = `${placesAPI}/autocomplete/json?input=${input}&key=${apiKey}`;
+//             const response = await fetch(url);
+//             const data = await response.json();
+//             if (response.ok) {
+//                 return data.predictions;
+//             } else {
+//                 throw new Error(data.error_message || 'Failed to fetch predictions');
+//             }
+//         } catch (error) {
+//             console.error('Error fetching predictions:', error);
+//             return [];
+//         }
+//     }
+
+//     return {
+//         getPlacePredictions
+//     };
+// }
+
+
+
+const Banner = () => {
+
+    const [continents, setContinents] = useState([]);
+    const [countries, setCountries] = useState([]);
+    const [cities, setCities] = useState([]);
+    const [selectedContinent, setSelectedContinent] = useState('');
+    const [selectedCountry, setSelectedCountry] = useState('');
+    const [selectedCity, setSelectedCity] = useState('')
+    // const [destination, setDestination] = useState('');
+
+    useEffect(() => {
+        async function fetchContinents() {
+            const response = await axios.get('http://localhost:3000/api/continents');
+            setContinents(response.data);
+            console.log(response.data)
+        }
+        fetchContinents();
+    }, []);
+
+    useEffect(() => {
+        if (selectedContinent) {
+            const fetchCountries = async () => {
+                const response = await axios.get(`http://localhost:3000/api/countries/${selectedContinent}`);
+                setCountries(response.data);
             }
-        } catch (error) {
-            console.error('Error fetching predictions:', error);
-            return [];
+            fetchCountries();
         }
-    }
+    }, [selectedContinent]);
 
-    return {
-        getPlacePredictions
-    };
-}
-const Banner = () => {    
-
-    const [inputValue, setInputValue] = useState('');
-    const [predictions, setPredictions] = useState([]);
-
-    const handleLocation = async (e) => {
-        const input = e.target.value;
-        setInputValue(input);
-
-        if (input.trim() !== '') {
-            const predictions = await initPlacesAPI().getPlacePredictions(input);
-            setPredictions(predictions);
-        } else {
-            setPredictions([]);
+    useEffect(() => {
+        if (selectedContinent && selectedCountry) {
+            const fetchCities = async () => {
+                const response = await axios.get(`http://localhost:3000/api/cities/${selectedContinent}/${selectedCountry}`);
+                setCities(response.data);
+            }
+            fetchCities();
         }
-        console.log(predictions)
+    }, [selectedCountry, selectedContinent]);
+
+    // const handleDestinationChange = (event) => {
+    //     setDestination(event.target.value);
+    // };
+
+    const handleContinentChange = (event) => {
+        setSelectedContinent(event.target.value);
+        setSelectedCountry('');
+        setCities([]);
     };
-    
+
+    const handleCountryChange = (event) => {
+        setSelectedCountry(event.target.value);
+    };
+    const handleCityChange = (event) => {
+        setSelectedCity(event.target.value);
+    };
+
+
+    // const [inputValue, setInputValue] = useState('');
+    // const [predictions, setPredictions] = useState([]);
+
+    // const handleLocation = async (e) => {
+    //     const input = e.target.value;
+    //     setInputValue(input);
+
+    //     if (input.trim() !== '') {
+    //         const predictions = await initPlacesAPI().getPlacePredictions(input);
+    //         setPredictions(predictions);
+    //     } else {
+    //         setPredictions([]);
+    //     }
+    //     console.log(predictions)
+    // };
+
 
     return (
         <div className="">
@@ -58,29 +117,77 @@ const Banner = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-full relative">
                         <h1 className="mb-5 text-4xl font-bold">Discover <span className="damion-regular text-[#AFFF53]">Your Next</span> Adventure</h1>
-                        <input value={inputValue} onChange={handleLocation} className="inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px]" type="text" name="" id="" placeholder="Search Countries, Cities" />
+                        {/* <input value={selectedContinent} onChange={handleContinentChange} list="destinations" className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px] ${selectedContinent ? '' : ""}`} type="text" name="" id="" placeholder="Search Countries, Cities" /> */}
                         <span className="absolute bottom-[17px] left-[107px]"><IoSearch className="text-gray-500 text-[19px]" /></span>
+                        {/* <datalist id="destinations">
+                            {cities.length > 0
+                                ? cities?.map((city, index) => <option key={index} value={city} />)
+                                : countries?.length > 0
+                                    ? countries?.map((country, index) => <option key={index} value={country.name} />)
+                                    : continents?.map((continent, index) => <option key={index} value={continent.continent} />)}
+                        </datalist> */}
+
+                        <div>
+                            <select className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px] ${selectedContinent ? 'hidden' : ""}`} value={selectedContinent} onChange={handleContinentChange}>
+                                <option className="text-xl border border-black" value="">Select Continent</option>
+                                {continents.map((continent, index) => (
+                                    <option className="text-xl border border-black" key={index} value={continent.continent}>
+                                        {continent.continent}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* <select value={selectedContinent} onChange={handleContinentChange}>
+                            <option value="">Select Continent</option>
+                            {continents?.map((continent, index) => (
+                                <option key={index} value={continent.continent}>
+                                    {continent.continent}
+                                </option>
+                            ))}
+                        </select> */}
+                        {selectedContinent && (
+                            <select className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px] ${selectedCountry ? 'hidden' : ""}`} value={selectedCountry} onChange={handleCountryChange}>
+                                <option value="">Select Country</option>
+                                {countries?.map((country, index) => (
+                                    <option className="text-xl" key={index} value={country.name}>
+                                        {country.name}
+                                    </option>
+                                ))}
+                            </select>
+                        )}
+
+                        {(selectedContinent && selectedCountry) && (
+                            <select className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px]`} value={selectedCity} onChange={handleCityChange}>
+                                <option value="">Select Cities</option>
+                                {cities?.map((city, index) => (
+                                    <option className="text-xl" key={index} value={city}>
+                                        {city}
+                                    </option>
+                                ))}
+                            </select>
+                        )}
                     </div>
-                    <div>
+                    {/* <div>
                         {
                             predictions.map((item, index) => {
                                 return <li key={index}>{item}</li>
                             })
                         }
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="bg-[#000] py-3 flex justify-evenly items-center">
                 <div className="flex justify-center items-center">
                     <FaFacebookF className="text-blue-500 bg-white p-1 rounded-full" />
-                    <FcGoogle className=" bg-white p-[2px] rounded-full -ml-[7px]"/>
+                    <FcGoogle className=" bg-white p-[2px] rounded-full -ml-[7px]" />
                     <span className="text-white mx-1">4.6</span>
                     <FaStar className="text-[#00C684]" />
                     <span className="text-white mx-1">rated</span>
                 </div>
-                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full"/><span className="text-white">100% Customised Trips</span></h3>
+                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">100% Customised Trips</span></h3>
                 {/* <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full"/><span className="text-white">95% Visa Success Rate</span></h3> */}
-                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full"/><span className="text-white">24/7 Assistance</span></h3>
+                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">24/7 Assistance</span></h3>
             </div>
         </div>
     );

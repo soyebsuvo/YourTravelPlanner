@@ -29,6 +29,16 @@ html{
 .forChild:nth-child(even){
     flex-direction: row-reverse;
 }
+.connector img{
+    transform: rotate(10deg);
+    display: absolute;
+    left: 330px;
+    margin-top: 114px;
+    width: 600px;
+}
+.connector img:nth-child(even){
+    transform: rotate(-10deg) !important;
+}
 .h-calc-100vh-140px{
     height: calc(100vh - 140px);
 }

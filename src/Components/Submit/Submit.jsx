@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { MyContext } from '../Context/Context';
+import { useNavigate } from 'react-router-dom';
 const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, transportation, landmarks, special }) => {
-    const datas = { days, members, budget, accommodation, dietary, travelPurpose, transportation, landmarks, special }
-    const { handleSubmit } = useContext(MyContext);
-    const userInput = `Hello
+  const datas = { days, members, budget, accommodation, transportation, dietary, travelPurpose, landmarks, special }
+  const { handleSubmit } = useContext(MyContext);
+  const userInput = `Hello
             I am seeking a travel itinerary tailored to my specific requirements. Please consider
             the following inputs to generate suitable recommendations:
             Travel Dates: ${days}
@@ -24,7 +24,7 @@ const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, 
             
             i am using react and this prompt is send from my website. Now give the response in json format so that i can manage all the data easily. Saparate all the activities of the days with separate objects.
 
-            give the data like this format i have given below. just copy this json format. not everything. Create images of this activities using DALL-E image genaretor. For example, if i am visiting a sacre coeur in the morning of day one then you have to produce an image of sacre coeur of size 200px X 200px. 
+            give the data like this format i have given below. just copy this json format. not everything. 
 
             {
                 "itinerary": [
@@ -161,24 +161,25 @@ const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, 
             
             `;
 
-    // const userInput = { api : "nothing"}
-    return (
-        <div className="flex justify-center p-8">
-            <Link to="/recommendations"><button onClick={() => handleSubmit(userInput,datas)} className="px-6 py-2 rounded-md border-2">Submit</button></Link>
-        </div>
-    );
+  // const userInput = { api : "nothing"}
+  const navigate = useNavigate();
+  return (
+    <div className="flex justify-center p-8">
+      <div><button onClick={() => handleSubmit(userInput, datas, navigate)} className="px-6 py-2 rounded-md border-2">Submit</button></div>
+    </div>
+  );
 };
 
 export default Submit;
 
 Submit.propTypes = {
-    days: PropTypes.string.isRequired,
-    members: PropTypes.string.isRequired,
-    budget: PropTypes.string.isRequired,
-    accommodation: PropTypes.string.isRequired,
-    dietary: PropTypes.string.isRequired,
-    travelPurpose: PropTypes.string.isRequired,
-    transportation: PropTypes.string.isRequired,
-    landmarks: PropTypes.string.isRequired,
-    special: PropTypes.string.isRequired
+  days: PropTypes.string.isRequired,
+  members: PropTypes.string.isRequired,
+  budget: PropTypes.string.isRequired,
+  accommodation: PropTypes.string.isRequired,
+  dietary: PropTypes.string.isRequired,
+  travelPurpose: PropTypes.string.isRequired,
+  transportation: PropTypes.string.isRequired,
+  landmarks: PropTypes.string.isRequired,
+  special: PropTypes.string.isRequired
 }

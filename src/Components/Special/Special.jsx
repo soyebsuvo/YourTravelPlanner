@@ -7,7 +7,7 @@ const Special = ({value , setValue ,  specialScroll}) => {
     return (
         <div ref={specialScroll} className="max-w-7xl mx-auto px-2 md:px-16 py-8">
             <div>
-                <h2 className='text-2xl font-bold text-center my-3'>What is your daily budget per person ?</h2>
+                <h2 className='text-2xl font-bold text-center my-3'>Any particular needs?</h2>
             </div>
             <div className="flex justify-center items-center gap-6 py-4">
                 <div onClick={() => setValue("Medical Needs")} className={value === "Medical Needs" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] h-[360px]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f] h-[360px]`}>

@@ -1,9 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
 import { BsThreeDots } from "react-icons/bs";
 import { TbWorld } from "react-icons/tb";
+import { FaRegUserCircle } from "react-icons/fa";
 import logo from "../../assets/Your_travel__3_-removebg-preview (1).png"
 import "./navbar.css";
+import Login from "../../Pages/Login/Login";
+import Register from "../../Pages/Register/Register";
+import { useContext, useState } from "react";
+import { MyContext } from "../Context/Context";
 const Navbar = () => {
+    const [ menu , setMenu ] = useState(false)
+    const [isLogin, setIsLogin] = useState(true);
+    const { user, logOut } = useContext(MyContext)
     const links = <>
         <NavLink to="/season"><a>Best of Seasion</a></NavLink>
         <NavLink to="/international"><a>International Holidays</a></NavLink>
@@ -12,6 +20,13 @@ const Navbar = () => {
         <li><a><BsThreeDots /></a></li>
         <li><a><TbWorld /></a></li>
     </>
+    const logout = () => {
+        logOut().then(() => {
+            console.log("logged out")
+        }).catch(error => {
+            console.log(error)
+        })
+    }
     return (
         <div className="absolute top-0 right-0 left-0 bottom-0">
             <nav className="max-w-7xl mx-auto px-2 md:px-16 py-3">
@@ -36,7 +51,25 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="">
-                            <a className="px-4 py-1 rounded border border-white font-semibold cursor-pointer text-white">Login</a>
+                            {user ?
+                                <div className="">
+                                    <div><FaRegUserCircle onClick={() => setMenu(!menu)} className="text-white text-2xl cursor-pointer"/> </div>
+                                    <ul className={`${menu ? 'absolute' : 'hidden'} p-2 w-auto shadow duration-300 ease-in transition-all bg-white rounded right-32 top-16`}>
+                                        <li className="px-2 py-1 cursor-pointer"><a>Dashboard</a></li>
+                                        <li className="px-2 py-1 cursor-pointer" onClick={() => logout()} ><a>Logout</a></li>
+                                    </ul>
+                                </div>
+                                : <button onClick={() => document.getElementById('my_modal_3').showModal()} className="px-4 py-1 rounded border border-white font-semibold cursor-pointer text-white">Login</button>}
+                            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                            <dialog id="my_modal_3" className="modal">
+                                <div className="modal-box">
+                                    <form method="dialog">
+                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                    </form>
+                                    {/* <Login /> */}
+                                    {isLogin ? <Login setIsLogin={setIsLogin} /> : <Register setIsLogin={setIsLogin} />}
+                                </div>
+                            </dialog>
                         </div>
                     </div>
                 </div>
