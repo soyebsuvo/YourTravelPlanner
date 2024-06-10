@@ -4,14 +4,21 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { MyContext } from '../../Components/Context/Context';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 export default function Login({ setIsLogin }) {
     const { googleLogin, login } = useContext(MyContext);
     const socialLogin = (media) => {
         media().then((result) => {
-            console.log("Logged in by google")
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Logged in successfully",
+                showConfirmButton: false,
+                timer: 2000
+              });
             document.getElementById('my_modal_3').close()
             const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
-                axios.post('http://localhost:3000/users', userInfo)
+                axios.post('https://6569-msh.knowme.sbs/users', userInfo)
                     .then(res => {
                         console.log(res.data)
                     })
@@ -26,7 +33,23 @@ export default function Login({ setIsLogin }) {
         const password = e.target.password.value;
         login(email, password).then(() => {
             document.getElementById('my_modal_3').close()
-        }).catch(err => console.log(err))
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Logged In Successfully",
+                showConfirmButton: false,
+                timer: 2000
+              });
+              e.target.reset()
+        }).catch(() => {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: `There is no account with this ${email}. Please make an account or check your password.`,
+                showConfirmButton: false,
+                timer: 3000
+              });
+        })
     }
     return (
         <div className='py-2'>

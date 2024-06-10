@@ -62,7 +62,7 @@ const Navbar = () => {
                                 : <button onClick={() => document.getElementById('my_modal_3').showModal()} className="px-4 py-1 rounded border border-white font-semibold cursor-pointer text-white">Login</button>}
                             {/* You can open the modal using document.getElementById('ID').showModal() method */}
                             <dialog id="my_modal_3" className="modal">
-                                <div className="modal-box">
+                                <div className="modal-box scrollbar-hide">
                                     <form method="dialog">
                                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                     </form>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { MyContext } from '../../Components/Context/Context';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 // const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 // const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 export default function Register({ setIsLogin }) {
@@ -10,15 +11,27 @@ export default function Register({ setIsLogin }) {
 
     const socialLogin = (media) => {
         media().then((result) => {
-            console.log("Logged in by google")
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Signed Up in successfully",
+                showConfirmButton: false,
+                timer: 2000
+              });
             document.getElementById('my_modal_3').close()
             const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
-            axios.post('http://localhost:3000/users', userInfo)
+            axios.post('https://6569-msh.knowme.sbs/users', userInfo)
                 .then(res => {
                     console.log(res.data)
                 })
-        }).catch(err => {
-            console.log(err)
+        }).catch(() => {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Something went wrong. Try later",
+                showConfirmButton: false,
+                timer: 2000
+              });
         })
     }
 
@@ -30,11 +43,25 @@ export default function Register({ setIsLogin }) {
         createUser(email, password).then(() => {
             document.getElementById('my_modal_3').close()
             const userInfo = { name: name, email: email };
-            axios.post('http://localhost:3000/users', userInfo)
+            axios.post('https://6569-msh.knowme.sbs/users', userInfo)
                 .then(() => {
-                    console.log("userInfo added to mongoDB")
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Signed Up successfully",
+                        showConfirmButton: false,
+                        timer: 2000
+                      });
                 })
-        }).catch(error => console.log(error));
+        }).catch(() => {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: `Something went wrong. Try later`,
+                showConfirmButton: false,
+                timer: 3000
+              });
+        });
     }
 
     return (

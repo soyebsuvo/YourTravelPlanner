@@ -24,7 +24,9 @@ const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, 
             
             i am using react and this prompt is send from my website. Now give the response in json format so that i can manage all the data easily. Saparate all the activities of the days with separate objects.
 
-            give the data like this format i have given below. just copy this json format. not everything. 
+            give the data like this format i have given below. just follow this json format. not everything. 
+
+            don't give extra text with your genarated json data. Just give the json data without any syntax named json or something
 
             {
                 "itinerary": [
@@ -156,8 +158,7 @@ const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, 
                     ]
                   }
                 ]
-              }
-              
+              }             
             
             `;
 

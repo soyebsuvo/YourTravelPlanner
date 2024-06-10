@@ -12,6 +12,7 @@ import Dietary from "../../Components/Dietary/Dietary";
 import TravelPurpose from "../../Components/TravelPurpose/TravelPurpose";
 import Landmarks from "../../Components/Landmarks/Landmarks";
 import Special from "../../Components/Special/Special";
+import Index from "../../Components/Index";
 
 const Home = () => {
     const [days, setDays] = useState("");
@@ -52,6 +53,7 @@ const Home = () => {
         <div className="">
             <Navbar />
             <Banner />
+            <Index />
             <div className="bg-[#F7F8FB]">
                 <Selections days={days} setDays={setDays} members={members} setMembers={setMembers} budget={budget} setBudget={setBudget} accommodation={accommodation} setAccommodation={setAccommodation} dietary={dietary} setDietary={setDietary} travelPurpose={travelPurpose} setTravelPurpose={setTravelPurpose} transportation={transportation} setTransportation={setTransportation} landmarks={landmarks} setLandmarks={setLandmarks} special={special} setSpecial={setSpecial} />
                 <Duration value={days} setValue={setDays} scrollHandler={scrollHandler} membersScroll={membersScroll} />

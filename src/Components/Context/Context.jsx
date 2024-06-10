@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Swal from "sweetalert2";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.config";
+// import axios from "axios";
+// import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const googleProvider = new GoogleAuthProvider();
 // import { useNavigate } from "react-router-dom";
 
@@ -10,9 +12,10 @@ const googleProvider = new GoogleAuthProvider();
 export const MyContext = createContext({});
 
 function Context({ children }) {
+    // const axiosPublic = useAxiosPublic();
     const [user, setUser] = useState()
     const [response, setResponse] = useState();
-    const [images, setImages] = useState();
+    // const [images, setImages] = useState();
 
     // const navigate = useNavigate();
     const handleSubmit = async (userInput, datas, navigate) => {
@@ -37,23 +40,29 @@ function Context({ children }) {
             });
         }
         setResponse(null)
-        navigate("/recommendations")
-        const responses = await fetch('http://localhost:3000/ask', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ prompt: userInput })
-        });
+        navigate("/recommendations");
+        // try {
+            const responses = await fetch('https://6569-msh.knowme.sbs/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt: userInput })
+            });
 
-        const data = await responses.json();
-        console.log(data)
-        const responseData = await data?.response;
-        console.log(responseData)
-        setResponse(responseData)
-        console.log(response)
-        const distructuredImages = await data?.imageResponse;
-        setImages(distructuredImages)
+            const data = await responses.json();
+            console.log(data)
+            const responseData = await data?.response;
+            const mainData = await JSON.parse(responseData);
+            console.log(mainData)
+            setResponse(mainData)
+            console.log(response)
+        // } catch (error) {
+            // console.log("Error : ", error)
+        // }
+
+        // const distructuredImages = await data?.imageResponse;
+        // setImages(distructuredImages)
 
         // const messageElement = document.createElement('div');
         // messageElement.textContent = `User: ${userInput}\nChatGPT: ${responseData}`;
@@ -64,12 +73,12 @@ function Context({ children }) {
         return signInWithPopup(auth, googleProvider);
     }
 
-    const createUser = (email , password) => {
-        return createUserWithEmailAndPassword(auth , email , password)
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const login = (email , password) => {
-        return signInWithEmailAndPassword(auth , email , password)
+    const login = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     useEffect(() => {
@@ -89,7 +98,7 @@ function Context({ children }) {
         user,
         handleSubmit,
         response,
-        images,
+        // images,
         googleLogin,
         logOut,
         createUser,

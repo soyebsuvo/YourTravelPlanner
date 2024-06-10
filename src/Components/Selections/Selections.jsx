@@ -2,7 +2,7 @@ import { RxCrossCircled } from "react-icons/rx";
 import PropTypes from 'prop-types';
 const Selections = ({ days, members, budget, accommodation, dietary, travelPurpose, transportation, landmarks, special, setDays, setMembers, setBudget, setAccommodation, setDietary, setTravelPurpose, setTransportation, setLandmarks, setSpecial }) => {
     return (
-        <div className="sticky top-0 bg-[#F7F8FB] z-40">
+        <div className="sticky top-0 bg-[#F7F8FB] z-30">
             <div className="max-w-7xl mx-auto h-[120px] px-4">
                 <h3 className="text-gray-500 font-semibold pt-6 mb-1">NOW PLANNING YOUR HOLIDAY TO</h3>
                 <div className="flex gap-2 items-center">

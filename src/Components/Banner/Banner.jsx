@@ -6,7 +6,8 @@ import { TiTick } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import { FaFacebookF, FaStar } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import axios from "axios";
+import CityModal from "../CityModal/CityModal";
+// import axios from "axios";
 // 
 // function initPlacesAPI() {
 //     const apiKey = '';
@@ -38,59 +39,96 @@ import axios from "axios";
 
 const Banner = () => {
 
-    const [continents, setContinents] = useState([]);
-    const [countries, setCountries] = useState([]);
-    const [cities, setCities] = useState([]);
-    const [selectedContinent, setSelectedContinent] = useState('');
-    const [selectedCountry, setSelectedCountry] = useState('');
-    const [selectedCity, setSelectedCity] = useState('')
+    // const [query, setQuery] = useState('');
+    // const [places, setPlaces] = useState([]);
+
+    // const handleSearch = async () => {
+    //     try {
+    //         const response = await axios.get('http://localhost:5000/api/places', {
+    //             params: { query },
+    //         });
+    //         setPlaces(response.data.candidates);
+    //     } catch (error) {
+    //         console.error('Error fetching places:', error);
+    //     }
+    // };
+
+    // const [continents, setContinents] = useState([]);
+    // const [countries, setCountries] = useState([]);
+    // const [cities, setCities] = useState([]);
+    // const [selectedContinent, setSelectedContinent] = useState('');
+    // const [selectedCountry, setSelectedCountry] = useState('');
+    // const [selectedCity, setSelectedCity] = useState('')
     // const [destination, setDestination] = useState('');
 
+    const [places, setPlaces] = useState([]);
+    const [query, setQuery] = useState();
+    const [place, setPlace] = useState();
     useEffect(() => {
-        async function fetchContinents() {
-            const response = await axios.get('http://localhost:3000/api/continents');
-            setContinents(response.data);
-            console.log(response.data)
-        }
-        fetchContinents();
-    }, []);
-
-    useEffect(() => {
-        if (selectedContinent) {
-            const fetchCountries = async () => {
-                const response = await axios.get(`http://localhost:3000/api/countries/${selectedContinent}`);
-                setCountries(response.data);
+        fetch('dataset.json').then(res => res.json()).then((data) => {
+            // setPlaces(data)
+            const filtered = data?.places?.filter((place) => {
+                // if(query === ""){
+                //     setQuery("lalalala")
+                // }
+                return place?.toLowerCase().includes(query?.toLowerCase())
+            })
+            if (query) {
+                setPlaces(filtered)
+            } else {
+                setPlaces([])
             }
-            fetchCountries();
-        }
-    }, [selectedContinent]);
+            console.log(filtered)
+        });
+    }, [query])
+    console.log(places)
 
-    useEffect(() => {
-        if (selectedContinent && selectedCountry) {
-            const fetchCities = async () => {
-                const response = await axios.get(`http://localhost:3000/api/cities/${selectedContinent}/${selectedCountry}`);
-                setCities(response.data);
-            }
-            fetchCities();
-        }
-    }, [selectedCountry, selectedContinent]);
+
+    // useEffect(() => {
+    //     async function fetchContinents() {
+    //         const response = await axios.get('https://6569-msh.knowme.sbs/api/continents');
+    //         setContinents(response.data);
+    //         console.log(response.data)
+    //     }
+    //     fetchContinents();
+    // }, []);
+
+    // useEffect(() => {
+    //     if (selectedContinent) {
+    //         const fetchCountries = async () => {
+    //             const response = await axios.get(`https://6569-msh.knowme.sbs/api/countries/${selectedContinent}`);
+    //             setCountries(response.data);
+    //         }
+    //         fetchCountries();
+    //     }
+    // }, [selectedContinent]);
+
+    // useEffect(() => {
+    //     if (selectedContinent && selectedCountry) {
+    //         const fetchCities = async () => {
+    //             const response = await axios.get(`https://6569-msh.knowme.sbs/api/cities/${selectedContinent}/${selectedCountry}`);
+    //             setCities(response.data);
+    //         }
+    //         fetchCities();
+    //     }
+    // }, [selectedCountry, selectedContinent]);
 
     // const handleDestinationChange = (event) => {
     //     setDestination(event.target.value);
     // };
 
-    const handleContinentChange = (event) => {
-        setSelectedContinent(event.target.value);
-        setSelectedCountry('');
-        setCities([]);
-    };
+    // const handleContinentChange = (event) => {
+    //     setSelectedContinent(event.target.value);
+    //     setSelectedCountry('');
+    //     setCities([]);
+    // };
 
-    const handleCountryChange = (event) => {
-        setSelectedCountry(event.target.value);
-    };
-    const handleCityChange = (event) => {
-        setSelectedCity(event.target.value);
-    };
+    // const handleCountryChange = (event) => {
+    //     setSelectedCountry(event.target.value);
+    // };
+    // const handleCityChange = (event) => {
+    //     setSelectedCity(event.target.value);
+    // };
 
 
     // const [inputValue, setInputValue] = useState('');
@@ -109,6 +147,36 @@ const Banner = () => {
     //     console.log(predictions)
     // };
 
+    // const [query, setQuery] = useState('');
+
+    const handleChange = (e) => {
+        setQuery(e.target.value);
+    };
+
+    const handleSubmit = (item) => {
+        // e.preventDefault();
+        handleSearch(item);
+        setQuery(item)
+    };
+
+    const [filteredContinent, setFilteredContinent] = useState(null);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/places')
+            .then(response => response.json())
+            .then(data => setPlaces(data.places));
+    }, []);
+    const [open, setOpen] = useState(false);
+    const handleSearch = (place) => {
+        fetch(`http://localhost:3000/continent/${place}`)
+            .then(response => response.json())
+            .then(data => {
+                setFilteredContinent(data);
+                setOpen(true);
+            });
+    };
+
+    console.log(filteredContinent)
 
     return (
         <div className="">
@@ -118,7 +186,7 @@ const Banner = () => {
                     <div className="max-w-full relative">
                         <h1 className="mb-5 text-4xl font-bold">Discover <span className="damion-regular text-[#AFFF53]">Your Next</span> Adventure</h1>
                         {/* <input value={selectedContinent} onChange={handleContinentChange} list="destinations" className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px] ${selectedContinent ? '' : ""}`} type="text" name="" id="" placeholder="Search Countries, Cities" /> */}
-                        <span className="absolute bottom-[17px] left-[107px]"><IoSearch className="text-gray-500 text-[19px]" /></span>
+                        {/* <span className="absolute bottom-[17px] left-[107px]"><IoSearch className="text-gray-500 text-[19px]" /></span> */}
                         {/* <datalist id="destinations">
                             {cities.length > 0
                                 ? cities?.map((city, index) => <option key={index} value={city} />)
@@ -126,8 +194,54 @@ const Banner = () => {
                                     ? countries?.map((country, index) => <option key={index} value={country.name} />)
                                     : continents?.map((continent, index) => <option key={index} value={continent.continent} />)}
                         </datalist> */}
+                        {/* <div>
+                            <h1>Place Search</h1>
+                            <input
+                                type="text"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder="Enter a place"
+                            />
+                            <button onClick={handleSearch}>Search</button>
+                            <div>
+                                {places.map((place, index) => (
+                                    <div key={index}>
+                                        <h2>{place.name}</h2>
+                                        <p>{place.formatted_address}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div> */}
+                        <div className={`${place ? "hidden" : ""}`}>
+                            <span className="absolute bottom-[17px] left-[107px]"><IoSearch className="text-gray-500 text-[19px]" /></span>
+                            <div>
+                                <form onSubmit={handleSubmit}>
+                                    <input
+                                        type="text"
+                                        placeholder="Search for a place..."
+                                        className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px]`}
+                                        value={query}
+                                        onChange={handleChange}
+                                    />
+                                    {/* <button type="submit" className="btn btn-primary ml-2">Search</button> */}
+                                </form>
 
-                        <div>
+                                {/* <input className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px]`} onChange={(e) => setQuery(e.target.value)} type="text" name="places" id="places" placeholder="Search Places..." /> */}
+                            </div>
+                            <div className={`absolute w-[340px] ${query ? "h-[238px] bg-white" : "h-0"} top-34 left-[90px]  rounded-lg text-black`}>
+                                <ul className={`${places ? "overflow-y-scroll scrollbar-hide h-[238px]" : "h-0"}`}>
+                                    {
+                                        places?.map((item, index) => <li className="border border-blue-400 p-2 cursor-pointer my-1 rounded-lg w-full" onClick={() => { setPlace(item); handleSubmit(item) }} key={index}>{item}</li>)
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="App">
+                            {/* <SearchBar places={places} onSearch={handleSearch} /> */}
+                            {filteredContinent && <CityModal open={open} setPlace={setPlace} onClose={() => {setOpen(false);setPlace("")}} continent={filteredContinent} />}
+                        </div>
+
+                        {/* <div>
                             <select className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px] ${selectedContinent ? 'hidden' : ""}`} value={selectedContinent} onChange={handleContinentChange}>
                                 <option className="text-xl border border-black" value="">Select Continent</option>
                                 {continents.map((continent, index) => (
@@ -136,7 +250,7 @@ const Banner = () => {
                                     </option>
                                 ))}
                             </select>
-                        </div>
+                        </div> */}
 
                         {/* <select value={selectedContinent} onChange={handleContinentChange}>
                             <option value="">Select Continent</option>
@@ -146,18 +260,18 @@ const Banner = () => {
                                 </option>
                             ))}
                         </select> */}
-                        {selectedContinent && (
+                        {/* {selectedContinent && (
                             <select className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px] ${selectedCountry ? 'hidden' : ""}`} value={selectedCountry} onChange={handleCountryChange}>
                                 <option value="">Select Country</option>
                                 {countries?.map((country, index) => (
-                                    <option className="text-xl" key={index} value={country.name}>
-                                        {country.name}
+                                    <option className="text-xl" key={index} value={country?.name}>
+                                        {country?.name}
                                     </option>
                                 ))}
                             </select>
-                        )}
+                        )} */}
 
-                        {(selectedContinent && selectedCountry) && (
+                        {/* {(selectedContinent && selectedCountry) && (
                             <select className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px]`} value={selectedCity} onChange={handleCityChange}>
                                 <option value="">Select Cities</option>
                                 {cities?.map((city, index) => (
@@ -166,7 +280,7 @@ const Banner = () => {
                                     </option>
                                 ))}
                             </select>
-                        )}
+                        )} */}
                     </div>
                     {/* <div>
                         {
