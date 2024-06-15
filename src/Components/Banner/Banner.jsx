@@ -212,6 +212,7 @@ const Banner = () => {
                                 ))}
                             </div>
                         </div> */}
+                        {/* input field */}
                         <div className={`${place ? "hidden" : ""}`}>
                             <span className="absolute bottom-[17px] left-[107px]"><IoSearch className="text-gray-500 text-[19px]" /></span>
                             <div>
