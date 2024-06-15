@@ -18,7 +18,7 @@ export default function Login({ setIsLogin }) {
               });
             document.getElementById('my_modal_3').close()
             const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
-                axios.post('https://6569-msh.knowme.sbs/users', userInfo)
+                axios.post('https://server.wandergeniellm.com/users', userInfo)
                     .then(res => {
                         console.log(res.data)
                     })

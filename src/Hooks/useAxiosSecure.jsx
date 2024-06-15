@@ -4,7 +4,7 @@ import { AuthContext } from '../Providers/AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
 const axiosSecure = axios.create({
-  baseURL: 'https://6569-msh.knowme.sbs'
+  baseURL: 'https://server.wandergeniellm.com'
 })
 
 export default function useAxiosSecure() {

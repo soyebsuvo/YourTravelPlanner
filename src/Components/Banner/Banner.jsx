@@ -86,7 +86,7 @@ const Banner = () => {
 
     // useEffect(() => {
     //     async function fetchContinents() {
-    //         const response = await axios.get('https://6569-msh.knowme.sbs/api/continents');
+    //         const response = await axios.get('https://server.wandergeniellm.com/api/continents');
     //         setContinents(response.data);
     //         console.log(response.data)
     //     }
@@ -96,7 +96,7 @@ const Banner = () => {
     // useEffect(() => {
     //     if (selectedContinent) {
     //         const fetchCountries = async () => {
-    //             const response = await axios.get(`https://6569-msh.knowme.sbs/api/countries/${selectedContinent}`);
+    //             const response = await axios.get(`https://server.wandergeniellm.com/api/countries/${selectedContinent}`);
     //             setCountries(response.data);
     //         }
     //         fetchCountries();
@@ -106,7 +106,7 @@ const Banner = () => {
     // useEffect(() => {
     //     if (selectedContinent && selectedCountry) {
     //         const fetchCities = async () => {
-    //             const response = await axios.get(`https://6569-msh.knowme.sbs/api/cities/${selectedContinent}/${selectedCountry}`);
+    //             const response = await axios.get(`https://server.wandergeniellm.com/api/cities/${selectedContinent}/${selectedCountry}`);
     //             setCities(response.data);
     //         }
     //         fetchCities();
@@ -162,13 +162,13 @@ const Banner = () => {
     const [filteredContinent, setFilteredContinent] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/places')
+        fetch('https://server.wandergeniellm.com/places')
             .then(response => response.json())
             .then(data => setPlaces(data.places));
     }, []);
     const [open, setOpen] = useState(false);
     const handleSearch = (place) => {
-        fetch(`http://localhost:3000/continent/${place}`)
+        fetch(`https://server.wandergeniellm.com/continent/${place}`)
             .then(response => response.json())
             .then(data => {
                 setFilteredContinent(data);

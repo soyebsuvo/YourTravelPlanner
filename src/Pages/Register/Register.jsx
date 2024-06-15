@@ -20,7 +20,7 @@ export default function Register({ setIsLogin }) {
               });
             document.getElementById('my_modal_3').close()
             const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
-            axios.post('https://6569-msh.knowme.sbs/users', userInfo)
+            axios.post('https://server.wandergeniellm.com/users', userInfo)
                 .then(res => {
                     console.log(res.data)
                 })
@@ -43,7 +43,7 @@ export default function Register({ setIsLogin }) {
         createUser(email, password).then(() => {
             document.getElementById('my_modal_3').close()
             const userInfo = { name: name, email: email };
-            axios.post('https://6569-msh.knowme.sbs/users', userInfo)
+            axios.post('https://server.wandergeniellm.com/users', userInfo)
                 .then(() => {
                     Swal.fire({
                         position: "top-end",

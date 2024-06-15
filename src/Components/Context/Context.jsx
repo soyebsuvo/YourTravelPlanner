@@ -42,7 +42,7 @@ function Context({ children }) {
         setResponse(null)
         navigate("/recommendations");
         // try {
-            const responses = await fetch('https://6569-msh.knowme.sbs/ask', {
+            const responses = await fetch('https://server.wandergeniellm.com/ask', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
