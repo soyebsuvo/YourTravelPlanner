@@ -13,6 +13,7 @@ import TravelPurpose from "../../Components/TravelPurpose/TravelPurpose";
 import Landmarks from "../../Components/Landmarks/Landmarks";
 import Special from "../../Components/Special/Special";
 import Index from "../../Components/Index";
+import Footer from "../../Components/Footer/Footer";
 
 const Home = () => {
     const [days, setDays] = useState("");
@@ -67,6 +68,7 @@ const Home = () => {
                 <Special value={special} setValue={setSpecial} dietaryScroll={dietaryScroll} specialScroll={specialScroll}/>
                 <Submit days={days} members={members} budget={budget} accommodation={accommodation} dietary={dietary} travelPurpose={travelPurpose} transportation={transportation} landmarks={landmarks} special={special} />
             </div>
+            <Footer />
         </div>
     );
 };

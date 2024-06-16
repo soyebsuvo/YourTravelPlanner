@@ -4,7 +4,7 @@ import { SlCalender } from "react-icons/sl";
 import { MdOutlineDateRange } from "react-icons/md";
 import { FaCarSide } from "react-icons/fa";
 import { LuPanelBottomInactive } from "react-icons/lu";
-import { BsThreeDots } from "react-icons/bs";
+// import { BsThreeDots } from "react-icons/bs";
 import { LuPlusCircle } from "react-icons/lu";
 import logo from '../../assets/profile-logo.png'
 import message from '../../assets/facebook-messenger.svg'
@@ -13,6 +13,9 @@ import message from '../../assets/facebook-messenger.svg'
 import { FaMinus } from "react-icons/fa";
 import { BsFillSendFill } from "react-icons/bs";
 import Loader from "../../Components/Loader/Loader";
+import SubBanner from "../../Components/Banner/SubBanner";
+import Navbar from "../../Components/Navbar/Navbar";
+import Footer from "../../Components/Footer/Footer";
 // import { ConnectProvider, Connect } from 'react-connect-lines'
 const RecommendationPage = () => {
     const [open, setOpen] = useState(false)
@@ -108,7 +111,10 @@ const RecommendationPage = () => {
         // const actualData = response?.message?.content
         // console.log(actualData)
         return (
-            <div className="max-w-7xl mx-auto px-3 md:px-14 py-4 relative">
+            <div>
+                <Navbar />
+                <SubBanner />
+                <div className="max-w-7xl mx-auto px-3 md:px-14 py-4 mt-14 relative">                
                 <div>
                     <div className="flex justify-between items-center gap-4">
                         <div className="flex items-center gap-3">
@@ -128,13 +134,13 @@ const RecommendationPage = () => {
                                 <LuPanelBottomInactive className="text-2xl" />
                                 <h3 className="text-xl font-semibold">Activities(5)</h3>
                             </div>
-                            <div className="text-gray-500 flex flex-col justify-center cursor-pointer items-center gap-1 w-[140px] pb-3">
+                            {/* <div className="text-gray-500 flex flex-col justify-center cursor-pointer items-center gap-1 w-[140px] pb-3">
                                 <BsThreeDots className="text-2xl" />
                                 <h3 className="text-xl font-semibold">More</h3>
-                            </div>
+                            </div> */}
                         </div>
                         <div>
-                            <button className="bg-[#1671E3] p-6 text-white font-bold">Book Now</button>
+                            <button className="bg-[#1671E3] p-5 text-white font-bold">Finalize and Save</button>
                         </div>
                     </div>
                 </div>
@@ -231,6 +237,9 @@ const RecommendationPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
+            </div>
+            
         );
     } catch (error) {
         console.error("Error parsing JSON:", error);

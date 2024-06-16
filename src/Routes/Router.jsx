@@ -19,6 +19,10 @@ export const router = createBrowserRouter([
             {
                 path : "/sugesstedPlaces",
                 element : <RecommendationPage />
+            },
+            {
+                path : "/marketplace",
+                element : <div>Helo world</div>
             }
         ]
     }

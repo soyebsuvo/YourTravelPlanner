@@ -13,10 +13,10 @@ const Navbar = () => {
     const [isLogin, setIsLogin] = useState(true);
     const { user, logOut } = useContext(MyContext)
     const links = <>
-        <NavLink to="/season"><a>Best of Seasion</a></NavLink>
+        <NavLink to="/marketplace"><a>Marketplace</a></NavLink>
         <NavLink to="/international"><a>International Holidays</a></NavLink>
         <NavLink to="/Honeymoon"><a>Honeymoon Gateways</a></NavLink>
-        <NavLink to="/exclusive"><a>Exclusive Packages</a></NavLink>
+        <NavLink to="/dashboard"><a>Dashboard</a></NavLink>
         <li><a><BsThreeDots /></a></li>
         <li><a><TbWorld /></a></li>
     </>
