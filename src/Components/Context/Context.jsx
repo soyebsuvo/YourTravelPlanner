@@ -15,7 +15,7 @@ function Context({ children }) {
     // const axiosPublic = useAxiosPublic();
     const [user, setUser] = useState()
     const [response, setResponse] = useState();
-    // const [images, setImages] = useState();
+    const [images, setImages] = useState();
 
     // const navigate = useNavigate();
     const handleSubmit = async (userInput, datas, navigate) => {
@@ -42,7 +42,7 @@ function Context({ children }) {
         setResponse(null)
         navigate("/recommendations");
         // try {
-            const responses = await fetch('https://server.wandergeniellm.com/ask', {
+            const responses = await fetch('http://localhost:3000/ask', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -54,15 +54,18 @@ function Context({ children }) {
             console.log(data)
             const responseData = await data?.response;
             const mainData = await JSON.parse(responseData);
-            console.log(mainData)
+            // console.log(mainData)
             setResponse(mainData)
-            console.log(response)
+            // console.log(response)
         // } catch (error) {
             // console.log("Error : ", error)
         // }
 
-        // const distructuredImages = await data?.imageResponse;
-        // setImages(distructuredImages)
+        const distructuredImages = await data?.imageResponse;
+        // const mainImages = await JSON.parse(distructuredImages);
+        setImages(distructuredImages)
+        // console.log(distructuredImages)
+        // console.log(images)
 
         // const messageElement = document.createElement('div');
         // messageElement.textContent = `User: ${userInput}\nChatGPT: ${responseData}`;
@@ -98,7 +101,7 @@ function Context({ children }) {
         user,
         handleSubmit,
         response,
-        // images,
+        images,
         googleLogin,
         logOut,
         createUser,

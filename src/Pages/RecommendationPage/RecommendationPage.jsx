@@ -29,10 +29,12 @@ const RecommendationPage = () => {
     const [messages, setMessages] = useState(initialMessages.messages)
 
 
-    const { response } = useContext(MyContext);
+    const { response, images } = useContext(MyContext);
     const element1Refs = useRef([]);
     const element2Refs = useRef([]);
     const [heights, setHeights] = useState([]);
+
+    // console.log(images)
 
     useEffect(() => {
         if (response) {
@@ -178,7 +180,7 @@ const RecommendationPage = () => {
                                         {/* </Connect> */}
                                         <div className="w-[45%] h-full">
                                             {/* <img className="p-5" src={images[index]} alt="Nai" /> */}
-                                            <img ref={el => element2Refs.current[index] = el} className="px-5 w-full" src='https://tse2.mm.bing.net/th?id=OIP.UHbAF6yPon33W3A03yO47wHaFj&pid=Api&P=0&h=220' alt="Nai" />
+                                            <img ref={el => element2Refs.current[index] = el} className="px-5 w-full" src={images[index]} alt="imageS" />
                                         </div>
                                     </div>
                                 })
