@@ -4,11 +4,12 @@ import { useContext } from 'react';
 import { MyContext } from '../../Components/Context/Context';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+// import useCheckRole from '../../Hooks/useCheckRole';
 // const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 // const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 export default function Register({ setIsLogin }) {
     const { googleLogin, createUser } = useContext(MyContext);
-
+    // const [ ,, roleRefetch] = useCheckRole();
     const socialLogin = (media) => {
         media().then((result) => {
             Swal.fire({
@@ -41,6 +42,7 @@ export default function Register({ setIsLogin }) {
         const email = e.target.email.value;
         const password = e.target.password.value;
         createUser(email, password).then(() => {
+            // roleRefetch();
             document.getElementById('my_modal_3').close()
             const userInfo = { name: name, email: email };
             axios.post('https://server.wandergeniellm.com/users', userInfo)

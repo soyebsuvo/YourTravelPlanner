@@ -16,23 +16,28 @@ import Loader from "../../Components/Loader/Loader";
 import SubBanner from "../../Components/Banner/SubBanner";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import { IoAirplaneSharp } from "react-icons/io5";
 // import { ConnectProvider, Connect } from 'react-connect-lines'
+import { ArcherContainer, ArcherElement } from 'react-archer';
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 const RecommendationPage = () => {
     const [open, setOpen] = useState(false)
+    const axiosPublic = useAxiosPublic();
     const initialMessages = {
-        _id: 0,        
+        _id: 0,
         participants: [
             "user_id_1",
             "user_id_2"
         ],
-        messages: [           
-            
+        messages: [
+
         ]
     }
     const [messages, setMessages] = useState(initialMessages.messages)
 
 
-    const { response, images } = useContext(MyContext);
+    const { user, response, images } = useContext(MyContext);
     const element1Refs = useRef([]);
     const element2Refs = useRef([]);
     const [heights, setHeights] = useState([]);
@@ -55,29 +60,29 @@ const RecommendationPage = () => {
             });
         }
     }, [heights, response]);
-    const [ msgText , setMsgText ] = useState("")
+    const [msgText, setMsgText] = useState("")
 
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
-  
+
     useEffect(() => {
-      scrollToBottom();
+        scrollToBottom();
     }, [messages]);
 
     const handleSendMessage = async () => {
         console.log(msgText)
         const newMsg = {
-            _id: 1,     
-            sender: "user", 
+            _id: 1,
+            sender: "user",
             content: msgText,
-            timestamp: "no" 
+            timestamp: "no"
         }
-        setMessages((prev) => [...prev , newMsg])
+        setMessages((prev) => [...prev, newMsg])
         setMsgText("")
-        const res = await fetch("https://server.wandergeniellm.com/chat" , {
+        const res = await fetch("https://server.wandergeniellm.com/chat", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -89,33 +94,78 @@ const RecommendationPage = () => {
         const reply = await data?.message?.content;
         console.log(reply)
         const replyMsg = {
-            _id: 1,     
-            sender: "gpt", 
+            _id: 1,
+            sender: "gpt",
             content: reply,
-            timestamp: "no" 
+            timestamp: "no"
         }
-        setMessages((prev) => [...prev , replyMsg])
+        setMessages((prev) => [...prev, replyMsg])
     }
+    // useEffect(() => {
+    //     setResponse(response)
+    // }, [response, setResponse])
+    const [loading, setLoading] = useState(true);
 
-    if (!response) {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, [response]);
+    if (!response || loading) {
         return <Loader /> // Display loading message while response is being fetched
     }
 
 
 
 
+    const handleSendRequest = async () => {
+        const travellerInfo = { name: user?.displayName, email: user?.email, photo: user?.photoURL }
+        const itinerary = { response: response, images: images, traveller: travellerInfo, status: "pending", request: true }
+        const res = await axiosPublic.post("/saved", itinerary);
+        const data = res.data;
+        if (data.insertedId) {
+            const res = await axiosPublic.post("/requested", itinerary);
+            const data = res.data;
+            if (data.insertedId) {
+                document.getElementById('finalize_modal').close()
+                Swal.fire({
+                    title: "Done",
+                    text: "Saved and requested your itinerery",
+                    icon: "success"
+                });
+            }
 
-    try {
-        // const parsedData = JSON.parse(response);
-        // console.log(JSON.parse(response?.message?.content))
-        // const actualData = response?.message?.content
-        // console.log(actualData)
-        return (
-            <div>
-                <Navbar />
-                <SubBanner />
-                <div className="max-w-7xl mx-auto px-3 md:px-14 py-4 mt-14 relative">                
-                <div>
+        }
+    }
+    const handleSave = async () => {
+        const travellerInfo = { name: user?.displayName, email: user?.email, photo: user?.photoURL }
+        const itinerary = { response: response, images: images, traveller: travellerInfo, status: "pending", request: false }
+        const res = await axiosPublic.post("/saved", itinerary);
+        const data = res.data;
+        if (data.insertedId) {
+            document.getElementById('finalize_modal').close()
+            Swal.fire({
+                title: "Done",
+                text: "Saved your itinerery",
+                icon: "success"
+            });
+        }
+}
+
+try {
+    console.log(response)
+    // const parsedData = JSON.parse(response);
+    // console.log(JSON.parse(response?.message?.content))
+    // const actualData = response?.message?.content
+    // console.log(actualData)
+    return (
+        <div>
+            <Navbar />
+            <SubBanner />
+            <div className="max-w-7xl mx-auto md:px-14 py-4 mt-14 relative  border-4 rounded-2xl px-6">
+                <div className="border-2 p-6 mt-6 rounded-2xl">
                     <div className="flex justify-between items-center gap-4">
                         <div className="flex items-center gap-3">
                             <div className="text-green-500 flex flex-col justify-center cursor-pointer items-center gap-1 border-b-2 border-green-500 w-[130px] pb-3">
@@ -140,58 +190,100 @@ const RecommendationPage = () => {
                             </div> */}
                         </div>
                         <div>
-                            <button className="bg-[#1671E3] p-5 text-white font-bold">Finalize and Save</button>
+                            <button onClick={() => document.getElementById('finalize_modal').showModal()} className="bg-[#1671E3] p-5 px-9 text-white font-bold">Finalize</button>
+
+                            <dialog id="finalize_modal" className="modal">
+                                <div className="modal-box scrollbar-hide">
+                                    <form method="dialog">
+                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                    </form>
+                                    <div>
+                                        <h2 className="text-2xl font-bold">What do you want to do ?</h2>
+                                        <div className="mt-6">
+                                            <button onClick={handleSendRequest} className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save and send request</button>
+                                            <button onClick={handleSave} className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save Only</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </dialog>
                         </div>
                     </div>
                 </div>
 
-                <div className="py-8">
+                <div className="py-2">
                     <div className="flex">
-                        <div className="w-full p-4">
+                        <div className="w-full py-8">
                             {/* table .\ */}
-                            {/* <ConnectProvider> */}
-                            {
-                                response?.itinerary?.map((city, index) => {
-                                    return <div key={index} className="forChild flex items-start gap-5 justify-between mb-20 h-auto">
-                                        {/* <Connect id={`element-${index}`} 
-                                             connectWith={[
-                                                {id: `element-${index+1}`, color: 'gray', stroke: 'solid', edge : 'step'}
-                                             ]}
-                                            > */}
-                                        <div ref={el => element1Refs.current[index] = el} className="main border-2 rounded w-[55%] h-full">
-                                            {/* header  */}
-                                            <div className="flex justify-between items-center p-3">
-                                                <div className="font-bold">{city?.destination}<span className="ml-5 text-gray-500 font-semibold">{city?.travelDates?.start} to {city?.travelDates?.end}</span></div>
+                            <ArcherContainer strokeColor="gray">
+                                {
+                                    response?.itinerary?.map((city, index) => {
+                                        return <div key={index} className="forChild flex items-start gap-12 justify-between mb-20 h-auto border-2 rounded-2xl p-4">
+                                            <ArcherElement id={`element-${index}`}
+                                                relations={[
+                                                    { targetId: `element-${index + 1}`, targetAnchor: 'top', sourceAnchor: 'bottom', label: <div><IoAirplaneSharp className={`text-4xl text-gray-500 hover:text-blue-600 duration-200 cursor-pointer ${index % 2 !== 0 ? 'rotate-180' : ''}`} /></div> }
+                                                ]}
+                                            >
+                                                <div className="w-[55%]">
+                                                    <div ref={el => element1Refs.current[index] = el} className="main border-2 rounded-2xl w-full h-full">
+                                                        {/* header  */}
+                                                        <div className="flex justify-between items-center p-3">
+                                                            <div className="font-bold">{city?.destination}<span className="ml-5 text-gray-500 font-semibold">{city?.travelDates?.start} to {city?.travelDates?.end}</span></div>
 
-                                                <div className="font-bold">{city?.destination} Trip Roadmap</div>
-                                            </div>
-                                            {/* row  */}
-                                            {
-                                                city?.dailyActivities?.map((item, index) => {
-                                                    return <div key={index} className="flex justify-between items-center">
-                                                        <div className="border min-w-[90px] h-[140px] flex justify-center items-center text-gray-500 font-bold">{item?.day}</div>
+                                                            <div className="font-bold">{city?.destination} Trip Roadmap</div>
+                                                        </div>
+                                                        {/* row  */}
                                                         {
-                                                            item?.activities?.map((item, index) => {
-                                                                return <div key={index} className="border w-full h-[140px] p-3 overflow-hidden">
-                                                                    <h2 className="text-gray-500 font-bold">{item?.time}</h2>
-                                                                    <p className="text-gray-500">{item?.activity}</p>
+                                                            city?.dailyActivities?.map((item, index) => {
+                                                                return <div key={index} className="flex justify-between items-center">
+                                                                    <div className="border min-w-[90px] h-[140px] flex justify-center items-center text-gray-500 font-bold">{item?.day}</div>
+                                                                    {
+                                                                        item?.activities?.map((item, index) => {
+                                                                            return <div key={index} className="border w-full h-[140px] p-3 overflow-hidden hover:bg-blue-50">
+                                                                                <h2 className="text-gray-500 font-bold">{item?.time}</h2>
+                                                                                {
+                                                                                    item?.activity?.includes("Leisure") ? <div>
+                                                                                        <p className="text-gray-500">Leisure</p>
+                                                                                        <button onClick={() => document?.getElementById(`activity_modal_${index}`).showModal()} className="text-blue-500 font-bold">Add Activity + </button>
+                                                                                        {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                                                                                        <dialog id={`activity_modal_${index}`} className="modal">
+                                                                                            <div className="modal-box scrollbar-hide">
+                                                                                                <form method="dialog">
+                                                                                                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                                                                </form>
+                                                                                                <div className="h-56">
+                                                                                                    <h2 className="text-xl font-semibold">Write what do you want to do at this slot?</h2>
+                                                                                                    <div className="my-3">
+                                                                                                        <textarea name="activity" id={index} cols="30" rows="5" className="shadow rounded-xl border w-full px-4 py-2 resize-none outline-none" placeholder="Write Activity..."></textarea>
+                                                                                                    </div>
+                                                                                                    <div>
+                                                                                                        <button className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save</button>
+                                                                                                        <form className="inline" method="dialog"><button className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Close</button></form>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </dialog>
+                                                                                    </div> :
+                                                                                        <p className="text-gray-500">{item?.activity}</p>
+                                                                                }
+                                                                                {/* <p className="text-gray-500">{item?.activity === "Leisure" ? `Leisure with button` : item?.activity}</p> */}
+                                                                            </div>
+                                                                        })
+                                                                    }
+
                                                                 </div>
                                                             })
                                                         }
-
                                                     </div>
-                                                })
-                                            }
+                                                </div>
+                                            </ArcherElement>
+                                            <div className="w-[45%] h-full">
+                                                {/* <img className="p-5" src={images[index]} alt="Nai" /> */}
+                                                <img ref={el => element2Refs.current[index] = el} className="rounded-2xl w-full" src={images[index]} alt="imageS" />
+                                            </div>
                                         </div>
-                                        {/* </Connect> */}
-                                        <div className="w-[45%] h-full">
-                                            {/* <img className="p-5" src={images[index]} alt="Nai" /> */}
-                                            <img ref={el => element2Refs.current[index] = el} className="px-5 w-full" src={images[index]} alt="imageS" />
-                                        </div>
-                                    </div>
-                                })
-                            }
-                            {/* </ConnectProvider> */}
+                                    })
+                                }
+                            </ArcherContainer>
                         </div>
                         {/* <div className="col-span-5 p-4">
                             <img className="p-4" src={normal} alt="" />
@@ -217,14 +309,14 @@ const RecommendationPage = () => {
                                 {messages?.map((item, index) => {
                                     return <div className={`${item?.sender === "user" ? 'flex justify-end px-3 py-1 ml-12' : 'px-3 py-1 mr-12'}`} key={index}>
                                         <p className={`font-semibold py-2 px-5 w-fit overflow-hidden ${item?.sender === "user" ? item?.content.length > 70 ? "bg-gradient-to-br from-[#252ECD] to-[#04BBFB] text-white rounded-3xl" : "rounded-full bg-gradient-to-br from-[#252ECD] to-[#04BBFB] text-white" : item?.content.length <= 70 ? "rounded-full border border-[#04BBFB] text-gray-700" : "border rounded-3xl border-[#04BBFB] text-gray-700 w-[100%]"}`}>{item?.content}</p>
-                                        </div>
+                                    </div>
                                 })}
                                 <div ref={messagesEndRef} />
                             </div>
 
                             <div className="absolute bottom-2 w-full flex items-center justify-between gap-2 px-4">
                                 <LuPlusCircle className="font-bold text-4xl cursor-pointer" />
-                                <input value={msgText} onKeyDown={e => {e.key === "Enter" && handleSendMessage()}} onChange={(e) => setMsgText(e.target.value)} className="outline-none w-full mx-auto bg-gray-200 rounded-lg px-3 py-2" placeholder="Type..." type="text" />
+                                <input value={msgText} onKeyDown={e => { e.key === "Enter" && handleSendMessage() }} onChange={(e) => setMsgText(e.target.value)} className="outline-none w-full mx-auto bg-gray-200 rounded-lg px-3 py-2" placeholder="Type..." type="text" />
                                 <BsFillSendFill onClick={handleSendMessage} className="font-bold text-5xl cursor-pointer bg-gradient-to-br from-[#252ECD] to-[#04BBFB] text-white rounded-full p-3 w-14 h-12" />
                             </div>
                         </div>
@@ -238,13 +330,13 @@ const RecommendationPage = () => {
                 </div>
             </div>
             <Footer />
-            </div>
-            
-        );
-    } catch (error) {
-        console.error("Error parsing JSON:", error);
-        return <p>Error: Invalid response format</p>; // Display error message if JSON parsing fails
-    }
+        </div>
+
+    );
+} catch (error) {
+    console.error("Error parsing JSON:", error);
+    return <p>Error: Invalid response format</p>; // Display error message if JSON parsing fails
+}
 };
 
 export default RecommendationPage;

@@ -13,12 +13,22 @@ export const MyContext = createContext({});
 
 function Context({ children }) {
     // const axiosPublic = useAxiosPublic();
-    const [user, setUser] = useState()
-    const [response, setResponse] = useState();
-    const [images, setImages] = useState();
+    const [user, setUser] = useState();
+    const [ loading , setLoading ] = useState(true);
+    const [response, setResponse] = useState([]);
+    const [images, setImages] = useState();    
+    const [place, setPlace] = useState();
+    const [days, setDays] = useState("");
+    const [members, setMembers] = useState("")
+    const [budget, setBudget] = useState("")
+    const [accommodation, setAccommodation] = useState("")
+    const [transportation, setTransportation] = useState("")
+    const [filteredContinent, setFilteredContinent] = useState(null);
+    const [ selectedCities , setSelectedCities ] = useState([]);
+    const [ nextCity , setNextCity ] = useState();
 
     // const navigate = useNavigate();
-    const handleSubmit = async (userInput, datas, navigate) => {
+    const handleSubmit = async (userInput, datas, navigate, selectedCities) => {
 
         // const chatHistory = document.getElementById('chat-history');
         const { days, members, budget, accommodation, transportation } = datas;
@@ -32,7 +42,7 @@ function Context({ children }) {
                 timer: 1500
             });
             return;
-        } else if (!days || !members || !budget || !accommodation || !transportation) {
+        } else if (!place || !days || !members || !budget || !accommodation || !transportation) {
             return Swal.fire({
                 title: "Oops!",
                 text: "Please answer all the mandatory questions",
@@ -47,7 +57,7 @@ function Context({ children }) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ prompt: userInput })
+                body: JSON.stringify({ prompt: userInput , selectedCities : selectedCities})
             });
 
             const data = await responses.json();
@@ -72,21 +82,24 @@ function Context({ children }) {
         // chatHistory.appendChild(messageElement);
     }
     const googleLogin = () => {
-        // setLoading(true);
+        // setLoading(true); 
         return signInWithPopup(auth, googleProvider);
     }
 
     const createUser = (email, password) => {
+        // setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const login = (email, password) => {
+        // setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            setLoading(false);
         })
         return () => {
             return unSubscribe();
@@ -99,13 +112,32 @@ function Context({ children }) {
     }
     const info = {
         user,
+        loading,
         handleSubmit,
         response,
         images,
         googleLogin,
         logOut,
         createUser,
-        login
+        login,
+        place,
+        setPlace,
+        days,
+        members, 
+        budget,
+        accommodation,
+        transportation,
+        setDays,
+        setMembers,
+        setBudget,
+        setAccommodation,
+        setTransportation,
+        filteredContinent,
+        setFilteredContinent,
+        selectedCities,
+        setSelectedCities,
+        nextCity,
+        setNextCity
     }
     return (
         <MyContext.Provider value={info}>

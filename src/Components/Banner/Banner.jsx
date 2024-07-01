@@ -3,10 +3,12 @@
 import background from "../../assets/Pyramid-at-Louvre-Museum-Paris-France.jpg"
 import { IoSearch } from "react-icons/io5";
 import { TiTick } from "react-icons/ti";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaFacebookF, FaStar } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import CityModal from "../CityModal/CityModal";
+import { MyContext } from "../Context/Context";
+import PropTypes from 'prop-types';
+// import CityModal from "../CityModal/CityModal";
 // import axios from "axios";
 // 
 // function initPlacesAPI() {
@@ -37,7 +39,7 @@ import CityModal from "../CityModal/CityModal";
 
 
 
-const Banner = () => {
+const Banner = ({scrollHandler, durationScroll}) => {
 
     // const [query, setQuery] = useState('');
     // const [places, setPlaces] = useState([]);
@@ -63,7 +65,7 @@ const Banner = () => {
 
     const [places, setPlaces] = useState([]);
     const [query, setQuery] = useState();
-    const [place, setPlace] = useState();
+    const { place , setPlace, filteredContinent, setFilteredContinent, setNextCity} = useContext(MyContext);
     useEffect(() => {
         fetch('dataset.json').then(res => res.json()).then((data) => {
             // setPlaces(data)
@@ -159,20 +161,18 @@ const Banner = () => {
         setQuery(item)
     };
 
-    const [filteredContinent, setFilteredContinent] = useState(null);
-
     useEffect(() => {
         fetch('https://server.wandergeniellm.com/places')
             .then(response => response.json())
             .then(data => setPlaces(data.places));
     }, []);
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     const handleSearch = (place) => {
         fetch(`https://server.wandergeniellm.com/continent/${place}`)
             .then(response => response.json())
             .then(data => {
                 setFilteredContinent(data);
-                setOpen(true);
+                // setOpen(true);
             });
     };
 
@@ -213,7 +213,7 @@ const Banner = () => {
                             </div>
                         </div> */}
                         {/* input field */}
-                        <div className={`${place ? "hidden" : ""}`}>
+                        <div className={`${place ? "" : ""}`}>
                             <span className="absolute bottom-[17px] left-[107px]"><IoSearch className="text-gray-500 text-[19px]" /></span>
                             <div>
                                 <form onSubmit={handleSubmit}>
@@ -229,18 +229,18 @@ const Banner = () => {
 
                                 {/* <input className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px]`} onChange={(e) => setQuery(e.target.value)} type="text" name="places" id="places" placeholder="Search Places..." /> */}
                             </div>
-                            <div className={`absolute w-[340px] ${query ? "h-[238px] bg-white" : "h-0"} top-34 left-[90px]  rounded-lg text-black`}>
+                            <div className={`absolute w-[340px] ${query ? "h-[238px] bg-white" : "h-0"} top-34 left-[90px]  rounded-lg text-black ${place ? 'hidden' : ''}`}>
                                 <ul className={`${places ? "overflow-y-scroll scrollbar-hide h-[238px]" : "h-0"}`}>
                                     {
-                                        places?.map((item, index) => <li className="border border-blue-400 p-2 cursor-pointer my-1 rounded-lg w-full" onClick={() => { setPlace(item); handleSubmit(item) }} key={index}>{item}</li>)
+                                        places?.map((item, index) => <li className="text-left font-semibold p-2 cursor-pointer my-1 border-2 border-white transition-all duration-300 rounded-lg w-full hover:border-2 hover:border-blue-400" onClick={() => { setPlace(item); setNextCity(item); handleSubmit(item) ; scrollHandler(durationScroll) }} key={index}>{item}</li>)
                                     }
                                 </ul>
                             </div>
                         </div>
-                        <div className="App">
-                            {/* <SearchBar places={places} onSearch={handleSearch} /> */}
+                        {/* <div className="App">
+                            <SearchBar places={places} onSearch={handleSearch} />
                             {filteredContinent && <CityModal open={open} setPlace={setPlace} onClose={() => {setOpen(false);setPlace("")}} continent={filteredContinent} />}
-                        </div>
+                        </div> */}
 
                         {/* <div>
                             <select className={`inpt text-black outline-none border-4 border-[#AFFF53] rounded-xl px-10 py-3 w-[340px] ${selectedContinent ? 'hidden' : ""}`} value={selectedContinent} onChange={handleContinentChange}>
@@ -309,3 +309,8 @@ const Banner = () => {
 };
 
 export default Banner;
+
+Banner.propTypes = {
+    scrollHandler : PropTypes.func.isRequired,   
+    durationScroll : PropTypes.object.isRequired
+}

@@ -10,6 +10,10 @@ html{
     color: black;
     font-weight: 600;
 }
+.inpt-city::placeholder{
+    color: gray;
+    font-weight: 600;
+}
 .damion-regular {
     font-family: "Damion", cursive;
     font-weight: 600;

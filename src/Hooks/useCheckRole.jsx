@@ -1,17 +1,17 @@
 import { useContext } from "react"
-import { AuthContext } from "../Providers/AuthProvider/AuthProvider"
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "./useAxiosSecure";
+import useAxiosPublic from "./useAxiosPublic";
+import { MyContext } from "../Components/Context/Context";
 
 export default function useCheckRole() {
-    const { user } = useContext(AuthContext);
-    const axiosSecure = useAxiosSecure();
-    const { data: role , isPending : isRolePending } = useQuery({
-        queryKey: ["role"],
+    const { user } = useContext(MyContext);
+    const axiosPublic = useAxiosPublic();
+    const { data: role , isPending : isRolePending, refetch } = useQuery({
+        queryKey: ["userRole", user],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/user/admin/${user?.email}`);
+            const res = await axiosPublic.get(`/user/admin/${user?.email}`);
             return res.data.role;
         }
     })
-    return [role , isRolePending]
+    return [role , isRolePending, refetch]
 }

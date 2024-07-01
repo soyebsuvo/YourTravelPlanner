@@ -1531,6 +1531,18 @@
       "continent": "Europe",
       "countries": [
         {
+          "name": "France",
+          "cities": ["Paris, France", "Marseille, France", "Lyon, France"]
+        },
+        {
+          "name": "United Kingdom",
+          "cities": ["London, United Kingdom", "Birmingham, United Kingdom", "Manchester, United Kingdom"]
+        },
+        {
+          "name": "Netherlands",
+          "cities": ["Amsterdam", "Rotterdam", "The Hague"]
+        },
+        {
           "name": "Albania",
           "cities": ["Tirana", "Durrës", "Vlorë"]
         },
@@ -1589,10 +1601,6 @@
         {
           "name": "Finland",
           "cities": ["Helsinki", "Espoo", "Tampere"]
-        },
-        {
-          "name": "France",
-          "cities": ["Paris", "Marseille", "Lyon"]
         },
         {
           "name": "Georgia",
@@ -1661,10 +1669,6 @@
         {
           "name": "Montenegro",
           "cities": ["Podgorica", "Nikšić", "Herceg Novi"]
-        },
-        {
-          "name": "Netherlands",
-          "cities": ["Amsterdam", "Rotterdam", "The Hague"]
         },
         {
           "name": "North Macedonia",

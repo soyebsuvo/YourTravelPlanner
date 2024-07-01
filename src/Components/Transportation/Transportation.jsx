@@ -1,45 +1,28 @@
 import img from '../../assets/RTCbus-266007a5e33d434fb13a8252a8d13f65.jpg';
-import img2 from '../../assets/Car-Rentals-in-India.jpg';
-import img3 from '../../assets/WalkArlington_Walk-Bike-to-School-Day_2016_V1.jpg';
 import img4 from '../../assets/private-transportation-company-3.jpg';
 import PropTypes from 'prop-types';
-const Transportation = ({value , setValue , scrollHandler , dietaryScroll , transportationScroll}) => {
+const Transportation = ({value , setValue , transportationScroll}) => {
     return (
-        <div ref={transportationScroll} className="max-w-7xl mx-auto px-2 md:px-16 py-8">
+        <div ref={transportationScroll} className="w-1/2 border border-blue-400 p-6 px-20 shadow-xl rounded-xl">
             <div>
-                <h2 className='text-2xl font-bold text-center my-3'>How do you plan to get around? <span className='text-red-500'>*</span> </h2>
+                <h2 className='text-xl font-semibold text-center'>How do you plan to get around? <span className='text-red-500'>*</span> </h2>
             </div>
-            <div className="flex justify-center items-center gap-6 py-4">
-                <div onClick={() => {setValue("Public Transportation"); scrollHandler(dietaryScroll)}} className={value === "Public Transportation" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+            <div className="grid grid-cols-2 gap-6 py-4">
+                <div onClick={() => {setValue("Public Transportation"); }} className={value === "Public Transportation" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img} alt="Shoes" className="rounded-full w-64" />
                     </figure>
                     <div className="card-body items-center text-center">
-                        <h2 className="card-title">Public Transportation</h2>
+                        <h2 className="card-title text-base">Public Transportation</h2>
                     </div>
                 </div>
-                <div onClick={() => {setValue("Rental Car"); scrollHandler(dietaryScroll)}} className={value === "Rental Car" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
-                    <figure className="px-10 pt-10">
-                        <img src={img2} alt="Shoes" className="rounded-full w-64" />
-                    </figure>
-                    <div className="card-body items-center text-center">
-                        <h2 className="card-title">Rental Car</h2>
-                    </div>
-                </div>
-                <div onClick={() => {setValue("Walking/Biking"); scrollHandler(dietaryScroll)}} className={value === "Walking/Biking" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
-                    <figure className="px-10 pt-10">
-                        <img src={img3} alt="Shoes" className="rounded-full w-64" />
-                    </figure>
-                    <div className="card-body items-center text-center">
-                        <h2 className="card-title">Walking/Biking</h2>
-                    </div>
-                </div>
-                <div onClick={() => {setValue("Private/Prearranged"); scrollHandler(dietaryScroll)}} className={value === "Private/Prearranged" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:-mt-4 hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                
+                <div onClick={() => {setValue("Private/Prearranged");}} className={value === "Private/Prearranged" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>
                     <div className="card-body items-center text-center">
-                        <h2 className="card-title h-[30px]">Private/Prearranged</h2>
+                        <h2 className="card-title text-base h-[30px]">Private/Prearranged</h2>
                     </div>
                 </div>
             </div>
@@ -52,7 +35,5 @@ export default Transportation;
 Transportation.propTypes = {
     value: PropTypes.string.isRequired,
     setValue: PropTypes.func.isRequired,
-    transportationScroll : PropTypes.object.isRequired,
-    dietaryScroll : PropTypes.object.isRequired,
-    scrollHandler : PropTypes.func.isRequired,
+    transportationScroll : PropTypes.object.isRequired
 }

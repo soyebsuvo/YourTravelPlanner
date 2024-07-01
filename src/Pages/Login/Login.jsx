@@ -5,10 +5,13 @@ import { useContext } from 'react';
 import { MyContext } from '../../Components/Context/Context';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+// import useCheckRole from '../../Hooks/useCheckRole';
 export default function Login({ setIsLogin }) {
+    // const [ , , roleRefetch] = useCheckRole();
     const { googleLogin, login } = useContext(MyContext);
     const socialLogin = (media) => {
         media().then((result) => {
+            // roleRefetch();
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -33,6 +36,7 @@ export default function Login({ setIsLogin }) {
         const password = e.target.password.value;
         login(email, password).then(() => {
             document.getElementById('my_modal_3').close()
+            // roleRefetch();
             Swal.fire({
                 position: "top-end",
                 icon: "success",

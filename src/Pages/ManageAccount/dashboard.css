@@ -1,0 +1,13 @@
+.dashboard-nav a.active{
+    background: none !important;
+    color: #2563EB !important;
+    /* text-decoration: underline !important; */
+    font-weight:  bold !important;
+    
+}
+.dashboard-nav a:hover{
+    background: none !important;
+}
+.logout{
+    background: none !important;
+}

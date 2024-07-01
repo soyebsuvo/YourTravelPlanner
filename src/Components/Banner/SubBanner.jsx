@@ -7,7 +7,7 @@ import background from "../../assets/recom-back.jpg"
 const SubBanner = () => {
     return (
         <div className="">
-        <div className="hero min-h-[300px]" style={{ backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="hero min-h-[420px]" style={{ backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-full relative">

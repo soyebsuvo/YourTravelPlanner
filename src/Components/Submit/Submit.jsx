@@ -2,23 +2,26 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { MyContext } from '../Context/Context';
 import { useNavigate } from 'react-router-dom';
-const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, transportation, landmarks, special }) => {
-  const datas = { days, members, budget, accommodation, transportation, dietary, travelPurpose, landmarks, special }
+import { FaArrowRight } from 'react-icons/fa6';
+const Submit = ({ days, members, budget, accommodation, transportation }) => {
+  const datas = { days, members, budget, accommodation, transportation }
   const { handleSubmit } = useContext(MyContext);
-  const userInput = `Hello
+  const { place , selectedCities} = useContext(MyContext);
+  const cities = selectedCities.join(", ");
+  const userInput = `Hello 
             I am seeking a travel itinerary tailored to my specific requirements. Please consider
             the following inputs to generate suitable recommendations:
             Travel Dates: ${days}
-            Destination: Europe
-            cities : London , paris , rome
+            Destination: ${place}
+            cities : ${cities}
             Group Size: ${members}
             Budget: ${budget} per person in one day
             Accommodation Preferences: ${accommodation}
-            Dietary Needs: ${dietary}
-            Travel Purpose: ${travelPurpose}
+            Dietary Needs: no
+            Travel Purpose: normal
             Transportation Preferences: ${transportation}
-            Must-See Landmarks: ${landmarks}
-            Special Requirements: ${special}
+            Must-See Landmarks: sea-beach
+            Special Requirements: medical
 
             The itinerary array will have exactly as many objects as the cities mentioned in the input.
             
@@ -98,7 +101,7 @@ const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, 
                         "activities": [
                           { "time": "Morning", "activity": "Visit the Marc Chagall National Museum" },
                           { "time": "Afternoon", "activity": "Stroll through Old Town (Vieux Nice)" },
-                          { "time": "Evening", "activity": "Sunset at Castle Hill" }
+                          { "time": "Evening", "activity": "Leisure" }
                         ]
                       },
                       {
@@ -112,6 +115,7 @@ const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, 
                         "activities": [
                           { "time": "Morning", "activity": "Relax on the beach" },
                           { "time": "Afternoon", "activity": "Departure preparations" }
+                          { "time": "Evening", "activity": "Leisure" }
                         ]
                       }
                     ]
@@ -153,6 +157,7 @@ const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, 
                         "day": "Day 10",
                         "activities": [
                           { "time": "Morning", "activity": "Departure preparations and return to Paris" }
+                          { "time": "Afternoon", "activity": "Leisure" }
                         ]
                       }
                     ]
@@ -160,13 +165,14 @@ const Submit = ({ days, members, budget, accommodation, dietary, travelPurpose, 
                 ]
               }             
             
+              keep some leasure so that i can modify it later. don't give leusire time everyday. keep randomly
             `;
 
   // const userInput = { api : "nothing"}
   const navigate = useNavigate();
   return (
     <div className="flex justify-center p-8">
-      <div><button onClick={() => handleSubmit(userInput, datas, navigate)} className="px-6 py-2 rounded-md border-2">Submit</button></div>
+      <div><button onClick={() => handleSubmit(userInput, datas, navigate , selectedCities)} className="px-6 py-2 rounded-md border-2 border-blue-500 bg-blue-500 text-white hover:bg-transparent duration-200 hover:border-blue-500 hover:text-blue-500">Submit <FaArrowRight className='inline mb-1 ml-1'/></button></div>
     </div>
   );
 };
@@ -178,9 +184,5 @@ Submit.propTypes = {
   members: PropTypes.string.isRequired,
   budget: PropTypes.string.isRequired,
   accommodation: PropTypes.string.isRequired,
-  dietary: PropTypes.string.isRequired,
-  travelPurpose: PropTypes.string.isRequired,
-  transportation: PropTypes.string.isRequired,
-  landmarks: PropTypes.string.isRequired,
-  special: PropTypes.string.isRequired
+  transportation: PropTypes.string.isRequired
 }
