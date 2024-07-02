@@ -14,6 +14,7 @@ import OtherTravellers from "../Pages/ManageAccount/UserRoutes/OtherTravellers";
 import MyTrip from "../Pages/MyTrip/MyTrip";
 import CitySelection from "../Pages/CitySelection/CitySelection";
 import PrivateRoute from "./PrivateRoute";
+import AgentDashboard from "../Pages/Dashboard/Agent/AgentDashboard";
 
 export const router = createBrowserRouter([
     {
@@ -83,6 +84,6 @@ export const router = createBrowserRouter([
     },
     {
         path : "/dashboard",
-        element : <div>Hi bondhura</div>
+        element : <AgentDashboard />
     }
 ])

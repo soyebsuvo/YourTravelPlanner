@@ -88,7 +88,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
 
     // useEffect(() => {
     //     async function fetchContinents() {
-    //         const response = await axios.get('https://server.wandergeniellm.com/api/continents');
+    //         const response = await axios.get('http://localhost:3000/api/continents');
     //         setContinents(response.data);
     //         console.log(response.data)
     //     }
@@ -98,7 +98,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
     // useEffect(() => {
     //     if (selectedContinent) {
     //         const fetchCountries = async () => {
-    //             const response = await axios.get(`https://server.wandergeniellm.com/api/countries/${selectedContinent}`);
+    //             const response = await axios.get(`http://localhost:3000/api/countries/${selectedContinent}`);
     //             setCountries(response.data);
     //         }
     //         fetchCountries();
@@ -108,7 +108,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
     // useEffect(() => {
     //     if (selectedContinent && selectedCountry) {
     //         const fetchCities = async () => {
-    //             const response = await axios.get(`https://server.wandergeniellm.com/api/cities/${selectedContinent}/${selectedCountry}`);
+    //             const response = await axios.get(`http://localhost:3000/api/cities/${selectedContinent}/${selectedCountry}`);
     //             setCities(response.data);
     //         }
     //         fetchCities();
@@ -162,13 +162,13 @@ const Banner = ({scrollHandler, durationScroll}) => {
     };
 
     useEffect(() => {
-        fetch('https://server.wandergeniellm.com/places')
+        fetch('http://localhost:3000/places')
             .then(response => response.json())
             .then(data => setPlaces(data.places));
     }, []);
     // const [open, setOpen] = useState(false);
     const handleSearch = (place) => {
-        fetch(`https://server.wandergeniellm.com/continent/${place}`)
+        fetch(`http://localhost:3000/continent/${place}`)
             .then(response => response.json())
             .then(data => {
                 setFilteredContinent(data);

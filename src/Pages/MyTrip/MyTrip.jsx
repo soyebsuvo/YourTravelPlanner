@@ -127,13 +127,13 @@ const MyTrip = () => {
                                                     const transportation = lastItinerary?.transportation;
                                                     return <tr key={index}>
                                                         <th className="text-gray-500">{index + 1}</th>
-                                                        <td>{
+                                                        <td className="flex flex-wrap">{
                                                             oneItinerary?.response?.itinerary?.map((item, idx, arr) => {
                                                                 return <span className="mr-1 font-semibold text-gray-500" key={idx + 1}>{item?.destination}{idx === arr?.length - 1 ? "" : ","}</span>
                                                             })
                                                         }</td>
                                                         <td>
-                                                            {lastDay.split(" ")[1]} {lastDay.split(" ")[0]}s
+                                                            {lastDay?.split(" ")[1]} {lastDay?.split(" ")[0]}s
                                                         </td>
                                                         <td>{
                                                             group
@@ -180,7 +180,7 @@ const MyTrip = () => {
                                                     const transportation = lastItinerary?.transportation;
                                                     return <tr key={index}>
                                                         <th className="text-gray-500">{index + 1}</th>
-                                                        <td>{
+                                                        <td className="flex flex-wrap">{
                                                             oneItinerary?.response?.itinerary?.map((item, idx, arr) => {
                                                                 return <span className="mr-1 font-semibold text-gray-500" key={idx + 1}>{item?.destination}{idx === arr?.length - 1 ? "" : ","}</span>
                                                             })

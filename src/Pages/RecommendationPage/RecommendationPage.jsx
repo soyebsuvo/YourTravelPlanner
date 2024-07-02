@@ -21,6 +21,7 @@ import { IoAirplaneSharp } from "react-icons/io5";
 import { ArcherContainer, ArcherElement } from 'react-archer';
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const RecommendationPage = () => {
     const [open, setOpen] = useState(false)
     const axiosPublic = useAxiosPublic();
@@ -37,7 +38,7 @@ const RecommendationPage = () => {
     const [messages, setMessages] = useState(initialMessages.messages)
 
 
-    const { user, response, images } = useContext(MyContext);
+    const { user, response,setResponse, images } = useContext(MyContext);
     const element1Refs = useRef([]);
     const element2Refs = useRef([]);
     const [heights, setHeights] = useState([]);
@@ -82,7 +83,7 @@ const RecommendationPage = () => {
         }
         setMessages((prev) => [...prev, newMsg])
         setMsgText("")
-        const res = await fetch("https://server.wandergeniellm.com/chat", {
+        const res = await fetch("http://localhost:3000/chat", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -105,6 +106,8 @@ const RecommendationPage = () => {
     //     setResponse(response)
     // }, [response, setResponse])
     const [loading, setLoading] = useState(true);
+    const [ activityValue , setActivityValue ] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -129,7 +132,8 @@ const RecommendationPage = () => {
             const res = await axiosPublic.post("/requested", itinerary);
             const data = res.data;
             if (data.insertedId) {
-                document.getElementById('finalize_modal').close()
+                document.getElementById('finalize_modal').close();
+                navigate("/my-trips")
                 Swal.fire({
                     title: "Done",
                     text: "Saved and requested your itinerery",
@@ -154,6 +158,12 @@ const RecommendationPage = () => {
         }
 }
 
+const handleAddActivity = (item) => {
+    item.activity = activityValue;
+    const response = [... response];
+    setResponse(response) 
+}   
+
 try {
     console.log(response)
     // const parsedData = JSON.parse(response);
@@ -174,11 +184,11 @@ try {
                             </div>
                             <div className="text-gray-500 flex flex-col justify-center cursor-pointer items-center gap-1 w-[130px] pb-3">
                                 <MdOutlineDateRange className="text-2xl" />
-                                <h3 className="text-xl font-semibold">Stays (3)</h3>
+                                <h3 className="text-xl font-semibold">Stays ({response?.itinerary?.length})</h3>
                             </div>
                             <div className="text-gray-500 flex flex-col justify-center cursor-pointer items-center gap-1 w-[140px] pb-3">
                                 <FaCarSide className="text-2xl" />
-                                <h3 className="text-xl font-semibold">Transfers(6)</h3>
+                                <h3 className="text-xl font-semibold">Transfers({response?.itinerary?.length + 1})</h3>
                             </div>
                             <div className="text-gray-500 flex flex-col justify-center cursor-pointer items-center gap-1 w-[140px] pb-3">
                                 <LuPanelBottomInactive className="text-2xl" />
@@ -197,11 +207,11 @@ try {
                                     <form method="dialog">
                                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                     </form>
-                                    <div>
-                                        <h2 className="text-2xl font-bold">What do you want to do ?</h2>
+                                    <div className="w-full">
+                                        <h2 className="text-xl font-bold my-2">You are about to send your trip request for biding. Would you like to save it now and send later?</h2>
                                         <div className="mt-6">
-                                            <button onClick={handleSendRequest} className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save and send request</button>
-                                            <button onClick={handleSave} className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save Only</button>
+                                            <button onClick={handleSendRequest} className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Send Anyways</button>
+                                            <button onClick={handleSave} className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save for later</button>
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +252,7 @@ try {
                                                                                 <h2 className="text-gray-500 font-bold">{item?.time}</h2>
                                                                                 {
                                                                                     item?.activity?.includes("Leisure") ? <div>
-                                                                                        <p className="text-gray-500">Leisure</p>
+                                                                                        <p className="text-gray-500">{item?.activity}</p>
                                                                                         <button onClick={() => document?.getElementById(`activity_modal_${index}`).showModal()} className="text-blue-500 font-bold">Add Activity + </button>
                                                                                         {/* You can open the modal using document.getElementById('ID').showModal() method */}
                                                                                         <dialog id={`activity_modal_${index}`} className="modal">
@@ -253,11 +263,12 @@ try {
                                                                                                 <div className="h-56">
                                                                                                     <h2 className="text-xl font-semibold">Write what do you want to do at this slot?</h2>
                                                                                                     <div className="my-3">
-                                                                                                        <textarea name="activity" id={index} cols="30" rows="5" className="shadow rounded-xl border w-full px-4 py-2 resize-none outline-none" placeholder="Write Activity..."></textarea>
+                                                                                                        <textarea onChange={(e) => setActivityValue(e.target.value)} name="activity" id={index} cols="30" rows="5" className="shadow rounded-xl border w-full px-4 py-2 resize-none outline-none" placeholder={`Write Activities...`}></textarea>
                                                                                                     </div>
                                                                                                     <div>
-                                                                                                        <button className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save</button>
-                                                                                                        <form className="inline" method="dialog"><button className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Close</button></form>
+                                                                                                        {/* <button className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save</button> */}
+                                                                                                        {/* <form className="inline" method="dialog"><button className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Close</button></form> */}
+                                                                                                        <form className="inline" method="dialog"><button onClick={() => handleAddActivity(item)} className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save</button></form>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
