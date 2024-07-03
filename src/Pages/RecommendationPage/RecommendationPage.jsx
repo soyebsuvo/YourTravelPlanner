@@ -31,6 +31,9 @@ import Lottie from "lottie-react";
 import animationData from '../../../public/flight-animation.json';
 
 const RecommendationPage = () => {
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
     const [open, setOpen] = useState(false)
     const axiosPublic = useAxiosPublic();
     const initialMessages = {
@@ -194,6 +197,7 @@ const RecommendationPage = () => {
         item.activity = activityValue;
         const response = [...response];
         setResponse(response)
+        // setActivityValue("")
     }
 
 
