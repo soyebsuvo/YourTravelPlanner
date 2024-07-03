@@ -21,7 +21,7 @@ export default function Register({ setIsLogin }) {
               });
             document.getElementById('my_modal_3').close()
             const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
-            axios.post('http://localhost:3000/users', userInfo)
+            axios.post('https://server.wandergeniellm.com/users', userInfo)
                 .then(res => {
                     console.log(res.data)
                 })
@@ -45,7 +45,7 @@ export default function Register({ setIsLogin }) {
             // roleRefetch();
             document.getElementById('my_modal_3').close()
             const userInfo = { name: name, email: email };
-            axios.post('http://localhost:3000/users', userInfo)
+            axios.post('https://server.wandergeniellm.com/users', userInfo)
                 .then(() => {
                     Swal.fire({
                         position: "top-end",

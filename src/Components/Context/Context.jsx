@@ -52,7 +52,7 @@ function Context({ children }) {
         setResponse(null)
         navigate("/recommendations");
         // try {
-            const responses = await fetch('http://localhost:3000/ask', {
+            const responses = await fetch('https://server.wandergeniellm.com/ask', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -115,7 +115,9 @@ function Context({ children }) {
         loading,
         handleSubmit,
         response,
+        setResponse,
         images,
+        setImages,
         googleLogin,
         logOut,
         createUser,

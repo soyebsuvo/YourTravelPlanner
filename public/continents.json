@@ -1331,19 +1331,19 @@
       "countries": [
         {
           "name": "Afghanistan",
-          "cities": ["Kabul", "Herat", "Kandahar"]
+          "cities": ["Kabul, Afghanistan", "Herat, Afghanistan", "Kandahar, Afghanistan"]
         },
         {
           "name": "Armenia",
-          "cities": ["Yerevan", "Gyumri", "Vanadzor"]
+          "cities": ["Yerevan, Armenia", "Gyumri, Armenia", "Vanadzor, Armenia"]
         },
         {
           "name": "Azerbaijan",
-          "cities": ["Baku", "Ganja", "Sumqayit"]
+          "cities": ["Baku, Azerbaijan", "Ganja, Azerbaijan", "Sumqayit, Azerbaijan"]
         },
         {
           "name": "Bahrain",
-          "cities": ["Manama", "Muharraq", "Riffa"]
+          "cities": ["Manama, Bahrain", "Muharraq, Bahrain", "Riffa, Bahrain"]
         },
         {
           "name": "Bangladesh",
@@ -1351,179 +1351,179 @@
         },
         {
           "name": "Bhutan",
-          "cities": ["Thimphu", "Phuntsholing", "Punakha"]
+          "cities": ["Thimphu, Bhutan", "Phuntsholing, Bhutan", "Punakha, Bhutan"]
         },
         {
           "name": "Brunei",
-          "cities": ["Bandar Seri Begawan", "Kuala Belait", "Seria"]
+          "cities": ["Bandar Seri Begawan, Brunei", "Kuala Belait, Brunei", "Seria, Brunei"]
         },
         {
           "name": "Cambodia",
-          "cities": ["Phnom Penh", "Siem Reap", "Battambang"]
+          "cities": ["Phnom Penh, Cambodia", "Siem Reap, Cambodia", "Battambang, Cambodia"]
         },
         {
           "name": "China",
-          "cities": ["Beijing", "Shanghai", "Guangzhou"]
+          "cities": ["Beijing, China", "Shanghai, China", "Guangzhou, China"]
         },
         {
           "name": "Cyprus",
-          "cities": ["Nicosia", "Limassol", "Larnaca"]
+          "cities": ["Nicosia, Cyprus", "Limassol, Cyprus", "Larnaca, Cyprus"]
         },
         {
           "name": "Georgia",
-          "cities": ["Tbilisi", "Batumi", "Kutaisi"]
+          "cities": ["Tbilisi, Georgia", "Batumi, Georgia", "Kutaisi, Georgia"]
         },
         {
           "name": "India",
-          "cities": ["New Delhi", "Mumbai", "Bangalore"]
+          "cities": ["New Delhi, India", "Mumbai, India", "Bangalore, India"]
         },
         {
           "name": "Indonesia",
-          "cities": ["Jakarta", "Surabaya", "Bandung"]
+          "cities": ["Jakarta, Indonesia", "Surabaya, Indonesia", "Bandung, Indonesia"]
         },
         {
           "name": "Iran",
-          "cities": ["Tehran", "Mashhad", "Isfahan"]
+          "cities": ["Tehran, Iran", "Mashhad, Iran", "Isfahan, Iran"]
         },
         {
           "name": "Iraq",
-          "cities": ["Baghdad", "Basra", "Mosul"]
+          "cities": ["Baghdad, Iraq", "Basra, Iraq", "Mosul, Iraq"]
         },
         {
           "name": "Israel",
-          "cities": ["Jerusalem", "Tel Aviv", "Haifa"]
+          "cities": ["Jerusalem, Israel", "Tel Aviv, Israel", "Haifa, Israel"]
         },
         {
           "name": "Japan",
-          "cities": ["Tokyo", "Osaka", "Nagoya"]
+          "cities": ["Tokyo, Japan", "Osaka, Japan", "Nagoya, Japan"]
         },
         {
           "name": "Jordan",
-          "cities": ["Amman", "Zarqa", "Irbid"]
+          "cities": ["Amman, Jordan", "Zarqa, Jordan", "Irbid, Jordan"]
         },
         {
           "name": "Kazakhstan",
-          "cities": ["Nur-Sultan", "Almaty", "Shymkent"]
+          "cities": ["Nur-Sultan, Kazakhstan", "Almaty, Kazakhstan", "Shymkent, Kazakhstan"]
         },
         {
           "name": "Kuwait",
-          "cities": ["Kuwait City", "Al Ahmadi", "Hawalli"]
+          "cities": ["Kuwait City, Kuwait", "Al Ahmadi, Kuwait", "Hawalli, Kuwait"]
         },
         {
           "name": "Kyrgyzstan",
-          "cities": ["Bishkek", "Osh", "Jalal-Abad"]
+          "cities": ["Bishkek, Kyrgyzstan", "Osh, Kyrgyzstan", "Jalal-Abad, Kyrgyzstan"]
         },
         {
           "name": "Laos",
-          "cities": ["Vientiane", "Luang Prabang", "Pakse"]
+          "cities": ["Vientiane, Laos", "Luang Prabang, Laos", "Pakse, Laos"]
         },
         {
           "name": "Lebanon",
-          "cities": ["Beirut", "Tripoli", "Sidon"]
+          "cities": ["Beirut, Lebanon", "Tripoli, Lebanon", "Sidon, Lebanon"]
         },
         {
           "name": "Malaysia",
-          "cities": ["Kuala Lumpur", "George Town", "Johor Bahru"]
+          "cities": ["Kuala Lumpur, Malaysia", "George Town, Malaysia", "Johor Bahru, Malaysia"]
         },
         {
           "name": "Maldives",
-          "cities": ["Malé", "Addu City", "Fuvahmulah"]
+          "cities": ["Malé, Maldives", "Addu City, Maldives", "Fuvahmulah, Maldives"]
         },
         {
           "name": "Mongolia",
-          "cities": ["Ulaanbaatar", "Erdenet", "Darkhan"]
+          "cities": ["Ulaanbaatar, Mongolia", "Erdenet, Mongolia", "Darkhan, Mongolia"]
         },
         {
           "name": "Myanmar (Burma)",
-          "cities": ["Naypyidaw", "Yangon", "Mandalay"]
+          "cities": ["Naypyidaw, Myanmar", "Yangon, Myanmar", "Mandalay, Myanmar"]
         },
         {
           "name": "Nepal",
-          "cities": ["Kathmandu", "Pokhara", "Lalitpur"]
+          "cities": ["Kathmandu, Nepal", "Pokhara, Nepal", "Lalitpur, Nepal"]
         },
         {
           "name": "North Korea",
-          "cities": ["Pyongyang", "Hamhung", "Nampo"]
+          "cities": ["Pyongyang, North Korea", "Hamhung, North Korea", "Nampo, North Korea"]
         },
         {
           "name": "Oman",
-          "cities": ["Muscat", "Salalah", "Sohar"]
+          "cities": ["Muscat, Oman", "Salalah, Oman", "Sohar, Oman"]
         },
         {
           "name": "Pakistan",
-          "cities": ["Islamabad", "Karachi", "Lahore"]
+          "cities": ["Islamabad, Pakistan", "Karachi, Pakistan", "Lahore, Pakistan"]
         },
         {
           "name": "Palestine",
-          "cities": ["Ramallah", "Gaza City", "Hebron"]
+          "cities": ["Ramallah, Palestine", "Gaza City, Palestine", "Hebron, Palestine"]
         },
         {
           "name": "Philippines",
-          "cities": ["Manila", "Quezon City", "Cebu City"]
+          "cities": ["Manila, Philippines", "Quezon City, Philippines", "Cebu City, Philippines"]
         },
         {
           "name": "Qatar",
-          "cities": ["Doha", "Al Rayyan", "Al Wakrah"]
+          "cities": ["Doha, Qatar", "Al Rayyan, Qatar", "Al Wakrah, Qatar"]
         },
         {
           "name": "Saudi Arabia",
-          "cities": ["Riyadh", "Jeddah", "Mecca"]
+          "cities": ["Riyadh, Saudi Arabia", "Jeddah, Saudi Arabia", "Mecca, Saudi Arabia"]
         },
         {
           "name": "Singapore",
-          "cities": ["Singapore"]
+          "cities": ["Singapore, Singapore"]
         },
         {
           "name": "South Korea",
-          "cities": ["Seoul", "Busan", "Incheon"]
+          "cities": ["Seoul, South Korea", "Busan, South Korea", "Incheon, South Korea"]
         },
         {
           "name": "Sri Lanka",
-          "cities": ["Colombo", "Kandy", "Galle"]
+          "cities": ["Colombo, Sri Lanka", "Kandy, Sri Lanka", "Galle, Sri Lanka"]
         },
         {
           "name": "Syria",
-          "cities": ["Damascus", "Aleppo", "Homs"]
+          "cities": ["Damascus, Syria", "Aleppo, Syria", "Homs, Syria"]
         },
         {
           "name": "Taiwan",
-          "cities": ["Taipei", "Kaohsiung", "Taichung"]
+          "cities": ["Taipei, Taiwan", "Kaohsiung, Taiwan", "Taichung, Taiwan"]
         },
         {
           "name": "Tajikistan",
-          "cities": ["Dushanbe", "Khujand", "Bokhtar"]
+          "cities": ["Dushanbe, Tajikistan", "Khujand, Tajikistan", "Bokhtar, Tajikistan"]
         },
         {
           "name": "Thailand",
-          "cities": ["Bangkok", "Chiang Mai", "Pattaya"]
+          "cities": ["Bangkok, Thailand", "Chiang Mai, Thailand", "Pattaya, Thailand"]
         },
         {
           "name": "Timor-Leste",
-          "cities": ["Dili", "Baucau", "Maliana"]
+          "cities": ["Dili, Timor-Leste", "Baucau, Timor-Leste", "Maliana, Timor-Leste"]
         },
         {
           "name": "Turkey",
-          "cities": ["Ankara", "Istanbul", "Izmir"]
+          "cities": ["Ankara, Turkey", "Istanbul, Turkey", "Izmir, Turkey"]
         },
         {
           "name": "Turkmenistan",
-          "cities": ["Ashgabat", "Turkmenabat", "Dashoguz"]
+          "cities": ["Ashgabat, Turkmenistan", "Turkmenabat, Turkmenistan", "Dashoguz, Turkmenistan"]
         },
         {
           "name": "United Arab Emirates",
-          "cities": ["Abu Dhabi", "Dubai", "Sharjah"]
+          "cities": ["Abu Dhabi, United Arab Emirates", "Dubai, United Arab Emirates", "Sharjah, United Arab Emirates"]
         },
         {
           "name": "Uzbekistan",
-          "cities": ["Tashkent", "Samarkand", "Bukhara"]
+          "cities": ["Tashkent, Uzbekistan", "Samarkand, Uzbekistan", "Bukhara, Uzbekistan"]
         },
         {
           "name": "Vietnam",
-          "cities": ["Hanoi", "Ho Chi Minh City", "Da Nang"]
+          "cities": ["Hanoi, Vietnam", "Ho Chi Minh City, Vietnam", "Da Nang, Vietnam"]
         },
         {
           "name": "Yemen",
-          "cities": ["Sana'a", "Aden", "Taiz"]
+          "cities": ["Sana'a, Yemen", "Aden, Yemen", "Taiz, Yemen"]
         }
       ]
     },
@@ -1540,203 +1540,203 @@
         },
         {
           "name": "Netherlands",
-          "cities": ["Amsterdam", "Rotterdam", "The Hague"]
+          "cities": ["Amsterdam, Netherlands", "Rotterdam, Netherlands", "The Hague, Netherlands"]
         },
         {
           "name": "Albania",
-          "cities": ["Tirana", "Durrës", "Vlorë"]
+          "cities": ["Tirana, Albania", "Durrës, Albania", "Vlorë, Albania"]
         },
         {
           "name": "Andorra",
-          "cities": ["Andorra la Vella", "Escaldes-Engordany", "Encamp"]
+          "cities": ["Andorra la Vella, Andorra", "Escaldes-Engordany, Andorra", "Encamp, Andorra"]
         },
         {
           "name": "Armenia",
-          "cities": ["Yerevan", "Gyumri", "Vanadzor"]
+          "cities": ["Yerevan, Armenia", "Gyumri, Armenia", "Vanadzor, Armenia"]
         },
         {
           "name": "Austria",
-          "cities": ["Vienna", "Graz", "Linz"]
+          "cities": ["Vienna, Austria", "Graz, Austria", "Linz, Austria"]
         },
         {
           "name": "Azerbaijan",
-          "cities": ["Baku", "Ganja", "Sumqayit"]
+          "cities": ["Baku, Azerbaijan", "Ganja, Azerbaijan", "Sumqayit, Azerbaijan"]
         },
         {
           "name": "Belarus",
-          "cities": ["Minsk", "Gomel", "Mogilev"]
+          "cities": ["Minsk, Belarus", "Gomel, Belarus", "Mogilev, Belarus"]
         },
         {
           "name": "Belgium",
-          "cities": ["Brussels", "Antwerp", "Ghent"]
+          "cities": ["Brussels, Belgium", "Antwerp, Belgium", "Ghent, Belgium"]
         },
         {
           "name": "Bosnia and Herzegovina",
-          "cities": ["Sarajevo", "Banja Luka", "Mostar"]
+          "cities": ["Sarajevo, Bosnia and Herzegovina", "Banja Luka, Bosnia and Herzegovina", "Mostar, Bosnia and Herzegovina"]
         },
         {
           "name": "Bulgaria",
-          "cities": ["Sofia", "Plovdiv", "Varna"]
+          "cities": ["Sofia, Bulgaria", "Plovdiv, Bulgaria", "Varna, Bulgaria"]
         },
         {
           "name": "Croatia",
-          "cities": ["Zagreb", "Split", "Rijeka"]
+          "cities": ["Zagreb, Croatia", "Split, Croatia", "Rijeka, Croatia"]
         },
         {
           "name": "Cyprus",
-          "cities": ["Nicosia", "Limassol", "Larnaca"]
+          "cities": ["Nicosia, Cyprus", "Limassol, Cyprus", "Larnaca, Cyprus"]
         },
         {
           "name": "Czech Republic",
-          "cities": ["Prague", "Brno", "Ostrava"]
+          "cities": ["Prague, Czech Republic", "Brno, Czech Republic", "Ostrava, Czech Republic"]
         },
         {
           "name": "Denmark",
-          "cities": ["Copenhagen", "Aarhus", "Odense"]
+          "cities": ["Copenhagen, Denmark", "Aarhus, Denmark", "Odense, Denmark"]
         },
         {
           "name": "Estonia",
-          "cities": ["Tallinn", "Tartu", "Narva"]
+          "cities": ["Tallinn, Estonia", "Tartu, Estonia", "Narva, Estonia"]
         },
         {
           "name": "Finland",
-          "cities": ["Helsinki", "Espoo", "Tampere"]
+          "cities": ["Helsinki, Finland", "Espoo, Finland", "Tampere, Finland"]
         },
         {
           "name": "Georgia",
-          "cities": ["Tbilisi", "Batumi", "Kutaisi"]
+          "cities": ["Tbilisi, Georgia", "Batumi, Georgia", "Kutaisi, Georgia"]
         },
         {
           "name": "Germany",
-          "cities": ["Berlin", "Hamburg", "Munich"]
+          "cities": ["Berlin, Germany", "Hamburg, Germany", "Munich, Germany"]
         },
         {
           "name": "Greece",
-          "cities": ["Athens", "Thessaloniki", "Patras"]
+          "cities": ["Athens, Greece", "Thessaloniki, Greece", "Patras, Greece"]
         },
         {
           "name": "Hungary",
-          "cities": ["Budapest", "Debrecen", "Szeged"]
+          "cities": ["Budapest, Hungary", "Debrecen, Hungary", "Szeged, Hungary"]
         },
         {
           "name": "Iceland",
-          "cities": ["Reykjavik", "Kopavogur", "Hafnarfjordur"]
+          "cities": ["Reykjavik, Iceland", "Kopavogur, Iceland", "Hafnarfjordur, Iceland"]
         },
         {
           "name": "Ireland",
-          "cities": ["Dublin", "Cork", "Limerick"]
+          "cities": ["Dublin, Ireland", "Cork, Ireland", "Limerick, Ireland"]
         },
         {
           "name": "Italy",
-          "cities": ["Rome", "Milan", "Naples"]
+          "cities": ["Rome, Italy", "Milan, Italy", "Naples, Italy"]
         },
         {
           "name": "Kazakhstan",
-          "cities": ["Nur-Sultan", "Almaty", "Shymkent"]
+          "cities": ["Nur-Sultan, Kazakhstan", "Almaty, Kazakhstan", "Shymkent, Kazakhstan"]
         },
         {
           "name": "Kosovo",
-          "cities": ["Pristina", "Prizren", "Peja"]
+          "cities": ["Pristina, Kosovo", "Prizren, Kosovo", "Peja, Kosovo"]
         },
         {
           "name": "Latvia",
-          "cities": ["Riga", "Daugavpils", "Liepaja"]
+          "cities": ["Riga, Latvia", "Daugavpils, Latvia", "Liepaja, Latvia"]
         },
         {
           "name": "Liechtenstein",
-          "cities": ["Vaduz", "Schaan", "Balzers"]
+          "cities": ["Vaduz, Liechtenstein", "Schaan, Liechtenstein", "Balzers, Liechtenstein"]
         },
         {
           "name": "Lithuania",
-          "cities": ["Vilnius", "Kaunas", "Klaipeda"]
+          "cities": ["Vilnius, Lithuania", "Kaunas, Lithuania", "Klaipeda, Lithuania"]
         },
         {
           "name": "Luxembourg",
-          "cities": ["Luxembourg City", "Esch-sur-Alzette", "Differdange"]
+          "cities": ["Luxembourg City, Luxembourg", "Esch-sur-Alzette, Luxembourg", "Differdange, Luxembourg"]
         },
         {
           "name": "Malta",
-          "cities": ["Valletta", "Birkirkara", "Mosta"]
+          "cities": ["Valletta, Malta", "Birkirkara, Malta", "Mosta, Malta"]
         },
         {
           "name": "Moldova",
-          "cities": ["Chisinau", "Tiraspol", "Balti"]
+          "cities": ["Chisinau, Moldova", "Tiraspol, Moldova", "Balti, Moldova"]
         },
         {
           "name": "Monaco",
-          "cities": ["Monaco"]
+          "cities": ["Monaco, Monaco"]
         },
         {
           "name": "Montenegro",
-          "cities": ["Podgorica", "Nikšić", "Herceg Novi"]
+          "cities": ["Podgorica, Montenegro", "Nikšić, Montenegro", "Herceg Novi, Montenegro"]
         },
         {
           "name": "North Macedonia",
-          "cities": ["Skopje", "Bitola", "Kumanovo"]
+          "cities": ["Skopje, North Macedonia", "Bitola, North Macedonia", "Kumanovo, North Macedonia"]
         },
         {
           "name": "Norway",
-          "cities": ["Oslo", "Bergen", "Trondheim"]
+          "cities": ["Oslo, Norway", "Bergen, Norway", "Trondheim, Norway"]
         },
         {
           "name": "Poland",
-          "cities": ["Warsaw", "Krakow", "Lodz"]
+          "cities": ["Warsaw, Poland", "Krakow, Poland", "Lodz, Poland"]
         },
         {
           "name": "Portugal",
-          "cities": ["Lisbon", "Porto", "Amadora"]
+          "cities": ["Lisbon, Portugal", "Porto, Portugal", "Amadora, Portugal"]
         },
         {
           "name": "Romania",
-          "cities": ["Bucharest", "Cluj-Napoca", "Timișoara"]
+          "cities": ["Bucharest, Romania", "Cluj-Napoca, Romania", "Timișoara, Romania"]
         },
         {
           "name": "Russia",
-          "cities": ["Moscow", "Saint Petersburg", "Novosibirsk"]
+          "cities": ["Moscow, Russia", "Saint Petersburg, Russia", "Novosibirsk, Russia"]
         },
         {
           "name": "San Marino",
-          "cities": ["San Marino", "Serravalle", "Borgo Maggiore"]
+          "cities": ["San Marino, San Marino", "Serravalle, San Marino", "Borgo Maggiore, San Marino"]
         },
         {
           "name": "Serbia",
-          "cities": ["Belgrade", "Novi Sad", "Niš"]
+          "cities": ["Belgrade, Serbia", "Novi Sad, Serbia", "Niš, Serbia"]
         },
         {
           "name": "Slovakia",
-          "cities": ["Bratislava", "Košice", "Prešov"]
+          "cities": ["Bratislava, Slovakia", "Košice, Slovakia", "Prešov, Slovakia"]
         },
         {
           "name": "Slovenia",
-          "cities": ["Ljubljana", "Maribor", "Celje"]
+          "cities": ["Ljubljana, Slovenia", "Maribor, Slovenia", "Celje, Slovenia"]
         },
         {
           "name": "Spain",
-          "cities": ["Madrid", "Barcelona", "Valencia"]
+          "cities": ["Madrid, Spain", "Barcelona, Spain", "Valencia, Spain"]
         },
         {
           "name": "Sweden",
-          "cities": ["Stockholm", "Gothenburg", "Malmö"]
+          "cities": ["Stockholm, Sweden", "Gothenburg, Sweden", "Malmö, Sweden"]
         },
         {
           "name": "Switzerland",
-          "cities": ["Bern", "Zurich", "Geneva"]
+          "cities": ["Bern, Switzerland", "Zurich, Switzerland", "Geneva, Switzerland"]
         },
         {
           "name": "Turkey",
-          "cities": ["Ankara", "Istanbul", "Izmir"]
+          "cities": ["Ankara, Turkey", "Istanbul, Turkey", "Izmir, Turkey"]
         },
         {
           "name": "Ukraine",
-          "cities": ["Kyiv", "Kharkiv", "Odesa"]
+          "cities": ["Kyiv, Ukraine", "Kharkiv, Ukraine", "Odesa, Ukraine"]
         },
         {
           "name": "United Kingdom",
-          "cities": ["London, United Kingdom", "Birmingham", "Manchester"]
+          "cities": ["London, United Kingdom", "Birmingham, United Kingdom", "Manchester, United Kingdom"]
         },
         {
           "name": "Vatican City",
-          "cities": ["Vatican City"]
+          "cities": ["Vatican City, Vatican City"]
         }
       ]
     },
@@ -1745,95 +1745,95 @@
       "countries": [
         {
           "name": "Antigua and Barbuda",
-          "cities": ["St. John's", "All Saints", "Liberta"]
+          "cities": ["St. John's, Antigua and Barbuda", "All Saints, Antigua and Barbuda", "Liberta, Antigua and Barbuda"]
         },
         {
           "name": "Bahamas",
-          "cities": ["Nassau", "Freeport", "West End"]
+          "cities": ["Nassau, Bahamas", "Freeport, Bahamas", "West End, Bahamas"]
         },
         {
           "name": "Barbados",
-          "cities": ["Bridgetown", "Speightstown", "Oistins"]
+          "cities": ["Bridgetown, Barbados", "Speightstown, Barbados", "Oistins, Barbados"]
         },
         {
           "name": "Belize",
-          "cities": ["Belmopan", "Belize City", "San Ignacio"]
+          "cities": ["Belmopan, Belize", "Belize City, Belize", "San Ignacio, Belize"]
         },
         {
           "name": "Canada",
-          "cities": ["Ottawa", "Toronto", "Montreal"]
+          "cities": ["Ottawa, Canada", "Toronto, Canada", "Montreal, Canada"]
         },
         {
           "name": "Costa Rica",
-          "cities": ["San Jose", "Limon", "Puntarenas"]
+          "cities": ["San Jose, Costa Rica", "Limon, Costa Rica", "Puntarenas, Costa Rica"]
         },
         {
           "name": "Cuba",
-          "cities": ["Havana", "Santiago de Cuba", "Camagüey"]
+          "cities": ["Havana, Cuba", "Santiago de Cuba, Cuba", "Camagüey, Cuba"]
         },
         {
           "name": "Dominica",
-          "cities": ["Roseau", "Portsmouth", "Marigot"]
+          "cities": ["Roseau, Dominica", "Portsmouth, Dominica", "Marigot, Dominica"]
         },
         {
           "name": "Dominican Republic",
-          "cities": ["Santo Domingo", "Santiago", "La Romana"]
+          "cities": ["Santo Domingo, Dominican Republic", "Santiago, Dominican Republic", "La Romana, Dominican Republic"]
         },
         {
           "name": "El Salvador",
-          "cities": ["San Salvador", "Santa Ana", "San Miguel"]
+          "cities": ["San Salvador, El Salvador", "Santa Ana, El Salvador", "San Miguel, El Salvador"]
         },
         {
           "name": "Grenada",
-          "cities": ["St. George's", "Gouyave", "Victoria"]
+          "cities": ["St. George's, Grenada", "Gouyave, Grenada", "Victoria, Grenada"]
         },
         {
           "name": "Guatemala",
-          "cities": ["Guatemala City", "Mixco", "Villa Nueva"]
+          "cities": ["Guatemala City, Guatemala", "Mixco, Guatemala", "Villa Nueva, Guatemala"]
         },
         {
           "name": "Haiti",
-          "cities": ["Port-au-Prince", "Cap-Haïtien", "Delmas"]
+          "cities": ["Port-au-Prince, Haiti", "Cap-Haïtien, Haiti", "Delmas, Haiti"]
         },
         {
           "name": "Honduras",
-          "cities": ["Tegucigalpa", "San Pedro Sula", "Choloma"]
+          "cities": ["Tegucigalpa, Honduras", "San Pedro Sula, Honduras", "Choloma, Honduras"]
         },
         {
           "name": "Jamaica",
-          "cities": ["Kingston", "Montego Bay", "Spanish Town"]
+          "cities": ["Kingston, Jamaica", "Montego Bay, Jamaica", "Spanish Town, Jamaica"]
         },
         {
           "name": "Mexico",
-          "cities": ["Mexico City", "Guadalajara", "Monterrey"]
+          "cities": ["Mexico City, Mexico", "Guadalajara, Mexico", "Monterrey, Mexico"]
         },
         {
           "name": "Nicaragua",
-          "cities": ["Managua", "León", "Masaya"]
+          "cities": ["Managua, Nicaragua", "León, Nicaragua", "Masaya, Nicaragua"]
         },
         {
           "name": "Panama",
-          "cities": ["Panama City", "San Miguelito", "Tocumen"]
+          "cities": ["Panama City, Panama", "San Miguelito, Panama", "Tocumen, Panama"]
         },
         {
           "name": "Saint Kitts and Nevis",
-          "cities": ["Basseterre", "Charlestown"]
+          "cities": ["Basseterre, Saint Kitts and Nevis", "Charlestown, Saint Kitts and Nevis"]
         },
         {
           "name": "Saint Lucia",
-          "cities": ["Castries", "Vieux Fort", "Micoud"]
+          "cities": ["Castries, Saint Lucia", "Vieux Fort, Saint Lucia", "Micoud, Saint Lucia"]
         },
         {
           "name": "Saint Vincent and the Grenadines",
-          "cities": ["Kingstown", "Kingstown Park", "Georgetown"]
+          "cities": ["Kingstown, Saint Vincent and the Grenadines", "Kingstown Park, Saint Vincent and the Grenadines", "Georgetown, Saint Vincent and the Grenadines"]
         },
         {
           "name": "Trinidad and Tobago",
-          "cities": ["Port of Spain", "Chaguanas", "San Fernando"]
+          "cities": ["Port of Spain, Trinidad and Tobago", "Chaguanas, Trinidad and Tobago", "San Fernando, Trinidad and Tobago"]
         },
         {
           "name": "United States",
-          "cities": ["Washington, D.C.", "New York City", "Los Angeles"]
+          "cities": ["Washington, D.C., United States", "New York City, United States", "Los Angeles, United States"]
         }
       ]
     },
@@ -1842,51 +1842,51 @@
       "countries": [
         {
           "name": "Argentina",
-          "cities": ["Buenos Aires", "Cordoba", "Rosario"]
+          "cities": ["Buenos Aires, Argentina", "Cordoba, Argentina", "Rosario, Argentina"]
         },
         {
           "name": "Bolivia",
-          "cities": ["La Paz", "Sucre", "Santa Cruz de la Sierra"]
+          "cities": ["La Paz, Bolivia", "Sucre, Bolivia", "Santa Cruz de la Sierra, Bolivia"]
         },
         {
           "name": "Brazil",
-          "cities": ["Brasília", "São Paulo", "Rio de Janeiro"]
+          "cities": ["Brasília, Brazil", "São Paulo, Brazil", "Rio de Janeiro, Brazil"]
         },
         {
           "name": "Chile",
-          "cities": ["Santiago", "Valparaíso", "Concepción"]
+          "cities": ["Santiago, Chile", "Valparaíso, Chile", "Concepción, Chile"]
         },
         {
           "name": "Colombia",
-          "cities": ["Bogotá", "Medellín", "Cali"]
+          "cities": ["Bogotá, Colombia", "Medellín, Colombia", "Cali, Colombia"]
         },
         {
           "name": "Ecuador",
-          "cities": ["Quito", "Guayaquil", "Cuenca"]
+          "cities": ["Quito, Ecuador", "Guayaquil, Ecuador", "Cuenca, Ecuador"]
         },
         {
           "name": "Guyana",
-          "cities": ["Georgetown", "Linden", "New Amsterdam"]
+          "cities": ["Georgetown, Guyana", "Linden, Guyana", "New Amsterdam, Guyana"]
         },
         {
           "name": "Paraguay",
-          "cities": ["Asunción", "Ciudad del Este", "Encarnación"]
+          "cities": ["Asunción, Paraguay", "Ciudad del Este, Paraguay", "Encarnación, Paraguay"]
         },
         {
           "name": "Peru",
-          "cities": ["Lima", "Arequipa", "Trujillo"]
+          "cities": ["Lima, Peru", "Arequipa, Peru", "Trujillo, Peru"]
         },
         {
           "name": "Suriname",
-          "cities": ["Paramaribo", "Lelydorp", "Nieuw Nickerie"]
+          "cities": ["Paramaribo, Suriname", "Lelydorp, Suriname", "Nieuw Nickerie, Suriname"]
         },
         {
           "name": "Uruguay",
-          "cities": ["Montevideo", "Salto", "Ciudad de la Costa"]
+          "cities": ["Montevideo, Uruguay", "Salto, Uruguay", "Ciudad de la Costa, Uruguay"]
         },
         {
           "name": "Venezuela",
-          "cities": ["Caracas", "Maracaibo", "Valencia"]
+          "cities": ["Caracas, Venezuela", "Maracaibo, Venezuela", "Valencia, Venezuela"]
         }
       ]
     },
@@ -1895,59 +1895,59 @@
       "countries": [
         {
           "name": "Australia",
-          "cities": ["Sydney", "Melbourne", "Brisbane"]
+          "cities": ["Sydney, Australia", "Melbourne, Australia", "Brisbane, Australia"]
         },
         {
           "name": "Fiji",
-          "cities": ["Suva", "Lautoka", "Nadi"]
+          "cities": ["Suva, Fiji", "Lautoka, Fiji", "Nadi, Fiji"]
         },
         {
           "name": "Kiribati",
-          "cities": ["South Tarawa", "Betio", "Bikenibeu"]
+          "cities": ["South Tarawa, Kiribati", "Betio, Kiribati", "Bikenibeu, Kiribati"]
         },
         {
           "name": "Marshall Islands",
-          "cities": ["Majuro", "Ebeye", "Arno"]
+          "cities": ["Majuro, Marshall Islands", "Ebeye, Marshall Islands", "Arno, Marshall Islands"]
         },
         {
           "name": "Micronesia",
-          "cities": ["Palikir", "Weno", "Colonia"]
+          "cities": ["Palikir, Micronesia", "Weno, Micronesia", "Colonia, Micronesia"]
         },
         {
           "name": "Nauru",
-          "cities": ["Yaren", "Denigomodu", "Anabar"]
+          "cities": ["Yaren, Nauru", "Denigomodu, Nauru", "Anabar, Nauru"]
         },
         {
           "name": "New Zealand",
-          "cities": ["Auckland", "Wellington", "Christchurch"]
+          "cities": ["Auckland, New Zealand", "Wellington, New Zealand", "Christchurch, New Zealand"]
         },
         {
           "name": "Palau",
-          "cities": ["Ngerulmud", "Koror", "Melekeok"]
+          "cities": ["Ngerulmud, Palau", "Koror, Palau", "Melekeok, Palau"]
         },
         {
           "name": "Papua New Guinea",
-          "cities": ["Port Moresby", "Lae", "Mount Hagen"]
+          "cities": ["Port Moresby, Papua New Guinea", "Lae, Papua New Guinea", "Mount Hagen, Papua New Guinea"]
         },
         {
           "name": "Samoa",
-          "cities": ["Apia", "Vaitele", "Faleula"]
+          "cities": ["Apia, Samoa", "Vaitele, Samoa", "Faleula, Samoa"]
         },
         {
           "name": "Solomon Islands",
-          "cities": ["Honiara", "Auki", "Gizo"]
+          "cities": ["Honiara, Solomon Islands", "Auki, Solomon Islands", "Gizo, Solomon Islands"]
         },
         {
           "name": "Tonga",
-          "cities": ["Nuku'alofa", "Neiafu", "Haveluloto"]
+          "cities": ["Nuku'alofa, Tonga", "Neiafu, Tonga", "Haveluloto, Tonga"]
         },
         {
           "name": "Tuvalu",
-          "cities": ["Funafuti", "Fongafale", "Vaiaku"]
+          "cities": ["Funafuti, Tuvalu", "Fongafale, Tuvalu", "Vaiaku, Tuvalu"]
         },
         {
           "name": "Vanuatu",
-          "cities": ["Port Vila", "Luganville", "Norsup"]
+          "cities": ["Port Vila, Vanuatu", "Luganville, Vanuatu", "Norsup, Vanuatu"]
         }
       ]
     },
@@ -1956,42 +1956,42 @@
       "countries": [
         {
           "name": "Argentina",
-          "cities": ["Marambio Base", "Esperanza Base", "Orcadas Base"]
+          "cities": ["Marambio Base, Argentina", "Esperanza Base, Argentina", "Orcadas Base, Argentina"]
         },
         {
           "name": "Australia",
-          "cities": ["Davis Station", "Casey Station", "Mawson Station"]
+          "cities": ["Davis Station, Australia", "Casey Station, Australia", "Mawson Station, Australia"]
         },
         {
           "name": "Chile",
           "cities": [
-            "Arturo Prat Base",
-            "General Bernardo O'Higgins Station",
-            "Eduardo Frei Montalva Station"
+            "Arturo Prat Base, Chile",
+            "General Bernardo O'Higgins Station, Chile",
+            "Eduardo Frei Montalva Station, Chile"
           ]
         },
         {
           "name": "France",
-          "cities": ["Dumont d'Urville Station"]
+          "cities": ["Dumont d'Urville Station, France"]
         },
         {
           "name": "New Zealand",
-          "cities": ["Scott Base"]
+          "cities": ["Scott Base, New Zealand"]
         },
         {
           "name": "Norway",
-          "cities": ["Troll Station"]
+          "cities": ["Troll Station, Norway"]
         },
         {
           "name": "United Kingdom",
-          "cities": ["Rothera Research Station", "Halley Research Station"]
+          "cities": ["Rothera Research Station, United Kingdom", "Halley Research Station, United Kingdom"]
         },
         {
           "name": "United States",
           "cities": [
-            "McMurdo Station",
-            "Amundsen–Scott South Pole Station",
-            "Palmer Station"
+            "McMurdo Station, United States",
+            "Amundsen–Scott South Pole Station, United States",
+            "Palmer Station, United States"
           ]
         }
       ]

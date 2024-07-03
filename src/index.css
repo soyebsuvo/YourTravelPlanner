@@ -33,6 +33,9 @@ html{
 .forChild:nth-child(even){
     flex-direction: row-reverse;
 }
+.forChild:last-child .fly_line{
+    display: none;
+}
 .connector img{
     transform: rotate(10deg);
     display: absolute;

@@ -65,7 +65,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
 
     const [places, setPlaces] = useState([]);
     const [query, setQuery] = useState();
-    const { place , setPlace, filteredContinent, setFilteredContinent, setNextCity} = useContext(MyContext);
+    const { place , setPlace, filteredContinent, setFilteredContinent, setNextCity, selectedCities, setSelectedCities} = useContext(MyContext);
     useEffect(() => {
         fetch('dataset.json').then(res => res.json()).then((data) => {
             // setPlaces(data)
@@ -88,7 +88,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
 
     // useEffect(() => {
     //     async function fetchContinents() {
-    //         const response = await axios.get('http://localhost:3000/api/continents');
+    //         const response = await axios.get('https://server.wandergeniellm.com/api/continents');
     //         setContinents(response.data);
     //         console.log(response.data)
     //     }
@@ -98,7 +98,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
     // useEffect(() => {
     //     if (selectedContinent) {
     //         const fetchCountries = async () => {
-    //             const response = await axios.get(`http://localhost:3000/api/countries/${selectedContinent}`);
+    //             const response = await axios.get(`https://server.wandergeniellm.com/api/countries/${selectedContinent}`);
     //             setCountries(response.data);
     //         }
     //         fetchCountries();
@@ -108,7 +108,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
     // useEffect(() => {
     //     if (selectedContinent && selectedCountry) {
     //         const fetchCities = async () => {
-    //             const response = await axios.get(`http://localhost:3000/api/cities/${selectedContinent}/${selectedCountry}`);
+    //             const response = await axios.get(`https://server.wandergeniellm.com/api/cities/${selectedContinent}/${selectedCountry}`);
     //             setCities(response.data);
     //         }
     //         fetchCities();
@@ -156,19 +156,25 @@ const Banner = ({scrollHandler, durationScroll}) => {
     };
 
     const handleSubmit = (item) => {
+        setPlace(item); 
+        setNextCity(item);
+        if(item.includes(",")){
+            const firstCity = item.split(",")[0];
+            setSelectedCities([...selectedCities, firstCity])
+        }
         // e.preventDefault();
         handleSearch(item);
         setQuery(item)
     };
 
     useEffect(() => {
-        fetch('http://localhost:3000/places')
+        fetch('https://server.wandergeniellm.com/places')
             .then(response => response.json())
             .then(data => setPlaces(data.places));
     }, []);
     // const [open, setOpen] = useState(false);
     const handleSearch = (place) => {
-        fetch(`http://localhost:3000/continent/${place}`)
+        fetch(`https://server.wandergeniellm.com/continent/${place}`)
             .then(response => response.json())
             .then(data => {
                 setFilteredContinent(data);
@@ -232,7 +238,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
                             <div className={`absolute w-[340px] ${query ? "h-[238px] bg-white" : "h-0"} top-34 left-[90px]  rounded-lg text-black ${place ? 'hidden' : ''}`}>
                                 <ul className={`${places ? "overflow-y-scroll scrollbar-hide h-[238px]" : "h-0"}`}>
                                     {
-                                        places?.map((item, index) => <li className="text-left font-semibold p-2 cursor-pointer my-1 border-2 border-white transition-all duration-300 rounded-lg w-full hover:border-2 hover:border-blue-400" onClick={() => { setPlace(item); setNextCity(item); handleSubmit(item) ; scrollHandler(durationScroll) }} key={index}>{item}</li>)
+                                        places?.map((item, index) => <li className="text-left font-semibold p-2 cursor-pointer my-1 border-2 border-white transition-all duration-300 rounded-lg w-full hover:border-2 hover:border-blue-400" onClick={() => { handleSubmit(item) ; scrollHandler(durationScroll) }} key={index}>{item}</li>)
                                     }
                                 </ul>
                             </div>

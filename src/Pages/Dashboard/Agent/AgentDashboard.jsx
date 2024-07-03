@@ -2,17 +2,83 @@ import { useQuery } from "@tanstack/react-query";
 import Navbar from "../../../Components/Navbar/Navbar";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Preloader from "../../../Components/Preloader/Preloader";
+import Swal from "sweetalert2";
+import { useContext } from "react";
+import { MyContext } from "../../../Components/Context/Context";
+import { useNavigate } from "react-router-dom";
 
 const AgentDashboard = () => {
+    const navigate = useNavigate();
+    const { setImages , setResponse} = useContext(MyContext)
     const axiosPublic = useAxiosPublic();
-    const { data : itineraries , isPending } = useQuery({
-        queryKey : ['requestedItinenary'],
-        queryFn : async () => {
+    const { data: itineraries, isPending, refetch } = useQuery({
+        queryKey: ['requestedItinenary'],
+        queryFn: async () => {
             const res = await axiosPublic.get(`/requestedbids`);
             return res.data;
         }
     })
-    if(isPending){
+
+    const handleReject = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Reject it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosPublic.patch(`/requestedToReject/${id}`)
+                console.log(res.data)
+                if (res.data.modifiedCount) {
+                    refetch()
+                    Swal.fire({
+                        title: "Rejected",
+                        text: "The request has been Rejected.",
+                        icon: "success"
+                    });
+                }
+            }
+        });
+    }
+    const handleAccept = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Accept it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosPublic.patch(`/requestedToAccept/${id}`)
+                console.log(res.data)
+                if (res.data.modifiedCount) {
+                    refetch()
+                    Swal.fire({
+                        title: "Accepted",
+                        text: "The request has been Accepted.",
+                        icon: "success"
+                    });
+                }
+            }
+        });
+    }
+
+    const handleViewItinerary = (itinerary) => {
+        setResponse(null)
+        const data = itinerary?.response;
+        const image = itinerary?.images;
+        setResponse(data);
+        setImages(image)
+        navigate("/recommendations")
+    }
+
+
+    if (isPending) {
         return <Preloader />
     }
     return (
@@ -34,10 +100,10 @@ const AgentDashboard = () => {
                                         <th>Group Size</th>
                                         <th>Accommodation</th>
                                         <th>Transportation</th>
-                                        <th>Special Requirements</th>
+                                        <th>Special <br /> Requirements</th>
                                         <th>Total Budget</th>
-                                        <th>Action</th>
-                                        <th>Action</th>
+                                        <th>Itinerary</th>
+                                        <th className="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,7 +123,7 @@ const AgentDashboard = () => {
                                                     })
                                                 }</td>
                                                 <td>
-                                                    {lastDay?.split(" ")[1]} {lastDay?.split(" ")[0]}s
+                                                    {lastDay?.split(" ")[1]} {lastDay?.split(" ")[0]}
                                                 </td>
                                                 <td>{
                                                     group
@@ -65,9 +131,20 @@ const AgentDashboard = () => {
                                                 <td>{accommodation}</td>
                                                 <td>{transportation}</td>
                                                 <td>N/A</td>
-                                                <td>$5000</td>
-                                                <td><button className="text-white bg-blue-500 px-2 py-1 rounded">Accept</button></td>
-                                                <td><button className="text-white bg-red-400 px-2 py-1 rounded">Reject</button></td>
+                                                <td>{oneItinerary?.response?.totalCost}</td>
+                                                <td onClick={() => handleViewItinerary(oneItinerary)} className="text-blue-500 underline font-semibold cursor-pointer text-center">View</td>
+                                                {
+                                                    oneItinerary?.status === 'pending' && <td className="">
+                                                        <p onClick={() => handleAccept(oneItinerary?._id)} className="text-white mr-3 inline cursor-pointer bg-blue-500 px-2 py-1 rounded">Accept</p>
+                                                        <p onClick={() => handleReject(oneItinerary?._id)} className="text-white inline cursor-pointer bg-red-400 px-2 py-1 rounded">Reject</p>
+                                                    </td>
+                                                }
+                                                {
+                                                    oneItinerary?.status === 'accepted' && <td className=""><p className="text-white text-center font-semibold bg-green-500 px-2 py-1 rounded">Accepted</p></td>
+                                                }
+                                                {
+                                                    oneItinerary?.status === 'rejected' && <td className=""><p className="text-white text-center font-semibold bg-red-500 px-2 py-1 rounded">Rejected</p></td>
+                                                }
                                             </tr>
                                         })
                                     }

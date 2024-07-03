@@ -15,6 +15,7 @@ import MyTrip from "../Pages/MyTrip/MyTrip";
 import CitySelection from "../Pages/CitySelection/CitySelection";
 import PrivateRoute from "./PrivateRoute";
 import AgentDashboard from "../Pages/Dashboard/Agent/AgentDashboard";
+import AgentRoute from "./AgentRoute";
 
 export const router = createBrowserRouter([
     {
@@ -84,6 +85,6 @@ export const router = createBrowserRouter([
     },
     {
         path : "/dashboard",
-        element : <AgentDashboard />
+        element : <AgentRoute><AgentDashboard /></AgentRoute>
     }
 ])

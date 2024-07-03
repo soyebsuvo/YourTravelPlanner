@@ -24,11 +24,11 @@ const Navbar = () => {
     const links = <>
         <NavLink to="/"><a>Home</a></NavLink>
         <span className="cursor-pointer" onClick={() => document.getElementById('coming_soon').showModal()}><a>Marketplace</a></span>
-        {user ? <NavLink to="/my-trips"><a>My Trips</a></NavLink> : <a onClick={() => document.getElementById('my_modal_3').showModal()} className="cursor-pointer">My Trips</a>}
+        {user ? role === "agent" || <NavLink to="/my-trips"><a>My Trips</a></NavLink> : "" }
         {/* <NavLink to="/Honeymoon"><a>Honeymoon Gateways</a></NavLink> */}
+        {role === "agent" && <NavLink to="/dashboard"><a>Vendor Dashboards</a></NavLink>}
         {user ? <NavLink to="/manage-account/profile"><a>Manage Account</a></NavLink> : <a onClick={() => document.getElementById('my_modal_3').showModal()} className="cursor-pointer">Manage Account</a>}
         {/* <li><a><BsThreeDots/></a></li> */}
-        {role === "agent" && <NavLink to="/dashboard"><a>Vendor Dashboards</a></NavLink>}
         <li><a><IoIosNotifications className="text-2xl" /></a></li>
     </>
     const logout = () => {
