@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const TravelPackageDetails = () => {
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="border rounded-lg p-4">
           <h2 className="text-xl font-bold mb-4">Included</h2>
           <IncludedSection />

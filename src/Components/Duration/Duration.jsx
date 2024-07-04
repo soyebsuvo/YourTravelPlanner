@@ -5,9 +5,9 @@ import img3 from '../../assets/duration_option_3_ed7980d091.jpeg';
 import img4 from '../../assets/duration_option_4_d91110b9e1.jpeg';
 const Duration = ({ value, setValue , scrollHandler , membersScroll , durationScroll}) => {
     return (
-        <div ref={durationScroll} className="border border-blue-400 p-6 px-20 shadow-xl rounded-xl">
+        <div ref={durationScroll} className="border border-blue-400 p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
             <div>
-                <h2 className='text-xl font-semibold text-center'>What is the length of your holiday?<span className='text-red-500'>*</span></h2>
+                <h2 className='text-md md:text-xl font-semibold text-center'>What is the length of your holiday?<span className='text-red-500'>*</span></h2>
             </div>
             <div className="grid grid-cols-2 gap-6 py-4">
                 <div onClick={() => {setValue("6-9 days"); scrollHandler(membersScroll)}} className={value === "6-9 days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>

@@ -220,8 +220,8 @@ const Banner = ({scrollHandler, durationScroll}) => {
                         </div> */}
                         {/* input field */}
                         <div className={`${place ? "" : ""}`}>
+                            <div className="relative">
                             <span className="absolute bottom-[17px] left-[107px]"><IoSearch className="text-gray-500 text-[19px]" /></span>
-                            <div>
                                 <form onSubmit={handleSubmit}>
                                     <input
                                         type="text"
@@ -298,7 +298,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
                     </div> */}
                 </div>
             </div>
-            <div className="bg-[#000] py-3 flex justify-evenly items-center">
+            <div className="bg-[#000] py-3 flex justify-evenly text-sm md:text-base items-center">
                 <div className="flex justify-center items-center">
                     <FaFacebookF className="text-blue-500 bg-white p-1 rounded-full" />
                     <FcGoogle className=" bg-white p-[2px] rounded-full -ml-[7px]" />

@@ -78,8 +78,8 @@ const CitySelection = () => {
 
     }
     return (
-        <div style={{backgroundImage : "url('https://images.pexels.com/photos/3346227/pexels-photo-3346227.jpeg?cs=srgb&dl=cityscape-3346227.jpg&fm=jpg')", backgroundSize : "cover"}} className="bg-[#F7F8FB] h-screen p-8">
-            <div className="max-w-5xl mx-auto px-8 relative border-4 rounded-2xl pt-8 backdrop-blur-lg text-white h-[530px]">
+        <div style={{backgroundImage : "url('https://images.pexels.com/photos/3346227/pexels-photo-3346227.jpeg?cs=srgb&dl=cityscape-3346227.jpg&fm=jpg')", backgroundSize : "cover", backgroundPosition : "center", backgroundRepeat : "no-repeat"}} className="bg-[#F7F8FB] h-full p-8">
+            <div className="max-w-5xl mx-auto px-8 relative border-4 rounded-2xl pt-8 backdrop-blur-lg text-white md:h-[530px]">
                 {/* <button className="btn btn-sm btn-circle absolute right-2 top-2" onClick={onClose}>✕</button> */}
                 <h2 className="text-2xl font-bold">Other cities in {filteredContinent?.continent}</h2>
                 <div className="relative">

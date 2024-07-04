@@ -215,7 +215,7 @@ const RecommendationPage = () => {
                 <div className="max-w-7xl mx-auto md:px-14 py-4 mt-14 relative  border-4 rounded-2xl px-6">
                     <div className="border-2 p-6 mt-6 rounded-2xl">
                         <div className="flex justify-between items-center gap-4">
-                            <div className="flex items-center gap-3">
+                            <div className="hidden md:flex items-center gap-3">
                                 <div className="text-green-500 flex flex-col justify-center cursor-pointer items-center gap-1 border-b-2 border-green-500 w-[130px] pb-3">
                                     <SlCalender className="text-2xl" />
                                     <h3 className="text-xl font-semibold">Day by Day</h3>
@@ -269,20 +269,20 @@ const RecommendationPage = () => {
                                 {/* <ArcherContainer strokeColor="gray"> */}
                                 {
                                     response?.itinerary?.map((city, index) => {
-                                        return <div key={index} className="relative forChild flex items-start gap-12 justify-between my-2 h-auto border-2 rounded-2xl p-4">
+                                        return <div key={index} className="relative md:forChild flex flex-col-reverse items-start gap-4 md:gap-12 justify-between my-2 h-auto border-2 rounded-2xl p-4">
                                             {/* <ArcherElement id={`element-${index}`}
                                                     relations={[
                                                         { targetId: `element-${index + 1}`, targetAnchor: 'top', sourceAnchor: 'bottom', label: <div><IoAirplaneSharp className={`text-4xl text-gray-500 hover:text-blue-600 duration-200 cursor-pointer ${index % 2 !== 0 ? 'rotate-180' : ''}`} /></div> }
                                                     ]}
                                                 > */}
-                                            <div className="w-[55%] h-auto">
+                                            <div className="w-full md:w-[55%] h-auto text-xs md:text-base">
                                                 <div>
                                                     <div ref={el => element1Refs.current[index] = el} className="main border-2 rounded-2xl w-full h-full">
                                                         {/* header  */}
                                                         <div className="flex justify-between items-center p-3">
-                                                            <div className="font-bold">{city?.destination}<span className="ml-5 text-gray-500 font-semibold">{city?.travelDates?.start} to {city?.travelDates?.end}</span></div>
+                                                            <div className="font-bold text-xs">{city?.destination}<span className="ml-5 text-gray-500 font-semibold">{city?.travelDates?.start} to {city?.travelDates?.end}</span></div>
 
-                                                            <div className="font-bold">{city?.destination} Trip Roadmap</div>
+                                                            <div className="font-bold text-xs">{city?.destination} Trip Roadmap</div>
                                                         </div>
                                                         {/* row  */}
                                                         {
@@ -337,11 +337,11 @@ const RecommendationPage = () => {
 
                                             </div>
                                             {/* </ArcherElement> */}
-                                            <div className="w-[45%] h-full">
+                                            <div className="w-full md:w-[45%] h-full">
                                                 {/* <img className="p-5" src={images[index]} alt="Nai" /> */}
                                                 <img ref={el => element2Refs.current[index] = el} className="rounded-2xl w-full" src={images[index]} alt="imageS" />
                                             </div>
-                                            <div className={`fly_line absolute -bottom-[145px] left-96 z-50 ${index % 2 !== 0 ? 'scale-x-[-1]' : ''}`}>
+                                            <div className={`hidden fly_line absolute -bottom-[145px] left-96 z-50 ${index % 2 !== 0 ? 'scale-x-[-1]' : ''}`}>
                                                 <div className="absolute bottom-[42px] left-40 rotate-45">
                                                     <Lottie animationData={animationData} style={{ width: 100, height: 100 }} />
                                                 </div>

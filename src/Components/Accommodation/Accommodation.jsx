@@ -5,9 +5,9 @@ import img4 from '../../assets/bed_and_breakfast.jpg'
 import PropTypes from 'prop-types';
 const Accommodation = ({value , setValue, accommodationScroll ,scrollHandler , transportationScroll}) => {
     return (
-        <div ref={accommodationScroll} className="border border-blue-400 p-6 px-20 shadow-xl rounded-xl">
+        <div ref={accommodationScroll} className="border border-blue-400 p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
             <div>
-                <h2 className='text-xl font-semibold text-center'> Where would you like to stay ? <span className='text-red-500'>*</span> </h2>
+                <h2 className='text-md md:text-xl font-semibold text-center'> Where would you like to stay ? <span className='text-red-500'>*</span> </h2>
             </div>
             <div className="grid grid-cols-2 gap-6 py-4">
                 <div onClick={() => {setValue("Hotels") ; scrollHandler(transportationScroll)}} className={value === "Hotels" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
