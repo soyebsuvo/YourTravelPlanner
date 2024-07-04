@@ -30,20 +30,20 @@ const Loader = () => {
             <div className="content backdrop-blur-md bg-opacity-30 relative">
 
                 <div className="text-loader">
-                    <div className="absolute left-20 top-44">
+                    <div className="absolute left-6 md:left-20 top-44">
                         <Lottie animationData={animationData} style={{ width: 400, height: 400 }} />
                     </div>
-                    <div className="h-screen absolute right-20 top-44">
+                    <div className="h-screen absolute right-20 top-44 hidden md:block">
                         <Lottie animationData={animationData} style={{ width: 400, height: 400 }} />
                     </div>
                     {currentFact ? (
-                        <div className="flex flex-col justify-center items-center h-screen gap-3 bg-opacity-20">
-                            <h3 className="text-6xl font-semibold text-white">{currentFact.title}</h3>
-                            <p className="text-xl w-[700px] text-center text-white">&apos;&apos;{currentFact.content}&apos;&apos;</p>
+                        <div className="flex flex-col justify-center items-center h-screen gap-3 p-4 bg-opacity-20">
+                            <h3 className="text-4xl font-semibold text-white">{currentFact.title}</h3>
+                            <p className="text-md w-full md:w-[700px] text-center text-white">&apos;&apos;{currentFact.content}&apos;&apos;</p>
                         </div>
-                    ) : <div className="flex flex-col justify-center items-center h-screen gap-3">
-                        <h3 className="text-6xl font-semibold text-white">Global Wanderlust</h3>
-                        <p className="text-xl w-[700px] text-center text-white">&apos;Every minute, approximately 2,000 people board flights around the world. That&apos;s about 1.2 million people taking to the skies each day!&apos;</p>
+                    ) : <div className="flex flex-col justify-center items-center h-screen gap-3 p-4">
+                        <h3 className="text-4xl font-semibold text-white">Global Wanderlust</h3>
+                        <p className="text-md w-full md:w-[700px] text-center text-white">&apos;Every minute, approximately 2,000 people board flights around the world. That&apos;s about 1.2 million people taking to the skies each day!&apos;</p>
                     </div>}
                     
                 </div>

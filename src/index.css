@@ -29,10 +29,30 @@ html{
     background-color: #f9f9f9;
     border: 1px solid #ccc;
 }
-  
-.forChild:nth-child(even){
-    flex-direction: row-reverse;
+
+/* .forChild{
+    flex-direction: row;
+} */
+
+.forChild{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
 }
+
+@media screen and (min-width: 768px) {
+    .forChild{
+        display: flex;
+        gap: 48px;
+        flex-direction: row;
+    }
+    .forChild:nth-child(even){
+        display: flex;
+        flex-direction: row-reverse !important;        
+    }
+}
+
+
 .forChild:last-child .fly_line{
     display: none;
 }

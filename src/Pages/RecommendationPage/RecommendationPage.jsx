@@ -153,7 +153,7 @@ const RecommendationPage = () => {
     }, [heights, response, images]);
 
 
-    if (!response) {
+    if (response) {
         return <Loader /> // Display loading message while response is being fetched
     }
 
@@ -269,7 +269,7 @@ const RecommendationPage = () => {
                                 {/* <ArcherContainer strokeColor="gray"> */}
                                 {
                                     response?.itinerary?.map((city, index) => {
-                                        return <div key={index} className="relative md:forChild flex flex-col-reverse items-start gap-4 md:gap-12 justify-between my-2 h-auto border-2 rounded-2xl p-4">
+                                        return <div key={index} className="relative forChild items-start justify-between my-2 h-auto border-2 rounded-2xl p-4">
                                             {/* <ArcherElement id={`element-${index}`}
                                                     relations={[
                                                         { targetId: `element-${index + 1}`, targetAnchor: 'top', sourceAnchor: 'bottom', label: <div><IoAirplaneSharp className={`text-4xl text-gray-500 hover:text-blue-600 duration-200 cursor-pointer ${index % 2 !== 0 ? 'rotate-180' : ''}`} /></div> }
@@ -341,7 +341,7 @@ const RecommendationPage = () => {
                                                 {/* <img className="p-5" src={images[index]} alt="Nai" /> */}
                                                 <img ref={el => element2Refs.current[index] = el} className="rounded-2xl w-full" src={images[index]} alt="imageS" />
                                             </div>
-                                            <div className={`hidden fly_line absolute -bottom-[145px] left-96 z-50 ${index % 2 !== 0 ? 'scale-x-[-1]' : ''}`}>
+                                            <div className={`hidden md:block fly_line absolute -bottom-[145px] left-96 z-50 ${index % 2 !== 0 ? 'scale-x-[-1]' : ''}`}>
                                                 <div className="absolute bottom-[42px] left-40 rotate-45">
                                                     <Lottie animationData={animationData} style={{ width: 100, height: 100 }} />
                                                 </div>
@@ -353,13 +353,7 @@ const RecommendationPage = () => {
                                         </div>
                                     })
                                 }
-                                {/* </ArcherContainer> */}
                             </div>
-
-
-                            {/* <div className="col-span-5 p-4">
-                            <img className="p-4" src={normal} alt="" />
-                        </div> */}
                         </div>
                         <div className="border-2 rounded-2xl p-2">
                             <TravelPackageDetails />
