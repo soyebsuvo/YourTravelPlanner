@@ -52,7 +52,7 @@ const RecommendationPage = () => {
             {
                 _id: 9,
                 sender: "gpt",
-                content: "Chatbot assistance cooming soon for enhance your trips experiences...!!!",
+                content: "Chatbot assistant cooming soon...!!!",
                 timestamp: "no"
             }
         ]
@@ -153,7 +153,7 @@ const RecommendationPage = () => {
     }, [heights, response, images]);
 
 
-    if (response) {
+    if (!response) {
         return <Loader /> // Display loading message while response is being fetched
     }
 
