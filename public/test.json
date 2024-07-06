@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "city": "New Delhi",
+      "country": "India",
+      "continent": "Asia",
+      "image": "https://cdn.getyourguide.com/img/location/533591d4b943b.jpeg/88.jpg",
+      "latitude": "28.613939",
+      "longitude": "77.209021",
+      "text": "The bustling capital city of India.",
+      "budget": "Medium",
+      "visa": "Required"
+    }
+  ]
+}

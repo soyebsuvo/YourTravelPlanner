@@ -39,7 +39,7 @@ import PropTypes from 'prop-types';
 
 
 
-const Banner = ({scrollHandler, durationScroll}) => {
+const Banner = ({ scrollHandler, durationScroll }) => {
 
     // const [query, setQuery] = useState('');
     // const [places, setPlaces] = useState([]);
@@ -65,7 +65,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
 
     const [places, setPlaces] = useState([]);
     const [query, setQuery] = useState();
-    const { place , setPlace, filteredContinent, setFilteredContinent, setNextCity, selectedCities, setSelectedCities} = useContext(MyContext);
+    const { place, setPlace, filteredContinent, setFilteredContinent, setNextCity, selectedCities, setSelectedCities } = useContext(MyContext);
     useEffect(() => {
         fetch('dataset.json').then(res => res.json()).then((data) => {
             // setPlaces(data)
@@ -156,9 +156,9 @@ const Banner = ({scrollHandler, durationScroll}) => {
     };
 
     const handleSubmit = (item) => {
-        setPlace(item); 
+        setPlace(item);
         setNextCity(item);
-        if(item.includes(",")){
+        if (item.includes(",")) {
             const firstCity = item.split(",")[0];
             setSelectedCities([...selectedCities, firstCity])
         }
@@ -221,7 +221,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
                         {/* input field */}
                         <div className={`${place ? "" : ""}`}>
                             <div className="relative">
-                            <span className="absolute bottom-[17px] left-[107px]"><IoSearch className="text-gray-500 text-[19px]" /></span>
+                                <span className="absolute bottom-[17px] left-[107px]"><IoSearch className="text-gray-500 text-[19px]" /></span>
                                 <form onSubmit={handleSubmit}>
                                     <input
                                         type="text"
@@ -238,7 +238,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
                             <div className={`absolute w-[340px] ${query ? "h-[238px] bg-white" : "h-0"} top-34 left-[90px]  rounded-lg text-black ${place ? 'hidden' : ''}`}>
                                 <ul className={`${places ? "overflow-y-scroll scrollbar-hide h-[238px]" : "h-0"}`}>
                                     {
-                                        places?.map((item, index) => <li className="text-left font-semibold p-2 cursor-pointer my-1 border-2 border-white transition-all duration-300 rounded-lg w-full hover:border-2 hover:border-blue-400" onClick={() => { handleSubmit(item) ; scrollHandler(durationScroll) }} key={index}>{item}</li>)
+                                        places?.map((item, index) => <li className="text-left font-semibold p-2 cursor-pointer my-1 border-2 border-white transition-all duration-300 rounded-lg w-full hover:border-2 hover:border-blue-400" onClick={() => { handleSubmit(item); scrollHandler(durationScroll) }} key={index}>{item}</li>)
                                     }
                                 </ul>
                             </div>
@@ -299,6 +299,7 @@ const Banner = ({scrollHandler, durationScroll}) => {
                 </div>
             </div>
             <div className="bg-[#000] py-3 flex justify-evenly text-sm md:text-base items-center">
+                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">AI Powered Itinerary</span></h3>
                 <div className="flex justify-center items-center">
                     <FaFacebookF className="text-blue-500 bg-white p-1 rounded-full" />
                     <FcGoogle className=" bg-white p-[2px] rounded-full -ml-[7px]" />
@@ -317,6 +318,6 @@ const Banner = ({scrollHandler, durationScroll}) => {
 export default Banner;
 
 Banner.propTypes = {
-    scrollHandler : PropTypes.func.isRequired,   
-    durationScroll : PropTypes.object.isRequired
+    scrollHandler: PropTypes.func.isRequired,
+    durationScroll: PropTypes.object.isRequired
 }

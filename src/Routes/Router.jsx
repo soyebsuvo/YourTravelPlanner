@@ -16,6 +16,10 @@ import CitySelection from "../Pages/CitySelection/CitySelection";
 import PrivateRoute from "./PrivateRoute";
 import AgentDashboard from "../Pages/Dashboard/Agent/AgentDashboard";
 import AgentRoute from "./AgentRoute";
+import About from "../Components/About/About";
+import HowItWorks from "../Components/HowItWorks/HowItWorks";
+import FAQs from "../Components/FAQs/FAQs";
+import TermsOfUse from "../Components/TermsOfUse/TermsOfUse";
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +42,22 @@ export const router = createBrowserRouter([
             {
                 path : "/marketplace",
                 element : <div>Hello world</div>
+            },
+            {
+                path : "/about-wandergenie",
+                element : <About />
+            },
+            {
+                path : "/how-it-works",
+                element : <HowItWorks />
+            },
+            {
+                path : "/frequently-asked-questions",
+                element : <FAQs />
+            },
+            {
+                path : "/terms-of-use",
+                element : <TermsOfUse />
             }
         ]
     },

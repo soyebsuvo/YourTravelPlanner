@@ -5,7 +5,7 @@ const Transportation = ({value , setValue , transportationScroll}) => {
     return (
         <div ref={transportationScroll} className="md:w-1/2 border border-blue-400 p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
             <div>
-                <h2 className='text-md md:text-xl font-semibold text-center'>How do you plan to get around? <span className='text-red-500'>*</span> </h2>
+                <h2 className='text-md md:text-xl font-semibold text-center'>How do you plan to get around?<span className='text-red-500'>*</span> </h2>
             </div>
             <div className="grid grid-cols-2 gap-6 py-4">
                 <div onClick={() => {setValue("Public Transportation"); }} className={value === "Public Transportation" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>

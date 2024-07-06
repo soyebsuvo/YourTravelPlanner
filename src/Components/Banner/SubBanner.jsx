@@ -92,7 +92,8 @@ const SubBanner = () => {
                 </div> */}
             </div>
         </div>
-        <div className="bg-[#000] py-3 flex justify-evenly items-center text-xs">
+        <div className="bg-[#000] py-3 flex justify-evenly items-center text-xs md:text-base">
+        <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">AI Powered Itinerary</span></h3>
             <div className="flex justify-center items-center">
                 <FaFacebookF className="text-blue-500 bg-white p-1 rounded-full" />
                 <FcGoogle className=" bg-white p-[2px] rounded-full -ml-[7px]" />

@@ -212,7 +212,7 @@ const RecommendationPage = () => {
             <div>
                 <Navbar />
                 <SubBanner />
-                <div className="max-w-7xl mx-auto md:px-14 py-4 mt-14 relative  border-4 rounded-2xl px-6">
+                <div className="max-w-7xl mx-auto md:px-14 py-4 mt-14 relative  border-4 rounded-2xl px-6 mb-8">
                     <div className="border-2 p-6 mt-6 rounded-2xl">
                         <div className="flex justify-between items-center gap-4">
                             <div className="hidden md:flex items-center gap-3">

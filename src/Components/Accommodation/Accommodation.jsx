@@ -3,11 +3,12 @@ import img2 from '../../assets/jamaica-villa-canoe-cove-2021-header_medium.jpg'
 import img3 from '../../assets/hostel-dorm-bedroom-two.jpg'
 import img4 from '../../assets/bed_and_breakfast.jpg'
 import PropTypes from 'prop-types';
+import { FaStar } from 'react-icons/fa';
 const Accommodation = ({value , setValue, accommodationScroll ,scrollHandler , transportationScroll}) => {
     return (
         <div ref={accommodationScroll} className="border border-blue-400 p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
             <div>
-                <h2 className='text-md md:text-xl font-semibold text-center'> Where would you like to stay ? <span className='text-red-500'>*</span> </h2>
+                <h2 className='text-md md:text-xl font-semibold text-center'> Where would you like to stay?<span className='text-red-500'>*</span> </h2>
             </div>
             <div className="grid grid-cols-2 gap-6 py-4">
                 <div onClick={() => {setValue("Hotels") ; scrollHandler(transportationScroll)}} className={value === "Hotels" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
@@ -16,6 +17,7 @@ const Accommodation = ({value , setValue, accommodationScroll ,scrollHandler , t
                     </figure>
                     <div className="card-body items-center text-center">
                         <h2 className="card-title text-base">Hotels</h2>
+                        <p className='font-semibold -mt-2'> 3<FaStar className='text-orange-400 inline mb-[5px] text-sm mx-[2px]'/>+</p>
                     </div>
                 </div>
                 <div onClick={() => {setValue("Vacation Rentals") ; scrollHandler(transportationScroll)}} className={value === "Vacation Rentals" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>

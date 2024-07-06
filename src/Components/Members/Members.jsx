@@ -42,7 +42,7 @@ const Members = ({ value, setValue, membersScroll, scrollHandler, budgetScroll }
     return (
         <div ref={membersScroll} className="border border-blue-400 p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
             <div>
-                <h2 className='text-md md:text-xl font-semibold text-center'>Who is travelling with you ? <span className='text-red-500'>*</span> </h2>
+                <h2 className='text-md md:text-xl font-semibold text-center'>Who is travelling with you?<span className='text-red-500'>*</span> </h2>
             </div>
             <div className="grid grid-cols-2 gap-6 py-4">
                 <div onClick={() => { setValue("Couple"); scrollHandler(budgetScroll) }} className={value === "Couple" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
