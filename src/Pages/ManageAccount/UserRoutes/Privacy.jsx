@@ -4,11 +4,11 @@ import { MyContext } from "../../../Components/Context/Context";
 const Privacy = () => {
     const { user } = useContext(MyContext)
     return (
-        <div className="p-6"> 
+        <div className="p-2 md:p-6"> 
             <div className="flex justify-between items-center py-2 pb-4">
                 <div>
-                    <h2 className="text-4xl font-semibold">Privacy</h2>
-                    <h4 className="text-lg text-gray-500">Exercise your privacy rights and control how your data is used</h4>
+                    <h2 className="text-2xl md:text-4xl font-semibold">Privacy</h2>
+                    <h4 className="text-sm md:text-lg text-gray-500">Exercise your privacy rights and control how your data is used</h4>
                 </div>
             </div>
             <hr className="border"/>

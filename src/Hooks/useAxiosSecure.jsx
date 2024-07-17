@@ -4,7 +4,7 @@ import { AuthContext } from '../Providers/AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
 const axiosSecure = axios.create({
-  baseURL: 'https://server.wandergeniellm.com'
+  baseURL: 'http://localhost:3000'
 })
 
 export default function useAxiosSecure() {

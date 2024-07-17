@@ -137,7 +137,7 @@ const Section = ({ title, children, icon }) => {
     
     <div className="mb-4">
       <div className="collapse collapse-plus border-2">
-        <input type="radio" name="my-accordion-3" defaultChecked />
+        <input type="radio" name="my-accordion-3" />
         <h3 className="font-semibold collapse-title">{icon}{title}</h3>
         <div className="collapse-content">
           <ul className="list-disc pl-5">{children}</ul>

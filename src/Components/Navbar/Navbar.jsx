@@ -13,18 +13,19 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { TbMessageChatbot } from "react-icons/tb";
 import { MdOutlineAttractions } from "react-icons/md";
 import useCheckRole from "../../Hooks/useCheckRole";
+import { FaRegUserCircle } from "react-icons/fa";
 
 
 const Navbar = () => {
     const navigate = useNavigate();
     const [menu, setMenu] = useState(false)
     const [isLogin, setIsLogin] = useState(true);
-    const { user, logOut } = useContext(MyContext)
+    const { user, logOut, phone, otp, setOtp, confirmationResult } = useContext(MyContext)
     const [role, , refetch] = useCheckRole();
     const links = <>
         <NavLink to="/"><a>Home</a></NavLink>
         <span className="cursor-pointer" onClick={() => document.getElementById('coming_soon').showModal()}><a>Marketplace</a></span>
-        {user ? role === "agent" || <NavLink to="/my-trips"><a>My Trips</a></NavLink> : "" }
+        {user ? role === "agent" || <NavLink to="/my-trips"><a>My Trips</a></NavLink> : ""}
         {/* <NavLink to="/Honeymoon"><a>Honeymoon Gateways</a></NavLink> */}
         {role === "agent" && <NavLink to="/dashboard"><a>Vendor Dashboards</a></NavLink>}
         {user ? <NavLink to="/manage-account/profile"><a>Manage Account</a></NavLink> : <a onClick={() => document.getElementById('my_modal_3').showModal()} className="cursor-pointer">Manage Account</a>}
@@ -40,6 +41,22 @@ const Navbar = () => {
             console.log(error)
         })
     }
+
+    console.log(phone)
+
+    const handleOTPSubmit = async () => {
+        try {
+            const data = await confirmationResult?.confirm(otp);
+            console.log(data);
+            document.getElementById('OTP').close();
+            navigate("/")
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
     return (
         <div className="absolute top-0 right-0 left-0">
             <nav className="max-w-7xl mx-auto px-2 md:px-16 py-3">
@@ -66,9 +83,9 @@ const Navbar = () => {
                         <div className="">
                             {user ?
                                 <div className="relative">
-                                    <div><img src={user?.photoURL} onClick={() => setMenu(!menu)} className="cursor-pointer w-9 h-9 rounded-full" /> </div>
+                                    <div>{user?.photoURL ? <img src={user?.photoURL} onClick={() => setMenu(!menu)} className="cursor-pointer w-9 h-9 rounded-full" /> : <FaRegUserCircle onClick={() => setMenu(!menu)} className="cursor-pointer text-3xl text-white" />} </div>
                                     {/* <div><FaRegUserCircle onClick={() => setMenu(!menu)} className="text-white text-2xl cursor-pointer"/> </div> */}
-                                    <ul className={`${menu ? 'absolute' : 'hidden'} p-2 w-40 shadow duration-300 ease-in transition-all bg-white rounded right-6 top-8`}>
+                                    <ul className={`${menu ? 'absolute' : 'hidden'} z-50 p-2 w-40 shadow duration-300 ease-in transition-all bg-white rounded right-6 top-8`}>
                                         <Link to="/manage-account/profile"><li className="px-2 py-1 cursor-pointer"><a>Manage Account</a></li></Link>
                                         <Link to="/my-trips"><li className="px-2 py-1 cursor-pointer"><a>Trips</a></li></Link>
                                         <li className="px-2 py-1 cursor-pointer"><a>Reviews</a></li>
@@ -85,6 +102,50 @@ const Navbar = () => {
                                     </form>
                                     {/* <Login /> */}
                                     {isLogin ? <Login setIsLogin={setIsLogin} /> : <Register setIsLogin={setIsLogin} />}
+                                </div>
+                            </dialog>
+                            {/* <button onClick={() => document.getElementById('phone_verify').showModal()} className="px-4 py-1 rounded border border-white font-semibold cursor-pointer text-white">laga shalting</button> */}
+                            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                            {/* <dialog id="phone_verify" className="modal w-1/3 mx-auto">
+                                <div className="modal-box scrollbar-hide">
+                                    <form method="dialog">
+                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                    </form>
+                                    <div>
+                                        <div>
+                                            <h2 className="text-2xl font-semibold mt-3 mb-8 text-center">Enter Your Phone Number</h2>
+                                        </div>
+                                        <div className='w-[70%] mx-auto'>
+                                            <PhoneInput
+                                                country={'bd'}
+                                                inputClass='w-full'
+                                                containerClass='w-full'
+                                                value={phone}
+                                                onChange={phone => setPhone(`+${phone}`)}
+                                            />
+                                        </div>
+                                        <div className="z-20" id="recaptcha"></div>
+                                        <div className="flex justify-center">
+                                            <button onClick={handleSubmitPhoneNumber} className={`px-6 py-2 bg-blue-600 text-white rounded mt-8 ${btnStatus ? '' : 'btn-disabled'}`}>Send OTP</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </dialog> */}
+                            <dialog id="OTP" className="modal w-1/3 mx-auto">
+                                <div className="modal-box scrollbar-hide">
+                                    {/* <form method="dialog">
+                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                    </form> */}
+                                    <div>
+                                        <h2 className="text-2xl font-semibold mt-3 mb-2 text-center">Enter OTP</h2>
+                                        <p className="text-gray-500 text-center text-sm mb-5">OTP has been sent to {phone}</p>
+                                        <div className="flex justify-center">
+                                            <input onChange={(e) => setOtp(e.target.value)} placeholder="555-555" type="text" className="border-2 rounded p-2 focus:outline-none" maxLength={8} />
+                                        </div>
+                                        <div className="flex justify-center">
+                                            <button onClick={handleOTPSubmit} className="px-6 py-2 bg-blue-600 text-white rounded mt-8">Continue</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </dialog>
                         </div>

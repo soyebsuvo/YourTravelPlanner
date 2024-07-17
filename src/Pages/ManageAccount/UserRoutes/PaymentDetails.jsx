@@ -1,11 +1,11 @@
 
 const PaymentDetails = () => {
     return (
-        <div className="p-6"> 
+        <div className="p-2 md:p-6"> 
             <div className="flex justify-between items-center py-2 pb-4">
                 <div>
-                    <h2 className="text-4xl font-semibold">Payment Details</h2>
-                    <h4 className="text-lg text-gray-500">Securely add or remove payment methods to make it esasier when you plan a trip</h4>
+                    <h2 className="text-2xl md:text-4xl font-semibold">Payment Details</h2>
+                    <h4 className="text-sm md:text-lg text-gray-500">Securely add or remove payment methods to make it esasier when you plan a trip</h4>
                 </div>
             </div>
             <hr className="border"/>

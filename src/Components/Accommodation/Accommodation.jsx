@@ -17,7 +17,7 @@ const Accommodation = ({value , setValue, accommodationScroll ,scrollHandler , t
                     </figure>
                     <div className="card-body items-center text-center">
                         <h2 className="card-title text-base">Hotels</h2>
-                        <p className='font-semibold -mt-2'> 3<FaStar className='text-orange-400 inline mb-[5px] text-sm mx-[2px]'/>+</p>
+                        <p className='font-semibold -mt-2 text-xs'>(Only <FaStar className='text-orange-400 inline mb-[5px] text-xs'/><FaStar className='text-orange-400 inline mb-[5px] text-xs'/><FaStar className='text-orange-400 inline mb-[5px] text-xs'/> and above)</p>
                     </div>
                 </div>
                 <div onClick={() => {setValue("Vacation Rentals") ; scrollHandler(transportationScroll)}} className={value === "Vacation Rentals" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>

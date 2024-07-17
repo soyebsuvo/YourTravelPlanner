@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useContext } from "react";
 import { MyContext } from "../../../Components/Context/Context";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../../Components/Footer/Footer";
 
 const AgentDashboard = () => {
     const navigate = useNavigate();
@@ -154,6 +155,7 @@ const AgentDashboard = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

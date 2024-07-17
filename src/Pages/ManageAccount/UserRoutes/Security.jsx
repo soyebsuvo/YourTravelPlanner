@@ -1,11 +1,11 @@
 
 const Security = () => {
     return (
-        <div className="p-6"> 
+        <div className="p-2 md:p-6"> 
             <div className="flex justify-between items-center py-2 pb-4">
                 <div>
-                    <h2 className="text-4xl font-semibold">Security</h2>
-                    <h4 className="text-lg text-gray-500">Change your security settings, set up secure authentication or delete your account.</h4>
+                    <h2 className="text-2x md:text-4xl font-semibold">Security</h2>
+                    <h4 className="text-sm md:text-lg text-gray-500">Change your security settings, set up secure authentication or delete your account.</h4>
                 </div>
             </div>
             <hr className="border"/>

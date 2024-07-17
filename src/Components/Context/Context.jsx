@@ -14,9 +14,9 @@ export const MyContext = createContext({});
 function Context({ children }) {
     // const axiosPublic = useAxiosPublic();
     const [user, setUser] = useState();
-    const [ loading , setLoading ] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [response, setResponse] = useState([]);
-    const [images, setImages] = useState();    
+    const [images, setImages] = useState();
     const [place, setPlace] = useState();
     const [days, setDays] = useState("");
     const [members, setMembers] = useState("")
@@ -24,8 +24,11 @@ function Context({ children }) {
     const [accommodation, setAccommodation] = useState("")
     const [transportation, setTransportation] = useState("")
     const [filteredContinent, setFilteredContinent] = useState(null);
-    const [ selectedCities , setSelectedCities ] = useState([]);
-    const [ nextCity , setNextCity ] = useState();
+    const [selectedCities, setSelectedCities] = useState([]);
+    const [nextCity, setNextCity] = useState();
+    const [phone, setPhone] = useState();    
+    const [otp, setOtp] = useState();    
+    const [confirmationResult, setConfirmationResult] = useState(null);
 
     // const navigate = useNavigate();
     const handleSubmit = async (userInput, datas, navigate, selectedCities) => {
@@ -52,23 +55,23 @@ function Context({ children }) {
         setResponse(null)
         navigate("/recommendations");
         // try {
-            const responses = await fetch('https://server.wandergeniellm.com/ask', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ prompt: userInput , selectedCities : selectedCities})
-            });
+        const responses = await fetch('http://localhost:3000/ask', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ prompt: userInput, selectedCities: selectedCities })
+        });
 
-            const data = await responses.json();
-            console.log(data)
-            const responseData = await data?.response;
-            const mainData = await JSON.parse(responseData);
-            // console.log(mainData)
-            setResponse(mainData)
-            // console.log(response)
+        const data = await responses.json();
+        console.log(data)
+        const responseData = await data?.response;
+        const mainData = await JSON.parse(responseData);
+        // console.log(mainData)
+        setResponse(mainData)
+        // console.log(response)
         // } catch (error) {
-            // console.log("Error : ", error)
+        // console.log("Error : ", error)
         // }
 
         const distructuredImages = await data?.imageResponse;
@@ -112,6 +115,7 @@ function Context({ children }) {
     }
     const info = {
         user,
+        setUser,
         loading,
         handleSubmit,
         response,
@@ -125,7 +129,7 @@ function Context({ children }) {
         place,
         setPlace,
         days,
-        members, 
+        members,
         budget,
         accommodation,
         transportation,
@@ -139,7 +143,13 @@ function Context({ children }) {
         selectedCities,
         setSelectedCities,
         nextCity,
-        setNextCity
+        setNextCity,
+        phone,
+        setPhone,
+        otp,
+        setOtp,
+        confirmationResult,
+        setConfirmationResult
     }
     return (
         <MyContext.Provider value={info}>

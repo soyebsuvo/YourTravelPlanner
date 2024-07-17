@@ -20,6 +20,7 @@ import About from "../Components/About/About";
 import HowItWorks from "../Components/HowItWorks/HowItWorks";
 import FAQs from "../Components/FAQs/FAQs";
 import TermsOfUse from "../Components/TermsOfUse/TermsOfUse";
+import VerifyPhoneNumber from "../Components/VerifyPhoneNumber/VerifyPhoneNumber";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
             {
                 path : "/terms-of-use",
                 element : <TermsOfUse />
+            },
+            {
+                path : "/verify",
+                element : <VerifyPhoneNumber />
             }
         ]
     },

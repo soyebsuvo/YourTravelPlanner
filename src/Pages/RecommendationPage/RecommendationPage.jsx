@@ -23,19 +23,41 @@ import Footer from "../../Components/Footer/Footer";
 // import { ArcherContainer, ArcherElement } from 'react-archer';
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TravelPackageDetails from "../../Components/TravelPackageDetails/TravelPackageDetails";
 // import Preloader from "../../Components/Preloader/Preloader";
 import fly_line from "../../assets/fly_line.svg";
 import Lottie from "lottie-react";
 import animationData from '../../../public/flight-animation.json';
+import axios from "axios";
 
 const RecommendationPage = () => {
+    const axiosPublic = useAxiosPublic();
+    const { user, response, setResponse, images, setImages } = useContext(MyContext);
+    const { search } = useLocation();
+    const query = new URLSearchParams(search)
+    const itinerary = query.get("itinerary");
+    const [request, setRequest] = useState();
+    console.log(itinerary)
     useEffect(() => {
-        window.scrollTo(0,0);
+        if (itinerary) {
+            const getRequestedItineraryById = async () => {
+                setResponse(null)
+                setImages([])
+                const res = await axios.get(`http://localhost:3000/requestedbyid?id=${itinerary}`);
+                console.log(res.data[0]);
+                setRequest(res.data[0]?.request);
+                setResponse(res.data[0]?.response);
+                setImages(res.data[0]?.images);
+            }
+            getRequestedItineraryById();
+        }
+    }, [itinerary, setResponse, setImages])
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
     }, [])
     const [open, setOpen] = useState(false)
-    const axiosPublic = useAxiosPublic();
     const initialMessages = {
         _id: 0,
         participants: [
@@ -60,7 +82,6 @@ const RecommendationPage = () => {
     const [messages, setMessages] = useState(initialMessages.messages)
 
 
-    const { user, response, setResponse, images } = useContext(MyContext);
     const element1Refs = useRef([]);
     const element2Refs = useRef([]);
     const [heights, setHeights] = useState([]);
@@ -90,7 +111,7 @@ const RecommendationPage = () => {
         }
         setMessages((prev) => [...prev, newMsg])
         setMsgText("")
-        const res = await fetch("https://server.wandergeniellm.com/chat", {
+        const res = await fetch("http://localhost:3000/chat", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -116,24 +137,6 @@ const RecommendationPage = () => {
     const [activityValue, setActivityValue] = useState();
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //         setLoading(false);
-    //         if (response) {
-    //             const newHeights = element1Refs.current.map(el => el?.offsetHeight || 0);
-    //             setHeights(newHeights);
-    //         }
-    //         if (response) {
-    //             element2Refs.current.forEach((el, index) => {
-    //                 if (el) {
-    //                     el.style.height = `${heights[index]}px`;
-    //                 }
-    //             });
-    //         }
-    //     }, 2000);
-
-    //     return () => clearTimeout(timer);
-    // }, [response , heights]);
 
     useEffect(() => {
         if (response) {
@@ -153,9 +156,6 @@ const RecommendationPage = () => {
     }, [heights, response, images]);
 
 
-    if (!response) {
-        return <Loader /> // Display loading message while response is being fetched
-    }
 
     // if(loading){
     //     return <Preloader />
@@ -201,6 +201,10 @@ const RecommendationPage = () => {
     }
 
 
+    if (!response) {
+        return <Loader /> // Display loading message while response is being fetched
+    }
+
 
     try {
         console.log(response)
@@ -242,7 +246,9 @@ const RecommendationPage = () => {
                                     <p className="text-xl text-blue-800 font-bold">{response?.totalCost}</p>
                                     <p className="text-end font-semibold text-gray-500">Per Person</p>
                                 </div>
-                                <button onClick={() => document.getElementById('finalize_modal').showModal()} className="bg-[#1671E3] p-5 px-9 text-white font-bold">Finalize</button>
+                                {
+                                    itinerary ? <button className="bg-[#1671E3] p-5 px-9 text-white font-bold cursor-no-drop">{request ? "Requested" : "Saved"}</button> : <button onClick={() => document.getElementById('finalize_modal').showModal()} className="bg-[#1671E3] p-5 px-9 text-white font-bold">Finalize</button>
+                                }
 
                                 <dialog id="finalize_modal" className="modal">
                                     <div className="modal-box scrollbar-hide">

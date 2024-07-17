@@ -4,11 +4,17 @@ import { useContext } from 'react';
 import { MyContext } from '../../Components/Context/Context';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+import { updateProfile } from 'firebase/auth';
+import { auth } from '../../Firebase/firebase.config';
+import { useNavigate } from 'react-router-dom';
 // import useCheckRole from '../../Hooks/useCheckRole';
 // const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 // const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 export default function Register({ setIsLogin }) {
-    const { googleLogin, createUser } = useContext(MyContext);
+    const { googleLogin, createUser, phone, setPhone } = useContext(MyContext);
+    const navigate = useNavigate();
     // const [ ,, roleRefetch] = useCheckRole();
     const socialLogin = (media) => {
         media().then((result) => {
@@ -18,10 +24,10 @@ export default function Register({ setIsLogin }) {
                 title: "Signed Up in successfully",
                 showConfirmButton: false,
                 timer: 2000
-              });
+            });
             document.getElementById('my_modal_3').close()
             const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
-            axios.post('https://server.wandergeniellm.com/users', userInfo)
+            axios.post('http://localhost:3000/users', userInfo)
                 .then(res => {
                     console.log(res.data)
                 })
@@ -32,20 +38,31 @@ export default function Register({ setIsLogin }) {
                 title: "Something went wrong. Try later",
                 showConfirmButton: false,
                 timer: 2000
-              });
+            });
         })
     }
-
+    console.log(phone)
     const handleRegister = (e) => {
         e.preventDefault();
+        console.log(phone)
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         createUser(email, password).then(() => {
+            console.log(phone);
+            updateProfile(auth.currentUser, {
+                displayName: name
+            }).then(() => {
+
+            }).catch((err) => {
+                console.log(err)
+            });
             // roleRefetch();
-            document.getElementById('my_modal_3').close()
-            const userInfo = { name: name, email: email };
-            axios.post('https://server.wandergeniellm.com/users', userInfo)
+            document.getElementById('my_modal_3').close();
+            // document.getElementById('phone_verify').showModal();
+            navigate("/verify")
+            const userInfo = { name: name, email: email, phone: phone };
+            axios.post('http://localhost:3000/users', userInfo)
                 .then(() => {
                     Swal.fire({
                         position: "top-end",
@@ -53,7 +70,7 @@ export default function Register({ setIsLogin }) {
                         title: "Signed Up successfully",
                         showConfirmButton: false,
                         timer: 2000
-                      });
+                    });
                 })
         }).catch(() => {
             Swal.fire({
@@ -62,7 +79,7 @@ export default function Register({ setIsLogin }) {
                 title: `Something went wrong. Try later`,
                 showConfirmButton: false,
                 timer: 3000
-              });
+            });
         });
     }
 
@@ -91,6 +108,15 @@ export default function Register({ setIsLogin }) {
                         <div>
                             <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                             <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#EB675368] focus:border-[#eb675368] block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                        </div>
+                        <div className='w-full'>
+                            <PhoneInput
+                                country={'in'}
+                                inputClass='w-full'
+                                containerClass='w-full'
+                                value={phone}
+                                onChange={phone => setPhone(`+${phone}`)}
+                            />
                         </div>
                         {/* <div>
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="default_size">Profile Photo</label>
