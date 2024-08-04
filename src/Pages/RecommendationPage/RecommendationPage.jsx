@@ -42,7 +42,7 @@ const RecommendationPage = () => {
     useEffect(() => {
         if (itinerary) {
             const getRequestedItineraryById = async () => {
-                setResponse(null)
+                setResponse({})
                 setImages([])
                 const res = await axios.get(`http://localhost:3000/requestedbyid?id=${itinerary}`);
                 console.log(res.data[0]);
@@ -242,14 +242,17 @@ const RecommendationPage = () => {
                             </div> */}
                             </div>
                             <div className="flex items-center gap-4">
-                                <div className="inline">
-                                    <p className="text-xl text-blue-800 font-bold">{response?.totalCost}</p>
-                                    <p className="text-end font-semibold text-gray-500">Per Person</p>
-                                </div>
-                                {
-                                    itinerary ? <button className="bg-[#1671E3] p-5 px-9 text-white font-bold cursor-no-drop">{request ? "Requested" : "Saved"}</button> : <button onClick={() => document.getElementById('finalize_modal').showModal()} className="bg-[#1671E3] p-5 px-9 text-white font-bold">Finalize</button>
-                                }
+                                <div className="flex justify-center items-center gap-4">
+                                    <div className="inline">
+                                        <p className="text-xl text-blue-800 font-bold">{response?.totalCost}</p>
+                                        <p className="text-end font-semibold text-gray-500">Per Person</p>
+                                    </div>
 
+                                    {
+                                        itinerary ? <button className="bg-[#1671E3] p-5 px-9 text-white font-bold cursor-no-drop">{request ? "Requested" : "Saved"}</button> : <button onClick={() => document.getElementById('finalize_modal').showModal()} className="bg-[#1671E3] p-5 px-9 text-white font-bold">Finalize</button>
+                                    }
+
+                                </div>
                                 <dialog id="finalize_modal" className="modal">
                                     <div className="modal-box scrollbar-hide">
                                         <form method="dialog">
@@ -265,6 +268,9 @@ const RecommendationPage = () => {
                                     </div>
                                 </dialog>
                             </div>
+                        </div>
+                        <div className="flex justify-end">
+                            <p className="text-sm mt-1 font-semibold">International flight fares are not included</p>
                         </div>
                     </div>
 

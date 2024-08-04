@@ -12,7 +12,7 @@ const FAQs = () => {
         <div>
             <Navbar />
             <div className="h-20 bg-blue-600"></div>
-            <div className='max-w-6xl mx-auto md:px-16 my-4 mb-20'>
+            <div className='max-w-6xl mx-auto md:px-16 my-4 mb-20 border-4 rounded-2xl'>
                 <div>
                     <h2 className='text-3xl font-semibold my-8 text-gray-500'>WanderGenie LLM - FAQs</h2>
                     <div className='space-y-8 mb-8'>
