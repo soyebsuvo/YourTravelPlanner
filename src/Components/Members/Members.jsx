@@ -45,7 +45,7 @@ const Members = ({ value, setValue, membersScroll, scrollHandler, budgetScroll }
                 <h2 className='text-md md:text-xl font-semibold text-center'>Who is travelling with you?<span className='text-red-500'>*</span> </h2>
             </div>
             <div className="grid grid-cols-2 gap-6 py-4">
-                <div onClick={() => { setValue("Couple"); scrollHandler(budgetScroll) }} className={value === "Couple" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => { setValue("Couple"); scrollHandler(budgetScroll) }} className={value === "Couple" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -53,7 +53,7 @@ const Members = ({ value, setValue, membersScroll, scrollHandler, budgetScroll }
                         <h2 id='couples' className="card-title text-base">Couple</h2>
                     </div>
                 </div>
-                <div onClick={() => { setValue(""); document.getElementById('family_modal').showModal() }} className={value.includes("Family") ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => { setValue(""); document.getElementById('family_modal').showModal() }} className={value.includes("Family") ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -89,7 +89,7 @@ const Members = ({ value, setValue, membersScroll, scrollHandler, budgetScroll }
                         </div>
                     </div>
                 </dialog>
-                <div onClick={() => { setValue(""); document.getElementById('friends_modal').showModal() }} className={value.includes("Friends") ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => { setValue(""); document.getElementById('friends_modal').showModal() }} className={value.includes("Friends") ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -119,7 +119,7 @@ const Members = ({ value, setValue, membersScroll, scrollHandler, budgetScroll }
                         </div>
                     </div>
                 </dialog>
-                <div onClick={() => { setValue("Solo"); scrollHandler(budgetScroll) }} className={value === "Solo" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => { setValue("Solo"); scrollHandler(budgetScroll) }} className={value === "Solo" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>

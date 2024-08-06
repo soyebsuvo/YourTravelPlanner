@@ -10,7 +10,7 @@ const Duration = ({ value, setValue , scrollHandler , membersScroll , durationSc
                 <h2 className='text-md md:text-xl font-semibold text-center'>What is the length of your holiday?<span className='text-red-500'>*</span></h2>
             </div>
             <div className="grid grid-cols-2 gap-6 py-4">
-                <div onClick={() => {setValue("6-9 days"); scrollHandler(membersScroll)}} className={value === "6-9 days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("6-9 days"); scrollHandler(membersScroll)}} className={value === "6-9 days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -18,7 +18,7 @@ const Duration = ({ value, setValue , scrollHandler , membersScroll , durationSc
                         <h2 className="card-title text-base">6-9 days</h2>
                     </div>
                 </div>
-                <div onClick={() => {setValue("10-12 days"); scrollHandler(membersScroll)}} className={value === "10-12 days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("10-12 days"); scrollHandler(membersScroll)}} className={value === "10-12 days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -26,7 +26,7 @@ const Duration = ({ value, setValue , scrollHandler , membersScroll , durationSc
                         <h2 className="card-title text-base">10-12 days</h2>
                     </div>
                 </div>
-                <div onClick={() => {setValue("13-15 days"); scrollHandler(membersScroll)}} className={value === "13-15 days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("13-15 days"); scrollHandler(membersScroll)}} className={value === "13-15 days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -34,7 +34,7 @@ const Duration = ({ value, setValue , scrollHandler , membersScroll , durationSc
                         <h2 className="card-title text-base">13-15 days</h2>
                     </div>
                 </div>
-                <div onClick={() => {setValue("15+ days"); scrollHandler(membersScroll)}} className={value === "15+ days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("15+ days"); scrollHandler(membersScroll)}} className={value === "15+ days" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>

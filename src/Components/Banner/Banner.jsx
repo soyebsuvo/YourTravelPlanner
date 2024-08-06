@@ -1,13 +1,14 @@
 // import background from "../../assets/desktop_1_min_1_9896841547.avif"
 // import background from "../../assets/Getty.jpg"
 import background from "../../assets/Pyramid-at-Louvre-Museum-Paris-France.jpg"
-import { IoSearch } from "react-icons/io5";
+import { IoChatbubbleEllipsesOutline, IoSearch } from "react-icons/io5";
 import { TiTick } from "react-icons/ti";
 import { useContext, useEffect, useState } from "react";
 // import { FaFacebookF, FaStar } from "react-icons/fa6";
 // import { FcGoogle } from "react-icons/fc";
 import { MyContext } from "../Context/Context";
 import PropTypes from 'prop-types';
+import { FaMoneyBillAlt, FaRegSmileWink } from "react-icons/fa";
 // import CityModal from "../CityModal/CityModal";
 // import axios from "axios";
 // 
@@ -88,7 +89,7 @@ const Banner = ({ scrollHandler, durationScroll }) => {
 
     // useEffect(() => {
     //     async function fetchContinents() {
-    //         const response = await axios.get('http://localhost:3000/api/continents');
+    //         const response = await axios.get('https://server.wandergeniellm.com/api/continents');
     //         setContinents(response.data);
     //         console.log(response.data)
     //     }
@@ -98,7 +99,7 @@ const Banner = ({ scrollHandler, durationScroll }) => {
     // useEffect(() => {
     //     if (selectedContinent) {
     //         const fetchCountries = async () => {
-    //             const response = await axios.get(`http://localhost:3000/api/countries/${selectedContinent}`);
+    //             const response = await axios.get(`https://server.wandergeniellm.com/api/countries/${selectedContinent}`);
     //             setCountries(response.data);
     //         }
     //         fetchCountries();
@@ -108,7 +109,7 @@ const Banner = ({ scrollHandler, durationScroll }) => {
     // useEffect(() => {
     //     if (selectedContinent && selectedCountry) {
     //         const fetchCities = async () => {
-    //             const response = await axios.get(`http://localhost:3000/api/cities/${selectedContinent}/${selectedCountry}`);
+    //             const response = await axios.get(`https://server.wandergeniellm.com/api/cities/${selectedContinent}/${selectedCountry}`);
     //             setCities(response.data);
     //         }
     //         fetchCities();
@@ -168,13 +169,13 @@ const Banner = ({ scrollHandler, durationScroll }) => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:3000/places')
+        fetch('https://server.wandergeniellm.com/places')
             .then(response => response.json())
             .then(data => setPlaces(data.places));
     }, []);
     // const [open, setOpen] = useState(false);
     const handleSearch = (place) => {
-        fetch(`http://localhost:3000/continent/${place}`)
+        fetch(`https://server.wandergeniellm.com/continent/${place}`)
             .then(response => response.json())
             .then(data => {
                 setFilteredContinent(data);
@@ -299,10 +300,10 @@ const Banner = ({ scrollHandler, durationScroll }) => {
                 </div>
             </div>
             <div className="bg-[#000] py-3 flex justify-evenly flex-wrap space-y-2 md:space-y-0 text-sm md:text-base items-center">
-                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">AI Powered Itinerary</span></h3>
-                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">100% Customised Trips</span></h3>
+                <h3 className="flex justify-center items-center gap-1"><IoChatbubbleEllipsesOutline className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">AI Powered Itinerary</span></h3>
+                <h3 className="flex justify-center items-center gap-1"><FaRegSmileWink className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">100% Customised Trips</span></h3>
                 <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">End-to-End Travel Solution</span></h3>
-                <h3 className="flex justify-center items-center gap-1"><TiTick className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">Most Cost-Effective Deals</span></h3>
+                <h3 className="flex justify-center items-center gap-1"><FaMoneyBillAlt className="text-white bg-[#00C684] p-[2px] rounded-full" /><span className="text-white">Most Cost-Effective Deals</span></h3>
             </div>
         </div>
     );

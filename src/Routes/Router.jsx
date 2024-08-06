@@ -21,6 +21,7 @@ import HowItWorks from "../Components/HowItWorks/HowItWorks";
 import FAQs from "../Components/FAQs/FAQs";
 import TermsOfUse from "../Components/TermsOfUse/TermsOfUse";
 import VerifyPhoneNumber from "../Components/VerifyPhoneNumber/VerifyPhoneNumber";
+import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard";
 
 export const router = createBrowserRouter([
     {
@@ -111,5 +112,9 @@ export const router = createBrowserRouter([
     {
         path : "/dashboard",
         element : <AgentRoute><AgentDashboard /></AgentRoute>
+    },
+    {
+        path : "/admin-dashboard",
+        element : <AdminDashboard />
     }
 ])

@@ -11,7 +11,7 @@ const Accommodation = ({value , setValue, accommodationScroll ,scrollHandler , t
                 <h2 className='text-md md:text-xl font-semibold text-center'> Where would you like to stay?<span className='text-red-500'>*</span> </h2>
             </div>
             <div className="grid grid-cols-2 gap-6 py-4">
-                <div onClick={() => {setValue("Hotels") ; scrollHandler(transportationScroll)}} className={value === "Hotels" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Hotels") ; scrollHandler(transportationScroll)}} className={value === "Hotels" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -20,7 +20,7 @@ const Accommodation = ({value , setValue, accommodationScroll ,scrollHandler , t
                         <p className='font-semibold -mt-2 text-xs'>(Only <FaStar className='text-orange-400 inline mb-[5px] text-xs'/><FaStar className='text-orange-400 inline mb-[5px] text-xs'/><FaStar className='text-orange-400 inline mb-[5px] text-xs'/> and above)</p>
                     </div>
                 </div>
-                <div onClick={() => {setValue("Vacation Rentals") ; scrollHandler(transportationScroll)}} className={value === "Vacation Rentals" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Vacation Rentals") ; scrollHandler(transportationScroll)}} className={value === "Vacation Rentals" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -28,7 +28,7 @@ const Accommodation = ({value , setValue, accommodationScroll ,scrollHandler , t
                         <h2 className="card-title text-base">Vacation Rentals</h2>
                     </div>
                 </div>
-                <div onClick={() => {setValue("Hostels") ; scrollHandler(transportationScroll)}} className={value === "Hostels" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Hostels") ; scrollHandler(transportationScroll)}} className={value === "Hostels" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="Shoes" className="rounded-full w-64" />
                     </figure>
@@ -36,7 +36,7 @@ const Accommodation = ({value , setValue, accommodationScroll ,scrollHandler , t
                         <h2 className="card-title text-base">Hostels</h2>
                     </div>
                 </div>
-                <div onClick={() => {setValue("Bed and Breakfasts (B&Bs)") ; scrollHandler(transportationScroll)}} className={value === "Bed and Breakfasts (B&Bs)" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f]` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
+                <div onClick={() => {setValue("Bed and Breakfasts (B&Bs)") ; scrollHandler(transportationScroll)}} className={value === "Bed and Breakfasts (B&Bs)" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
                         <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>

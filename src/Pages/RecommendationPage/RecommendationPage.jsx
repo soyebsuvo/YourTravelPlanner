@@ -44,7 +44,7 @@ const RecommendationPage = () => {
             const getRequestedItineraryById = async () => {
                 setResponse({})
                 setImages([])
-                const res = await axios.get(`http://localhost:3000/requestedbyid?id=${itinerary}`);
+                const res = await axios.get(`https://server.wandergeniellm.com/requestedbyid?id=${itinerary}`);
                 console.log(res.data[0]);
                 setRequest(res.data[0]?.request);
                 setResponse(res.data[0]?.response);
@@ -111,7 +111,7 @@ const RecommendationPage = () => {
         }
         setMessages((prev) => [...prev, newMsg])
         setMsgText("")
-        const res = await fetch("http://localhost:3000/chat", {
+        const res = await fetch("https://server.wandergeniellm.com/chat", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -270,7 +270,7 @@ const RecommendationPage = () => {
                             </div>
                         </div>
                         <div className="flex justify-end">
-                            <p className="text-sm mt-1 font-semibold">International flight fares are not included</p>
+                            <p className="text-sm mt-1 font-semibold text-red-500 leading-tight">International flight <span className="text-xl ml-2">*</span><br /> fares are not included</p>
                         </div>
                     </div>
 

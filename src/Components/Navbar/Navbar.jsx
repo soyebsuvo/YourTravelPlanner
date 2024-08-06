@@ -2,7 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 // import { BsThreeDots } from "react-icons/bs";
 // import { TbWorld } from "react-icons/tb";s
 // import { FaRegUserCircle } from "react-icons/fa";
-import logo from "../../assets/Your_travel__3_-removebg-preview (1).png"
+import logo from "../../assets/Your_travel__3_-removebg-preview (2).png"
 import "./navbar.css";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
@@ -25,9 +25,10 @@ const Navbar = () => {
     const links = <>
         <NavLink to="/"><a>Home</a></NavLink>
         <span className="cursor-pointer" onClick={() => document.getElementById('coming_soon').showModal()}><a>Marketplace</a></span>
-        {user ? role === "agent" || <NavLink to="/my-trips"><a>My Trips</a></NavLink> : ""}
+        {user ? role === "agent" || role === "admin" || <NavLink to="/my-trips"><a>My Trips</a></NavLink> : ""}
         {/* <NavLink to="/Honeymoon"><a>Honeymoon Gateways</a></NavLink> */}
         {role === "agent" && <NavLink to="/dashboard"><a>Vendor Dashboards</a></NavLink>}
+        {role === "admin" && <NavLink to="/admin-dashboard"><a>Admin Dashboards</a></NavLink>}
         {user ? <NavLink to="/manage-account/profile"><a>Manage Account</a></NavLink> : <a onClick={() => document.getElementById('my_modal_3').showModal()} className="cursor-pointer">Manage Account</a>}
         {/* <li><a><BsThreeDots/></a></li> */}
         <li><a><IoIosNotifications className="text-2xl" /></a></li>
@@ -71,7 +72,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="flex justify-start items-center">
-                            <Link to="/"><img className="w-48" src={logo} alt="Logo" /></Link>
+                            <Link to="/"><img className="w-56" src={logo} alt="Logo" /></Link>
                         </div>
                     </div>
                     <div className="flex justify-end items-center gap-4 flex-1">

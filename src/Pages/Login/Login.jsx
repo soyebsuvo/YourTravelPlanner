@@ -29,7 +29,7 @@ export default function Login({ setIsLogin }) {
                 navigate("/verify")
             }
             const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
-            axios.post('http://localhost:3000/users', userInfo)
+            axios.post('https://server.wandergeniellm.com/users', userInfo)
                 .then(res => {
                     console.log(res.data)
                 })
