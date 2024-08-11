@@ -12,7 +12,7 @@ import message from '../../assets/profile-logo.png'
 // import normal from "../../assets/2201180.jpg"
 import { FaMinus } from "react-icons/fa";
 import { BsFillSendFill } from "react-icons/bs";
-import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleDown, FaChevronRight, FaWhatsapp } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 import Loader from "../../Components/Loader/Loader";
 import SubBanner from "../../Components/Banner/SubBanner";
@@ -30,6 +30,7 @@ import fly_line from "../../assets/fly_line.svg";
 import Lottie from "lottie-react";
 import animationData from '../../../public/flight-animation.json';
 import axios from "axios";
+import PhoneInput from "react-phone-input-2";
 
 const RecommendationPage = () => {
     const axiosPublic = useAxiosPublic();
@@ -38,17 +39,19 @@ const RecommendationPage = () => {
     const query = new URLSearchParams(search)
     const itinerary = query.get("itinerary");
     const [request, setRequest] = useState();
+    const [ callback, setCallback ] = useState();
     console.log(itinerary)
     useEffect(() => {
         if (itinerary) {
             const getRequestedItineraryById = async () => {
                 setResponse({})
                 setImages([])
-                const res = await axios.get(`https://server.wandergeniellm.com/requestedbyid?id=${itinerary}`);
+                const res = await axios.get(`http://localhost:3000/requestedbyid?id=${itinerary}`);
                 console.log(res.data[0]);
                 setRequest(res.data[0]?.request);
                 setResponse(res.data[0]?.response);
                 setImages(res.data[0]?.images);
+                setCallback(res.data[0]?.callback);
             }
             getRequestedItineraryById();
         }
@@ -111,7 +114,7 @@ const RecommendationPage = () => {
         }
         setMessages((prev) => [...prev, newMsg])
         setMsgText("")
-        const res = await fetch("https://server.wandergeniellm.com/chat", {
+        const res = await fetch("http://localhost:3000/chat", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -199,7 +202,27 @@ const RecommendationPage = () => {
         setResponse(response)
         // setActivityValue("")
     }
-
+    const [ phone , setPhone ] = useState();
+    const handleCallbackRequest = async (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const message = e.target.message.value;
+        const callbackInfo = {
+            name , phone , email , message
+        }
+        console.log(callbackInfo)
+        const res = await axiosPublic.patch(`/requestedCallback/${itinerary}`, callbackInfo);
+        console.log(res.data);
+        if(res?.data?.modifiedCount){
+            document.getElementById("callback").close();
+            Swal.fire({
+                title: "Requested Callback",
+                text: "Successfully send the callback request",
+                icon: "success"
+            });
+        }
+    }
 
     if (!response) {
         return <Loader /> // Display loading message while response is being fetched
@@ -219,10 +242,10 @@ const RecommendationPage = () => {
                 <div className="max-w-7xl mx-auto md:px-14 py-4 mt-14 relative  border-4 rounded-2xl px-6 mb-8">
                     <div className="border-2 p-6 mt-6 rounded-2xl">
                         <div className="flex justify-between items-center gap-4">
-                            <div className="hidden md:flex items-center gap-3">
+                            <div className="hidden md:flex items-center gap-1">
                                 <div className="text-green-500 flex flex-col justify-center cursor-pointer items-center gap-1 border-b-2 border-green-500 w-[130px] pb-3">
                                     <SlCalender className="text-2xl" />
-                                    <h3 className="text-xl font-semibold">Day by Day</h3>
+                                   <h3 className="text-xl font-semibold">Day by Day</h3>
                                 </div>
                                 <div className="text-gray-500 flex flex-col justify-center cursor-pointer items-center gap-1 w-[130px] pb-3">
                                     <MdOutlineDateRange className="text-2xl" />
@@ -241,15 +264,32 @@ const RecommendationPage = () => {
                                 <h3 className="text-xl font-semibold">More</h3>
                             </div> */}
                             </div>
-                            <div className="flex items-center gap-4">
-                                <div className="flex justify-center items-center gap-4">
+                            <div>
+                                <a href="https://api.whatsapp.com/send/?phone=%2B919356853153&text=Welcome%20to%20WanderGenie%20LLM&type=phone_number&app_absent=0" target="_blank" className="max-w-sm mx-auto">
+                                    <button className="w-full h-20 bg-green-100 hover:bg-green-200 text-green-800 py-3 px-4 rounded-lg flex items-center justify-between">
+                                        <div className="flex items-center">
+                                            <FaWhatsapp className="text-green-500 text-3xl mr-3" />
+                                            <div>
+                                                <div className="font-semibold mr-3">Whatsapp Us</div>
+                                                {/* <div className="text-sm text-gray-600">Planned 51407+ trips so far</div> */}
+                                            </div>
+                                        </div>
+                                        <FaChevronRight className="text-green-500 mt-1" />
+                                    </button>
+                                </a>
+                                <div>
+                                    {callback ? <h3 className="text-center mt-1 text-blue-600 font-semibold border border-blue-600 py-1 rounded cursor-no-drop">Requested Callback</h3> : <h3 className="text-center mt-1 text-blue-600 font-semibold border border-blue-600 py-1 rounded cursor-pointer" onClick={() => document.getElementById('callback').showModal()}>Request Callback</h3>}
+                                </div>
+                            </div>
+                            <div className="flex flex-col items-center border-2 rounded-2xl">
+                                <div className="flex justify-center items-center gap-4 p-3">
                                     <div className="inline">
                                         <p className="text-xl text-blue-800 font-bold">{response?.totalCost}</p>
                                         <p className="text-end font-semibold text-gray-500">Per Person</p>
                                     </div>
 
                                     {
-                                        itinerary ? <button className="bg-[#1671E3] p-5 px-9 text-white font-bold cursor-no-drop">{request ? "Requested" : "Saved"}</button> : <button onClick={() => document.getElementById('finalize_modal').showModal()} className="bg-[#1671E3] p-5 px-9 text-white font-bold">Finalize</button>
+                                        itinerary ? <button className="bg-[#1671E3] rounded-xl p-5 px-9 text-white font-bold cursor-no-drop">{request ? "Requested" : "Saved"}</button> : <button onClick={() => document.getElementById('finalize_modal').showModal()} className="bg-[#1671E3] p-5 px-9 text-white font-bold rounded-xl">Finalize</button>
                                     }
 
                                 </div>
@@ -267,11 +307,65 @@ const RecommendationPage = () => {
                                         </div>
                                     </div>
                                 </dialog>
+                                <dialog id="callback" className="modal">
+                                    <div className="modal-box scrollbar-hide">
+                                        <form method="dialog">
+                                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                        </form>
+                                        <div className="w-full">
+                                            <div className='py-2'>
+                                                <div className='md:px-8'>
+                                                    <div className="p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-4 dark:bg-gray-800 dark:border-gray-700">
+                                                        <div className='pb-8'>
+                                                            <div className='flex justify-center items-center pb-5'>
+                                                                {/* <Link to="/"><img className='w-32' src={LoginHeader} alt="" /></Link> */}
+                                                            </div>
+                                                            <h5 className="text-3xl text-center font-medium text-gray-900 dark:text-white">Request a Callback</h5>
+                                                            {/* <p className='text-sm text-center'>Sign in with this account across the following sites.</p> */}
+                                                        </div>
+                                                        <form onSubmit={handleCallbackRequest} className="space-y-6 mb-3" action="#">
+                                                            <div>
+                                                                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GIven Name</label>
+                                                                <input type="name" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#EB675368] focus:border-[#EB675368] block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Your Name" required />
+                                                            </div>
+                                                            <div className='w-full'>
+                                                                <PhoneInput
+                                                                    country={'in'}
+                                                                    inputClass='w-full'
+                                                                    containerClass='w-full'
+                                                                value={phone}
+                                                                onChange={phone => setPhone(`+${phone}`)}
+                                                                />
+                                                            </div>
+                                                            <div>
+                                                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                                                <input type="email" name="email" id="email" placeholder="Your Email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#EB675368] focus:border-[#EB675368] block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                                                            </div>
+
+                                                            <div>
+                                                                <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Message (Optional)</label>
+                                                                {/* <input type="text" name="email" id="email" placeholder="Your Email"  required /> */}
+                                                                <textarea className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#EB675368] focus:border-[#EB675368] block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white resize-none" placeholder="Message..." name="message" id="message"></textarea>
+                                                            </div>
+
+                                                            <button type="submit" className="w-full text-white bg-blue-500 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:blue-500 dark:hover:bg-blue-500 dark:focus:ring-blue-500">Request Callback</button>
+                                                        </form>
+                                                        <div className='divider'></div>
+                                                    </div>
+                                                </div>
+
+                                                {/* svg  */}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dialog>
+                                <div className="flex justify-end w-full">
+                                    <p className="text-sm font-semibold bg-red-500 leading-tight text-white w-full px-2 pb-1 border border-red-600 rounded-bl-2xl rounded-br-2xl text-center -mb-[1px]">International flight fares are not included *</p>
+                                </div>
                             </div>
                         </div>
-                        <div className="flex justify-end">
-                            <p className="text-sm mt-1 font-semibold text-red-500 leading-tight">International flight <span className="text-xl ml-2">*</span><br /> fares are not included</p>
-                        </div>
+
                     </div>
 
                     <div className="py-2">

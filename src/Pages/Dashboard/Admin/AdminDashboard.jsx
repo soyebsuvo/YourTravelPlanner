@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Navbar from "../../../Components/Navbar/Navbar";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Preloader from "../../../Components/Preloader/Preloader";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 // import { useContext } from "react";
 // import { MyContext } from "../../../Components/Context/Context";
 // import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ const AdminDashboard = () => {
     // const navigate = useNavigate();
     // const { setImages , setResponse} = useContext(MyContext)
     const axiosPublic = useAxiosPublic();
-    const { data: users, isPending, refetch } = useQuery({
+    const { data: users, isPending } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosPublic.get(`/users`);
@@ -20,54 +20,54 @@ const AdminDashboard = () => {
         }
     })
 
-    const handleReject = (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Reject it!"
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                const res = await axiosPublic.patch(`/requestedToReject/${id}`)
-                console.log(res.data)
-                if (res.data.modifiedCount) {
-                    refetch()
-                    Swal.fire({
-                        title: "Rejected",
-                        text: "The request has been Rejected.",
-                        icon: "success"
-                    });
-                }
-            }
-        });
-    }
-    const handleAccept = (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Accept it!"
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                const res = await axiosPublic.patch(`/requestedToAccept/${id}`)
-                console.log(res.data)
-                if (res.data.modifiedCount) {
-                    refetch()
-                    Swal.fire({
-                        title: "Accepted",
-                        text: "The request has been Accepted.",
-                        icon: "success"
-                    });
-                }
-            }
-        });
-    }
+    // const handleReject = (id) => {
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, Reject it!"
+    //     }).then(async (result) => {
+    //         if (result.isConfirmed) {
+    //             const res = await axiosPublic.patch(`/requestedToReject/${id}`)
+    //             console.log(res.data)
+    //             if (res.data.modifiedCount) {
+    //                 refetch()
+    //                 Swal.fire({
+    //                     title: "Rejected",
+    //                     text: "The request has been Rejected.",
+    //                     icon: "success"
+    //                 });
+    //             }
+    //         }
+    //     });
+    // }
+    // const handleAccept = (id) => {
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, Accept it!"
+    //     }).then(async (result) => {
+    //         if (result.isConfirmed) {
+    //             const res = await axiosPublic.patch(`/requestedToAccept/${id}`)
+    //             console.log(res.data)
+    //             if (res.data.modifiedCount) {
+    //                 refetch()
+    //                 Swal.fire({
+    //                     title: "Accepted",
+    //                     text: "The request has been Accepted.",
+    //                     icon: "success"
+    //                 });
+    //             }
+    //         }
+    //     });
+    // }
 
     // const handleViewItinerary = (itinerary) => {
     //     setResponse(null)

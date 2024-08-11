@@ -136,7 +136,7 @@ const MyTrip = () => {
             <Navbar />
             <div className="h-20 bg-blue-600"></div>
             <div className="bg-blue-200 h-56">
-                <h2 className="text-2xl font-semibold p-8 ps-4 md:ps-20">My Trip</h2>
+                <h2 className="text-2xl font-semibold p-8 ps-4 md:ps-20">My Trips</h2>
             </div>
             <div className="-mt-52">
                 <div className="bg-white m-2 mt-20 md:m-20 shadow-2xl min-h-screen rounded-xl">

@@ -1,5 +1,5 @@
 import { MdOutlineMail } from "react-icons/md";
-import logo from "../../assets/main-logo-black.png"
+import logo from "../../assets/main-logo-blackk.png"
 import { IoCallOutline } from "react-icons/io5";
 import { FaWhatsapp } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
@@ -22,7 +22,8 @@ const Footer = () => {
                     <h6 className="footer-title h-[23px]">Connect With Us</h6>
                     <a href="mailto:info@wandergeniellm.com" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><MdOutlineMail className="inline mb-[2px] text-[20px] mr-1"/> info@wandergeniellm.com</a>
                     <a href="tel:+919356853153" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><IoCallOutline className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a>
-                    <a href="tel:+919356853153" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><FaWhatsapp className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a>
+                    {/* <a href="https://wa.me/+919356853153" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><FaWhatsapp className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a> */}
+                    <a href="https://api.whatsapp.com/send/?phone=%2B919356853153&text=Welcome%20to%20WanderGenie%20LLM&type=phone_number&app_absent=0" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><FaWhatsapp className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a>
                     <a href="mailto:support@wandergeniellm.com" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><MdOutlineMail className="inline mb-[2px] text-[20px] mr-1"/> support@wandergeniellm.com</a>
                 </nav>
                 <nav>

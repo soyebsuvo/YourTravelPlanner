@@ -7,10 +7,12 @@ import { useContext } from "react";
 import { MyContext } from "../../../Components/Context/Context";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../../Components/Footer/Footer";
+import { TiTick } from "react-icons/ti";
+import { IoClose } from "react-icons/io5";
 
 const AgentDashboard = () => {
     const navigate = useNavigate();
-    const { setImages , setResponse} = useContext(MyContext)
+    const { setImages, setResponse } = useContext(MyContext)
     const axiosPublic = useAxiosPublic();
     const { data: itineraries, isPending, refetch } = useQuery({
         queryKey: ['requestedItinenary'],
@@ -82,6 +84,7 @@ const AgentDashboard = () => {
     if (isPending) {
         return <Preloader />
     }
+    // console.log(itineraries[1])
     return (
         <div>
             <Navbar />
@@ -103,6 +106,7 @@ const AgentDashboard = () => {
                                         <th>Transportation</th>
                                         <th>Special <br /> Requirements</th>
                                         <th>Total Budget</th>
+                                        <th>Callback</th>
                                         <th>Itinerary</th>
                                         <th className="text-center">Action</th>
                                     </tr>
@@ -133,6 +137,28 @@ const AgentDashboard = () => {
                                                 <td>{transportation}</td>
                                                 <td>N/A</td>
                                                 <td>{oneItinerary?.response?.totalCost}</td>
+                                                <td className="text-center">
+                                                    {oneItinerary?.callback ? <TiTick onClick={() => document.getElementById("callbackInfo").showModal()} className="inline-block bg-green-500 text-white text-xl rounded-full mx-auto cursor-pointer" /> : <IoClose className="inline-block bg-red-500 text-white text-xl rounded-full mx-auto" />}
+                                                    <dialog id="callbackInfo" className="modal">
+                                                    <div className="modal-box scrollbar-hide">
+                                                        <form method="dialog">
+                                                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                        </form>
+                                                        <div>
+                                                            <h2 className="text-2xl font-bold">Traveller Informations</h2>
+                                                            <div className="p-3 text-start">
+                                                                <h2 className="text-md font-semibold my-1">Name : {oneItinerary?.callback?.name}</h2>
+                                                                <h2 className="text-md font-semibold my-1">Email : {oneItinerary?.callback?.email}</h2>
+                                                                <h2 className="text-md font-semibold my-1">Phone : {oneItinerary?.callback?.phone}</h2>
+                                                            </div>
+                                                            <div className="my-4">
+                                                                <form className="flex justify-start" method="dialog"><button className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Close</button></form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </dialog>
+                                                </td>
+                                                
                                                 <td onClick={() => handleViewItinerary(oneItinerary)} className="text-blue-500 underline font-semibold cursor-pointer text-center">View</td>
                                                 {
                                                     oneItinerary?.status === 'pending' && <td className="">

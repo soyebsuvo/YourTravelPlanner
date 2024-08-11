@@ -9,11 +9,15 @@ import Footer from "../Footer/Footer";
 const VerifyPhoneNumber = () => {
     const { phone, setPhone, setConfirmationResult } = useContext(MyContext)
     const [btnStatus, setBtnStatus] = useState(true);
+    let recaptcha;
     const handleSubmitPhoneNumber = async () => {
         try {
             setBtnStatus(false)
-            const recaptcha = new RecaptchaVerifier(auth, "recaptcha", {});
-            const confirmation = await linkWithPhoneNumber(auth.currentUser, phone, recaptcha)
+            if (recaptcha) {
+                recaptcha.clear();
+            }
+            recaptcha = new RecaptchaVerifier(auth, "recaptcha", {});
+            const confirmation = await linkWithPhoneNumber(auth?.currentUser, phone, recaptcha)
             setConfirmationResult(confirmation)
             // document.getElementById('phone_verify').close();
             document.getElementById('OTP').showModal();

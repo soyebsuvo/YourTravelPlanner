@@ -3,6 +3,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import './dashboard.css'
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
+import Footer from "../../Components/Footer/Footer";
 const ManageAccount = () => {
     const [tabOpen, setTabOpen] = useState(false);
     const [tabName , setTabName] = useState("Notifications");
@@ -45,6 +46,7 @@ const ManageAccount = () => {
                     <Outlet />
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

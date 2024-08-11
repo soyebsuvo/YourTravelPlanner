@@ -27,7 +27,7 @@ const Submit = ({ days, members, budget, accommodation, transportation }) => {
             i am using react and this prompt is send from my website. Now give the response in json format so that i can manage all the data easily. Saparate all the activities of the days with separate objects.
             
             {
-                "totalCost" : "$5000-$6000",
+                "totalCost" : "$5000-$6000", // do not add here any text. just give the total cost.
                 "totalActivities" : "22",
                 "itinerary": [
                   {
