@@ -173,7 +173,7 @@ const MyTrip = () => {
                                                 <th>Accommodation</th>
                                                 <th>Transportation</th>
                                                 <th>Total Budget</th>
-                                                <th>Itinerary</th>
+                                                {/* <th>Itinerary</th> */}
                                                 <th>Request</th>
                                                 <th>Action</th>
                                             </tr>
@@ -203,9 +203,9 @@ const MyTrip = () => {
                                                         <td>{accommodation}</td>
                                                         <td>{transportation}</td>
                                                         <td>{oneItinerary?.response?.totalCost}</td>
-                                                        <td onClick={() => handleViewItinerary(oneItinerary)} className="text-blue-500 underline font-semibold cursor-pointer text-center">View</td>
+                                                        {/* <td onClick={() => handleViewItinerary(oneItinerary)} className="text-blue-500 underline font-semibold cursor-pointer text-center">View</td> */}
                                                         <td>{oneItinerary?.request ? <p className="font-semibold">Requested <TiTick className="inline mb-1 text-blue-600" /></p> : <button onClick={() => handleSendToRequested(oneItinerary)} className="bg-blue-500 px-2 text-xs py-1 text-white rounded font-semibold">Send Request</button>}</td>
-                                                        <td onClick={() => handleDeleteSavedItinerary(oneItinerary._id)} className="text-center cursor-pointer"><FaTrash className="text-red-500 text-xl" /></td>
+                                                        <td onClick={() => handleDeleteSavedItinerary(oneItinerary?._id)} className="text-center cursor-pointer"><FaTrash className="text-red-500 text-xl" /></td>
                                                     </tr>
                                                 })
                                             }

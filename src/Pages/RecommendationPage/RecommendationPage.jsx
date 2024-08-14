@@ -46,7 +46,7 @@ const RecommendationPage = () => {
             const getRequestedItineraryById = async () => {
                 setResponse({})
                 setImages([])
-                const res = await axios.get(`http://localhost:3000/requestedbyid?id=${itinerary}`);
+                const res = await axios.get(`https://server.wandergeniellm.com/requestedbyid?id=${itinerary}`);
                 console.log(res.data[0]);
                 setRequest(res.data[0]?.request);
                 setResponse(res.data[0]?.response);
@@ -114,7 +114,7 @@ const RecommendationPage = () => {
         }
         setMessages((prev) => [...prev, newMsg])
         setMsgText("")
-        const res = await fetch("http://localhost:3000/chat", {
+        const res = await fetch("https://server.wandergeniellm.com/chat", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -205,6 +205,7 @@ const RecommendationPage = () => {
     const [ phone , setPhone ] = useState();
     const handleCallbackRequest = async (e) => {
         e.preventDefault();
+        // e.target.clear();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const message = e.target.message.value;
@@ -265,7 +266,7 @@ const RecommendationPage = () => {
                             </div> */}
                             </div>
                             <div>
-                                <a href="https://api.whatsapp.com/send/?phone=%2B919356853153&text=Welcome%20to%20WanderGenie%20LLM&type=phone_number&app_absent=0" target="_blank" className="max-w-sm mx-auto">
+                                <a href="http://api.whatsapp.com/send/?phone=919356853153&text=Hey+WanderGenie%2C+Help+me+plan+my+next+travel+adventure&type=phone_number&app_absent=0" target="_blank" className="max-w-sm mx-auto">
                                     <button className="w-full h-20 bg-green-100 hover:bg-green-200 text-green-800 py-3 px-4 rounded-lg flex items-center justify-between">
                                         <div className="flex items-center">
                                             <FaWhatsapp className="text-green-500 text-3xl mr-3" />

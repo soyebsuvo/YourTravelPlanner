@@ -5,10 +5,10 @@ import { useContext } from 'react';
 import { MyContext } from '../../Components/Context/Context';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import useCheckRole from '../../Hooks/useCheckRole';
 export default function Login({ setIsLogin }) {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     // const [ , , roleRefetch] = useCheckRole();
     const { googleLogin, login } = useContext(MyContext);
     const socialLogin = (media) => {
@@ -26,10 +26,10 @@ export default function Login({ setIsLogin }) {
             // // phone number varification    
             if (result?.user?.phoneNumber === null) {
                 // document.getElementById('phone_verify').showModal();
-                navigate("/verify")
+                // navigate("/verify")
             }
             const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
-            axios.post('http://localhost:3000/users', userInfo)
+            axios.post('https://server.wandergeniellm.com/users', userInfo)
                 .then(res => {
                     console.log(res.data)
                 })

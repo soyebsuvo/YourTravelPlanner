@@ -138,8 +138,8 @@ const AgentDashboard = () => {
                                                 <td>N/A</td>
                                                 <td>{oneItinerary?.response?.totalCost}</td>
                                                 <td className="text-center">
-                                                    {oneItinerary?.callback ? <TiTick onClick={() => document.getElementById("callbackInfo").showModal()} className="inline-block bg-green-500 text-white text-xl rounded-full mx-auto cursor-pointer" /> : <IoClose className="inline-block bg-red-500 text-white text-xl rounded-full mx-auto" />}
-                                                    <dialog id="callbackInfo" className="modal">
+                                                    {oneItinerary?.callback ? <TiTick onClick={() => document.getElementById(oneItinerary?._id).showModal()} className="inline-block bg-green-500 text-white text-xl rounded-full mx-auto cursor-pointer" /> : <IoClose className="inline-block bg-red-500 text-white text-xl rounded-full mx-auto" />}
+                                                    <dialog id={oneItinerary?._id} className="modal">
                                                     <div className="modal-box scrollbar-hide">
                                                         <form method="dialog">
                                                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
