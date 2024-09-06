@@ -9,11 +9,11 @@ const Index = () => {
         .then(res => res.json())
         .then(data => setPlaces(data))
     },[])
-    console.log(places?.places)
+    //console.log(places?.places)
     const filtered = places?.places?.filter((place) => {
         return place.includes("Mak")
     })
-    console.log(filtered)
+    //console.log(filtered)
 
     return (
         <div>
