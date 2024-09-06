@@ -22,6 +22,7 @@ import FAQs from "../Components/FAQs/FAQs";
 import TermsOfUse from "../Components/TermsOfUse/TermsOfUse";
 import VerifyPhoneNumber from "../Components/VerifyPhoneNumber/VerifyPhoneNumber";
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard";
+import Marketplace from "../Pages/Marketplace/Marketplace";
 
 export const router = createBrowserRouter([
     {
@@ -42,10 +43,6 @@ export const router = createBrowserRouter([
                 element : <RecommendationPage />
             },
             {
-                path : "/marketplace",
-                element : <div>Hello world</div>
-            },
-            {
                 path : "/about-wandergenie",
                 element : <About />
             },
@@ -64,6 +61,10 @@ export const router = createBrowserRouter([
             {
                 path : "/verify",
                 element : <VerifyPhoneNumber />
+            },
+            {
+                path : "/marketplace",
+                element : <Marketplace />
             }
         ]
     },
