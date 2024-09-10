@@ -23,6 +23,7 @@ import TermsOfUse from "../Components/TermsOfUse/TermsOfUse";
 import VerifyPhoneNumber from "../Components/VerifyPhoneNumber/VerifyPhoneNumber";
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard";
 import Marketplace from "../Pages/Marketplace/Marketplace";
+import { MarketplaceDetail } from "../Pages/MarketplaceSingleDetail/MarketplaceDetail";
 
 export const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
             {
                 path : "/marketplace",
                 element : <Marketplace />
+            },
+            {
+                path : "/marketplace/:id",
+                element : <MarketplaceDetail />
             }
         ]
     },
