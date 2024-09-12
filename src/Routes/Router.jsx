@@ -69,7 +69,7 @@ export const router = createBrowserRouter([
             },
             {
                 path : "/marketplace/:id",
-                element : <MarketplaceDetail />
+                element : <RecommendationPage />
             }
         ]
     },
