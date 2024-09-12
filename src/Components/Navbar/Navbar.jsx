@@ -43,8 +43,6 @@ const Navbar = () => {
         })
     }
 
-    console.log(phone)
-
     const handleOTPSubmit = async () => {
         try {
             const data = await confirmationResult?.confirm(otp);

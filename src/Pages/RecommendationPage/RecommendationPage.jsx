@@ -47,6 +47,7 @@ const RecommendationPage = () => {
                 setResponse({})
                 setImages([])
                 const res = await axios.get(`https://server.wandergeniellm.com/requestedbyid?id=${itinerary}`);
+                console.log(res.data);
                 console.log(res.data[0]);
                 setRequest(res.data[0]?.request);
                 setResponse(res.data[0]?.response);
@@ -114,7 +115,7 @@ const RecommendationPage = () => {
         }
         setMessages((prev) => [...prev, newMsg])
         setMsgText("")
-        const res = await fetch("https://server.wandergeniellm.com/chat", {
+        const res = await fetch("http://localhost:3000/chat", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
