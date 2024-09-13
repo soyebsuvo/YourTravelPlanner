@@ -7,7 +7,7 @@ import { router } from './Routes/Router.jsx';
 
 import Context from './Components/Context/Context.jsx';
 
-import './index.css';
+import './styles/global.css';
 
 const queryClient = new QueryClient()
 
