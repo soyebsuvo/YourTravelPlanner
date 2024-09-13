@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "components/*": ["src/shadecn/*"]
+      "components/*": ["src/shadecn/*"],
+      "lib" : ["src/lib/*"]
     }
   }
 }
