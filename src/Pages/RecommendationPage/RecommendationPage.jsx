@@ -31,6 +31,7 @@ import Lottie from "lottie-react";
 import animationData from '../../../public/flight-animation.json';
 import axios from "axios";
 import PhoneInput from "react-phone-input-2";
+import { ItineraryTable } from "./components/ItenaryTable";
 
 const RecommendationPage = () => {
     const axiosPublic = useAxiosPublic();
@@ -41,6 +42,7 @@ const RecommendationPage = () => {
     const [request, setRequest] = useState();
     const [ callback, setCallback ] = useState();
     console.log(itinerary)
+    // 668bb9e70680f8317a5eb434 testing
     useEffect(() => {
         if (itinerary) {
             const getRequestedItineraryById = async () => {
@@ -58,9 +60,7 @@ const RecommendationPage = () => {
         }
     }, [itinerary, setResponse, setImages])
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
+   
     const [open, setOpen] = useState(false)
     const initialMessages = {
         _id: 0,
@@ -375,92 +375,8 @@ const RecommendationPage = () => {
                             <div className="w-full py-8 space-y-32">
                                 {/* table .\ */}
                                 {/* <ArcherContainer strokeColor="gray"> */}
-                                {
-                                    response?.itinerary?.map((city, index) => {
-                                        return <div key={index} className="relative forChild items-start justify-between my-2 h-auto border-2 rounded-2xl p-4">
-                                            {/* <ArcherElement id={`element-${index}`}
-                                                    relations={[
-                                                        { targetId: `element-${index + 1}`, targetAnchor: 'top', sourceAnchor: 'bottom', label: <div><IoAirplaneSharp className={`text-4xl text-gray-500 hover:text-blue-600 duration-200 cursor-pointer ${index % 2 !== 0 ? 'rotate-180' : ''}`} /></div> }
-                                                    ]}
-                                                > */}
-                                            <div className="w-full md:w-[55%] h-auto text-xs md:text-base">
-                                                <div>
-                                                    <div ref={el => element1Refs.current[index] = el} className="main border-2 rounded-2xl w-full h-full">
-                                                        {/* header  */}
-                                                        <div className="flex justify-between items-center p-3">
-                                                            <div className="font-bold text-xs">{city?.destination}<span className="ml-5 text-gray-500 font-semibold">{city?.travelDates?.start} to {city?.travelDates?.end}</span></div>
-
-                                                            <div className="font-bold text-xs">{city?.destination} Trip Roadmap</div>
-                                                        </div>
-                                                        {/* row  */}
-                                                        {
-                                                            city?.dailyActivities?.map((item, index) => {
-                                                                return <div key={index} className="flex justify-between items-center">
-                                                                    <div className="border min-w-[90px] h-[140px] flex justify-center items-center text-gray-500 font-bold">{item?.day}</div>
-                                                                    {
-                                                                        item?.activities?.map((item, index) => {
-                                                                            return <div key={index} className="border w-full h-[140px] p-3 overflow-hidden hover:bg-blue-50">
-                                                                                <h2 className="text-gray-500 font-bold">{item?.time}</h2>
-                                                                                {
-                                                                                    item?.activity?.includes("Leisure") ? <div>
-                                                                                        <p className="text-gray-500">{item?.activity}</p>
-                                                                                        <p>{item?.cost}</p>
-                                                                                        <button onClick={() => document?.getElementById(`activity_modal_${index}`).showModal()} className="text-blue-500 font-bold">Add Activity + </button>
-                                                                                        {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                                                                                        <dialog id={`activity_modal_${index}`} className="modal">
-                                                                                            <div className="modal-box scrollbar-hide">
-                                                                                                <form method="dialog">
-                                                                                                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                                                                                </form>
-                                                                                                <div className="h-56">
-                                                                                                    <h2 className="text-xl font-semibold">Write what do you want to do at this slot?</h2>
-                                                                                                    <div className="my-3">
-                                                                                                        <textarea onChange={(e) => setActivityValue(e.target.value)} name="activity" id={index} cols="30" rows="5" className="shadow rounded-xl border w-full px-4 py-2 resize-none outline-none" placeholder={`Write Activities...`}></textarea>
-                                                                                                    </div>
-                                                                                                    <div>
-                                                                                                        {/* <button className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save</button> */}
-                                                                                                        {/* <form className="inline" method="dialog"><button className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Close</button></form> */}
-                                                                                                        <form className="inline" method="dialog"><button onClick={() => handleAddActivity(item)} className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save</button></form>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </dialog>
-                                                                                    </div> :
-                                                                                        <div>
-                                                                                            <p className="text-gray-500">{item?.activity}</p>
-                                                                                            {/* {item?.cost && <p>Cost: <span className="text-blue-800 font-bold">{item?.cost}</span></p>} */}
-                                                                                        </div>
-
-                                                                                }
-                                                                                {/* <p className="text-gray-500">{item?.activity === "Leisure" ? `Leisure with button` : item?.activity}</p> */}
-                                                                            </div>
-                                                                        })
-                                                                    }
-
-                                                                </div>
-                                                            })
-                                                        }
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            {/* </ArcherElement> */}
-                                            <div className="w-full md:w-[45%] h-full">
-                                                {/* <img className="p-5" src={images[index]} alt="Nai" /> */}
-                                                <img ref={el => element2Refs.current[index] = el} className="rounded-2xl w-full" src={images[index]} alt="imageS" />
-                                            </div>
-                                            <div className={`hidden md:block fly_line absolute -bottom-[145px] left-96 z-50 ${index % 2 !== 0 ? 'scale-x-[-1]' : ''}`}>
-                                                <div className="absolute bottom-[42px] left-40 rotate-45">
-                                                    <Lottie animationData={animationData} style={{ width: 100, height: 100 }} />
-                                                </div>
-                                                <GoDotFill className="absolute -left-[14px] -top-[20px] text-gray-300 text-4xl" />
-                                                <img src={fly_line} alt="Fly_Line" className="w-[420px]" />
-                                                <FaAngleDown className="absolute -right-[11px] -bottom-[11px] text-gray-300 text-3xl" />
-                                            </div>
-
-                                        </div>
-                                    })
-                                }
+                                
+                               <ItineraryTable response={response} />
                             </div>
                         </div>
                         <div className="border-2 rounded-2xl p-2">
