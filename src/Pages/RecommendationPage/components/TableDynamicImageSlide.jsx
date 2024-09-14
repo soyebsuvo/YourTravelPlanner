@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
 import { Box, HStack } from "@chakra-ui/react";
 import Slider from '@madzadev/image-slider';
-import { Fragment, useEffect, useState } from "react";
 
 export const TableDynamicImageSlide = ({ cityDays, dailyActivities, destination, cityImages }) => {
 
-    //const [cityImages, setCityImages] = useState([{}]);
+    const [currentCityImages, setCurrentCityImages] = useState([]);
 
     useEffect(() => {
         // const fetchImages= async () => {
@@ -30,18 +30,18 @@ export const TableDynamicImageSlide = ({ cityDays, dailyActivities, destination,
 
     useEffect(() => {
         //console.log(images);
-        const hasCurrentCity = cityImages.map(x => x.city.name).find(x => x === destination);
+        const currentCity = cityImages.find(x => x.city.name === destination);
 
-        if(hasCurrentCity !== '' || hasCurrentCity !== undefined)
+        if(currentCity && currentCity !== undefined && currentCity.city && currentCity.city.images)
         {
-            // code
+            setCurrentCityImages(currentCity.city.images);
+            console.log(currentCity.city.images)
         }
 
-        //console.log(hasCurrentCity)
-
-        //console.log({destination : destination, endDate : cityDays})
-
-    }, [cityImages, cityDays])
+        else {
+            console.log("City Images Could Not Be Found ", currentCity);
+        }
+    }, [cityImages, destination])
     
     
 
@@ -62,14 +62,14 @@ export const TableDynamicImageSlide = ({ cityDays, dailyActivities, destination,
         return null; // Return null or some default value if needed
     }    
 
-    const SliderForDay = ({ day, sliderImages, key }) => {
+    const SliderForDay = ({ day, sliderImages }) => {
         const height = getSliderHeight(day);
     
-        if (height && sliderImages)
+        if (height && sliderImages && currentCityImages)
         {
             return (
                 <Slider
-                    imageList={sliderImages}
+                    imageList={currentCityImages}
                     loop={true}
                     autoPlay={true}
                     bgColor='transparent'
@@ -78,7 +78,6 @@ export const TableDynamicImageSlide = ({ cityDays, dailyActivities, destination,
                     width={"100%"}
                     height={height}
                     autoPlayInterval={2000}
-                    key={key}
                 />
             );
         }
@@ -90,7 +89,7 @@ export const TableDynamicImageSlide = ({ cityDays, dailyActivities, destination,
     return (
         <Box className="w-full space-y-4">
             {
-                dailyActivities && dailyActivities.map((activity, i) => (
+                dailyActivities && (dailyActivities ?? []).map((activity, i) => (
                     <SliderForDay 
                         key={i}
                         day={activity.day}
@@ -100,8 +99,8 @@ export const TableDynamicImageSlide = ({ cityDays, dailyActivities, destination,
             }
             {
                 cityDays > 4 && (
-                    <HStack className="space-x-2">
-                        <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" alt="calti" className={`w-6/12 h-[${(cityDays - 4) * 140}px]`} />
+                    <HStack className="space-x-2 p-4 pl-0">
+                        <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" alt="calti" className={`w-6/12 h-[${2 * 140}px]`} />
                         <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" alt="calti" className={`w-6/12 h-[${(cityDays - 4) * 140}px]`} />
                     </HStack>
                 )

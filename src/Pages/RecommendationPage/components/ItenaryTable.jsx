@@ -28,7 +28,28 @@ export const ItineraryTable = ({ response }) => {
     const [isActivityModalOpen, setIsActivityModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
 
-    const [itenaryCityImages, setItenaryCityImages] = useState([]);
+    const [itenaryCityImages, setItenaryCityImages] = useState([
+        {
+            city: {
+                name: 'Blida',
+                images: [
+                    {url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy3dJhLSMxiSSiOBRP-YDLCIrMQvmJ6yRvuA&s"},
+                    {url : "https://c8.alamy.com/comp/KE2GYM/tall-trees-in-the-forest-in-a-vertical-format-with-shadows-on-the-KE2GYM.jpg"},
+                    {url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTsA0St40MR0eS9rDW10jLcuqgGB_KbAPuUQ&s"}
+                ]
+            }
+        },
+        {
+            city : {
+                name: 'Oran',
+                images: [
+                    {url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5qexeJBhTLCkNG6VLfrqg4cLFHIA3p_VgSg_psA4Q1Lt2Hauimikl9lfjubinw1iW3cs&usqp=CAU"},
+                    {url : "https://us.123rf.com/450wm/wirestock/wirestock2312/wirestock231278781/220428897-a-vertical-shot-of-a-long-road-through-rural-mountain-areas-in-washington.jpg?ver=6"},
+                    {url : "https://wallpapers.com/images/hd/vertical-pictures-r93cdchwdse79vvv.jpg"}
+                ]
+            }
+        }
+    ]);
 
     const [totalDaysOfFirstCity, setTotalDaysOfFirstCity] = useState(0);
 
@@ -41,6 +62,7 @@ export const ItineraryTable = ({ response }) => {
 
 
     useEffect(() => {
+        /*
         if(response && response.itinerary)
         {
             const fetchImages= async () => {
@@ -80,11 +102,7 @@ export const ItineraryTable = ({ response }) => {
     
             fetchImages()
         }
-
-        const totalDay = response.itinerary[0].travelDates.end.split(" ")[1];
-
-        console.log(response.itinerary)
-        //setTotalDaysOfFirstCity(totalDay);
+            */
     }, [response])
     
 
@@ -130,7 +148,7 @@ export const ItineraryTable = ({ response }) => {
         <Box className='w-full space-y-36'>
             {
                 (response?.itinerary ?? []).map((city, index) => (
-                    <Box key={index} className="relative forChild flex items-start justify-between my-2 h-auto border-2 rounded-2xl space-x-4 p-4">
+                    <Box key={index} className="relative forChild flex items-start justify-between my-2 h-auto border-2 rounded-2xl p-4">
                         <Box className="w-full md:w-[55%] h-auto text-xs md:text-base">
                             <Box className="main border-2 rounded-2xl w-full h-full">
                                 
@@ -152,12 +170,11 @@ export const ItineraryTable = ({ response }) => {
                             </Box>
                         </Box>
                         <Box className="w-full md:w-[45%] h-full">
-                            {/* <img className="rounded-2xl w-full" src={images[index]} alt="imageS" /> */}
                             <TableDynamicImageSlide
-                                cityDays={parseInt(city?.travelDates?.end.split(" ")[1], 10)}
                                 cityImages={itenaryCityImages}
                                 destination={city?.destination}
                                 dailyActivities={city?.dailyActivities ?? []} 
+                                cityDays={parseInt(city?.travelDates?.end.split(" ")[1], 10)}
                             />
                         </Box>
                         <Box className={`hidden md:block fly_line absolute -bottom-[145px] left-96 z-50 ${index % 2 !== 0 ? 'scale-x-[-1]' : ''}`}>
@@ -187,63 +204,3 @@ export const ItineraryTable = ({ response }) => {
 
 ItineraryTable.displayName = "ItineraryTable";
 ItineraryTable.propTypes = { response: PropTypes.object.isRequired };
-
-
- {/* {
-                                city.dailyActivities.map((activity, i) => {
-
-                                    if(parseInt(activity.day.replace("Day ", ""), 10) == 4)
-                                    {
-                                        return <>
-                                            <Slider
-                                                imageList={sliderImages}
-                                                loop={true}
-                                                autoPlay={true}
-                                                bgColor='transparent'
-                                                showArrowControls={false}
-                                                showDotControls={false}
-                                                width={'100%'}
-                                                height={700}
-                                                autoPlayInterval={2000}
-                                                key={i}
-                                            />
-                                        </>
-                                    }
-                                    if(parseInt(activity.day.replace("Day ", ""), 10) == 7)
-                                    {
-                                        return <>
-                                            <Slider
-                                                imageList={sliderImages}
-                                                loop={true}
-                                                autoPlay={true}
-                                                bgColor='transparent'
-                                                showArrowControls={false}
-                                                showDotControls={false}
-                                                width={'100%'}
-                                                height={300}
-                                                autoPlayInterval={2000}
-                                                key={i}
-                                            />
-                                        </>
-                                    }
-
-                                    if(parseInt(activity.day.replace("Day ", ""), 10) == 10)
-                                    {
-                                        return <>
-                                           <Slider
-                                                imageList={sliderImages}
-                                                loop={true}
-                                                autoPlay={true}
-                                                bgColor='transparent'
-                                                showArrowControls={false}
-                                                showDotControls={false}
-                                                width={'100%'}
-                                                height={300}
-                                                autoPlayInterval={2000}
-                                                key={i}
-                                            />
-                                        </>
-                                    }
-                                    // <p key={i}>{parseInt(activity.day.replace("Day ", ""), 10)}</p>
-                                })
-                            } */}

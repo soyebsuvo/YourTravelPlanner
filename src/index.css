@@ -43,12 +43,11 @@ html{
 @media screen and (min-width: 768px) {
     .forChild{
         display: flex;
-        gap: 48px;
         flex-direction: row;
     }
     .forChild:nth-child(even){
         display: flex;
-        flex-direction: row-reverse !important;        
+        flex-direction: row-reverse !important;
     }
 }
 
