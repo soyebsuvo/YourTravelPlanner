@@ -232,7 +232,7 @@ const RecommendationPage = () => {
 
 
     try {
-        console.log(response)
+        //console.log(response)
         // const parsedData = JSON.parse(response);
         // console.log(JSON.parse(response?.message?.content))
         // const actualData = response?.message?.content
