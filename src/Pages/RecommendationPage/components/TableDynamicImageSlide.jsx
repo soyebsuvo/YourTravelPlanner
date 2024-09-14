@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Box, HStack } from "@chakra-ui/react";
 import Slider from '@madzadev/image-slider';
 
@@ -7,41 +7,24 @@ export const TableDynamicImageSlide = ({ cityDays, dailyActivities, destination,
     const [currentCityImages, setCurrentCityImages] = useState([]);
 
     useEffect(() => {
-        // const fetchImages= async () => {
-        //     const res = await fetch('http://localhost:3000/generateimages', {
-        //         method: 'POST',
-        //         headers: {
-        //           'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify({
-        //             cities: [destination]
-        //         })
-        //     }
-        //     )
-
-        //     const responseJSON = await res.json();
-        //     //setCityImages(responseJSON.imageResponse);
-        //     const filteredImamges = 
-        //     setCityImages(responseJSON[0].images);
-        // }
-
-        // fetchImages()
-    }, [])
-
-    useEffect(() => {
         //console.log(images);
         const currentCity = cityImages.find(x => x.city.name === destination);
 
         if(currentCity && currentCity !== undefined && currentCity.city && currentCity.city.images)
         {
             setCurrentCityImages(currentCity.city.images);
-            console.log(currentCity.city.images)
+            //console.log(currentCity.city.images)
         }
 
         else {
             console.log("City Images Could Not Be Found ", currentCity);
         }
     }, [cityImages, destination])
+    
+
+    useEffect(() => {
+        console.log(currentCityImages.flatMap((x) => x));
+    }, [currentCityImages])
     
     
 
@@ -69,7 +52,7 @@ export const TableDynamicImageSlide = ({ cityDays, dailyActivities, destination,
         {
             return (
                 <Slider
-                    imageList={currentCityImages}
+                    imageList={sliderImages}
                     loop={true}
                     autoPlay={true}
                     bgColor='transparent'
@@ -88,15 +71,17 @@ export const TableDynamicImageSlide = ({ cityDays, dailyActivities, destination,
 
     return (
         <Box className="w-full space-y-4">
-            {
-                dailyActivities && (dailyActivities ?? []).map((activity, i) => (
-                    <SliderForDay 
-                        key={i}
-                        day={activity.day}
-                        sliderImages={sliderImages}
-                    />
-                ))
-            }
+            <Suspense fallback={<p>Loading...</p>}>
+                {
+                    dailyActivities && (dailyActivities ?? []).map((activity, i) => (
+                        <SliderForDay 
+                            key={i}
+                            day={activity.day}
+                            sliderImages={sliderImages}
+                        />
+                    ))
+                }
+            </Suspense>
             {
                 cityDays > 4 && (
                     <HStack className="space-x-2 p-4 pl-0">

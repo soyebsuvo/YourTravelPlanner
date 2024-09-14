@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { Suspense, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Slider from '@madzadev/image-slider';
@@ -50,8 +50,6 @@ export const ItineraryTable = ({ response }) => {
             }
         }
     ]);
-
-    const [totalDaysOfFirstCity, setTotalDaysOfFirstCity] = useState(0);
 
     const handleAddActivity = () => {
         selectedItem.activity = activity;
@@ -170,12 +168,14 @@ export const ItineraryTable = ({ response }) => {
                             </Box>
                         </Box>
                         <Box className="w-full md:w-[45%] h-full">
-                            <TableDynamicImageSlide
-                                cityImages={itenaryCityImages}
-                                destination={city?.destination}
-                                dailyActivities={city?.dailyActivities ?? []} 
-                                cityDays={parseInt(city?.travelDates?.end.split(" ")[1], 10)}
-                            />
+                            <Suspense>
+                                <TableDynamicImageSlide
+                                    cityImages={itenaryCityImages}
+                                    destination={city?.destination}
+                                    dailyActivities={city?.dailyActivities ?? []} 
+                                    cityDays={parseInt(city?.travelDates?.end.split(" ")[1], 10)}
+                                />
+                            </Suspense>
                         </Box>
                         <Box className={`hidden md:block fly_line absolute -bottom-[145px] left-96 z-50 ${index % 2 !== 0 ? 'scale-x-[-1]' : ''}`}>
                             <Box className="absolute bottom-[42px] left-40 rotate-45">
