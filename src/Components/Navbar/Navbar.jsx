@@ -1,7 +1,4 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-// import { BsThreeDots } from "react-icons/bs";
-// import { TbWorld } from "react-icons/tb";s
-// import { FaRegUserCircle } from "react-icons/fa";
 import logo from "../../assets/Your_travel__3_-removebg-preview (2).png"
 import "./navbar.css";
 import Login from "../../Pages/Login/Login";
@@ -57,7 +54,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="absolute top-0 right-0 left-0">
+        <div className="absolute top-0 right-0 left-0 z-30">
             <nav className="max-w-7xl mx-auto px-2 md:px-16 py-3">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center justify-center">
@@ -83,7 +80,6 @@ const Navbar = () => {
                             {user ?
                                 <div className="relative">
                                     <div>{user?.photoURL ? <img src={user?.photoURL} onClick={() => setMenu(!menu)} className="cursor-pointer w-9 h-9 rounded-full" /> : <FaRegUserCircle onClick={() => setMenu(!menu)} className="cursor-pointer text-3xl text-white" />} </div>
-                                    {/* <div><FaRegUserCircle onClick={() => setMenu(!menu)} className="text-white text-2xl cursor-pointer"/> </div> */}
                                     <ul className={`${menu ? 'absolute' : 'hidden'} z-50 p-2 w-40 shadow duration-300 ease-in transition-all bg-white rounded right-6 top-8`}>
                                         <Link to="/manage-account/profile"><li className="px-2 py-1 cursor-pointer"><a>Manage Account</a></li></Link>
                                         <Link to="/my-trips"><li className="px-2 py-1 cursor-pointer"><a>Trips</a></li></Link>
@@ -93,7 +89,6 @@ const Navbar = () => {
                                     </ul>
                                 </div>
                                 : <button onClick={() => document.getElementById('my_modal_3').showModal()} className="px-4 py-1 rounded border border-white font-semibold cursor-pointer text-white">Login</button>}
-                            {/* You can open the modal using document.getElementById('ID').showModal() method */}
                             <dialog id="my_modal_3" className="modal">
                                 <div className="modal-box scrollbar-hide">
                                     <form method="dialog">
@@ -103,38 +98,8 @@ const Navbar = () => {
                                     {isLogin ? <Login setIsLogin={setIsLogin} /> : <Register setIsLogin={setIsLogin} />}
                                 </div>
                             </dialog>
-                            {/* <button onClick={() => document.getElementById('phone_verify').showModal()} className="px-4 py-1 rounded border border-white font-semibold cursor-pointer text-white">laga shalting</button> */}
-                            {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                            {/* <dialog id="phone_verify" className="modal w-1/3 mx-auto">
-                                <div className="modal-box scrollbar-hide">
-                                    <form method="dialog">
-                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                    </form>
-                                    <div>
-                                        <div>
-                                            <h2 className="text-2xl font-semibold mt-3 mb-8 text-center">Enter Your Phone Number</h2>
-                                        </div>
-                                        <div className='w-[70%] mx-auto'>
-                                            <PhoneInput
-                                                country={'bd'}
-                                                inputClass='w-full'
-                                                containerClass='w-full'
-                                                value={phone}
-                                                onChange={phone => setPhone(`+${phone}`)}
-                                            />
-                                        </div>
-                                        <div className="z-20" id="recaptcha"></div>
-                                        <div className="flex justify-center">
-                                            <button onClick={handleSubmitPhoneNumber} className={`px-6 py-2 bg-blue-600 text-white rounded mt-8 ${btnStatus ? '' : 'btn-disabled'}`}>Send OTP</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </dialog> */}
                             <dialog id="OTP" className="modal w-1/3 mx-auto">
                                 <div className="modal-box scrollbar-hide">
-                                    {/* <form method="dialog">
-                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                    </form> */}
                                     <div>
                                         <h2 className="text-2xl font-semibold mt-3 mb-2 text-center">Enter OTP</h2>
                                         <p className="text-gray-500 text-center text-sm mb-5">OTP has been sent to {phone}</p>
@@ -165,11 +130,7 @@ const Navbar = () => {
                                 <li className="text-gray-500"><GiTakeMyMoney className="inline mb-1 mr-2" />Cheapest deal of the season</li>
                             </ul>
                         </div>
-                        {/* <div className="flex justify-center items-center h-48 w-full border rounded-2xl my-3">
-                            video
-                        </div> */}
                         <div className="my-4">
-                            {/* <button className="bg-blue-500 text-white px-4 py-1 rounded font-semibold mr-3 inline">Save</button> */}
                             <form className="inline" method="dialog"><button className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Close</button></form>
                         </div>
                     </div>
