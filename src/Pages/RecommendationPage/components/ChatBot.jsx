@@ -6,6 +6,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigg
 import { BsChatRightFill, BsFillSendFill } from "react-icons/bs";
 import { LuPlusCircle } from "react-icons/lu";
 import { FaRobot } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const initialMessages = {
@@ -34,40 +35,64 @@ export const ChatBot = () => {
 
     const [userInputChat, setUserInputChat] = useState("");
     const [messages, setMessages] = useState(initialMessages.messages);
+    const [canSend, setCanSend] = useState(true);
 
     const messagesEndRef = useRef(null);
 
     const handleSendMessage = async () => {
+        try
+        {
+            if (!userInputChat || userInputChat.length < 2) return;
 
-        if (!userInputChat || userInputChat.length < 2) return;
+            const newMsg = { _id: 1, sender: "user", content: userInputChat, timestamp: "no" };
+            setMessages((prev) => [...prev, newMsg]);
+            setUserInputChat("");
 
-        console.log(userInputChat)
-        const newMsg = {
-            _id: 1,
-            sender: "user",
-            content: userInputChat,
-            timestamp: "no"
+            setCanSend(false);
+            const response = await fetch("http://localhost:3000/chat", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message : userInputChat }),
+                credentials: 'include',
+            })
+            if(response.ok)
+            {
+                const responseJSON = await response.json();
+                const reply = await responseJSON?.message;
+                if(reply !== undefined && reply) {
+                    const botReply = {
+                        _id: 1,
+                        sender: "gpt",
+                        content: reply,
+                        timestamp: "no"
+                    }
+                
+                    setMessages((prev) => [...prev, botReply]);
+                    setCanSend(true);
+                }
+                else {
+                    setMessages((prev) => [...prev, {
+                        _id : Math.floor(Math.random() * 20),
+                        sender : "gpt",
+                        content : "I apologize, but I was unable to process your request. Please try again later.",
+                        timestamp : "no"
+                    }]);
+                    setCanSend(true);
+                }
+            }
         }
-        setMessages((prev) => [...prev, newMsg]);
-        setUserInputChat("");
-        const res = await fetch("http://localhost:3000/chat", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ text: userInputChat })
-        })
-        const data = await res.json();
-        console.log(data)
-        const reply = await data?.message?.content;
-        console.log(reply)
-        const replyMsg = {
-            _id: 1,
-            sender: "gpt",
-            content: reply,
-            timestamp: "no"
+        catch (error) {
+            setCanSend(true);
+            console.error(error);
+            Swal.fire({
+                title: 'Error',
+                text: 'Something went wrong. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            })
         }
-        setMessages((prev) => [...prev, replyMsg])
     }
 
 
@@ -88,13 +113,13 @@ export const ChatBot = () => {
                                 <Box className={`${item?.sender === "user" ? 'flex justify-end px-3 py-1 ml-12' : 'px-3 py-1 mr-12'}`} key={index}>
                                     {
                                         item.sender == "user" ? (
-                                            <p className={`font-semibold py-2 px-5 break-words bg-slate-300`}>{item?.content}</p>
+                                            <p className={`font-semibold py-2 px-5 break-words bg-slate-300 text-black`}>{item?.content}</p>
                                         )
                                         :
                                         (
                                             <Box key={index} className="space-x-2 flex flex-row">
                                                 <FaRobot className="text-lg" />
-                                                <p className={`font-semibold py-2 px-5 w-fit overflow-hidden bg-blue-400 rounded-lg`}>
+                                                <p className={`font-semibold py-2 px-5 w-fit overflow-hidden bg-blue-400 rounded-lg text-white`}>
                                                     {item?.content}
                                                 </p>
                                             </Box>
@@ -107,6 +132,7 @@ export const ChatBot = () => {
                         <Box className="absolute bottom-2 w-full flex items-center justify-between gap-2 px-4">
                             <LuPlusCircle className="font-bold text-3xl cursor-pointer" />
                             <input
+                                disabled={!canSend}
                                 value={userInputChat}
                                 onKeyDown={e => { e.key === "Enter" && handleSendMessage() }}
                                 onChange={(e) => setUserInputChat(e.target.value)}
