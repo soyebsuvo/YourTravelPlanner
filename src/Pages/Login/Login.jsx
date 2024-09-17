@@ -5,16 +5,14 @@ import { useContext } from 'react';
 import { MyContext } from '../../Components/Context/Context';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-// import { useNavigate } from 'react-router-dom';
-// import useCheckRole from '../../Hooks/useCheckRole';
+import { useAuth } from '@/context/AuthContextProvider';
+
 export default function Login({ setIsLogin }) {
-    // const navigate = useNavigate();
-    // const [ , , roleRefetch] = useCheckRole();
-    const { googleLogin, login } = useContext(MyContext);
+    
+    const { login, googleLogin } = useAuth();
+
     const socialLogin = (media) => {
         media().then((result) => {
-            // roleRefetch();
-            console.log(result?.user)
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -25,8 +23,13 @@ export default function Login({ setIsLogin }) {
             document.getElementById('my_modal_3').close()
             // // phone number varification    
             if (result?.user?.phoneNumber === null) {
-                // document.getElementById('phone_verify').showModal();
-                // navigate("/verify")
+                Swal.fire({
+                    position: "top-end",
+                    icon: "info",
+                    title: "Failed to auto verify your phone number",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
             }
             const userInfo = { name: result?.user?.displayName, email: result?.user?.email }
             axios.post('https://server.wandergeniellm.com/users', userInfo)
@@ -67,12 +70,9 @@ export default function Login({ setIsLogin }) {
         <div className='py-2'>
             <div className='md:px-8'>
                 <div className="p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-4 dark:bg-gray-800 dark:border-gray-700">
-                    <div className='pb-8'>
-                        <div className='flex justify-center items-center pb-5'>
-                            {/* <Link to="/"><img className='w-32' src={LoginHeader} alt="" /></Link> */}
-                        </div>
-                        <h5 className="text-3xl text-center font-medium text-gray-900 dark:text-white">Sign in</h5>
-                        <p className='text-sm text-center'>Sign in with this account across the following sites.</p>
+                    <div className='pb-8 space-y-4'>
+                        <h5 className="text-3xl text-center font-medium text-white">Sign in</h5>
+                        <p className='text-sm text-center text-white'>Sign in with this account across the following sites.</p>
                     </div>
                     <form onSubmit={handleLogin} className="space-y-6 mb-3" action="#">
                         <div>
@@ -90,17 +90,17 @@ export default function Login({ setIsLogin }) {
                                 </div>
                                 <label htmlFor="remember" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
                             </div>
-                            <a href="#" className="ms-auto text-sm text-blue-700 hover:underline dark:text-[#EB675368]">Password Forgotten?</a>
+                            <a href="#" className="ms-auto text-sm hover:underline text-red-400">Password Forgotten?</a>
                         </div>
                         <button type="submit" className="w-full text-white bg-blue-500 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:blue-500 dark:hover:bg-blue-500 dark:focus:ring-blue-500">Login to your account</button>
                     </form>
                     <div className='divider'></div>
                     <div onClick={() => socialLogin(googleLogin)} className='relative'>
-                        <button className="w-full my-3 text-black font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:blue-500 border border-black">Login With Google</button>
+                        <button className="w-full my-3 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:blue-500 border border-black">Login With Google</button>
                         <FcGoogle className='absolute left-2 top-5 text-2xl'></FcGoogle>
                     </div>
                     <div className="text-sm text-center font-medium text-gray-500 dark:text-gray-300">
-                        Not registered? <button onClick={() => setIsLogin(false)} className="text-blue-700 hover:underline dark:text-[#EB675368]">Create account</button>
+                        Not registered? <button onClick={() => setIsLogin(false)} className="hover:underline text-blue-400">Create account</button>
                     </div>
                 </div>
             </div>

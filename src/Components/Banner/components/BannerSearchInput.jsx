@@ -19,15 +19,15 @@ const fetchPlaces = async () => {
 
 export const BannerSearchInput = ({scrollHandler, durationScroll}) => {
 
-    const { data: places, isLoading } = useQuery({
-        queryKey: ["places"],
-        queryFn: fetchPlaces,
-        staleTime: 1000 * 60 * 5, // 5 minutes
-        cacheTime: 1000 * 60 * 10, // 10 minutes
-        refetchOnWindowFocus: false,
-    });
+    // const { data: places, isLoading } = useQuery({
+    //     queryKey: ["places"],
+    //     queryFn: fetchPlaces,
+    //     staleTime: 1000 * 60 * 5, // 5 minutes
+    //     cacheTime: 1000 * 60 * 10, // 10 minutes
+    //     refetchOnWindowFocus: false,
+    // });
 
-    const [currentPlaces, setCurrentPlaces] = useState(places ?? []);
+    const [currentPlaces, setCurrentPlaces] = useState([]);
     const [query, setQuery] = useState("");
 
     const [isPlaceSelected, setIsPlaceSelected] = useState(false);
@@ -83,7 +83,7 @@ export const BannerSearchInput = ({scrollHandler, durationScroll}) => {
     return (
         <Box className="relative">
             <Command className="w-full">
-                <CommandInput disabled={isLoading} value={query} onValueChange={setQuery} placeholder="Type a command or search..." />
+                <CommandInput disabled={false} value={query} onValueChange={setQuery} placeholder="Type a command or search..." />
                 <CommandList hidden={isPlaceSelected || query == ""} className="absolute mt-10 bg-neutral-50 w-full shadow border-2 border-black">
                     <CommandEmpty>No results found.</CommandEmpty>
                     {

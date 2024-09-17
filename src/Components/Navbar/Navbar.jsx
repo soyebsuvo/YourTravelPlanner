@@ -3,7 +3,7 @@ import logo from "../../assets/Your_travel__3_-removebg-preview (2).png"
 import "./navbar.css";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../Context/Context";
 import { IoIosNotifications } from "react-icons/io";
 import { GiTakeMyMoney } from "react-icons/gi";
@@ -11,14 +11,20 @@ import { TbMessageChatbot } from "react-icons/tb";
 import { MdOutlineAttractions } from "react-icons/md";
 import useCheckRole from "../../Hooks/useCheckRole";
 import { FaRegUserCircle } from "react-icons/fa";
+import { useAuth } from "@/context/AuthContextProvider";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shadecn/ui/dropdown-menu";
+import { Dialog, DialogContent, DialogTrigger } from "@/shadecn/ui/dialog";
 
 
 const Navbar = () => {
+
+    const { user, logOut } = useAuth();
+
     const navigate = useNavigate();
-    const [menu, setMenu] = useState(false)
     const [isLogin, setIsLogin] = useState(true);
-    const { user, logOut, phone, otp, setOtp, confirmationResult } = useContext(MyContext)
+    const { phone, otp, setOtp, confirmationResult } = useContext(MyContext)
     const [role, , refetch] = useCheckRole();
+    
     const links = <>
         <NavLink to="/"><a>Home</a></NavLink>
         <span className="cursor-pointer" onClick={() => document.getElementById('coming_soon').showModal()}><a>Marketplace</a></span>
@@ -30,6 +36,7 @@ const Navbar = () => {
         {/* <li><a><BsThreeDots/></a></li> */}
         <li><a><IoIosNotifications className="text-2xl" /></a></li>
     </>
+
     const logout = () => {
         logOut().then(() => {
             refetch();
@@ -51,6 +58,11 @@ const Navbar = () => {
             console.log(error)
         }
     }
+
+    useEffect(() => {
+      console.log(user)
+    }, [])
+    
 
 
     return (
@@ -78,26 +90,43 @@ const Navbar = () => {
                         </div>
                         <div className="">
                             {user ?
-                                <div className="relative">
-                                    <div>{user?.photoURL ? <img src={user?.photoURL} onClick={() => setMenu(!menu)} className="cursor-pointer w-9 h-9 rounded-full" /> : <FaRegUserCircle onClick={() => setMenu(!menu)} className="cursor-pointer text-3xl text-white" />} </div>
-                                    <ul className={`${menu ? 'absolute' : 'hidden'} z-50 p-2 w-40 shadow duration-300 ease-in transition-all bg-white rounded right-6 top-8`}>
-                                        <Link to="/manage-account/profile"><li className="px-2 py-1 cursor-pointer"><a>Manage Account</a></li></Link>
-                                        <Link to="/my-trips"><li className="px-2 py-1 cursor-pointer"><a>Trips</a></li></Link>
-                                        <li className="px-2 py-1 cursor-pointer"><a>Reviews</a></li>
-                                        <li className="px-2 py-1 cursor-pointer"><a>Saved</a></li>
-                                        <li className="px-2 py-1 cursor-pointer" onClick={() => logout()} ><a>Logout</a></li>
-                                    </ul>
-                                </div>
-                                : <button onClick={() => document.getElementById('my_modal_3').showModal()} className="px-4 py-1 rounded border border-white font-semibold cursor-pointer text-white">Login</button>}
-                            <dialog id="my_modal_3" className="modal">
-                                <div className="modal-box scrollbar-hide">
-                                    <form method="dialog">
-                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                    </form>
-                                    {/* <Login /> */}
-                                    {isLogin ? <Login setIsLogin={setIsLogin} /> : <Register setIsLogin={setIsLogin} />}
-                                </div>
-                            </dialog>
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger>
+                                        {user?.photoURL ? <img src={user?.photoURL} className="cursor-pointer w-9 h-9 rounded-full" /> : <FaRegUserCircle className="cursor-pointer text-3xl text-white" /> }
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent className="flex flex-col items-start justify-start min-w-52">
+                                        {
+                                            [
+                                                { label : "Manage Account", link : "profile" },
+                                                { label : "Trips", link : "my-trips" },
+                                                { label : "Reviews", link : "reviews" },
+                                                { label : "Saved", link : "saved" },
+                                                { label : "Logout", link : "/" },
+                                            ].map((link, index) => (
+                                                <DropdownMenuItem key={index} className="w-full p-1">
+                                                    <Link
+                                                        onClick={() => link.label === "Logout" ? logout() : () => {}}
+                                                        className="px-2 py-1 cursor-pointer"
+                                                        to={`/manage-account/${link.link}`}
+                                                    >
+                                                        {link.label}
+                                                    </Link>
+                                                </DropdownMenuItem>
+                                            ))
+                                        }
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                                :
+                                <Dialog>
+                                    <DialogTrigger className="px-4 py-1 rounded border border-white font-semibold cursor-pointer text-white">
+                                        Login
+                                    </DialogTrigger>
+                                    <DialogContent className="bg-transparent p-0 border-none">
+                                        {isLogin ? <Login setIsLogin={setIsLogin} /> : <Register setIsLogin={setIsLogin} />}
+                                    </DialogContent>
+                                </Dialog>
+                            }
+                                
                             <dialog id="OTP" className="modal w-1/3 mx-auto">
                                 <div className="modal-box scrollbar-hide">
                                     <div>
