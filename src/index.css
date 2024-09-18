@@ -74,8 +74,14 @@ html{
 
 .scrollbar-hide::-webkit-scrollbar {
     display: none; 
-  }
-  
+}
+.scrollbar-show::-webkit-scrollbar {
+    display: block; 
+}
+.scrollbar-show {
+    scrollbar-width: auto; 
+}
+
   .scrollbar-hide {
     -ms-overflow-style: none; 
     scrollbar-width: none; 

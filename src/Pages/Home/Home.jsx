@@ -9,7 +9,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import Preloader from "../../Components/Preloader/Preloader";
 import { ItineraryQuestionsSection } from './components/ItineraryQuestionsSection';
-import { FavoriteDestinations } from './components/FavouriteDestination/FavoriteDestinations';
+import { TravelHotspot } from './components/TravelHotspots/TravelHotspot';
 
 export default function Home()
 {
@@ -41,7 +41,7 @@ export default function Home()
             <Navbar/>
             <Banner scrollHandler={scrollHandler} durationScroll={durationScroll}/>
             <Box className='space-y-4'>
-                <FavoriteDestinations/>
+                <TravelHotspot/>
                 <ItineraryQuestionsSection/>
                 <Footer/>
             </Box>

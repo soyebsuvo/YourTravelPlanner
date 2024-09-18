@@ -23,7 +23,7 @@ import TermsOfUse from "../Components/TermsOfUse/TermsOfUse";
 import VerifyPhoneNumber from "../Components/VerifyPhoneNumber/VerifyPhoneNumber";
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard";
 import Marketplace from "../Pages/Marketplace/Marketplace";
-import { MarketplaceDetail } from "../Pages/MarketplaceSingleDetail/MarketplaceDetail";
+import DestinationItinerary from "@/Pages/DestinationItinerary/DestinationItinerary";
 
 export const router = createBrowserRouter([
     {
@@ -70,6 +70,10 @@ export const router = createBrowserRouter([
             {
                 path : "/marketplace/:id",
                 element : <RecommendationPage />
+            },
+            {
+                path : "/destinationItinerary/:country",
+                element : <DestinationItinerary />
             }
         ]
     },
