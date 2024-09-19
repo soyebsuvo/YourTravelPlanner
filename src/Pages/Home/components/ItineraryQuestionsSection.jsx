@@ -49,9 +49,10 @@ export const ItineraryQuestionsSection = () => {
     }
 
     const handleGoToSelectCities = () => {
-        if(!place || !days || !members || !budget || !accommodation || !transportation){
+        if(!place || !days || !members || !budget || !accommodation || !transportation)
+        {
             return Swal.fire({
-                title: "Oops!",
+                title: !place ? "Destination Is Required" : !days ? "Days Is Required" : !members ? "Members Are Required" : !budget ? "Budget Is Required" : !accommodation ? "Stay Place Is Required" : !transportation ? "Transportation Is Required" : "",
                 text: "Please answer all the mandatory questions",
                 icon: "error"
             });
