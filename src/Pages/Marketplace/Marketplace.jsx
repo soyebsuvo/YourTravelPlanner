@@ -5,10 +5,6 @@ import { TripCard } from "./components/TripCard/TripCard";
 
 import SubBanner from "../../Components/Banner/SubBanner";
 import Navbar from "../../Components/Navbar/Navbar";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/shadecn/ui/dialog";
-import { Button } from "@/shadecn/ui/button";
-import { Textarea } from "@/shadecn/ui/textarea";
-
 
 const TRIP_CARDS = [
     
@@ -103,17 +99,7 @@ export default function Marketplace()
             <Container className="w-full">
                 <Navbar/>
                 <SubBanner/>                
-            </Container>
-
-            <Dialog modal>
-                <DialogTrigger>Add Activity</DialogTrigger>
-                <DialogContent>
-                    <DialogTitle>Add Activity</DialogTitle>  
-                    <Textarea name="activity" cols="30" rows="5"></Textarea>
-                    <Button className="w-full bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200 rounded-lg">Submit</Button>
-                </DialogContent>
-            </Dialog>
-                                                                    
+            </Container>                                            
 
             <Box className="w-full max-w-screen-xl m-auto space-y-6">
                 <TripFilter/>

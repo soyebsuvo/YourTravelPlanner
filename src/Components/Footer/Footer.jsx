@@ -5,6 +5,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FiFacebook, FiLinkedin, FiYoutube } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { Text } from "@chakra-ui/react";
 const Footer = () => {
     return (
         <div className=" bg-base-200 text-gray-700">
@@ -40,8 +41,15 @@ const Footer = () => {
                     <a className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px]">Cookie Policy</a>
                     <a className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px]">Cancellations</a>
                 </nav>
-                
             </footer>
+            <div className="w-full flex flex-col items-center justify-center py-4">
+                <h6 className="footer-title h-[23px]">WanderGenie LLM</h6>
+                <Text className="text-center">
+                    S. No. 63, Plot No. 44, Narayan Annaji Shinde Road, 
+                    Nanak Society, Salunkhe Vihar Society, 
+                    Kondhwa, Pune, Maharashtra 411048
+                </Text>
+            </div>
             <footer className="footer footer-center p-4 bg-base-300 text-base-content">
                 <aside>
                     <p>Copyright &copy; 2024 - All right reserved by wandergeniellm.com</p>
