@@ -1,13 +1,15 @@
-import { NavLink, Outlet } from "react-router-dom";
-import Navbar from "../../Components/Navbar/Navbar";
-import './dashboard.css'
 import { useState } from "react";
-import { FaAngleDown } from "react-icons/fa";
+import { NavLink, Outlet } from "react-router-dom";
+
+import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/shadecn/ui/dropdown-menu";
+import './dashboard.css';
+import { Box } from "@chakra-ui/react";
+
 const ManageAccount = () => {
     
-    const [tabOpen, setTabOpen] = useState(false);
     const [tabName , setTabName] = useState("Notifications");
 
     const MANAGE_LINKS = [
@@ -26,7 +28,7 @@ const ManageAccount = () => {
             <div className="h-20 bg-blue-600"></div>
             <div className="max-w-7xl mx-auto px-2 md:px-14 grid grid-cols-12 min-h-screen max-h-[9999999vh]">
                 <div className="col-span-3 border rounded-lg my-4 hidden md:block">
-                    <ul className="dashboard-nav">
+                    <ul className="dashboard-nav space-y-8">
                         {
                             MANAGE_LINKS.map((link, index) => (
                                 <NavLink key={index} to={`/manage-account/${link.link}`}>
@@ -54,9 +56,9 @@ const ManageAccount = () => {
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
-                <div className="col-span-12 md:col-span-9">
+                <Box className="col-span-12 md:col-span-9">
                     <Outlet />
-                </div>
+                </Box>
             </div>
             <Footer />
         </div>
