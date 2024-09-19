@@ -40,7 +40,7 @@ export default function OtherTravellers()
     return (
         <Box className="p-2 md:p-6"> 
             <Box className="flex justify-between items-center py-2 pb-4">
-                <Box className="space-y-2">
+                <Box className="space-y-4">
                     <Heading className="text-2xl md:text-4xl font-semibold">Other Travellers</Heading>
                     <h4 className="text-sm md:text-lg text-gray-500">Add or edit information about the people you are travelling with.</h4>
                 </Box>

@@ -7,7 +7,7 @@ export default function EmailNotification()
     return (
         <div className="p-2 md:p-6"> 
             <div className="flex justify-between items-center py-2 pb-4">
-                <div>
+                <div className="space-y-4">
                     <h2 className="text-2xl md:text-4xl font-semibold">Email Notifications</h2>
                     <h4 className="text-sm md:text-lg text-gray-500">Decide what you want to be notified about, and unsubscribe from what you don&apos;t</h4>
                 </div>
