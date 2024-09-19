@@ -17,30 +17,29 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
     const handlePrevious = () => { if (currentPage > 0) setCurrentPage(prevPage => prevPage - 1); }
 
     const RenderMemorizedLocations = memo(() => {
-        return currentLocations.map((location, index) => {
-            return (
-                <Link
-                    to={`/destinationItinerary/${location.name}`}
-                    target="_blank"
-                    referrerPolicy="no-referrer"
-                    key={index}
-                    className="w-56 h-48 relative rounded-xl overflow-hidden shadow-lg hover:brightness-110 transition-all duration-150 hover:shadow-xl hover:shadow-black"
-                >
-                    <Image
-                        src={location.image}
-                        alt={location.name}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                    />
-                    <Text className="font-sans font-normal text-sm text-white text-center bg-black/60 w-full py-2 absolute bottom-10">
-                        {location.description}
-                    </Text>
-                    <Text className="font-sans font-bold text-2xl text-white text-center bg-black/60 w-full pb-2 absolute bottom-0">
-                        {location.name}
-                    </Text>
-                </Link>
-            )
-        })
+        return currentLocations.map((location, index) => (
+            <Link
+                to={`/destinationItinerary/${location.name}`}
+                target="_blank"
+                referrerPolicy="no-referrer"
+                key={index}
+                className="w-52 h-48 relative rounded-xl overflow-hidden shadow-lg hover:brightness-110 transition-all duration-150 hover:shadow-xl hover:shadow-black
+                    max-xl:w-48 max-xl:h-44"
+            >
+                <Image
+                    src={location.image}
+                    alt={location.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                />
+                <Text className="font-sans font-normal text-sm text-white text-center bg-black/60 w-full py-2 absolute bottom-10 max-xl:bottom-9">
+                    {location.description}
+                </Text>
+                <Text className="font-sans font-bold text-2xl max-xl:text-lg text-white text-center bg-black/60 w-full pb-2 absolute bottom-0">
+                    {location.name}
+                </Text>
+            </Link>
+        ))
     }, [currentLocations]);
 
     return (
@@ -71,6 +70,7 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
                     <RenderMemorizedLocations/>
                 </Box>
             </Box>
+
         </Box>
     );
 };
