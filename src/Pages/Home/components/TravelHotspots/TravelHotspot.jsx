@@ -5,13 +5,13 @@ const FavouriteDestinationLocations = [
     { name: "Dubai", description: "The City Of Gold", image: "https://images.pexels.com/photos/3787839/pexels-photo-3787839.jpeg?cs=srgb&dl=pexels-ivan-siarbolin-1513699-3787839.jpg&fm=jpg" },
     { name: "Singapore", description: "The Lion City", image: "https://images.pexels.com/photos/777059/pexels-photo-777059.jpeg?cs=srgb&dl=pexels-kin-pastor-251088-777059.jpg&fm=jpg" },
     { name: "Australia", description: "Land of Down Under", image: "https://www.storylines.com/hs-fs/hubfs/Blogs/Australia/shutterstock_590390942.jpg?width=800&name=shutterstock_590390942.jpg" },
-    { name: "New Zealand", description: "The Adventure Capital", image: "https://images.pexels.com/photos/5857493/pexels-photo-5857493.jpeg" },
+    { name: "New Zealand", description: "The Adventure Capital", image: "https://lh5.googleusercontent.com/p/AF1QipPjeYDUrOebyLPuuVr__KGF-7Lki2D984WLahcY=w675-h390-n-k-no" },
     { name: "Azerbaijan", description: "The Land of Fire", image: "https://images.pexels.com/photos/1118871/pexels-photo-1118871.jpeg" },
-    { name: "Bali", description: "Cultural Paradise", image: "https://images.pexels.com/photos/3937173/pexels-photo-3937173.jpeg" },
-    { name: "Maldives", description: "Create Memories", image: "https://images.pexels.com/photos/3214964/pexels-photo-3214964.jpeg" },
+    { name: "Bali", description: "Cultural Paradise", image: "https://lh5.googleusercontent.com/p/AF1QipPv-Cl6vCitJXDPPgGnOfDsn6aCpKlP8srXwafK=w675-h390-n-k-no" },
+    { name: "Maldives", description: "Create Memories", image: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRhCquwVjPiz7NKec1tddzlhRk-yTbNxjgOYJQUHWFexieebEAiiO3GVT6TFJ6886yqPjpccT3uzLpzEVQJmvU3aRURCziCW9fSJmmyHg" },
     { name: "Thailand", description: "The Kingdom of Thailand", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_i5SmavwIpYEsRCxACYloqc6Lmog5MBDHRw&s" },
-    { name: "Vietnam", description: "Land of Ascending Dragon", image: "https://images.pexels.com/photos/1475987/pexels-photo-1475987.jpeg" },
-    { name: "Sri Lanka", description: "Fall in Love", image: "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg" },
+    { name: "Vietnam", description: "Land of Ascending Dragon", image: "https://lh5.googleusercontent.com/p/AF1QipNScqrwdnIoEdHZYKVM1hpmOpM0i3mlvRzxiI-A=w540-h312-n-k-no" },
+    { name: "Sri Lanka", description: "Fall in Love", image: "https://lh5.googleusercontent.com/p/AF1QipM1ovTbL6agD4qQ-Ywe4vX3q59f1vWxVKN3jUtO=w675-h390-n-k-no" },
 ];
 const QuickGateWaysDestinationLocations = [
     { name: "Maidives", description: "Tropical Beach Paradise", image: "https://static8.depositphotos.com/1179847/1009/i/450/depositphotos_10094269-stock-photo-hammock-and-sunset.jpg" },
