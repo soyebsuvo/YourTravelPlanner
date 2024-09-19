@@ -27,7 +27,7 @@ const Security = () => {
                     <Button onClick={() => resetPassword()} className={ButtonBaseStyle}>Reset</Button>
                 </Box>
             </HStack>
-            <hr className="border"/>
+            {/* <hr className="border"/>
             <HStack className={WrapperBaseStyle}>
                 <Box className="flex flex-col items-start justify-start space-y-2">
                     <Heading className="font-semibold">Two-factor authentication</Heading>
@@ -36,7 +36,7 @@ const Security = () => {
                 <Box className="flex flex-row space-x-2 items-center justify-center">
                     <Button className={ButtonBaseStyle}>Set Up</Button>
                 </Box>
-            </HStack>
+            </HStack> */}
             <hr className="border"/>
             <HStack className={WrapperBaseStyle}>
                 <Box className="flex flex-col items-start justify-start space-y-2">

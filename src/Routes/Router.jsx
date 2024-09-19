@@ -9,7 +9,7 @@ import Preferences from "../Pages/ManageAccount/UserRoutes/Preferences";
 import Security from "../Pages/ManageAccount/UserRoutes/Security";
 import PaymentDetails from "../Pages/ManageAccount/UserRoutes/PaymentDetails";
 import Privacy from "../Pages/ManageAccount/UserRoutes/Privacy";
-import OtherTravellers from "../Pages/ManageAccount/UserRoutes/OtherTravellers";
+import OtherTravellers from "../Pages/ManageAccount/UserRoutes/OtherTravellers/OtherTravellers";
 import MyTrip from "../Pages/MyTrip/MyTrip";
 import CitySelection from "../Pages/CitySelection/CitySelection";
 import PrivateRoute from "./PrivateRoute";

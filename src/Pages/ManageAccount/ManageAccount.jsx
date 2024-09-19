@@ -17,7 +17,7 @@ const ManageAccount = () => {
         { label : "Preferences", link : "preferences" },
         { label : "Security", link : "security" },
         { label : "Payment Methods", link : "payment-methods" },
-        { label : "Privacy", link : "privacy" },
+        // { label : "Privacy", link : "privacy" },
         { label : "Email Notifications", link : "email-notifications" },
         { label : "Other Travellers", link : "other-travellers" },
     ]
