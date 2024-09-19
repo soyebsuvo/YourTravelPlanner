@@ -52,14 +52,14 @@ const Preferences = () => {
                     </DropdownMenu>
                 </Box>
             </Box>
-            <hr className="border"/>
+            {/* <hr className="border"/>
             <Box className={WrapperBaseStyle}>
                 <Heading className="font-semibold">Accessibility Requirements</Heading>
                 <Box className="flex flex-row items-center justify-center space-x-2">
                     <h4 className="text-gray-500 font-medium text-sm">Filter out properties that don&apos;t meet your needs</h4>
                     <Button className={ButtonBaseStyle}>Edit</Button>
                 </Box>
-            </Box>
+            </Box> */}
             <hr className="border"/>
         </Box>
     );

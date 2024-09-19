@@ -1,12 +1,13 @@
-import { useContext } from "react";
-import { MyContext } from "../../../Components/Context/Context";
+import { useAuth } from "@/context/AuthContextProvider";
+import { Link } from "react-router-dom";
 
-const EmailNoti = () => {
-    const { user } = useContext(MyContext)
+export default function EmailNotification()
+{
+    const { user } = useAuth();
     return (
         <div className="p-2 md:p-6"> 
             <div className="flex justify-between items-center py-2 pb-4">
-                <div>
+                <div className="space-y-4">
                     <h2 className="text-2xl md:text-4xl font-semibold">Email Notifications</h2>
                     <h4 className="text-sm md:text-lg text-gray-500">Decide what you want to be notified about, and unsubscribe from what you don&apos;t</h4>
                 </div>
@@ -19,11 +20,9 @@ const EmailNoti = () => {
                 <h4 className=" text-gray-500 font-medium">{user?.email} <span className="bg-blue-500 text-white px-1 text-sm rounded">verified</span></h4>
                 <p className="text-sm text-gray-500">This is the email address you use to sign in. It&apos;s also where we send your travel details</p>
                 </div>
-                <p className="col-span-3 text-end text-blue-500 font-bold cursor-pointer">Edit</p>
+                <Link to="/email-notifications/manager" target="_blank" referrerPolicy="no-referrer" className="col-span-3 text-end text-blue-500 font-bold cursor-pointer">Manage</Link>
             </div>
             <hr className="border"/>
         </div>
-    );
-};
-
-export default EmailNoti;
+    )
+}
