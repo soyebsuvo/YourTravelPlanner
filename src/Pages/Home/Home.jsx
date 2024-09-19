@@ -10,6 +10,7 @@ import Footer from "../../Components/Footer/Footer";
 import Preloader from "../../Components/Preloader/Preloader";
 import { ItineraryQuestionsSection } from './components/ItineraryQuestionsSection';
 import { TravelHotspot } from './components/TravelHotspots/TravelHotspot';
+import { HeroSectionVideo } from './components/HeroSectionVideo';
 
 export default function Home()
 {
@@ -41,6 +42,7 @@ export default function Home()
             <Navbar/>
             <Banner scrollHandler={scrollHandler} durationScroll={durationScroll}/>
             <Box className='space-y-4'>
+                <HeroSectionVideo/>
                 <TravelHotspot/>
                 <ItineraryQuestionsSection/>
                 <Footer/>
