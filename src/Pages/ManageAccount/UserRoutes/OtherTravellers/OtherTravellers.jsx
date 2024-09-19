@@ -25,7 +25,7 @@ export default function OtherTravellers()
 
     useEffect(() => {
         const localTravellers = JSON.parse(localStorage.getItem("othersTravellers"));
-        if(localTravellers !== undefined || localTravellers !== null) {
+        if(localTravellers !== undefined && localTravellers !== null) {
             setTravellers(localTravellers);
         }
     }, [])
