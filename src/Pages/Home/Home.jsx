@@ -11,6 +11,7 @@ import Preloader from "../../Components/Preloader/Preloader";
 import { ItineraryQuestionsSection } from './components/ItineraryQuestionsSection';
 import { TravelHotspot } from './components/TravelHotspots/TravelHotspot';
 import { HeroSectionVideo } from './components/HeroSectionVideo';
+import { DestinationGrid } from './components/GridLayoutDestination/DestinationGrid';
 
 export default function Home()
 {
@@ -41,9 +42,10 @@ export default function Home()
         <Box className='w-full'>
             <Navbar/>
             <Banner scrollHandler={scrollHandler} durationScroll={durationScroll}/>
-            <Box className='space-y-4'>
+            <Box className='space-y-16'>
                 <HeroSectionVideo/>
                 <TravelHotspot/>
+                <DestinationGrid/>
                 <ItineraryQuestionsSection/>
                 <Footer/>
             </Box>
