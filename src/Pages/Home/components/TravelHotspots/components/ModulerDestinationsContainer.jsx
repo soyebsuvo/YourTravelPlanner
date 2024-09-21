@@ -23,8 +23,8 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
                 target="_blank"
                 referrerPolicy="no-referrer"
                 key={index}
-                className="w-52 h-48 relative rounded-xl overflow-hidden shadow-lg hover:brightness-110 transition-all duration-150 hover:shadow-xl hover:shadow-black
-                    max-xl:w-48 max-xl:h-44"
+                className="h-48 relative rounded-xl overflow-hidden shadow-lg hover:brightness-110 transition-all duration-150 hover:shadow-xl hover:shadow-black
+                    min-w-[200px] md:w-1/4 w-1/3"
             >
                 <Image
                     src={location.image}
@@ -40,10 +40,10 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
                 </Text>
             </Link>
         ))
-    }, [currentLocations]);
+    }, [currentLocations])
 
     return (
-        <Box className="max-w-screen-xl m-auto p-4 space-y-4 mt-5 bg-neutral-100 rounded-lg shadow-md shadow-neutral-300">
+        <Box className="w-full p-4 space-y-4 mt-5 bg-neutral-100 rounded-lg shadow-md shadow-neutral-300">
 
             <HStack className="w-full justify-between">
                 <Heading className="font-bold text-xl">{label}</Heading>
@@ -65,14 +65,13 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
                 </Box>
             </HStack>
 
-            <Box className="overflow-scroll scrollbar-hide max-md:scrollbar-show">
-                <Box className="min-w-[1280px] grid grid-cols-5 gap-4">
+            <Box className="w-full overflow-x-auto whitespace-nowrap flex flex-col items-center justify-center">
+                <Box className="w-full flex items-center justify-between gap-4">
                     <RenderMemorizedLocations/>
                 </Box>
             </Box>
-
         </Box>
-    );
-};
+    )
+}
 
 ModulerDestinationsContainer.displayName = "ModulerDestinationsContainer";
