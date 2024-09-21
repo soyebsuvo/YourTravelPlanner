@@ -12,7 +12,7 @@ import { RxActivityLog } from 'react-icons/rx';
 
 const TravelPackageDetails = () => {
   return (
-    <div className="max-w-7xl mx-auto p-6 text-gray-600">
+    <div className="max-w-7xl mx-auto p-6 text-gray-600 border-2 rounded-2xl">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="border rounded-lg p-4">
           <h2 className="text-xl font-bold mb-4">Included</h2>

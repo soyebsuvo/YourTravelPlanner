@@ -7,10 +7,9 @@ import ManageAccount from "../Pages/ManageAccount/ManageAccount";
 import Profile from "../Pages/ManageAccount/UserRoutes/Profile";
 import Preferences from "../Pages/ManageAccount/UserRoutes/Preferences";
 import Security from "../Pages/ManageAccount/UserRoutes/Security";
-import PaymentDetails from "../Pages/ManageAccount/UserRoutes/PaymentDetails";
+import PaymentDetails from "../Pages/ManageAccount/UserRoutes/Payment/PaymentDetails";
 import Privacy from "../Pages/ManageAccount/UserRoutes/Privacy";
-import EmailNoti from "../Pages/ManageAccount/UserRoutes/EmailNoti";
-import OtherTravellers from "../Pages/ManageAccount/UserRoutes/OtherTravellers";
+import OtherTravellers from "../Pages/ManageAccount/UserRoutes/OtherTravellers/OtherTravellers";
 import MyTrip from "../Pages/MyTrip/MyTrip";
 import CitySelection from "../Pages/CitySelection/CitySelection";
 import PrivateRoute from "./PrivateRoute";
@@ -23,6 +22,9 @@ import TermsOfUse from "../Components/TermsOfUse/TermsOfUse";
 import VerifyPhoneNumber from "../Components/VerifyPhoneNumber/VerifyPhoneNumber";
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard";
 import Marketplace from "../Pages/Marketplace/Marketplace";
+import DestinationItinerary from "@/Pages/DestinationItinerary/DestinationItinerary";
+import EmailNotification from "@/Pages/ManageAccount/UserRoutes/EmailNotification";
+import EmailNotificationManage from "@/Pages/ManageAccount/UserRoutes/EmailNotificationManage/EmailNotificationManage";
 
 export const router = createBrowserRouter([
     {
@@ -65,6 +67,14 @@ export const router = createBrowserRouter([
             {
                 path : "/marketplace",
                 element : <Marketplace />
+            },
+            {
+                path : "/marketplace/:id",
+                element : <RecommendationPage />
+            },
+            {
+                path : "/destinationItinerary/:country",
+                element : <DestinationItinerary />
             }
         ]
     },
@@ -94,13 +104,17 @@ export const router = createBrowserRouter([
             },
             {
                 path : "/manage-account/email-notifications",
-                element : <PrivateRoute><EmailNoti /></PrivateRoute>
+                element : <PrivateRoute><EmailNotification /></PrivateRoute>
             },
             {
                 path : "/manage-account/other-travellers",
                 element : <PrivateRoute><OtherTravellers /></PrivateRoute>
             }
         ]
+    },
+    {
+        path : "/email-notifications/manager",
+        element : <PrivateRoute><EmailNotificationManage /></PrivateRoute>
     },
     {
         path : '/my-trips',

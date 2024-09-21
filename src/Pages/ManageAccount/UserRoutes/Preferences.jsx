@@ -1,35 +1,67 @@
+import { Button } from "@/shadecn/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shadecn/ui/dropdown-menu";
+import { Box, Heading, HStack, Text } from "@chakra-ui/react";
+
+const ButtonBaseStyle = `!bg-transparent hover:text-blue-400 text-end text-blue-500 font-bold cursor-pointer`;
+const WrapperBaseStyle = `w-full flex flex-row items-center justify-between py-5`;
 
 const Preferences = () => {
+
+
+
     return (
-        <div className="p-2 md:p-6"> 
-            <div className="flex justify-between items-center py-2 pb-4">
-                <div>
-                    <h2 className="text-2xl md:text-4xl font-semibold">Preferences</h2>
-                    <h4 className="text-sm md:text-lg text-gray-500">Change Your Language, currency and accessibility requirements</h4>
-                </div>
-            </div>
+        <Box className="p-2 md:p-6"> 
+            <Box className="flex justify-between items-center py-2 pb-4">
+                <Box className="space-y-2">
+                    <Heading className="text-2xl md:text-4xl font-semibold">Preferences</Heading>
+                    <Text className="text-sm md:text-lg text-gray-500">Change Your Language, currency and accessibility requirements</Text>
+                </Box>
+            </Box>
             <hr className="border"/>
-            <div className="grid grid-cols-12 py-5">
-                <h3 className="col-span-3 font-semibold">Currency</h3>
-                <h4 className="col-span-6 text-gray-500 font-medium text-sm">Bangladeshi TAKA (BDT)</h4>
-                <p className="col-span-3 text-end text-blue-500 font-bold cursor-pointer">Edit</p>
-            </div>
+            <HStack className={WrapperBaseStyle}>
+                <Heading className="font-semibold">Currency</Heading>
+                <Box className="flex flex-row items-center justify-center space-x-2">
+                    <DropdownMenu>
+                        <DropdownMenuTrigger className="text-gray-500 font-medium text-sm px-4 py-2 hover:bg-neutral-100">
+                            Bangladeshi TAKA (BDT)                                
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            <DropdownMenuItem>BDT</DropdownMenuItem>
+                            <DropdownMenuItem>USD</DropdownMenuItem>
+                            <DropdownMenuItem>RP</DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </Box>
+            </HStack>
             <hr className="border"/>
-            <div className="grid grid-cols-12 py-5">
-                <h3 className="col-span-3 font-semibold">Language</h3>
-                <div className="col-span-6">
-                <h4 className=" text-gray-500 font-medium text-sm">Bangla</h4>
-                </div>
-                <p className="col-span-3 text-end text-blue-500 font-bold cursor-pointer">Edit</p>
-            </div>
+            <Box className={WrapperBaseStyle}>
+                <Heading className="font-semibold">Language</Heading>
+                <Box className="flex flex-row items-center justify-center space-x-2">
+                    <DropdownMenu>
+                        <DropdownMenuTrigger className="text-gray-500 font-medium text-sm px-4 py-2 hover:bg-neutral-100">
+                            English
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            <DropdownMenuItem>Bangla</DropdownMenuItem>
+                            <DropdownMenuItem>English</DropdownMenuItem>
+                            <DropdownMenuItem>Hindi</DropdownMenuItem>
+                            <DropdownMenuItem>Urdu</DropdownMenuItem>
+                            <DropdownMenuItem>Chineese</DropdownMenuItem>
+                            <DropdownMenuItem>UHang</DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </Box>
+            </Box>
+            {/* <hr className="border"/>
+            <Box className={WrapperBaseStyle}>
+                <Heading className="font-semibold">Accessibility Requirements</Heading>
+                <Box className="flex flex-row items-center justify-center space-x-2">
+                    <h4 className="text-gray-500 font-medium text-sm">Filter out properties that don&apos;t meet your needs</h4>
+                    <Button className={ButtonBaseStyle}>Edit</Button>
+                </Box>
+            </Box> */}
             <hr className="border"/>
-            <div className="grid grid-cols-12 py-5">
-                <h3 className="col-span-3 font-semibold">Accessibility Requirements</h3>
-                <h4 className="col-span-6 text-gray-500 font-medium text-sm">Filter out properties that don&apos;t meet your needs</h4>
-                <p className="col-span-3 text-end text-blue-500 font-bold cursor-pointer">Edit</p>
-            </div>
-            <hr className="border"/>
-        </div>
+        </Box>
     );
 };
 
