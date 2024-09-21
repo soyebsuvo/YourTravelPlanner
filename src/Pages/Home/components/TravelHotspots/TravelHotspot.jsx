@@ -5,7 +5,7 @@ const FavouriteDestinationLocations = [
     { name: "Dubai", description: "The City Of Gold", image: "https://images.pexels.com/photos/3787839/pexels-photo-3787839.jpeg?cs=srgb&dl=pexels-ivan-siarbolin-1513699-3787839.jpg&fm=jpg" },
     { name: "Singapore", description: "The Lion City", image: "https://images.pexels.com/photos/777059/pexels-photo-777059.jpeg?cs=srgb&dl=pexels-kin-pastor-251088-777059.jpg&fm=jpg" },
     { name: "Australia", description: "Land of Down Under", image: "https://www.storylines.com/hs-fs/hubfs/Blogs/Australia/shutterstock_590390942.jpg?width=800&name=shutterstock_590390942.jpg" },
-    { name: "New Zealand", description: "The Adventure Capital", image: "https://lh5.googleusercontent.com/p/AF1QipPjeYDUrOebyLPuuVr__KGF-7Lki2D984WLahcY=w675-h390-n-k-no" },
+    { name: "New Zealand", description: "The Adventure Capital", image: "https://lh5.googleusercontent.com/p/AF1QipP3n44eFopNPKKYPCyuMVMvMVjhmhlc_h17Tbg=w675-h390-n-k-no" },
     { name: "Azerbaijan", description: "The Land of Fire", image: "https://images.pexels.com/photos/1118871/pexels-photo-1118871.jpeg" },
     { name: "Bali", description: "Cultural Paradise", image: "https://lh5.googleusercontent.com/p/AF1QipPv-Cl6vCitJXDPPgGnOfDsn6aCpKlP8srXwafK=w675-h390-n-k-no" },
     { name: "Maldives", description: "Create Memories", image: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRhCquwVjPiz7NKec1tddzlhRk-yTbNxjgOYJQUHWFexieebEAiiO3GVT6TFJ6886yqPjpccT3uzLpzEVQJmvU3aRURCziCW9fSJmmyHg" },
@@ -28,7 +28,7 @@ const QuickGateWaysDestinationLocations = [
 
 export const TravelHotspot = () => {
     return (
-        <VStack className='space-y-4'>
+        <VStack className='space-y-4 max-w-screen-xl m-auto'>
             <ModulerDestinationsContainer locations={FavouriteDestinationLocations} label={"Favourite Destinations"} />
             <ModulerDestinationsContainer locations={QuickGateWaysDestinationLocations} label={"Quick Gateways"} />
         </VStack>
