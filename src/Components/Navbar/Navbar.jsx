@@ -14,9 +14,10 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContextProvider";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shadecn/ui/dropdown-menu";
 import { Dialog, DialogContent, DialogTrigger } from "@/shadecn/ui/dialog";
+import { cn } from "@/lib/utils";
 
 
-const Navbar = () => {
+const Navbar = ({ className="" }) => {
 
     const { user, logOut } = useAuth();
 
@@ -66,7 +67,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="absolute top-0 right-0 left-0 z-30">
+        <div className={cn("absolute top-0 right-0 left-0 z-30", className)}>
             <nav className="max-w-7xl mx-auto px-2 md:px-16 py-3">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center justify-center">
