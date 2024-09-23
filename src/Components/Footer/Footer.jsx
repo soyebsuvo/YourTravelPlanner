@@ -22,9 +22,9 @@ const Footer = () => {
                 <nav>
                     <h6 className="footer-title h-[23px]">Connect With Us</h6>
                     <a href="mailto:info@wandergeniellm.com" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><MdOutlineMail className="inline mb-[2px] text-[20px] mr-1"/> info@wandergeniellm.com</a>
-                    <a href="tel:+919356853153" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><IoCallOutline className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a>
+                    <a href="tel:+919356853153" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><IoCallOutline className="inline mb-[2px] text-[20px] mr-1"/>+91 9699481138</a>
                     {/* <a href="https://wa.me/+919356853153" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><FaWhatsapp className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a> */}
-                    <a href="http://api.whatsapp.com/send/?phone=919356853153&text=Hey+WanderGenie%2C+Help+me+plan+my+next+travel+adventure&type=phone_number&app_absent=0" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><FaWhatsapp className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a>
+                    <a href="http://api.whatsapp.com/send/?phone=919356853153&text=Hey+WanderGenie%2C+Help+me+plan+my+next+travel+adventure&type=phone_number&app_absent=0" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><FaWhatsapp className="inline mb-[2px] text-[20px] mr-1"/>+91 9699481138</a>
                     <a href="mailto:support@wandergeniellm.com" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><MdOutlineMail className="inline mb-[2px] text-[20px] mr-1"/> support@wandergeniellm.com</a>
                 </nav>
                 <nav>
