@@ -42,17 +42,19 @@ export const Banner = ({ scrollHandler, durationScroll }) => {
                 </Box>
             </Box>
 
-            <Box className="bg-[#000] py-3 flex justify-evenly flex-wrap space-y-2 md:space-y-0 text-sm md:text-base items-center">
-                {
-                    SITE_FEATURES.map((feature, index) => (
-                        <Text className="flex justify-center items-center gap-1" key={index}>
-                            {feature.icon}
-                            <span className="text-white">
-                                {feature.label}
-                            </span>
-                        </Text>
-                    ))
-                }
+            <Box className='bg-[#000] py-3'>
+                <Box className=" max-w-screen-xl m-auto flex justify-evenly flex-wrap space-y-2 md:space-y-0 text-sm md:text-base items-center">
+                    {
+                        SITE_FEATURES.map((feature, index) => (
+                            <Text className="text-sm flex justify-center items-center gap-1" key={index}>
+                                {feature.icon}
+                                <span className="text-white">
+                                    {feature.label}
+                                </span>
+                            </Text>
+                        ))
+                    }
+                </Box>
             </Box>
 
         </div>

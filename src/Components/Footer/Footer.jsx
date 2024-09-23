@@ -5,6 +5,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FiFacebook, FiLinkedin, FiYoutube } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { Text } from "@chakra-ui/react";
 const Footer = () => {
     return (
         <div className=" bg-base-200 text-gray-700">
@@ -21,9 +22,9 @@ const Footer = () => {
                 <nav>
                     <h6 className="footer-title h-[23px]">Connect With Us</h6>
                     <a href="mailto:info@wandergeniellm.com" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><MdOutlineMail className="inline mb-[2px] text-[20px] mr-1"/> info@wandergeniellm.com</a>
-                    <a href="tel:+919356853153" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><IoCallOutline className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a>
+                    <a href="tel:+919356853153" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><IoCallOutline className="inline mb-[2px] text-[20px] mr-1"/>+91 9699481138</a>
                     {/* <a href="https://wa.me/+919356853153" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><FaWhatsapp className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a> */}
-                    <a href="http://api.whatsapp.com/send/?phone=919356853153&text=Hey+WanderGenie%2C+Help+me+plan+my+next+travel+adventure&type=phone_number&app_absent=0" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><FaWhatsapp className="inline mb-[2px] text-[20px] mr-1"/> +91 93568 53153</a>
+                    <a href="http://api.whatsapp.com/send/?phone=919356853153&text=Hey+WanderGenie%2C+Help+me+plan+my+next+travel+adventure&type=phone_number&app_absent=0" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><FaWhatsapp className="inline mb-[2px] text-[20px] mr-1"/>+91 9699481138</a>
                     <a href="mailto:support@wandergeniellm.com" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200"><MdOutlineMail className="inline mb-[2px] text-[20px] mr-1"/> support@wandergeniellm.com</a>
                 </nav>
                 <nav>
@@ -40,8 +41,15 @@ const Footer = () => {
                     <a className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px]">Cookie Policy</a>
                     <a className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px]">Cancellations</a>
                 </nav>
-                
             </footer>
+            <div className="w-full flex flex-col items-center justify-center py-4">
+                <h6 className="footer-title h-[23px]">WanderGenie LLM</h6>
+                <Text className="text-center">
+                    S. No. 63, Plot No. 44, Narayan Annaji Shinde Road, 
+                    Nanak Society, Salunkhe Vihar Society, 
+                    Kondhwa, Pune, Maharashtra 411048
+                </Text>
+            </div>
             <footer className="footer footer-center p-4 bg-base-300 text-base-content">
                 <aside>
                     <p>Copyright &copy; 2024 - All right reserved by wandergeniellm.com</p>

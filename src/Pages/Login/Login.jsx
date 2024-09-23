@@ -13,14 +13,14 @@ export default function Login({ setIsLogin }) {
 
     const socialLogin = (media) => {
         media().then((result) => {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Logged in successfully",
-                showConfirmButton: false,
-                timer: 2000
-            });
-            document.getElementById('my_modal_3').close()
+            //Swal.fire({
+            //    position: "top-end",
+            //    icon: "success",
+            //    title: "Logged in successfully",
+            //    showConfirmButton: false,
+            //    timer: 2000
+            //});
+            //document.getElementById('my_modal_3').close()
             // // phone number varification    
             if (result?.user?.phoneNumber === null) {
                 Swal.fire({
@@ -48,13 +48,13 @@ export default function Login({ setIsLogin }) {
         login(email, password).then(() => {
             document.getElementById('my_modal_3').close()
             // roleRefetch();
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Logged In Successfully",
-                showConfirmButton: false,
-                timer: 2000
-            });
+            //Swal.fire({
+            //    position: "top-end",
+            //    icon: "success",
+            //    title: "Logged In Successfully",
+            //    showConfirmButton: false,
+            //    timer: 2000
+            //});
             e.target.reset()
         }).catch(() => {
             Swal.fire({
