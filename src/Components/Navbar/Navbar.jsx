@@ -28,13 +28,11 @@ const Navbar = ({ className="" }) => {
     
     const links = <>
         <NavLink to="/"><a>Home</a></NavLink>
-        <span className="cursor-pointer" onClick={() => document.getElementById('coming_soon').showModal()}><a>Marketplace</a></span>
         {user ? role === "agent" || role === "admin" || <NavLink to="/my-trips"><a>My Trips</a></NavLink> : ""}
-        {/* <NavLink to="/Honeymoon"><a>Honeymoon Gateways</a></NavLink> */}
         {role === "agent" && <NavLink to="/dashboard"><a>Vendor Dashboard</a></NavLink>}
         {role === "admin" && <NavLink to="/admin-dashboard"><a>Admin Dashboard</a></NavLink>}
+        <NavLink to="/marketplace"><a>Marketplace</a></NavLink>
         {user ? <NavLink to="/manage-account/profile"><a>Manage Account</a></NavLink> : <a onClick={() => document.getElementById('my_modal_3').showModal()} className="cursor-pointer">Manage Account</a>}
-        {/* <li><a><BsThreeDots/></a></li> */}
         <li><a><IoIosNotifications className="text-2xl" /></a></li>
     </>
 
@@ -59,13 +57,7 @@ const Navbar = ({ className="" }) => {
             console.log(error)
         }
     }
-
-    useEffect(() => {
-      console.log(user)
-    }, [])
     
-
-
     return (
         <div className={cn("absolute top-0 right-0 left-0 z-30", className)}>
             <nav className="max-w-7xl mx-auto px-2 md:px-16 py-3">
