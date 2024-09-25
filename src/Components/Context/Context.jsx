@@ -21,6 +21,7 @@ function Context({ children }) {
     const [days, setDays] = useState("");
     const [members, setMembers] = useState("")
     const [budget, setBudget] = useState("")
+    const [sourceDestination, setSourceDestination] = useState("");
     const [accommodation, setAccommodation] = useState("")
     const [transportation, setTransportation] = useState("")
     const [filteredContinent, setFilteredContinent] = useState(null);
@@ -149,7 +150,9 @@ function Context({ children }) {
         otp,
         setOtp,
         confirmationResult,
-        setConfirmationResult
+        setConfirmationResult,
+        sourceDestination,
+        setSourceDestination
     }
     return (
         <MyContext.Provider value={info}>

@@ -1,13 +1,13 @@
-import { useContext, useMemo, useState } from "react";
-import { MyContext } from "../../Components/Context/Context";
-import { IoSearch } from "react-icons/io5";
-import Submit from "../../Components/Submit/Submit";
-import Swal from "sweetalert2";
+import { MyContext } from "@/Components/Context/Context";
+import { Input } from "@/shadecn/ui/input";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { GiCancel } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const CitySelection = () => {
-    const { filteredContinent, days, members, budget, accommodation, transportation, selectedCities, setSelectedCities, nextCity, setNextCity } = useContext(MyContext)
+export const StepFiveSection = () => {
+
+    const { filteredContinent, setFilteredContinent, selectedCities, setSelectedCities, setNextCity, setPlace } = useContext(MyContext)
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(0);
     const citiesPerPage = 4;
@@ -33,6 +33,38 @@ const CitySelection = () => {
     };
 
     console.log(filteredContinent);
+
+    const { country } = useParams();
+
+    useEffect(() => {
+
+        setPlace(country);
+        setNextCity(country);
+
+        const fetchPlaces = async (place) => {
+            try {
+                await fetch(`https://server.wandergeniellm.com/continent/${country}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        setFilteredContinent(data);
+                        // setOpen(true);
+                });    
+            }
+            catch (error) {
+                console.error(error);
+                Swal.fire({
+                    title: "Oops!",
+                    text: "Something went wrong. Please try again later.",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                })
+            }
+        };
+        
+        fetchPlaces()
+      
+    }, [])
+    
     
 
     //console.log(selectedCities)
@@ -72,24 +104,17 @@ const CitySelection = () => {
         }
 
     }
+
     return (
-        <div className="bg-orange-200 min-h-screen p-8">
-            <div className="max-w-5xl mx-auto px-8 relative bg-slate-200 rounded-2xl pt-8 text-black md:h-[530px]">
-                <div className="flex flex-row items-center justify-between">
-                    <h2 className="text-2xl font-bold">Other cities in {filteredContinent?.continent}</h2>
-                    <Link to={"/"}><span className=""><GiCancel className="text-gray-500 text-[25px]" /></span></Link>
-                </div>
-                <div className="relative">
-                    <span className="absolute bottom-[43px] left-[20px]"><IoSearch className="text-gray-500 text-[25px]" /></span>
-                    <input
-                        type="text"
-                        placeholder="Find a city"
-                        className="inpt-city text-black bg-[#FFFFFF] shadow outline-none rounded-xl px-14 py-3 w-full my-8"
-                        value={searchQuery}
-                        onChange={handleSearchChange}
-                    />
-                </div>
-                <h3 className="text-md font-bold text-center mb-5">{nextCity?.includes(",") ? `Cities best connected to ${nextCity?.includes(",") ? nextCity?.split(",")[0] : nextCity}...` : `Or, Start with this popular choices`}</h3>
+        <div>
+            <Input
+                type="text"
+                placeholder="Find a city"
+                className="inpt-city text-black shadow outline-none rounded-xl px-14 py-3 w-full my-8"
+                value={searchQuery}
+                onChange={handleSearchChange}
+            />
+
                 <div className="grid grid-cols-1 md:grid-cols-4 justify-between gap-6">
                     {displayedCities?.map((city, index) => (
                         <div key={index} className={`bg-slate-50 rounded-xl shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f]`}>
@@ -106,10 +131,6 @@ const CitySelection = () => {
                         })}
                     </div>}
                 </div>
-                {selectedCities.length > 0 && <Submit days={days} members={members} budget={budget} accommodation={accommodation} transportation={transportation} />}
-            </div>
         </div>
-    );
-};
-
-export default CitySelection;
+    )
+}

@@ -12,6 +12,7 @@ import { ItineraryQuestionsSection } from './components/ItineraryQuestionsSectio
 import { TravelHotspot } from './components/TravelHotspots/TravelHotspot';
 import { HeroSectionVideo } from './components/HeroSectionVideo';
 import { DestinationGrid } from './components/GridLayoutDestination/DestinationGrid';
+import { PromotionalBanner } from './components/PromotionalBanner/PromotionalBanner';
 
 export default function Home()
 {
@@ -40,8 +41,11 @@ export default function Home()
 
     return (
         <Box className='w-full'>
-            <Navbar/>
-            <Banner scrollHandler={scrollHandler} durationScroll={durationScroll}/>
+            <PromotionalBanner/>
+            <Box className='relative'>
+                <Navbar/>
+                <Banner scrollHandler={scrollHandler} durationScroll={durationScroll}/>
+            </Box>
             <Box className='space-y-16'>
                 <HeroSectionVideo/>
                 <TravelHotspot/>
