@@ -20,7 +20,6 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
         return currentLocations.map((location, index) => (
             <Link
                 to={`/destinationItinerary/${location.name}`}
-                target="_blank"
                 referrerPolicy="no-referrer"
                 key={index}
                 className="h-48 relative rounded-xl overflow-hidden shadow-lg hover:brightness-110 transition-all duration-150 hover:shadow-xl hover:shadow-black
