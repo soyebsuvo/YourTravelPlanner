@@ -5,7 +5,7 @@ import img4 from '../../assets/diamond.jpg';
 import PropTypes from 'prop-types';
 const Budget = ({ value, setValue, budgetScroll , scrollHandler, accommodationScroll }) => {
     return (
-        <div ref={budgetScroll} className="border border-blue-400 p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
+        <div ref={budgetScroll} className="p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
             <div>
                 <h2 className='text-md md:text-xl font-semibold text-center'>What&apos;s your daily budget per person?<span className='text-red-500'>*</span> </h2>
             </div>

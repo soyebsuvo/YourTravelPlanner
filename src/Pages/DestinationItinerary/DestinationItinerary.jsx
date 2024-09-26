@@ -26,8 +26,15 @@ export default function DestinationItinerary()
         setSourceDestination
     } = useContext(MyContext);
 
-    const [currentStep, setCurrentStep] = useState(0);
+    const { country } = useParams();
+
+    const [currentStep, setCurrentStep] = useState(1);
     const steps = [
+        {
+            label : "Step 0",
+            selection : [ { a : country, } ],
+            valid : true
+        },
         {
             label : "Step 1",
             selection : [ { a : days, b : members } ],
@@ -40,12 +47,12 @@ export default function DestinationItinerary()
         },
         {
             label : "Step 3",
-            selection : [ { a : transportation, b : "AQA" } ],
+            selection : [ { a : transportation, b : "" } ],
             valid : budget && accommodation
         },
         {
             label : "Step 4",
-            selection : [ { a : "Source", b : "Date" } ],
+            selection : [ { a : "", b : "" } ],
             valid : transportation
         },
         {
@@ -56,9 +63,9 @@ export default function DestinationItinerary()
     ];
 
     return (
-        <Box>
+        <Box className="bg-[#f7f8fb] pt-40">
             <Navbar className="bg-blue-600" />
-            <Box className="max-w-screen-xl m-auto mt-40 mb-20">
+            <Box className="max-w-screen-xl m-auto mb-20">
 
                 <Box className="flex flex-row max-sm:flex-wrap justify-between items-end mb-6">
                     {
@@ -76,7 +83,7 @@ export default function DestinationItinerary()
                                     key={index}
                                     disabled={!step.valid}
                                     onClick={() => setCurrentStep(index)}
-                                    className={`py-2 px-0 text-center w-full h-1 rounded-sm border 
+                                    className={`py-1 px-0 text-center w-full h-1 rounded-sm border 
                                         ${currentStep === index || step.valid ? 'bg-green-500 text-white' : 'bg-neutral-200'}
                                         hover:bg-green-400
                                     `}
@@ -89,10 +96,11 @@ export default function DestinationItinerary()
             
                 <div className="mb-6 text-lg">
                     {currentStep === 0 && <StepOneSection/>}
-                    {currentStep === 1 && <StepTwoSection/>}
-                    {currentStep === 2 && <StepThreeSection/>}
-                    {currentStep === 3 && <StepFourSection sourceDestination={sourceDestination} setSourceDestination={setSourceDestination}/>}
-                    {currentStep === 4 && <StepFiveSection/>}
+                    {currentStep === 1 && <StepOneSection/>}
+                    {currentStep === 2 && <StepTwoSection/>}
+                    {currentStep === 3 && <StepThreeSection/>}
+                    {currentStep === 4 && <StepFourSection sourceDestination={sourceDestination} setSourceDestination={setSourceDestination}/>}
+                    {currentStep === 5 && <StepFiveSection/>}
                 </div>
                 
             </Box>

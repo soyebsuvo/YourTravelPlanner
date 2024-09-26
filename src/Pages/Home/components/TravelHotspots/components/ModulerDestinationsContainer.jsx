@@ -31,12 +31,14 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
                     className="w-full h-full object-cover"
                     loading="lazy"
                 />
-                <Text className="font-sans font-normal text-sm text-white text-center bg-black/60 w-full py-2 absolute bottom-10 max-xl:bottom-9">
-                    {location.description}
-                </Text>
-                <Text className="font-sans font-bold text-2xl max-xl:text-lg text-white text-center bg-black/60 w-full pb-2 absolute bottom-0">
-                    {location.name}
-                </Text>
+                <Box className="w-full absolute bottom-0 bg-black/60 space-y-2 pt-1 pb-2">
+                    <Text className="font-sans font-normal text-sm text-white text-center w-full">
+                        {location.description}
+                    </Text>
+                    <Text className="font-sans font-bold text-xl text-wrap max-xl:text-lg text-white text-center w-full">
+                        {location.name}
+                    </Text>
+                </Box>
             </Link>
         ))
     }, [currentLocations])

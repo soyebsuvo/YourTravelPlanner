@@ -9,7 +9,7 @@ import { MdDashboardCustomize, MdOutlineAttachMoney } from "react-icons/md";
 import { BannerBackgroundCorousal } from "./components/BannerBackgroundCorousal";
 import { BannerSearchInput } from "./components/BannerSearchInput";
 
-export const Banner = ({ scrollHandler, durationScroll }) => {
+export const Banner = ({ scrollHandler, durationScroll, disableInput }) => {
 
     const SITE_FEATURES = [
         {
@@ -37,7 +37,9 @@ export const Banner = ({ scrollHandler, durationScroll }) => {
                 <Box className="hero-content text-center text-neutral-content max-w-full relative">
                     <Box className="max-w-full relative">
                         <Heading className="mb-5 text-4xl font-bold">Discover <span className="damion-regular text-lime-300">Your Next</span> Adventure</Heading>
-                        <BannerSearchInput durationScroll={durationScroll} scrollHandler={scrollHandler} />
+                        {
+                            disableInput ? <></> : <BannerSearchInput durationScroll={durationScroll} scrollHandler={scrollHandler} />
+                        }
                     </Box>
                 </Box>
             </Box>
