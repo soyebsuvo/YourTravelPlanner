@@ -23,7 +23,8 @@ export default function DestinationItinerary()
         accommodation,
         transportation,
         sourceDestination,
-        setSourceDestination
+        setSourceDestination,
+        phone
     } = useContext(MyContext);
 
     const { country } = useParams();
@@ -52,7 +53,7 @@ export default function DestinationItinerary()
         },
         {
             label : "Step 4",
-            selection : [ { a : "", b : "" } ],
+            selection : [ { a : "", b : phone && "Phone" } ],
             valid : transportation
         },
         {

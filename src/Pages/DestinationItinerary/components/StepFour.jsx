@@ -1,7 +1,14 @@
+import { MyContext } from "@/Components/Context/Context";
 import { Box, Image } from "@chakra-ui/react";
+import { useContext } from "react";
 import PhoneInput from "react-phone-input-2";
 
 export const StepFourSection = ({ sourceDestination, setSourceDestination }) => {
+
+    const {
+        setPhone
+    } = useContext(MyContext);
+
     return (
       <div className="flex flex-row items-center justify-center gap-4 p-4 bg-neutral-100 rounded-xl mt-10">
         <Box className="w-6/12 max-md:hidden flex flex-col items-center justify-center h-full">
@@ -43,6 +50,7 @@ export const StepFourSection = ({ sourceDestination, setSourceDestination }) => 
                     </h2>
                     <PhoneInput
                         inputClass="w-full h-10 p-2 border max-md:text-sm"
+                        onChange={setPhone}
                     />
                 </div>
                 </div>
