@@ -23,7 +23,7 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
                 referrerPolicy="no-referrer"
                 key={index}
                 className="h-48 relative rounded-xl overflow-hidden shadow-lg hover:brightness-110 transition-all duration-150 hover:shadow-xl hover:shadow-black
-                    min-w-[200px] md:w-1/4 w-1/3"
+                    min-w-[200px] md:w-1/4 w-1/3 max-sm:min-w-[150px] max-sm:h-40"
             >
                 <Image
                     src={location.image}
@@ -31,12 +31,14 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
                     className="w-full h-full object-cover"
                     loading="lazy"
                 />
-                <Text className="font-sans font-normal text-sm text-white text-center bg-black/60 w-full py-2 absolute bottom-10 max-xl:bottom-9">
-                    {location.description}
-                </Text>
-                <Text className="font-sans font-bold text-2xl max-xl:text-lg text-white text-center bg-black/60 w-full pb-2 absolute bottom-0">
-                    {location.name}
-                </Text>
+                <Box className="w-full absolute bottom-0 bg-black/60 space-y-2 pt-1 pb-2">
+                    <Text className="font-sans font-normal text-sm text-white text-center w-full max-sm:text-xs">
+                        {location.description}
+                    </Text>
+                    <Text className="font-sans font-bold text-xl text-wrap max-xl:text-lg max-sm:text-base text-white text-center w-full">
+                        {location.name}
+                    </Text>
+                </Box>
             </Link>
         ))
     }, [currentLocations])
@@ -45,7 +47,7 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
         <Box className="w-full p-4 space-y-4 mt-5 bg-neutral-100 rounded-lg shadow-md shadow-neutral-300">
 
             <HStack className="w-full justify-between">
-                <Heading className="font-bold text-xl">{label}</Heading>
+                <Heading className="font-bold text-xl max-md:text-lg max-sm:text-base">{label}</Heading>
                 <Box className="space-x-2">
                     <Button 
                         className="rounded-full bg-sky-500/40 hover:bg-sky-500/70 text-black p-2 w-auto h-auto font-bold" 

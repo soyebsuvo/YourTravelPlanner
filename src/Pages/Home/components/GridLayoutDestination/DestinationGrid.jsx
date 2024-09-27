@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 export const DestinationGrid = () => (
     <Box className="max-w-screen-xl m-auto space-y-4">
-        <Heading className="font-bold text-xl">Visa Free Destination</Heading>
-        <Box className="w-full max-md:w-9/12 max-md:m-auto max-sm:w-11/12">
+        <Heading className="font-bold text-xl max-md:text-lg max-sm:text-base max-md:ml-2">Select Your Travel Vibe...</Heading>
+        <Box className="w-full max-md:w-9/12 max-md:m-auto max-sm:w-10/12">
             <Grid className="grid grid-cols-6 max-md:grid-cols-3 gap-1 max-sm:h-full max-sm:gap-4">
                 <GridItem className="col-span-2 max-md:col-span-3 row-span-2 relative overflow-hidden rounded-lg">
                     <Link to={'/destinationItinerary'} target="_blank" referrerPolicy="no-referrer">
                         <Image
                             src="https://pyt-images.imgix.net/Frame_4541mauritius_83c71b9921.png?auto=format&fit=crop&w=384&q=75"
                             alt="Mauritius"
-                            className="object-cover w-full h-full"
+                            className="object-cover w-full h-full max-sm:h-80"
                         />
                         <Box className="absolute bottom-0 text-white bg-black/40 w-full px-4">
                             <Text className="text-lg font-bold max-lg:text-xs max-sm:text-base">Mauritius</Text>
@@ -25,7 +25,7 @@ export const DestinationGrid = () => (
                         <Image
                             src="https://pyt-images.imgix.net/Frame_4541mauritius_83c71b9921.png?auto=format&fit=crop&w=384&q=75"
                             alt="Maldives"
-                            className="object-cover w-full h-full"
+                            className="object-cover w-full h-full max-sm:h-80"
                         />
                         <Box className="absolute bottom-0 text-white bg-black/40 w-full px-4">
                             <Text className="text-lg font-bold max-lg:text-xs max-sm:text-base">Maldives</Text>

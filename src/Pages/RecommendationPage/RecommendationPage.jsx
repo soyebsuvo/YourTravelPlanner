@@ -15,6 +15,7 @@ import { ItineraryTable } from "./components/ItenaryTable";
 import { Box, VStack } from "@chakra-ui/react";
 import { ChatBot } from "./components/ChatBot";
 import { ItineraryHeader } from "./components/ItineraryHeader/ItineraryHeader";
+import { Banner } from "@/Components/Banner/Banner";
 
 const RecommendationPage = () => {
 
@@ -74,7 +75,8 @@ const RecommendationPage = () => {
         return (
             <Box className="w-full">
                 <Navbar />
-                <SubBanner />
+                {/* <SubBanner /> */}
+                <Banner disableInput={true} />
                 <Box className="max-w-7xl mx-auto md:px-14 py-4 mt-14 relative border-4 rounded-2xl px-6 mb-8">
                     
                     <Suspense>
