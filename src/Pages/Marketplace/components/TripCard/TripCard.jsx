@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const TripCard = ({ title, thumbnail, description, price, rating, keypoints }) => {
     return (
-        <Card className="w-80 max-2xl:w-72 max-xl:w-full bg-neutral-50 rounded-xl shadow-lg hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl flex flex-col items-center justify-between">
+        <Card className="w-80 max-2xl:w-72 max-xl:w-full bg-theme-fourth rounded-xl shadow-lg hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl flex flex-col items-center justify-between">
             <CardBody className="cursor-pointer group">
                 <Link to={`/marketplace/${title}`} target='_blank' referrerPolicy='no-referrer' className='decoration-transparent'>
                     <Image

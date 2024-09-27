@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Box, HStack, Text } from "@chakra-ui/react";
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { IoIosArrowDown } from "react-icons/io";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const FILTERS = [
     {
@@ -82,14 +83,47 @@ const FILTERS = [
             }
         ]
     },
+    {
+        name : "keypoints",
+        options : [
+            {
+                label : "POCKET FRIENDLY",
+                value : "POCKET FRIENDLY"
+            },
+            {
+                label : "SHARED TRANSFER",
+                value : "SHARED TRANSFER"
+            },
+            {
+                label : "FAMILY FRIENDLY",
+                value : "FAMILY FRIENDLY"
+            },
+            {
+                label : "LUXURY STAY",
+                value : "LUXURY STAY"
+            }
+        ]
+    },
 ]
 
 
-export const TripFilter = () => {
+export const TripFilter = ({ onFilter }) => {
 
     const [selectedValues, setSelectedValues] = useState({});
 
+    const location = useLocation();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const queryParams = new URLSearchParams(location.search);
+    const searchQuery = queryParams.get('keypoints');
+
+    useEffect(() => {
+        onFilter({filter : searchQuery});
+    }, [searchQuery]);
+    
+
     const handleSelect = (filterName, value) => {
+        setSearchParams({ ...searchParams, [filterName]: value });
+        onFilter({filter : value});
         setSelectedValues((prevValues) => ({
           ...prevValues,
           [filterName]: value,
@@ -105,7 +139,7 @@ export const TripFilter = () => {
                         <DropdownMenu key={index} modal>
                             <Box className="max-sm:w-full flex flow-row items-center justify-center max-sm:justify-between space-x-2">
                                 <Text className="capitalize">{name}</Text>
-                                <DropdownMenuTrigger className="min-w-48 flex flex-row items-center justify-between border border-neutral-500 hover:bg-neutral-100 py-1 rounded-lg px-6 capitalize">
+                                <DropdownMenuTrigger className=" flex flex-row items-center justify-between border border-neutral-500 hover:bg-neutral-100 py-1 rounded-lg px-6 capitalize">
                                     {selectedValues[name] ? options.find(option => option.value === selectedValues[name])?.label : options[0].label}
                                     <IoIosArrowDown />
                                 </DropdownMenuTrigger>

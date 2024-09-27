@@ -3,10 +3,10 @@ import { ModulerDestinationsContainer } from './components/ModulerDestinationsCo
 
 const FavouriteDestinationLocations = [
     { name: "Dubai", description: "The City Of Gold", image: "https://images.pexels.com/photos/3787839/pexels-photo-3787839.jpeg?cs=srgb&dl=pexels-ivan-siarbolin-1513699-3787839.jpg&fm=jpg" },
-    { name: "Paris, France", description: "City of Love", image: "https://lh6.googleusercontent.com/proxy/VSDBMeOlHFia1rVgjtrzdD42kC-HsycxOoAOJ_VCsdrf1eGyS8-438Q3d5ZNb2nr8rNFxLRn6010qqIibO88yCK8tSWGlI9c4nZ4SpC3OuHk_771MhIgkGMUPNdhXZ3ytMcfVc54246Fipdt8_4UvcyhIAcAkKg=w675-h390-n-k-no" },
-    { name: "London, United Kingdom", description: "Timeless British Charm", image: "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRGQjRiDpsaU2knNgWKXAZEhzHVQyFMwY7XsO4SmYrR3O6WUW3QwUnjioFGGJgv8A6i-gURpH3qPZMLoz5RkIR5_GYqVIrcE0Y57c03AQ" },
+    { name: "Paris, France", description: "City of Love", image: "https://c4.wallpaperflare.com/wallpaper/543/302/394/lights-the-moon-france-paris-panorama-hd-wallpaper-preview.jpg" },
+    { name: "London, UK", description: "Timeless British Charm", image: "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRGQjRiDpsaU2knNgWKXAZEhzHVQyFMwY7XsO4SmYrR3O6WUW3QwUnjioFGGJgv8A6i-gURpH3qPZMLoz5RkIR5_GYqVIrcE0Y57c03AQ" },
     { name: "Singapore", description: "The Lion City", image: "https://lh5.googleusercontent.com/p/AF1QipPqszG7PL6Ua3mXhTK1HlB4z5T-pm7jT3N-uwK6=w675-h390-n-k-no" },
-    { name: "Bangkok & Phuket, Thailand", description: "Land of Smile", image: "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSoRF3TbJgUlxro3YJc9ah_Wq9NGcFxi3xf-6nbeRKds5YsIgrswcvjEarktfcSUkR4w9GwWgRhA7bTGLLHUmsfhjpMle6pZWDZqX2hTg" },
+    { name: "Bangkok, Thailand", description: "Land of Smile", image: "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSoRF3TbJgUlxro3YJc9ah_Wq9NGcFxi3xf-6nbeRKds5YsIgrswcvjEarktfcSUkR4w9GwWgRhA7bTGLLHUmsfhjpMle6pZWDZqX2hTg" },
     { name: "Switzerland", description: "Heaven on Earth", image: "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcTmjaSMS-TS_szvOgbCa217DEZBKwbGOkyiyEOWQP992nQlH1U2UfawX4UGFug4M89L61jdL4R9MqZmBsWj6WAxYyicmV3DS_dptCwRLg" },
     { name: "Maldives", description: "Tropical Paradise Islands", image: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTKYmJBU4TAA9PgrF_WMIX0iIiTpWnlJEzDJZsn3PvWE9qN8o8p6RnL2fbG5hetm7NKHUwGakxnee0LoJazPUbPKpDYNwbkmURssVi9rQ" },
     { name: "Bali, Indonesia", description: "Island of Gods", image: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSWozmUfIc1217cJ0PtD3IHhYVNa267gaFTACOP2sONuwBhsKe_eVj6bCKGXsdX3a2E_hY8Am3abZYEdmrHFHZyPdId7duiLEt_pG-nyw" },

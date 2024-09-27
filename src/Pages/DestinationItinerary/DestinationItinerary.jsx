@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MyContext } from "@/Components/Context/Context";
 import { Box, Text } from "@chakra-ui/react";
 import { Button } from "@/shadecn/ui/button";
@@ -29,31 +29,26 @@ export default function DestinationItinerary()
 
     const { country } = useParams();
 
-    const [currentStep, setCurrentStep] = useState(1);
+    const [currentStep, setCurrentStep] = useState(0);
     const steps = [
         {
-            label : "Step 0",
-            selection : [ { a : country, } ],
-            valid : true
-        },
-        {
             label : "Step 1",
-            selection : [ { a : days, b : members } ],
+            selection : [country, days, members],
             valid : true
         },
         {
             label : "Step 2",
-            selection : [ { a : budget, b : accommodation } ],
+            selection : [budget, accommodation],
             valid : days && members
         },
         {
             label : "Step 3",
-            selection : [ { a : transportation, b : "" } ],
+            selection : [transportation],
             valid : budget && accommodation
         },
         {
             label : "Step 4",
-            selection : [ { a : "", b : phone && "Phone" } ],
+            selection : [phone],
             valid : transportation
         },
         {
@@ -63,21 +58,34 @@ export default function DestinationItinerary()
         }
     ];
 
-    return (
-        <Box className="bg-[#f7f8fb] pt-40">
-            <Navbar className="bg-blue-600" />
-            <Box className="max-w-screen-xl m-auto mb-20">
+    // useEffect(() => {
+    //     if(days && members && !steps[2].valid) setCurrentStep(1);
+    //     if(budget && accommodation && !steps[3].valid) setCurrentStep(2);
+    //     if(transportation && !steps[4].valid) setCurrentStep(3);
+    //     if(phone && sourceDestination) setCurrentStep(4);
+    // }, [days, members, budget, accommodation, transportation, sourceDestination, phone]);
+    
 
-                <Box className="flex flex-row max-sm:flex-wrap justify-between items-end mb-6">
+    return (
+        <Box className="bg-[#E0F7FA] pt-40 min-h-screen max-h-[9999px]">
+            <Navbar className="bg-[#003b95]" />
+            <Box className="max-w-screen-xl m-auto ">
+
+                <Box className="flex flex-row max-sm:flex-wrap justify-between items-end">
                     {
                         steps.map((step, index) => (
-                            <Box key={index} className="w-full space-y-2">
-                                <Text className="font-bold text-sm ml-2 space-x-2">
+                            <Box key={index} className="w-full space-y-2 ">
+                                <Text className="font-bold text-sm space-x-2">
                                     {
-                                        step?.selection[0]?.a && <span className="px-2 bg-neutral-200">{step.selection[0].a}</span>
-                                    }
-                                    {
-                                        step?.selection[0]?.b && <span className="px-2 bg-neutral-200">{step.selection[0].b}</span>
+                                        (step?.selection ?? []).map((selection, i) => (
+                                            typeof selection == "string" && selection !== "" &&
+                                                <span
+                                                    onClick={() => setCurrentStep(index)}
+                                                    key={i}
+                                                    className="truncate px-2 py-1 bg-theme-tertiary hover:bg-theme-fifth cursor-pointer border border-neutral-400">
+                                                        {typeof selection == "string" ? selection : ""}
+                                                </span>
+                                        ))
                                     }
                                 </Text>
                                 <Button
@@ -85,8 +93,8 @@ export default function DestinationItinerary()
                                     disabled={!step.valid}
                                     onClick={() => setCurrentStep(index)}
                                     className={`py-1 px-0 text-center w-full h-1 rounded-sm border 
-                                        ${currentStep === index || step.valid ? 'bg-green-500 text-white' : 'bg-neutral-200'}
-                                        hover:bg-green-400
+                                        ${currentStep === index || step.valid ? 'bg-blue-500 text-white' : 'bg-neutral-200'}
+                                        hover:bg-blue-300
                                     `}
                                     >
                                 </Button>
@@ -97,15 +105,14 @@ export default function DestinationItinerary()
             
                 <div className="mb-6 text-lg">
                     {currentStep === 0 && <StepOneSection/>}
-                    {currentStep === 1 && <StepOneSection/>}
-                    {currentStep === 2 && <StepTwoSection/>}
-                    {currentStep === 3 && <StepThreeSection/>}
-                    {currentStep === 4 && <StepFourSection sourceDestination={sourceDestination} setSourceDestination={setSourceDestination}/>}
-                    {currentStep === 5 && <StepFiveSection/>}
+                    {currentStep === 1 && <StepTwoSection/>}
+                    {currentStep === 2 && <StepThreeSection/>}
+                    {currentStep === 3 && <StepFourSection sourceDestination={sourceDestination} setSourceDestination={setSourceDestination}/>}
+                    {currentStep === 4 && <StepFiveSection/>}
                 </div>
                 
             </Box>
-            <Footer/>
+            {/* <Footer/> */}
         </Box>
     )
 }

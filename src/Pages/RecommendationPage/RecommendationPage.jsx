@@ -6,7 +6,6 @@ import { MyContext } from "../../Components/Context/Context";
 
 import TravelPackageDetails from "../../Components/TravelPackageDetails/TravelPackageDetails";
 import Loader from "../../Components/Loader/Loader";
-import SubBanner from "../../Components/Banner/SubBanner";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
@@ -73,11 +72,11 @@ const RecommendationPage = () => {
 
     try {
         return (
-            <Box className="w-full">
+            <Box className="w-full bg-theme-base">
                 <Navbar />
                 {/* <SubBanner /> */}
                 <Banner disableInput={true} />
-                <Box className="max-w-7xl mx-auto md:px-14 py-4 mt-14 relative border-4 rounded-2xl px-6 mb-8">
+                <Box className="max-w-7xl mx-auto md:px-14 py-4 mt-14 relative border border-theme-header rounded-2xl px-6 mb-8">
                     
                     <Suspense>
                         <ItineraryHeader

@@ -27,7 +27,7 @@ const Navbar = ({ className="" }) => {
     const [role, , refetch] = useCheckRole();
     
     const links = <>
-        <NavLink to="/" className="max-lg:text-sm">Home</NavLink>
+        <NavLink to="/" className="max-lg:text-sm text-neutral-200 hover:text-white">Home</NavLink>
         {user ? role === "agent" || role === "admin" || <NavLink to="/my-trips" className="max-lg:text-sm">My Trips</NavLink> : ""}
         {role === "agent" && <NavLink to="/dashboard" className="max-lg:text-sm">Vendor Dashboard</NavLink>}
         {role === "admin" && <NavLink to="/admin-dashboard" className="max-lg:text-sm">Admin Dashboard</NavLink>}

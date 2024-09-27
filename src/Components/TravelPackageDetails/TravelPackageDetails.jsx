@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { CiMedicalCase } from 'react-icons/ci';
 import { FaHandsHelping } from 'react-icons/fa';
@@ -12,14 +13,14 @@ import { RxActivityLog } from 'react-icons/rx';
 
 const TravelPackageDetails = () => {
   return (
-    <div className="max-w-7xl mx-auto p-6 text-gray-600 border-2 rounded-2xl">
+    <div className="max-w-7xl mx-auto p-6 text-gray-600 border border-neutral-400 rounded-2xl bg-theme-secondary">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="border rounded-lg p-4">
-          <h2 className="text-xl font-bold mb-4">Included</h2>
+        <div className="border border-neutral-400 rounded-lg p-4 bg-theme-tertiary">
+          <h2 className="text-base font-bold mb-4">Included</h2>
           <IncludedSection />
         </div>
-        <div className="border rounded-lg p-4">
-          <h2 className="text-xl font-bold mb-4">Excluded</h2>
+        <div className="rounded-lg p-4 border border-neutral-400 bg-theme-tertiary">
+          <h2 className="text-base font-bold mb-4">Excluded</h2>
           <ExcludedSection />
         </div>
       </div>
@@ -29,7 +30,7 @@ const TravelPackageDetails = () => {
 
 const IncludedSection = () => {
   return (
-    <>
+    <Box className='space-y-2'>
       <Section title="International Flights:" icon={<GiCommercialAirplane className='inline mr-1' />}>
         <BulletPoint text="Flights to and from the destination country (if source is specified)" />
       </Section>
@@ -74,13 +75,13 @@ const IncludedSection = () => {
         <BulletPoint text="Porterage at hotels and airports" />
         <BulletPoint text="24/7 customer support during the trip" />
       </Section>
-    </>
+    </Box>
   );
 };
 
 const ExcludedSection = () => {
   return (
-    <>
+    <Box className='space-y-2'>
       <Section title="Visa and Passport Fees:" icon={<GiPassport className='inline mr-1 mb-1'/>}>
         <BulletPoint text="Visa application fees" />
         <BulletPoint text="Passport renewal or application fees" />
@@ -128,17 +129,17 @@ const ExcludedSection = () => {
       <Section title="Miscellaneous:"  icon={<MdMiscellaneousServices className='inline mr-1 mb-1'/>}>
         <BulletPoint text='Any other expenses not explicitly mentioned in the "Included" section' />
       </Section>
-    </>
+    </Box>
   );
 };
 
 const Section = ({ title, children, icon }) => {
   return (
     
-    <div className="mb-4">
-      <div className="collapse collapse-plus border-2">
+    <div className="">
+      <div className="collapse collapse-plus border border-neutral-400 bg-theme-fourth">
         <input type="radio" name="my-accordion-3" />
-        <h3 className="font-semibold collapse-title">{icon}{title}</h3>
+        <h3 className="font-semibold collapse-title text-black text-sm">{icon}{title}</h3>
         <div className="collapse-content">
           <ul className="list-disc pl-5">{children}</ul>
         </div>
@@ -148,7 +149,7 @@ const Section = ({ title, children, icon }) => {
 };
 
 const BulletPoint = ({ text }) => {
-  return <li className="mb-1">{text}</li>;
+  return <li className="">{text}</li>;
 };
 
 export default TravelPackageDetails;
