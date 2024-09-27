@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { Text } from "@chakra-ui/react";
 const Footer = () => {
     return (
-        <div className=" bg-base-200 text-gray-700">
+        <div className="bg-[#F8F9FA] text-gray-700">
             <footer className="footer items-end p-10 max-w-7xl mx-auto">
                 <nav className="">
                     <div className="flex justify-start items-centerxs">

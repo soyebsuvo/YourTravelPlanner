@@ -42,7 +42,7 @@ const Profile = () => {
                         defaultValue={user?.displayName}
                         disabled={!usernameEditMode}
                         autoFocus
-                        className={`w-auto ${!usernameEditMode ? '!border-none !outline-none !ring-0' : ''} !opacity-100 text-end`}
+                        className={`w-auto ${!usernameEditMode ? '!border-none !outline-none !ring-0 bg-transparent' : ''} !opacity-100 text-end`}
                         onChange={(e) => setCurrentUsername(e.target.value)}
                         onKeyDown={(e) => {
                             if(e.key === 'Enter') {
@@ -84,7 +84,7 @@ const Profile = () => {
                         defaultValue={user?.phoneNumber}
                         disabled={!phoneNumberEdit}
                         autoFocus
-                        className={`w-auto ${!phoneNumberEdit ? '!border-none !outline-none !ring-0' : ''} !opacity-100 text-end`}
+                        className={`w-auto ${!phoneNumberEdit ? '!border-none !outline-none !ring-0 bg-transparent' : ''} !opacity-100 text-end`}
                         onChange={(e) => setCurrentPhoneNumber(e.target.value)}
                         onKeyDown={(e) => {
                             if(e.key === 'Enter') {

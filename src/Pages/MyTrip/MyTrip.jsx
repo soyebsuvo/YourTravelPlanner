@@ -132,20 +132,19 @@ const MyTrip = () => {
     //     return <Preloader />
     // }
     return (
-        <div>
-            <Navbar />
-            <div className="h-20 bg-blue-600"></div>
-            <div className="bg-blue-200 h-56">
-                <h2 className="text-2xl font-semibold p-8 ps-4 md:ps-20">My Trips</h2>
+        <div className="bg-theme-base pt-20 space-y-4">
+            <Navbar className="bg-theme-header" />
+            <div className="ml-10 mt-10">
+                <h2 className="text-2xl font-semibold">My Trips</h2>
             </div>
-            <div className="-mt-52">
-                <div className="bg-white m-2 mt-20 md:m-20 shadow-2xl min-h-screen rounded-xl">
+            <div className="p-4">
+                <div className="bg-theme-secondary m-2 shadow-2xl min-h-screen rounded-xl border border-neutral-400">
                     <div className="hidden md:flex gap-2 items-center p-6 pb-8 shadow">
-                        <h4 onClick={() => setTab(1)} className={`text-xl font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 1 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Saved</h4>
-                        <h4 onClick={() => setTab(2)} className={`text-xl font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 2 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Request Sent</h4>
-                        <h4 onClick={() => setTab(3)} className={`text-xl font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 3 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Upcoming</h4>
-                        <h4 onClick={() => setTab(4)} className={`text-xl font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 4 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Cancelled</h4>
-                        <h4 onClick={() => setTab(5)} className={`text-xl font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 5 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Completed</h4>
+                        <h4 onClick={() => setTab(1)} className={`text-base max-md:text-sm max-sm:text-xs font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 1 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Saved</h4>
+                        <h4 onClick={() => setTab(2)} className={`text-base max-md:text-sm max-sm:text-xs font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 2 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Request Sent</h4>
+                        <h4 onClick={() => setTab(3)} className={`text-base max-md:text-sm max-sm:text-xs font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 3 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Upcoming</h4>
+                        <h4 onClick={() => setTab(4)} className={`text-base max-md:text-sm max-sm:text-xs font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 4 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Cancelled</h4>
+                        <h4 onClick={() => setTab(5)} className={`text-base max-md:text-sm max-sm:text-xs font-bold uppercase cursor-pointer mx-4 border-b-4 pb-2 ${tab === 5 ? 'text-blue-500 border-blue-500' : 'text-gray-500'}`}>Completed</h4>
                     </div>
                     <div className="p-4 relative md:hidden">
                         <button onClick={() => setTabOpen(!tabOpen)} className="border-2 py-1 px-2 w-[150px] rounded cursor-pointer"><span className="font-semibold">{tabName}</span> <FaAngleDown className="inline mb-1 ml-1" /></button>
@@ -187,7 +186,7 @@ const MyTrip = () => {
                                                     const group = lastItinerary?.groupSize;
                                                     const accommodation = lastItinerary?.accommodation?.type;
                                                     const transportation = lastItinerary?.transportation;
-                                                    return <tr key={index}>
+                                                    return <tr className="bg-theme-tertiary" key={index}>
                                                         <th className="text-gray-500">{index + 1}</th>
                                                         <td className="flex flex-wrap">{
                                                             oneItinerary?.response?.itinerary?.map((item, idx, arr) => {
@@ -242,7 +241,7 @@ const MyTrip = () => {
                                                     const group = lastItinerary?.groupSize;
                                                     const accommodation = lastItinerary?.accommodation?.type;
                                                     const transportation = lastItinerary?.transportation;
-                                                    return <tr key={index} className="">
+                                                    return <tr key={index} className="bg-theme-tertiary border border-neutral-400">
                                                         <th className="text-gray-500">{index + 1}</th>
                                                         <td className="flex flex-wrap">{
                                                             oneItinerary?.response?.itinerary?.map((item, idx, arr) => {

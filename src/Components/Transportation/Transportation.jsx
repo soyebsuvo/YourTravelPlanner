@@ -3,33 +3,23 @@ import img4 from '../../assets/private-transportation-company-3.jpg';
 import PropTypes from 'prop-types';
 const Transportation = ({value , setValue , transportationScroll}) => {
     return (
-        <div ref={transportationScroll} className="bg-neutral-50 p-2 flex flex-col items-center justify-center shadow-xl rounded-xl">
+        <div ref={transportationScroll} className="md:w-1/2 border border-blue-400 p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
             <div>
                 <h2 className='text-md md:text-xl font-semibold text-center'>How do you plan to get around?<span className='text-red-500'>*</span> </h2>
             </div>
-            {/* <div className="grid grid-cols-2 gap-6 py-4 w-full">
-                <div className='w-6/12 shadow-xl'>
-                    <figure className="p-4">
-                        <img src={img} alt="Shoes" className="rounded-full w-32" />
-                    </figure>
-                    <div className="card-body items-center text-center">
-                        <h2 className="card-title text-base">Public Transportation</h2>
-                    </div>
-                </div>
-            </div> */}
-            <div className="grid grid-cols-2 gap-6 py-4 w-full">
-                <div onClick={() => {setValue("Public Transportation"); }} className={value === "Public Transportation" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer bg-white`}>
-                    <figure className="p-4">
-                        <img src={img} alt="Shoes" className="rounded-full w-32" />
+            <div className="grid grid-cols-2 gap-6 py-4">
+                <div onClick={() => {setValue("Public Transportation"); }} className={value === "Public Transportation" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
+                    <figure className="px-10 pt-10">
+                        <img src={img} alt="Shoes" className="rounded-full w-64" />
                     </figure>
                     <div className="card-body items-center text-center">
                         <h2 className="card-title text-base">Public Transportation</h2>
                     </div>
                 </div>
                 
-                <div onClick={() => {setValue("Private / Prearranged");}} className={value === "Private / Prearranged" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer bg-white`}>
+                <div onClick={() => {setValue("Private / Prearranged");}} className={value === "Private / Prearranged" ? `card shadow-xl border duration-150 border-[#00B277] bg-[#00b2771f] cursor-pointer` : `card shadow-xl border duration-150 hover:border hover:border-[#00B277] hover:bg-[#00b2771f] cursor-pointer`}>
                     <figure className="px-10 pt-10">
-                        <img src={img4} alt="Shoes" className="rounded-full w-32" />
+                        <img src={img4} alt="Shoes" className="rounded-full w-64" />
                     </figure>
                     <div className="card-body items-center text-center">
                         <h2 className="card-title text-base h-[30px]">Private / Prearranged</h2>

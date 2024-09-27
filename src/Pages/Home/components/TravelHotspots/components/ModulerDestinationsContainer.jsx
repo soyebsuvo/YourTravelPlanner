@@ -44,7 +44,7 @@ export const ModulerDestinationsContainer = ({ locations, label }) => {
     }, [currentLocations])
 
     return (
-        <Box className="w-full p-4 space-y-4 mt-5 bg-neutral-100 rounded-lg shadow-md shadow-neutral-300">
+        <Box className="w-full p-4 space-y-4 mt-5 bg-theme-secondary rounded-lg shadow-md shadow-neutral-400">
 
             <HStack className="w-full justify-between">
                 <Heading className="font-bold text-xl max-md:text-lg max-sm:text-base">{label}</Heading>

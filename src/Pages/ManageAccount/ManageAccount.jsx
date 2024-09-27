@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
@@ -11,6 +11,7 @@ import { Box } from "@chakra-ui/react";
 const ManageAccount = () => {
     
     const [tabName , setTabName] = useState("Notifications");
+    const location = useLocation();
 
     const MANAGE_LINKS = [
         { label : "Personal Details", link : "profile" },
@@ -23,18 +24,20 @@ const ManageAccount = () => {
     ]
 
     return (
-        <div>
+        <div className="bg-theme-base">
             <Navbar />
             <div className="h-20 bg-blue-600"></div>
             <div className="max-w-7xl mx-auto px-2 md:px-14 grid grid-cols-12 min-h-screen max-h-[9999999vh]">
-                <div className="col-span-3 border rounded-lg my-4 hidden md:block">
-                    <ul className="dashboard-nav space-y-8">
+                <div className="col-span-3 rounded-lg my-4 hidden md:block bg-theme-secondary">
+                    <ul className="flex flex-col space-y-4">
                         {
                             MANAGE_LINKS.map((link, index) => (
-                                <NavLink key={index} to={`/manage-account/${link.link}`}>
-                                    <li className="p-3 border font-semibold cursor-pointer transition-all duration-200 hover:text-blue-500 rounded-tr-lg rounded-tl-lg">
-                                        {link.label}
-                                    </li>
+                                <NavLink
+                                    key={index}
+                                    to={`/manage-account/${link.link}`}
+                                    className={`${location.pathname == `/manage-account/${link.link}` ? "bg-theme-fourth" : "bg-theme-tertiary"} p-3 border border-neutral-400 font-semibold cursor-pointer transition-all duration-200 hover:text-blue-500 rounded-tr-lg rounded-tl-lg`}
+                                >
+                                    {link.label}
                                 </NavLink>
                             ))
                         }
