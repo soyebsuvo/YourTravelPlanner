@@ -102,15 +102,14 @@ export default function Marketplace()
         <Box className="space-y-4 bg-theme-base">
             <Container className="w-full">
                 <Navbar/>
-                <Banner disableInput={true} />                
-            </Container>                                            
+                <Banner disableInput={true} />
+            </Container>                      
 
             <Box className="w-full max-w-screen-xl m-auto space-y-6">
                 <TripFilter onFilter={(filteredKeypoint) => {
-                    if(filteredKeypoint !== null) {
+                    if(filteredKeypoint.filter !== null) {
                         const filteredTrips = TRIP_CARDS.filter((tripCard) => tripCard.keypoints.includes(filteredKeypoint.filter))
                         setTripCards(filteredTrips)
-                        //setTripCards(prev => prev.keypoints == filteredKeypoint)
                     }
                 }} />
                 <Box className="w-full gap-8 grid grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:p-2">

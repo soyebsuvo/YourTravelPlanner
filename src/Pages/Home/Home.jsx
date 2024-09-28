@@ -49,7 +49,7 @@ export default function Home()
             <Box className='space-y-16'>
                 <HeroSectionVideo/>
                 <TravelHotspot/>
-                {/* <DestinationGrid/> */}
+                <DestinationGrid/>
                 <ItineraryQuestionsSection/>
                 <Footer/>
             </Box>
