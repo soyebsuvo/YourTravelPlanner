@@ -106,12 +106,7 @@ export default function Marketplace()
             </Container>                      
 
             <Box className="w-full max-w-screen-xl m-auto space-y-6">
-                <TripFilter onFilter={(filteredKeypoint) => {
-                    if(filteredKeypoint.filter !== null) {
-                        const filteredTrips = TRIP_CARDS.filter((tripCard) => tripCard.keypoints.includes(filteredKeypoint.filter))
-                        setTripCards(filteredTrips)
-                    }
-                }} />
+                <TripFilter />
                 <Box className="w-full gap-8 grid grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:p-2">
                     {
                         tripCards.map((tripCard, index) => <TripCard key={index} {...tripCard}/>)
