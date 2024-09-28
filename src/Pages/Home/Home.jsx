@@ -40,7 +40,7 @@ export default function Home()
     }
 
     return (
-        <Box className='w-full'>
+        <Box className='w-full bg-theme-base'>
             <PromotionalBanner/>
             <Box className='relative'>
                 <Navbar/>
@@ -49,7 +49,7 @@ export default function Home()
             <Box className='space-y-16'>
                 <HeroSectionVideo/>
                 <TravelHotspot/>
-                <DestinationGrid/>
+                {/* <DestinationGrid/> */}
                 <ItineraryQuestionsSection/>
                 <Footer/>
             </Box>

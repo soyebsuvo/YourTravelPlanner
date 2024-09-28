@@ -27,13 +27,13 @@ const Navbar = ({ className="" }) => {
     const [role, , refetch] = useCheckRole();
     
     const links = <>
-        <NavLink to="/"><a>Home</a></NavLink>
-        {user ? role === "agent" || role === "admin" || <NavLink to="/my-trips"><a>My Trips</a></NavLink> : ""}
-        {role === "agent" && <NavLink to="/dashboard"><a>Vendor Dashboard</a></NavLink>}
-        {role === "admin" && <NavLink to="/admin-dashboard"><a>Admin Dashboard</a></NavLink>}
-        <NavLink to="/marketplace"><a>Marketplace</a></NavLink>
-        {user ? <NavLink to="/manage-account/profile"><a>Manage Account</a></NavLink> : <a onClick={() => document.getElementById('my_modal_3').showModal()} className="cursor-pointer">Manage Account</a>}
-        <li><a><IoIosNotifications className="text-2xl" /></a></li>
+        <NavLink to="/" className="max-lg:text-sm text-neutral-200 hover:text-white">Home</NavLink>
+        {user ? role === "agent" || role === "admin" || <NavLink to="/my-trips" className="max-lg:text-sm">My Trips</NavLink> : ""}
+        {role === "agent" && <NavLink to="/dashboard" className="max-lg:text-sm">Vendor Dashboard</NavLink>}
+        {role === "admin" && <NavLink to="/admin-dashboard" className="max-lg:text-sm">Admin Dashboard</NavLink>}
+        <NavLink to="/marketplace" className="max-lg:text-sm">Marketplace</NavLink>
+        {user ? <NavLink to="/manage-account/profile" className="max-lg:text-sm">Manage Account</NavLink> : <a onClick={() => document.getElementById('my_modal_3').showModal()} className="cursor-pointer">Manage Account</a>}
+        <li><a><IoIosNotifications className="text-xl" /></a></li>
     </>
 
     const logout = () => {
@@ -63,21 +63,42 @@ const Navbar = ({ className="" }) => {
             <nav className="max-w-7xl mx-auto px-2 md:px-16 py-3">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center justify-center">
-                        <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+                        <DropdownMenu>
+                            <DropdownMenuTrigger className="btn btn-ghost md:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                            </div>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                                {links}
-                            </ul>
-                        </div>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className="w-full flex flex-col items-start justify-start space-y-2">
+                                <DropdownMenuItem className="w-full cursor-pointer">
+                                    <NavLink to="/" className="max-md:text-xs"><a>Home</a></NavLink>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className="w-full cursor-pointer">
+                                    {user ? role === "agent" || role === "admin" || <NavLink to="/my-trips" className="max-md:text-xs"><a>My Trips</a></NavLink> : ""}
+                                </DropdownMenuItem>
+                                {
+                                    role === "admin" && (
+                                        <DropdownMenuItem className="w-full cursor-pointer">
+                                            <NavLink to="/admin-dashboard" className="max-md:text-xs"><a>Admin Dashboard</a></NavLink>
+                                        </DropdownMenuItem>
+                                    )
+                                }
+                                <DropdownMenuItem className="w-full cursor-pointer">
+                                    <NavLink to="/marketplace" className="max-md:text-xs"><a>Marketplace</a></NavLink>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className="w-full cursor-pointer">
+                                    {user ? <NavLink to="/manage-account/profile" className="max-md:text-xs"><a>Manage Account</a></NavLink> : <a onClick={() => document.getElementById('my_modal_3').showModal()} className="cursor-pointer">Manage Account</a>}
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className="w-full cursor-pointer">
+                                    <a className="w-full flex flex-row items-center justify-between">Notification <IoIosNotifications className="text-lg" /></a>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                         <div className="flex justify-start items-center">
-                            <Link to="/"><img className="w-56" src={logo} alt="Logo" /></Link>
+                            <Link to="/"><img className="w-56 max-lg:w-48" src={logo} alt="Logo" /></Link>
                         </div>
                     </div>
                     <div className="flex justify-end items-center gap-4 flex-1">
-                        <div className=" hidden md:flex">
-                            <ul className="menu menu-horizontal px-1 text-white flex justify-center items-center gap-5">
+                        <div className="hidden md:flex">
+                            <ul className="menu menu-horizontal px-1 text-white flex justify-center max-lg:gap-3 items-center gap-5">
                                 {links}
                             </ul>
                         </div>
@@ -99,7 +120,7 @@ const Navbar = ({ className="" }) => {
                                                 <DropdownMenuItem key={index} className="w-full p-1">
                                                     <Link
                                                         onClick={() => link.label === "Logout" ? logout() : () => {}}
-                                                        className="px-2 py-1 cursor-pointer"
+                                                        className="px-2 py-1 cursor-pointer max-sm:text-sm"
                                                         to={`/manage-account/${link.link}`}
                                                     >
                                                         {link.label}
@@ -138,28 +159,10 @@ const Navbar = ({ className="" }) => {
                     </div>
                 </div>
             </nav>
-            <dialog id="coming_soon" className="modal">
-                <div className="modal-box scrollbar-hide">
-                    <form method="dialog">
-                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    </form>
-                    <div>
-                        <h2 className="text-2xl font-bold">New Features coming soon!!!</h2>
-                        <div className="p-3">
-                            <ul className="space-y-2">
-                                <li className="text-gray-500"><TbMessageChatbot className="inline mb-1 mr-2" />Integrated Chatbot for enhanced trip planning</li>
-                                <li className="text-gray-500"><MdOutlineAttractions className="inline mb-1 mr-2" />Attractions Catalog with 1000+ Activities</li>
-                                <li className="text-gray-500"><GiTakeMyMoney className="inline mb-1 mr-2" />Cheapest deal of the season</li>
-                            </ul>
-                        </div>
-                        <div className="my-4">
-                            <form className="inline" method="dialog"><button className="bg-red-300 text-white px-4 py-1 rounded font-semibold mr-3 inline">Close</button></form>
-                        </div>
-                    </div>
-                </div>
-            </dialog>
         </div>
-    );
-};
+    )
+}
+
+// fffffffffffffffffffffffffffffffuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuux
 
 export default Navbar;

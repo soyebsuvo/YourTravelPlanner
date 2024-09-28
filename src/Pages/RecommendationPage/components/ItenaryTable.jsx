@@ -1,12 +1,12 @@
 import React, { Suspense, useContext, useEffect, useState } from 'react';
+import { MyContext } from '@/Components/Context/Context';
 import PropTypes from 'prop-types';
 
-import Slider from '@madzadev/image-slider';
 import { Box, Button, Heading, HStack, Text } from "@chakra-ui/react";
 
 import Lottie from 'lottie-react';
 
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/shadecn/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/shadecn/ui/dialog';
 import { Textarea } from '@/shadecn/ui/textarea';
 
 import { GoDotFill } from 'react-icons/go';
@@ -14,14 +14,13 @@ import { FaAngleDown } from 'react-icons/fa';
 
 import animationData from '../../../../public/flight-animation.json';
 import fly_line from "../../../assets/fly_line.svg";
-import { MyContext } from '@/Components/Context/Context';
 import { TableDynamicImageSlide } from './TableDynamicImageSlide';
 
 import '../../../index.css';
 
 export const ItineraryTable = ({ response }) => {
 
-    const { setResponse, images } = useContext(MyContext);
+    const { setResponse } = useContext(MyContext);
     
     const [activity, setIsActivity] = useState(0);
     
@@ -109,15 +108,15 @@ export const ItineraryTable = ({ response }) => {
         {
             return (dailyActivities ?? []).map((activity, index) => (
                 <HStack className="flex justify-between items-center" key={index}>
-                    <Box className="border min-w-[90px] h-[140px] flex justify-center items-center text-gray-500 font-bold">
+                    <Box className="border border-neutral-700/10 min-w-[90px] h-[140px] flex justify-center items-center text-neutral-700 font-bold">
                         {activity.day}
                     </Box>
                     {activity && (activity.activities ?? []).map((item, i) => (
-                        <Box key={i} className="border w-full h-[140px] p-3 overflow-hidden hover:bg-blue-50">
-                            <Heading className="text-gray-500 font-bold">{item?.time}</Heading>
+                        <Box key={i} className="border border-neutral-700/10 w-full h-[140px] p-3 overflow-hidden hover:bg-theme-fourth">
+                            <Heading className="text-neutral-700 font-bold">{item?.time}</Heading>
                             {item.activity.includes("Leisure") ? (
                                 <Box>
-                                    <Text className="text-gray-500">{item?.activity}</Text>
+                                    <Text className="text-neutral-700">{item?.activity}</Text>
                                     <Text>{item?.cost}</Text>
                                     <Button
                                         className='text-blue-500 hover:text-blue-400 text-sm font-bold'
@@ -131,7 +130,7 @@ export const ItineraryTable = ({ response }) => {
                                 </Box>
                             ) : (
                                 <Box>
-                                    <Text className="text-gray-500">{item?.activity}</Text>
+                                    <Text className="text-neutral-700">{item?.activity}</Text>
                                 </Box>
                             )}
                         </Box>
@@ -143,12 +142,12 @@ export const ItineraryTable = ({ response }) => {
     }, [response]);
 
     return (
-        <Box className='w-full space-y-36'>
+        <Box className='w-full space-y-36 bg-theme-secondary'>
             {
                 (response?.itinerary ?? []).map((city, index) => (
-                    <Box key={index} className="relative forChild flex items-start justify-between my-2 h-auto border-2 rounded-2xl p-4">
-                        <Box className="w-full md:w-[55%] h-auto text-xs md:text-base">
-                            <Box className="main border-2 rounded-2xl w-full h-full">
+                    <Box key={index} className="relative forChild flex items-start justify-between my-2 h-auto border border-neutral-400 rounded-2xl p-4">
+                        <Box className="w-full md:w-[55%] h-auto text-xs md:text-base bg-theme-secondary">
+                            <Box className="main border border-neutral-400 rounded-2xl w-full h-full">
                                 
                                 <HStack justifyContent={"space-between"} className='font-bold text-xs items-center p-3'>
                                     <Text>
@@ -191,7 +190,7 @@ export const ItineraryTable = ({ response }) => {
 
             <Dialog open={isActivityModalOpen} onOpenChange={setIsActivityModalOpen} modal={true}>
                 <DialogContent>
-                    <DialogTitle>Add Activity</DialogTitle>  
+                    <DialogTitle>Add Activity</DialogTitle>
                     <Textarea onChange={e => setIsActivity(e.target.value)} name="activity" cols="30" rows="5"></Textarea>
                     <Button onClick={() => handleAddActivity()} className="w-full py-2 bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200 rounded-lg">
                         Submit

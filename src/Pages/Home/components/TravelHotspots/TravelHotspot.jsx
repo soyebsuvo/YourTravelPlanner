@@ -3,15 +3,15 @@ import { ModulerDestinationsContainer } from './components/ModulerDestinationsCo
 
 const FavouriteDestinationLocations = [
     { name: "Dubai", description: "The City Of Gold", image: "https://images.pexels.com/photos/3787839/pexels-photo-3787839.jpeg?cs=srgb&dl=pexels-ivan-siarbolin-1513699-3787839.jpg&fm=jpg" },
-    { name: "Singapore", description: "The Lion City", image: "https://images.pexels.com/photos/777059/pexels-photo-777059.jpeg?cs=srgb&dl=pexels-kin-pastor-251088-777059.jpg&fm=jpg" },
-    { name: "Australia", description: "Land of Down Under", image: "https://www.storylines.com/hs-fs/hubfs/Blogs/Australia/shutterstock_590390942.jpg?width=800&name=shutterstock_590390942.jpg" },
-    { name: "New Zealand", description: "The Adventure Capital", image: "https://lh5.googleusercontent.com/p/AF1QipP3n44eFopNPKKYPCyuMVMvMVjhmhlc_h17Tbg=w675-h390-n-k-no" },
-    { name: "Azerbaijan", description: "The Land of Fire", image: "https://images.pexels.com/photos/1118871/pexels-photo-1118871.jpeg" },
-    { name: "Bali", description: "Cultural Paradise", image: "https://lh5.googleusercontent.com/p/AF1QipPv-Cl6vCitJXDPPgGnOfDsn6aCpKlP8srXwafK=w675-h390-n-k-no" },
-    { name: "Maldives", description: "Create Memories", image: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRhCquwVjPiz7NKec1tddzlhRk-yTbNxjgOYJQUHWFexieebEAiiO3GVT6TFJ6886yqPjpccT3uzLpzEVQJmvU3aRURCziCW9fSJmmyHg" },
-    { name: "Thailand", description: "The Kingdom of Thailand", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_i5SmavwIpYEsRCxACYloqc6Lmog5MBDHRw&s" },
-    { name: "Vietnam", description: "Land of Ascending Dragon", image: "https://lh5.googleusercontent.com/p/AF1QipNScqrwdnIoEdHZYKVM1hpmOpM0i3mlvRzxiI-A=w540-h312-n-k-no" },
-    { name: "Sri Lanka", description: "Fall in Love", image: "https://lh5.googleusercontent.com/p/AF1QipM1ovTbL6agD4qQ-Ywe4vX3q59f1vWxVKN3jUtO=w675-h390-n-k-no" },
+    { name: "Paris, France", description: "City of Love", image: "https://c4.wallpaperflare.com/wallpaper/543/302/394/lights-the-moon-france-paris-panorama-hd-wallpaper-preview.jpg" },
+    { name: "London, UK", description: "Timeless British Charm", image: "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRGQjRiDpsaU2knNgWKXAZEhzHVQyFMwY7XsO4SmYrR3O6WUW3QwUnjioFGGJgv8A6i-gURpH3qPZMLoz5RkIR5_GYqVIrcE0Y57c03AQ" },
+    { name: "Singapore", description: "The Lion City", image: "https://lh5.googleusercontent.com/p/AF1QipPqszG7PL6Ua3mXhTK1HlB4z5T-pm7jT3N-uwK6=w675-h390-n-k-no" },
+    { name: "Bangkok, Thailand", description: "Land of Smile", image: "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSoRF3TbJgUlxro3YJc9ah_Wq9NGcFxi3xf-6nbeRKds5YsIgrswcvjEarktfcSUkR4w9GwWgRhA7bTGLLHUmsfhjpMle6pZWDZqX2hTg" },
+    { name: "Switzerland", description: "Heaven on Earth", image: "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcTmjaSMS-TS_szvOgbCa217DEZBKwbGOkyiyEOWQP992nQlH1U2UfawX4UGFug4M89L61jdL4R9MqZmBsWj6WAxYyicmV3DS_dptCwRLg" },
+    { name: "Maldives", description: "Tropical Paradise Islands", image: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTKYmJBU4TAA9PgrF_WMIX0iIiTpWnlJEzDJZsn3PvWE9qN8o8p6RnL2fbG5hetm7NKHUwGakxnee0LoJazPUbPKpDYNwbkmURssVi9rQ" },
+    { name: "Bali, Indonesia", description: "Island of Gods", image: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSWozmUfIc1217cJ0PtD3IHhYVNa267gaFTACOP2sONuwBhsKe_eVj6bCKGXsdX3a2E_hY8Am3abZYEdmrHFHZyPdId7duiLEt_pG-nyw" },
+    { name: "New York City, USA", description: "The Big Apple", image: "https://lh3.googleusercontent.com/proxy/g-ljxmC9hqYpgbNRM2dhT4x30UsLIeylGkNR8j7xU75F3uXUHTB-hNcdjNy_H5_ZxgnbUxNUvne8TOZBcYT-BwoIQZgXwXlkyciXBHBPkNH2SavG7WhWDqT383O5PPPhie3Pw0fSRriv3TF8TEb8cu7JuH5-_Q=w675-h390-n-k-no" },
+    { name: "Istanbul, Turkey", description: "Where East Meets West", image: "https://lh5.googleusercontent.com/p/AF1QipM3QO27wHjhSkM8NevNtc6zSDQ4bnhZ1DoF1eBB=w675-h390-n-k-no" },
 ];
 const QuickGateWaysDestinationLocations = [
     { name: "Maidives", description: "Tropical Beach Paradise", image: "https://static8.depositphotos.com/1179847/1009/i/450/depositphotos_10094269-stock-photo-hammock-and-sunset.jpg" },

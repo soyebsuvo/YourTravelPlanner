@@ -17,7 +17,7 @@ export const StepTwoSection = () => {
     const scrollHandler = (element) => {}
 
     return (
-        <div className="flex flex-row items-center justify-center gap-4 p-8 bg-neutral-100 mt-10">
+        <div className="flex flex-row items-center justify-center gap-4 p-8 mt-10">
             <Budget value={budget} setValue={setBudget} scrollHandler={scrollHandler} membersScroll={durationScroll} durationScroll={durationScroll} />
             <Accommodation value={accommodation} setValue={setAccommodation} membersScroll={membersScroll} scrollHandler={scrollHandler} budgetScroll={membersScroll} />
         </div>

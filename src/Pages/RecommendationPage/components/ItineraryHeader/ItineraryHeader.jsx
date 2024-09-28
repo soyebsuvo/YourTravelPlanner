@@ -8,8 +8,8 @@ import { ItineraryHeaderActivity } from './ItineraryHeaderActivity';
 
 export const ItineraryHeader = ({ itinerary, totalCost, request, stays, transfer, totalActivities }) => {
     return (
-        <Box className="border-2 p-6 mt-6 rounded-2xl">
-            <Flex className="flex flex-wrap justify-center items-center gap-4">
+        <Box className="border border-neutral-400 p-6 mt-6 rounded-2xl bg-theme-secondary">
+            <Flex className="flex flex-wrap justify-between items-center gap-4">
                 <ItineraryHeaderActivity
                     stays={stays}
                     transfer={transfer}
