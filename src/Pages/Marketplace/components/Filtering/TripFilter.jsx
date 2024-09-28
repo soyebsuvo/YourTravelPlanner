@@ -2,20 +2,13 @@ import { useEffect, useState } from "react";
 
 import { Box, HStack, Text } from "@chakra-ui/react";
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shadecn/ui/dropdown-menu"
 import { IoIosArrowDown } from "react-icons/io";
 import { useLocation, useSearchParams } from "react-router-dom";
+import { Input } from "@/shadecn/ui/input";
+import { Dialog, DialogContent, DialogTrigger } from "@/shadecn/ui/dialog";
 
 const FILTERS = [
-    {
-        name : "Destinations",
-        options : [
-            {
-                label : "5 start",
-                value : "value 1"
-            },
-        ]
-    },
     {
         name : "Budget",
         options : [
@@ -118,7 +111,7 @@ export const TripFilter = ({ onFilter }) => {
 
     useEffect(() => {
         onFilter({filter : searchQuery});
-    }, [searchQuery]);
+    }, []);
     
 
     const handleSelect = (filterName, value) => {
@@ -131,38 +124,47 @@ export const TripFilter = ({ onFilter }) => {
     };
 
     return (
-        <Box className="w-full p-2 space-x-4 flex flex-row items-center justify-start">
+        <Box className="w-full p-2 space-y-4">
+            <Box className="w-full flex flex-row items-center justify-between">
+                <HStack className="gap-4 flex flex-wrap justify-start w-full">
+                    {
+                        (FILTERS ?? []).map(({ name, options }, index) => (
+                            <DropdownMenu key={index} modal>
+                                <Box className="max-sm:w-full flex flow-row items-center justify-center max-sm:justify-between space-x-2 bg-theme-tertiary pl-4 rounded-xl border border-theme-header">
+                                    <Text className="capitalize">{name}</Text>
+                                    <DropdownMenuTrigger className=" flex flex-row items-center justify-between bg-theme-fourth py-1 rounded-lg px-6 capitalize">
+                                        {selectedValues[name] ? options.find(option => option.value === selectedValues[name])?.label : options[0].label}
+                                        <IoIosArrowDown />
+                                    </DropdownMenuTrigger>
+                                </Box>
+                                <DropdownMenuContent align="start" side="bottom" className="mt-2 border border-theme-header bg-theme-secondary shadow-md shadow-neutral-600 min-w-96 p-2 z-50 rounded-xl">
+                                    {
+                                        (options ?? []).map((option, index) => (
+                                            <DropdownMenuItem
+                                                onClick={() => handleSelect(name, option?.value)}
+                                                key={index}
+                                                className="text-neutral-900 px-4 py-2 hover:bg-blue-50 rounded-lg !outline-none !border-none cursor-pointer
+                                                capitalize"
+                                            >
+                                                {option?.label}
+                                            </DropdownMenuItem>
+                                        ))
+                                    }
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        ))
+                    }
+                </HStack>
+                <Dialog>
+                    <DialogTrigger>
+                        More
+                    </DialogTrigger>
+                    <DialogContent>
 
-            <HStack className="gap-4 flex flex-wrap justify-between w-full">
-                {
-                    (FILTERS ?? []).map(({ name, options }, index) => (
-                        <DropdownMenu key={index} modal>
-                            <Box className="max-sm:w-full flex flow-row items-center justify-center max-sm:justify-between space-x-2">
-                                <Text className="capitalize">{name}</Text>
-                                <DropdownMenuTrigger className=" flex flex-row items-center justify-between border border-neutral-500 hover:bg-neutral-100 py-1 rounded-lg px-6 capitalize">
-                                    {selectedValues[name] ? options.find(option => option.value === selectedValues[name])?.label : options[0].label}
-                                    <IoIosArrowDown />
-                                </DropdownMenuTrigger>
-                            </Box>
-                            <DropdownMenuContent align="start" side="bottom" className="mt-2 bg-neutral-50 shadow-md shadow-neutral-600 rounded-lg min-w-96 p-2 z-50">
-                                {
-                                    (options ?? []).map((option, index) => (
-                                        <DropdownMenuItem
-                                            onClick={() => handleSelect(name, option?.value)}
-                                            key={index}
-                                            className="text-neutral-900 px-4 py-2 hover:bg-blue-50 rounded-lg !outline-none !border-none cursor-pointer
-                                            capitalize"
-                                        >
-                                            {option?.label}
-                                        </DropdownMenuItem>
-                                    ))
-                                }
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    ))
-                }
-            </HStack>
-          
+                    </DialogContent>
+                </Dialog>
+            </Box>
+            <Input className="w-full h-12 rounded-xl border border-black" placeholder="Search Destination/Cities" />
         </Box>
     )
 }
