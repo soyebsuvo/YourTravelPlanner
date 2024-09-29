@@ -25,6 +25,9 @@ import Marketplace from "../Pages/Marketplace/Marketplace";
 import DestinationItinerary from "@/Pages/DestinationItinerary/DestinationItinerary";
 import EmailNotification from "@/Pages/ManageAccount/UserRoutes/EmailNotification";
 import EmailNotificationManage from "@/Pages/ManageAccount/UserRoutes/EmailNotificationManage/EmailNotificationManage";
+import PrivacyPolicy from "@/Pages/Footer/PrivacyPolicy/PrivacyPolocy";
+import CookiesPolicy from "@/Pages/Footer/CookiesPolicy/CookiesPolicy";
+import Cancellations from "@/Pages/Footer/Cancellations/Cancellations";
 
 export const router = createBrowserRouter([
     {
@@ -59,6 +62,18 @@ export const router = createBrowserRouter([
             {
                 path : "/terms-of-use",
                 element : <TermsOfUse />
+            },
+            {
+                path : "/privacy-policy",
+                element : <PrivacyPolicy />
+            },
+            {
+                path : "/cookies-policy",
+                element : <CookiesPolicy />
+            },
+            {
+                path : "/cancellations",
+                element : <Cancellations />
             },
             {
                 path : "/verify",

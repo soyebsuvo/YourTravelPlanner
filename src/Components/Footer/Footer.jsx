@@ -37,9 +37,9 @@ const Footer = () => {
                 <nav>
                     <h6 className="footer-title h-[23px]">Policies</h6>
                     <Link to="/terms-of-use" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px] max-sm:text-xs">Terms of use</Link>
-                    <Link to="/about-wandergenie" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px] max-sm:text-xs">Privacy Policy</Link>
-                    <a className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px] max-sm:text-xs">Cookie Policy</a>
-                    <a className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px] max-sm:text-xs">Cancellations</a>
+                    <Link to="/privacy-policy" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px] max-sm:text-xs">Privacy Policy</Link>
+                    <Link to="/cookies-policy" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px] max-sm:text-xs">Cookie Policy</Link>
+                    <Link to="/cancellations" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 h-[23px] max-sm:text-xs">Cancellations</Link>
                 </nav>
             </footer>
             <div className="w-full flex flex-col items-center justify-center py-4">

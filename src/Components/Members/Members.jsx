@@ -32,15 +32,15 @@ const Members = ({ value, setValue, membersScroll, scrollHandler, budgetScroll }
     const handleConfitmFamily = () => {
         scrollHandler(budgetScroll);
         document.getElementById("family_modal").close()
-        setValue(`Family (${adults} adults and ${child} childrens)`)
+        setValue(`Family`)
     }
     const handleConfitmFriends = () => {
         scrollHandler(budgetScroll);
         document.getElementById("friends_modal").close()
-        setValue(`Friends (${friends} members)`)
+        setValue(`Friends`)
     }
     return (
-        <div ref={membersScroll} className="border-[1px] border-[#003b95] bg-[#D9F2F7] p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
+        <div ref={membersScroll} className="border-[1px] border-theme-header bg-theme-tertiary p-2 md:p-6 px-4 md:px-20 shadow-xl rounded-xl">
             <div>
                 <h2 className='text-md md:text-xl font-semibold text-center'>Who is travelling with you?<span className='text-red-500'>*</span> </h2>
             </div>

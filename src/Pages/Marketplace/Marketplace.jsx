@@ -6,7 +6,8 @@ import { TripCard } from "./components/TripCard/TripCard";
 import SubBanner from "../../Components/Banner/SubBanner";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Banner } from "@/Components/Banner/Banner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const TRIP_CARDS = [
     
@@ -97,6 +98,35 @@ const TRIP_CARDS = [
 export default function Marketplace()
 {
     const [tripCards, setTripCards] = useState(TRIP_CARDS);
+
+    const { search } = useLocation();
+    const queryParams = new URLSearchParams(search);
+
+    const filterBudget = queryParams.get('budget') ?? "All";
+    const filterNoOfDays = queryParams.get('noOfDays') ?? "All";
+    const filterHotelRating = queryParams.get('hotelRating') ?? "All";
+    const filterKeyPoints = queryParams.get('keypoints') ?? "All";
+
+    useEffect(() => {
+        setTripCards(
+            TRIP_CARDS.filter((tripCard) => {
+                // Budget Filter
+                const matchesBudget = filterBudget === "All" || tripCard.price <= filterBudget;
+                
+                // No of Days Filter
+                const matchesNoOfDays = filterNoOfDays === "All" || tripCard.noOfDays === parseInt(filterNoOfDays);
+                
+                // Key Points Filter
+                const matchesKeyPoints = filterKeyPoints === "All" || tripCard.keypoints.includes(filterKeyPoints);
+                
+                // Hotel Rating Filter
+                const matchesHotelRating = filterHotelRating === "All" || tripCard.rating >= filterHotelRating;
+    
+                // Return true only if all filters match
+                return matchesBudget && matchesNoOfDays && matchesKeyPoints && matchesHotelRating;
+            })
+        );
+    }, [filterBudget, filterNoOfDays, filterHotelRating, filterKeyPoints]);
 
     return (
         <Box className="space-y-4 bg-theme-base">
