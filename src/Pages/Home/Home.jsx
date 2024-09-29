@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect } from 'react';
 import { MyContext } from '@/Components/Context/Context';
 
 import { Box } from "@chakra-ui/react";
@@ -26,14 +26,6 @@ export default function Home()
             });
         });
     }, [])
-    
-    const durationScroll = useRef();
-
-    const scrollHandler = (element) => {
-        window.scrollTo({
-            top: element.current.offsetTop - 120, behavior: "smooth"
-        })
-    }
 
     if(loading) {
         return <Preloader />
@@ -43,10 +35,10 @@ export default function Home()
         <Box className='w-full bg-theme-base'>
             <PromotionalBanner/>
             <Box className='relative'>
-                <Navbar/>
-                <Banner scrollHandler={scrollHandler} durationScroll={durationScroll}/>
+                <Navbar className='bg-theme-header' />
+                <Banner/>
             </Box>
-            <Box className='space-y-16'>
+            <Box className='pt-5 space-y-16'>
                 <HeroSectionVideo/>
                 <TravelHotspot/>
                 <DestinationGrid/>

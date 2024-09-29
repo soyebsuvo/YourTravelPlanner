@@ -19,21 +19,21 @@ export const TripFilter = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const queryParams = new URLSearchParams(location.search);
 
-    const filterBudget = queryParams.get('budget');
-    const filterNoOfDays = queryParams.get('noOfDays');
-    const filterHotelRating = queryParams.get('hotelRating');
-    const filterKeyPoints = queryParams.get('keypoints');
+    const filterBudget = queryParams.get('budget') ?? "All";
+    const filterNoOfDays = queryParams.get('noOfDays') ?? "All";
+    const filterHotelRating = queryParams.get('hotelRating') ?? "All";
+    const filterKeyPoints = queryParams.get('keypoints') ?? "All";
 
     useEffect(() => {
-        searchParams.set('keypoints', KEYPOINTS_FILTERS[0]);
-        searchParams.set('budget', BUDGET_FILTERS[0]);
-        searchParams.set('noOfDays', NO_OF_DAYS_FILTERS[0]);
-        searchParams.set('hotelRating', HOTEL_RATING_FILTERS[0]);
-        setSearchParams(searchParams);
+        //searchParams.set('keypoints', KEYPOINTS_FILTERS[0]);
+        //searchParams.set('budget', BUDGET_FILTERS[0]);
+        //searchParams.set('noOfDays', NO_OF_DAYS_FILTERS[0]);
+        //searchParams.set('hotelRating', HOTEL_RATING_FILTERS[0]);
+        //setSearchParams(searchParams);
     }, []);
 
     useEffect(() => {
-        console.log(filterBudget, filterNoOfDays, filterHotelRating, filterKeyPoints);
+        //console.log(filterBudget, filterNoOfDays, filterHotelRating, filterKeyPoints);
     }, [filterBudget, filterNoOfDays, filterHotelRating, filterKeyPoints, searchParams, setSearchParams]);
     
 
@@ -71,7 +71,7 @@ export const TripFilter = () => {
 
     return (
         <Box className="w-full p-2 space-y-4">
-            <Box className="w-full flex flex-row items-center justify-between">
+            <Box className="w-full flex flex-row items-center justify-between max-sm:flex-col max-sm:space-y-2">
                 <HStack className="gap-4 flex flex-wrap justify-start w-full">
                     <FilterItem label={"Budget"} value={filterBudget} filterQuery={'budget'} options={BUDGET_FILTERS}/>
                     <FilterItem label={"No Of Days"} value={filterNoOfDays} filterQuery={'noOfDays'} options={NO_OF_DAYS_FILTERS}/>

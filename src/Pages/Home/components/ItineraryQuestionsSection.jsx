@@ -75,7 +75,7 @@ export const ItineraryQuestionsSection = () => {
     }
 
     return (
-        <Box>
+        <Box id='itineraryQuestionForm'>
             <div className={`bg-theme-secondary border-[1px] border-neutral-400 rounded-2xl p-5 max-w-7xl mx-auto my-8 md:px-2`}>
                 <Selections days={days} setDays={setDays} members={members} setMembers={setMembers} budget={budget} setBudget={setBudget} accommodation={accommodation} setAccommodation={setAccommodation} transportation={transportation} setTransportation={setTransportation} />
                 <div className="flex flex-col md:flex-row max-w-7xl mx-auto px-2 md:px-16 py-8 gap-32">

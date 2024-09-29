@@ -31,6 +31,22 @@ function Context({ children }) {
     const [otp, setOtp] = useState();    
     const [confirmationResult, setConfirmationResult] = useState(null);
 
+    const resetValues = () => {
+        setPlace("");
+        setDays("");
+        setMembers("");
+        setBudget("");
+        setSourceDestination("");
+        setAccommodation("");
+        setTransportation("");
+        setFilteredContinent(null);
+        setSelectedCities([]);
+        setNextCity();
+        setPhone();
+        setOtp();
+        setConfirmationResult(null);
+    }
+
     // const navigate = useNavigate();
     const handleSubmit = async (userInput, datas, navigate, selectedCities) => {
 
@@ -152,7 +168,8 @@ function Context({ children }) {
         confirmationResult,
         setConfirmationResult,
         sourceDestination,
-        setSourceDestination
+        setSourceDestination,
+        resetValues
     }
     return (
         <MyContext.Provider value={info}>

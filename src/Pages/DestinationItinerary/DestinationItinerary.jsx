@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "@/Components/Context/Context";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, CloseButton, Text } from "@chakra-ui/react";
 import { Button } from "@/shadecn/ui/button";
 
 import { StepOneSection } from "./components/StepOne";
@@ -24,7 +24,9 @@ export default function DestinationItinerary()
         transportation,
         sourceDestination,
         setSourceDestination,
-        phone
+        phone,
+        resetValues,
+        selectedCities
     } = useContext(MyContext);
 
     const { country } = useParams();
@@ -53,8 +55,8 @@ export default function DestinationItinerary()
         },
         {
             label : "Step 5",
-            selection : [ {  } ],
-            valid : sourceDestination?.length > 5
+            selection : [ ],
+            valid : selectedCities && selectedCities.length > 0
         }
     ];
 
@@ -67,27 +69,34 @@ export default function DestinationItinerary()
     
 
     return (
-        <Box className="bg-[#E0F7FA] pt-40 min-h-screen max-h-[9999px]">
-            <Navbar className="bg-[#003b95]" />
+        <Box className="bg-theme-base pt-40 min-h-screen max-h-[9999px]">
+            <Navbar className="bg-theme-header" />
             <Box className="max-w-screen-xl m-auto ">
 
-                <Box className="flex flex-row max-sm:flex-wrap justify-between items-end">
-                    {
-                        steps.map((step, index) => (
-                            <Box key={index} className="w-full space-y-2 ">
-                                <Text className="font-bold text-sm space-x-2">
-                                    {
-                                        (step?.selection ?? []).map((selection, i) => (
-                                            typeof selection == "string" && selection !== "" &&
-                                                <span
-                                                    onClick={() => setCurrentStep(index)}
-                                                    key={i}
-                                                    className="truncate px-2 py-1 bg-theme-tertiary hover:bg-theme-fifth cursor-pointer border border-neutral-400">
-                                                        {typeof selection == "string" ? selection : ""}
-                                                </span>
-                                        ))
-                                    }
-                                </Text>
+                <Box className="w-full space-y-2">
+                    <Box className="w-full flex flex-row items-center justify-between space-x-2 max-sm:justify-start max-sm:items-start pr-4">
+                        <Box className="max-lg:justify-center flex flex-row flex-wrap gap-2">
+                            {
+                                steps.map((step, index) => (
+                                    (step?.selection ?? []).map((selection, i) => (
+                                        typeof selection == "string" && selection !== "" &&
+                                            <Box onClick={() => setCurrentStep(index)} key={i} className="w-44 h-10 overflow-hidden flex flex-row items-center justify-center
+                                            px-2 py-2 bg-theme-tertiary hover:bg-theme-fifth cursor-pointer border border-neutral-400
+                                            font-bold rounded-xl text-sm max-md:text-xs">
+                                                {typeof selection == "string" ? selection : ""}
+                                            </Box>
+                                    ))
+                                ))
+                            }
+                        </Box>
+                        
+                        <Link to="/">
+                            <CloseButton onClick={resetValues} />
+                        </Link>
+                    </Box>
+                    <Box className="flex flex-row justify-start items-end">
+                        {
+                            steps.map((step, index) => (
                                 <Button
                                     key={index}
                                     disabled={!step.valid}
@@ -98,17 +107,17 @@ export default function DestinationItinerary()
                                     `}
                                     >
                                 </Button>
-                            </Box>
-                        ))
-                    }
+                            ))
+                        }
+                    </Box>
                 </Box>
             
                 <div className="mb-6 text-lg">
                     {currentStep === 0 && <StepOneSection/>}
                     {currentStep === 1 && <StepTwoSection/>}
                     {currentStep === 2 && <StepThreeSection/>}
-                    {currentStep === 3 && <StepFourSection sourceDestination={sourceDestination} setSourceDestination={setSourceDestination}/>}
-                    {currentStep === 4 && <StepFiveSection/>}
+                    {currentStep === 4 && <StepFourSection sourceDestination={sourceDestination} setSourceDestination={setSourceDestination}/>}
+                    {currentStep === 3 && <StepFiveSection/>}
                 </div>
                 
             </Box>

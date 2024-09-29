@@ -5,7 +5,7 @@ import img3 from '../../assets/duration_option_3_ed7980d091.jpeg';
 import img4 from '../../assets/duration_option_4_d91110b9e1.jpeg';
 const Duration = ({ value, setValue , scrollHandler , membersScroll , durationScroll}) => {
     return (
-        <div ref={durationScroll} className="border-[1px] border-[#003b95] bg-[#D9F2F7] p-2 md:p-6 px-4 md:px-20 rounded-xl">
+        <div ref={durationScroll} className="border-[1px] border-theme-header bg-theme-tertiary p-2 md:p-6 px-4 md:px-20 rounded-xl">
             <div>
                 <h2 className='text-md md:text-xl font-semibold text-center'>What is the length of your holiday?<span className='text-red-500'>*</span></h2>
             </div>

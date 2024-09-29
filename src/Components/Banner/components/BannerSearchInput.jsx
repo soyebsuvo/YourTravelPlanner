@@ -17,7 +17,7 @@ const fetchPlaces = async () => {
     return data.places;
 };
 
-export const BannerSearchInput = ({scrollHandler, durationScroll}) => {
+export const BannerSearchInput = () => {
 
     // const { data: places, isLoading } = useQuery({
     //     queryKey: ["places"],
@@ -57,7 +57,12 @@ export const BannerSearchInput = ({scrollHandler, durationScroll}) => {
         }
 
         handleSearch(item);
-        setQuery(item)
+        setQuery(item);
+
+        window.scrollTo({
+            top: document.getElementById('itineraryQuestionForm').offsetTop - 120,
+            behavior: 'smooth',
+        });
     };
 
     const handleSearch = async (place) => {
@@ -82,13 +87,17 @@ export const BannerSearchInput = ({scrollHandler, durationScroll}) => {
 
     return (
         <Box className="relative">
-            <Command className="w-full">
+            <Command className="w-full bg-theme-fourth">
                 <CommandInput disabled={false} value={query} onValueChange={setQuery} placeholder="Search Destination" />
-                <CommandList hidden={isPlaceSelected || query == ""} className="absolute mt-10 bg-neutral-50 w-full shadow border-2 border-black">
+                <CommandList hidden={isPlaceSelected || query == ""} className="absolute mt-10 bg-theme-secondary w-full shadow border-2 border-black">
                     <CommandEmpty>No results found.</CommandEmpty>
                     {
                         (currentPlaces ?? []).map((item, index) => (
-                            <CommandItem onSelect={() => {handleSubmit(item); scrollHandler(durationScroll) }} className="text-left font-semibold p-2 cursor-pointer my-1 border-2 border-transparent transition-all duration-300 rounded-lg w-full hover:border-2 hover:border-blue-400" key={`${item}${Math.random() * index + 1}`}>
+                            <CommandItem
+                                onSelect={() => handleSubmit(item)}
+                                className="text-left font-semibold p-2 cursor-pointer my-1 border-2 border-transparent transition-all duration-300 rounded-lg w-full hover:border-2 hover:border-theme-header hover:!bg-theme-tertiary data-[highlighted]:!bg-theme-tertiary data-[state=active]:!bg-theme-tertiary"
+                                key={`${item}${Math.random() * index + 1}`}
+                            >
                                 {item}
                                  
                             </CommandItem>
