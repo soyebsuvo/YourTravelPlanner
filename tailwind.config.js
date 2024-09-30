@@ -21,7 +21,10 @@ theme: {
 				secondary: '#D9F2F7',
 				tertiary: '#D2ECF4',
 				fourth: '#C4E0EE',
-				fifth: '#A8C8E1'
+				fifth: '#A8C8E1',
+				sixth : "#7099C8",
+
+				primaryAccent : "#0057b8"
 			},
 			border: 'hsl(var(--border))',
 			input: 'hsl(var(--input))',
@@ -58,9 +61,7 @@ theme: {
 			}
 		},
 		borderRadius: {
-			lg: '`var(--radius)`',
-			md: '`calc(var(--radius) - 2px)`',
-			sm: 'calc(var(--radius) - 4px)'
+			
 		},
 		keyframes: {
 			'accordion-down': {

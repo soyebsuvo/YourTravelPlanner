@@ -30,7 +30,7 @@ const Footer = () => {
                 <nav>
                     <h6 className="footer-title h-[23px]">Social</h6>
                     <a href="https://www.instagram.com/wandergeniellm" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 max-sm:text-xs"><FaInstagram className="inline mb-[2px] text-[20px] mr-1"/> Instagram</a>
-                    <a href="https://www.facebook.com/profile.php?id=61561816175519" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 max-sm:text-xs"><FiFacebook className="inline mb-[2px] text-[20px] pr-[2px] mr-1"/> Facebook</a>
+                    <a href="https://www.facebook.com/profile.php?id=61562117797014" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 max-sm:text-xs"><FiFacebook className="inline mb-[2px] text-[20px] pr-[2px] mr-1"/> Facebook</a>
                     <a href="https://www.linkedin.com/company/wandergeniellm" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 max-sm:text-xs"><FiLinkedin className="inline mb-[2px] text-[20px] mr-1"/> Linkedin</a>
                     <a href="https://www.youtube.com/@WanderGenie" target="_blank" className="link no-underline hover:text-blue-600 hover:font-semibold duration-200 max-sm:text-xs"><FiYoutube className="inline mb-[2px] text-[20px] mr-1"/> Youtube</a>
                 </nav>

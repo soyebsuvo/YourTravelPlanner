@@ -7,6 +7,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { Input } from "@/shadecn/ui/input";
 import { Dialog, DialogContent, DialogTrigger } from "@/shadecn/ui/dialog";
+import { Button } from "@/shadecn/ui/button";
 
 const BUDGET_FILTERS = [ "Below 500 USD", "500 USD - 1000 USD", "1000 USD TO 2,000 USD", "2000 USD T0 5,000 USD", "5,000 USD Or Avobe" ];
 const NO_OF_DAYS_FILTERS = [ "All", "3-5 days", "4-8 days", "9-12 days", "13-16 days", "Above 16 days" ];
@@ -71,23 +72,23 @@ export const TripFilter = () => {
 
     return (
         <Box className="w-full p-2 space-y-4">
+            <Box className="flex flex-row items-center justify-center space-x-2 px-4">
+                <Input className="w-full h-12 rounded-xl border border-black" placeholder="Search Destination/Cities" />
+                <Button className="bg-theme-primaryAccent rounded-xl border-none hover:bg-theme-primaryAccent w-40 h-12 font-bold text-lg">
+                    Clear
+                </Button>
+            </Box>
             <Box className="w-full flex flex-row items-center justify-between max-sm:flex-col max-sm:space-y-2">
-                <HStack className="gap-4 flex flex-wrap justify-start w-full">
+                <HStack className="gap-4 flex flex-wrap justify-start w-full bg-theme-secondary rounded-xl px-4 py-2">
                     <FilterItem label={"Budget"} value={filterBudget} filterQuery={'budget'} options={BUDGET_FILTERS}/>
                     <FilterItem label={"No Of Days"} value={filterNoOfDays} filterQuery={'noOfDays'} options={NO_OF_DAYS_FILTERS}/>
                     <FilterItem label={"Hotel Ratings"} value={filterHotelRating} filterQuery={'hotelRating'} options={HOTEL_RATING_FILTERS}/>
-                    <FilterItem label={"Key Points"} value={filterKeyPoints} filterQuery={'keypoints'} options={KEYPOINTS_FILTERS} />
+                    <FilterItem label={"Travel Vibe"} value={filterKeyPoints} filterQuery={'keypoints'} options={KEYPOINTS_FILTERS} />
                 </HStack>
-                <Dialog>
-                    <DialogTrigger>
-                        More
-                    </DialogTrigger>
-                    <DialogContent>
-
-                    </DialogContent>
-                </Dialog>
+                <Button className="bg-theme-primaryAccent rounded-xl border-none hover:bg-theme-primaryAccent w-40 h-12 font-bold text-base">
+                    Reset Filter
+                </Button>
             </Box>
-            <Input className="w-full h-12 rounded-xl border border-black" placeholder="Search Destination/Cities" />
         </Box>
     )
 }
