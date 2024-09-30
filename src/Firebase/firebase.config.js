@@ -4,13 +4,15 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDS0M4AEKRa-48_DP7H2jxhgf9RUlB1HfY",
-  authDomain: "your-travel-planner-b135e.firebaseapp.com",
-  projectId: "your-travel-planner-b135e",
-  storageBucket: "your-travel-planner-b135e.appspot.com",
-  messagingSenderId: "922712006039",
-  appId: "1:922712006039:web:8566460fac169fbad538d2"
+  apiKey: "AIzaSyCXuMmhpT9t9Mf3pS3f2oXDubRDhYl8OMQ",
+  authDomain: "yourtravelplaner-c5d61.firebaseapp.com",
+  projectId: "yourtravelplaner-c5d61",
+  storageBucket: "yourtravelplaner-c5d61.appspot.com",
+  messagingSenderId: "206298431747",
+  appId: "1:206298431747:web:57e3a502a991b67c6f2936",
+  measurementId: "G-PWVWZRNQSH"
 };
 
 // Initialize Firebase
