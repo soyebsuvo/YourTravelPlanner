@@ -6,8 +6,8 @@ const Selections = ({ days, members, budget, accommodation, transportation, setD
     // const place = 'Dhaka';
     const { place , setPlace } = useContext(MyContext)
     
-    const itemStyleSelect = `flex justify-start items-center gap-2 text-xs md:text-sm border-2 px-2 py-1 bg-[#003B95] text-white rounded-md md:my-2 mx-1 w-fit font-semibold`;
-    const itemStyleNoSelect = `flex justify-start items-center gap-2 text-xs md:text-sm border-2 px-2 py-1 bg-theme-fifth rounded-md md:my-2 mx-1 w-fit font-semibold`;
+    const itemStyleSelect = `flex justify-start items-center gap-2 text-xs md:text-sm border-2 px-2 py-1 bg-[#003B95] text-white rounded-md md:my-2 mx-1 w-fit font-semibold rounded-[8px]`;
+    const itemStyleNoSelect = `flex justify-start items-center gap-2 text-xs md:text-sm border-2 px-2 py-1 bg-theme-fifth rounded-md md:my-2 mx-1 w-fit font-semibold rounded-[8px]`;
 
     return (
         <div className="sticky top-0 bg-theme-secondary z-30">

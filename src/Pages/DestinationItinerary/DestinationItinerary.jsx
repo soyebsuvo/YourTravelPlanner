@@ -82,7 +82,7 @@ export default function DestinationItinerary()
                                         typeof selection == "string" && selection !== "" &&
                                             <Box onClick={() => setCurrentStep(index)} key={i} className="w-44 h-10 overflow-hidden flex flex-row items-center justify-center
                                             px-2 py-2 bg-theme-tertiary hover:bg-theme-fifth cursor-pointer border border-neutral-400
-                                            font-bold rounded-xl text-sm max-md:text-xs">
+                                            font-bold rounded-[8px] text-sm max-md:text-xs">
                                                 {typeof selection == "string" ? selection : ""}
                                             </Box>
                                     ))

@@ -92,7 +92,7 @@ export default function Cancellations()
                         <Box>
                             <Heading className="text-xl font-bold text-black">Contact Us</Heading>
                             <Text className="text-black">
-                                If you have any questions or need assistance with a cancellation, please contact our support team at support@WanderGenie LLM.com. {"We're"} here to help ensure your travel planning experience is smooth and enjoyable, even when plans change.
+                                If you have any questions or need assistance with a cancellation, please contact our support team at <span className="text-black font-bold">support@wandergeniellm.com </span> {"We're"} here to help ensure your travel planning experience is smooth and enjoyable, even when plans change.
                                 Thank you for choosing WanderGenie LLM!
                             </Text>
                         </Box>

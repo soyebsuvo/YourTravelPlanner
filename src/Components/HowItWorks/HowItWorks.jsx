@@ -65,7 +65,7 @@ const HowItWorks = () => {
             <Navbar className='bg-theme-header' />
             <div className='max-w-6xl mx-auto md:px-16 my-4 mb-20 border border-theme-header rounded-2xl bg-theme-secondary'>
                 <div>
-                    <h2 className='text-3xl font-semibold my-8 text-black'>How WanderGenie LLM Works</h2>
+                    <h2 className='text-3xl font-semibold my-8 text-black font-sans'>How WanderGenie LLM Works</h2>
                     <div className='space-y-8 mb-8'>
                         <div className=''>
                             <h4 className='text-xl font-semibold my-2 text-black'>Introduction</h4>

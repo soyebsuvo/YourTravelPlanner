@@ -131,13 +131,13 @@ export default function Marketplace()
     return (
         <Box className="space-y-4 bg-theme-base">
             <Container className="w-full">
-                <Navbar/>
+                <Navbar className="bg-theme-header" />
                 <Banner disableInput={true} />
             </Container>                      
 
             <Box className="w-full max-w-screen-xl m-auto space-y-6">
                 <TripFilter />
-                <Box className="w-full gap-8 grid grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:p-2">
+                <Box className="w-full gap-8 grid grid-cols-3 max-xl:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:p-2 p-8 bg-theme-secondary rounded-xl">
                     {
                         tripCards.map((tripCard, index) => <TripCard key={index} {...tripCard}/>)
                     }

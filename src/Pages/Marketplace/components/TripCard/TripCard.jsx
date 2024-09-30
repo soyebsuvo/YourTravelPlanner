@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const TripCard = ({ title, thumbnail, description, price, rating, keypoints }) => {
     return (
-        <Card className="w-80 max-2xl:w-72 max-xl:w-full bg-theme-fourth rounded-xl shadow-lg hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl flex flex-col items-center justify-between">
+        <Card className="w-full max-2xl:w-72 max-xl:w-full bg-white rounded-xl shadow-lg hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl flex flex-col items-center justify-between">
             <CardBody className="cursor-pointer group">
                 <Link to={`/marketplace/${title}`} target='_blank' referrerPolicy='no-referrer' className='decoration-transparent'>
                     <Image
@@ -23,7 +23,7 @@ export const TripCard = ({ title, thumbnail, description, price, rating, keypoin
                         <HStack className="flex-wrap">
                             {
                                 (keypoints ?? []).map((keypoint, index) => (
-                                    <Text className="flex flex-row items-center justify-between space-x-2 text-black text-xs bg-emerald-400/40 px-2 py-1 rounded-3xl max-lg:text-xs" key={index}>
+                                    <Text className="flex flex-row items-center justify-between space-x-2 text-black font-bold text-xs bg-theme-tertiary px-2 py-1 rounded-3xl max-lg:text-xs" key={index}>
                                         <IoMdCheckmark />
                                         {keypoint}
                                     </Text>
@@ -40,8 +40,8 @@ export const TripCard = ({ title, thumbnail, description, price, rating, keypoin
                 <Text className="text-neutral-800 font-bold text-lg flex flex-row items-center justify-center space-x-2">
                     {price} <IoIosPerson />
                 </Text>
-                <Button className="bg-blue-500 hover:bg-blue-400 text-white px-4 rounded-lg py-2" variant='solid' colorScheme='blue'>
-                    Buy now
+                <Button className="bg-theme-primaryAccent hover:bg-blue-400 text-white px-4 rounded-lg py-2" variant='solid' colorScheme='blue'>
+                    View Details
                 </Button>
             </CardFooter>
         </Card>

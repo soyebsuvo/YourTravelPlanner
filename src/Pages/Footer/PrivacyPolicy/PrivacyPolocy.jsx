@@ -56,7 +56,7 @@ const ACCORDIAN_QUESTIONS = [
     {
         label: 'Contact Us',
         options: [
-            "If you have any questions about this Privacy Policy, please contact us at privacy@wandergeniellm.com."
+            "If you have any questions about this Privacy Policy, please contact us at support@wandergeniellm.com"
         ]
     },
 ]
